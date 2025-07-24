@@ -3,7 +3,7 @@ import * as pa from 'exupery-core-alg'
 
 import { temp_resources } from 'exupery-core-resources'
 
-import * as s_in from "../generated/interface/schemas/lines/unresolved"
+import * as s_in from "../generated/interface/schemas/lines/unconstrained"
 
 
 

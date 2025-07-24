@@ -1,8 +1,8 @@
 import * as pt from 'exupery-core-types'
 import * as pa from 'exupery-core-alg'
 
-import * as s_in from "../../generated/interface/schemas/block/resolved"
-import * as s_out from "../../generated/interface/schemas/lines/resolved"
+import * as s_in from "../../generated/interface/schemas/block/unconstrained"
+import * as s_out from "../../generated/interface/schemas/lines/unconstrained"
 
 import * as t from "../semi_lines/lines"
 import * as t_2 from "./semi_lines"

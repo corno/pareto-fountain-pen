@@ -3,8 +3,8 @@ import * as pa from 'exupery-core-alg'
 
 import { impure } from "pareto-standard-operations"
 
-import * as s_in from "../../generated/interface/schemas/semi_lines/unresolved"
-import * as s_out from "../../generated/interface/schemas/lines/unresolved"
+import * as s_in from "../../generated/interface/schemas/semi_lines/unconstrained"
+import * as s_out from "../../generated/interface/schemas/lines/unconstrained"
 
 const op = {
     'repeat text': impure.text.repeat,

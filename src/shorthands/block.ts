@@ -1,6 +1,6 @@
 import * as pd from 'exupery-core-data'
 
-import * as _resolved from "../generated/interface/schemas/block/resolved" //FIXME... should be 'poormans_parser'
+import * as _resolved from "../generated/interface/schemas/block/unconstrained"
 
 export namespace b {
 

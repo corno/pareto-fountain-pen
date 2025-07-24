@@ -1,6 +1,6 @@
 import * as ed from 'exupery-core-data'
 
-import * as _resolved from "../generated/interface/schemas/lines/resolved" //FIXME... should be 'poormans_parser'
+import * as _resolved from "../generated/interface/schemas/lines/unconstrained"
 import { Raw_Or_Normal_Dictionary, wrap_dictionary } from 'exupery-core-data/dist/shorthands'
 
 export namespace d {

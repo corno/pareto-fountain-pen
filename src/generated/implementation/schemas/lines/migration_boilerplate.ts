@@ -1,7 +1,7 @@
 import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
-import * as _i_out from "../../../interface/schemas/lines/unresolved"
+import * as _i_out from "../../../interface/schemas/lines/unconstrained"
 import * as _i_signatures from "../../../interface/schemas/lines/migration_boilerplate"
 
 
