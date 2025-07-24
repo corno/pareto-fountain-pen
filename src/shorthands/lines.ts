@@ -1,7 +1,7 @@
 import * as ed from 'exupery-core-data'
 
 import * as _resolved from "../generated/interface/schemas/lines/unconstrained"
-import { Raw_Or_Normal_Dictionary, wrap_dictionary } from 'exupery-core-data/dist/shorthands'
+import { Raw_Or_Normal_Dictionary, wrap_dictionary } from 'exupery-core-data/dist/shorthands/unconstrained'
 
 export namespace d {
 
@@ -11,5 +11,5 @@ export namespace d {
 
     export const directory = (
         children: Raw_Or_Normal_Dictionary<_resolved.Directory.D>,
-    ): _resolved.Directory.D => ['directory', wrap_dictionary(children).dictionary.map((v) => v.entry)]
+    ): _resolved.Directory.D => ['directory', wrap_dictionary(children)]
 }
