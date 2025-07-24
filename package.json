@@ -1,0 +1,50 @@
+{
+  "name": "pareto-fountain-pen",
+  "version": "0.1.5",
+  "description": "A TypeScript library for easily generating source code files with proper indentation in the pareto programming style/language",
+  "main": "./dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "./dist/index.js",
+  "bin": {},
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "documentation"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "validate": "node dist/bin/validate_astn.js"
+  },
+  "keywords": [
+    "pareto",
+    "source code generation",
+    "indentation"
+  ],
+  "author": "Corno",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/corno/astn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/corno/astn/issues"
+  },
+  "homepage": "https://github.com/corno/astn#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "exupery-core-alg": "^0.1.4",
+    "exupery-core-data": "^0.1.0",
+    "exupery-core-dev": "^0.1.1",
+    "exupery-core-resources": "^0.2.1",
+    "pareto-standard-operations": "^0.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
