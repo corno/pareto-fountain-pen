@@ -35,8 +35,8 @@ export namespace l {
 export namespace d {
 
     export const file = (
-        block_parts: _out.Block_Part[]
-    ): _out.Directory.D => ['file', pd.a(block_parts)]
+        block: _out.Block
+    ): _out.Directory.D => ['file', block]
 
     export const directory = (
         children: sh.Raw_Or_Normal_Dictionary<_out.Directory.D>,
