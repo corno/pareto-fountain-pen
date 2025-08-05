@@ -108,13 +108,3 @@ export const Line_Part: _i_signatures._T_s_Line_Part = ($, $p) => ['state', _pa.
         default: return _pa.au($[0])
     }
 })]
-export const Lines: _i_signatures._T_s_Lines = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
-    'indentation': _pa.cc($['indentation'], ($) => ['text', ({
-        'delimiter': ['backtick', null],
-        'value': "FIXME NUMBER",
-    })]),
-    'text': _pa.cc($['text'], ($) => ['text', ({
-        'delimiter': ['quote', null],
-        'value': $,
-    })]),
-})])]

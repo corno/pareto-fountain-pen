@@ -27,11 +27,6 @@ export type _T_Line_Part = _i_core._T_State_Group<null,
     | readonly ['sub line', _T_Line]
 >
 
-export type _T_Lines = _i_core._T_List<null, {
-    readonly 'indentation': number
-    readonly 'text': string
-}>
-
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
 
 export type Block = _T_Block
@@ -43,8 +38,6 @@ export type Directory = _T_Directory
 export type Line = _T_Line
 
 export type Line_Part = _T_Line_Part
-
-export type Lines = _T_Lines
 
 // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
 
@@ -128,18 +121,6 @@ export namespace _T_Line_Part {
         | readonly ['sub line', _T_Line]
 }
 
-export namespace _T_Lines {
-    
-    export namespace L {
-        export type indentation = number
-        export type text = string
-    }
-    export type L = {
-        readonly 'indentation': number
-        readonly 'text': string
-    }
-}
-
 // *** ALIASES FOR NESTED TYPES
 
 export namespace Block {
@@ -220,16 +201,4 @@ export namespace Line_Part {
         | readonly ['nothing', null]
         | readonly ['snippet', string]
         | readonly ['sub line', _T_Line]
-}
-
-export namespace Lines {
-    
-    export namespace L {
-        export type indentation = number
-        export type text = string
-    }
-    export type L = {
-        readonly 'indentation': number
-        readonly 'text': string
-    }
 }

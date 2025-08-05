@@ -120,33 +120,3 @@ export const Line_Part: _i_signatures._T_Line_Part = ($) => _i_generic.process_s
         }),
     }
 )
-export const Lines: _i_signatures._T_Lines = ($) => _i_generic.process_unconstrained_list(
-    $,
-    {
-        'value': ($) => _i_generic.process_group(
-            $,
-            {
-                'properties': ($) => ({
-                    'indentation': _pa.cc(_i_generic.get_entry(
-                        $,
-                        {
-                            'key': "indentation",
-                        }
-                    ), ($) => _i_generic.process_number(
-                        $,
-                        null
-                    )),
-                    'text': _pa.cc(_i_generic.get_entry(
-                        $,
-                        {
-                            'key': "text",
-                        }
-                    ), ($) => _i_generic.process_text(
-                        $,
-                        null
-                    )),
-                }),
-            }
-        ),
-    }
-)
