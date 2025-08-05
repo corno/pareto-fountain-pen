@@ -48,14 +48,14 @@ export const Directory = (
             switch ($[0]) {
                 case 'file':
                     pa.ss($, ($) => {
-                        File($, { 'directory path': $p.path, 'filename': key, 'indentation': $p.indentation, 'newline': $p.newline })
+                        File($, { 'directory path': path, 'filename': key, 'indentation': $p.indentation, 'newline': $p.newline })
                     })
                     break
                 case 'directory':
                     pa.ss($, ($) => {
                         write_directory_to_disk(
                             $,
-                            `${$p.path}/${key}`
+                            `${path}/${key}`
                         )
                     })
                     break
