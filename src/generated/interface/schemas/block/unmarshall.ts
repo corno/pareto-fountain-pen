@@ -2,32 +2,43 @@ import * as _pt from 'exupery-core-types'
 
 import * as _i_in from "../../core/astn_source"
 import * as _i_out from "./data_types/unconstrained"
+import * as _i_vd from "./value_deserializers"
 
 // **** TYPES
 
 export type _T_Block = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Block
 
 export type _T_Block_Part = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Block_Part
 
 export type _T_Directory = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Directory
 
 export type _T_Line = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Line
 
 export type _T_Line_Part = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Line_Part
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
@@ -51,6 +62,10 @@ export namespace _T_Block {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -65,6 +80,10 @@ export namespace _T_Block_Part {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -79,6 +98,10 @@ export namespace _T_Directory {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -93,6 +116,10 @@ export namespace _T_Line {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -107,6 +134,10 @@ export namespace _T_Line_Part {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -123,6 +154,10 @@ export namespace Block {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -137,6 +172,10 @@ export namespace Block_Part {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -151,6 +190,10 @@ export namespace Directory {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -165,6 +208,10 @@ export namespace Line {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -179,6 +226,10 @@ export namespace Line_Part {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {

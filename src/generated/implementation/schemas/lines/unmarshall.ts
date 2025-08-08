@@ -6,7 +6,7 @@ import * as _i_out from "../../../interface/schemas/lines/data_types/unconstrain
 import * as _i_signatures from "../../../interface/schemas/lines/unmarshall"
 
 
-export const Directory: _i_signatures._T_Directory = ($) => _i_generic.process_unconstrained_dictionary(
+export const Directory: _i_signatures._T_Directory = ($, $p) => _i_generic.process_unconstrained_dictionary(
     $,
     {
         'value': ($) => _i_generic.process_state_group(
@@ -16,14 +16,18 @@ export const Directory: _i_signatures._T_Directory = ($) => _i_generic.process_u
                     'directory': ($): _i_out._T_Directory.D => _i_generic.wrap_unconstrained_state_group(
                         ['directory', Directory(
                             $,
-                            null
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
                         )],
                         null
                     ),
                     'file': ($): _i_out._T_Directory.D => _i_generic.wrap_unconstrained_state_group(
                         ['file', Lines(
                             $,
-                            null
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
                         )],
                         null
                     ),
@@ -32,7 +36,7 @@ export const Directory: _i_signatures._T_Directory = ($) => _i_generic.process_u
         ),
     }
 )
-export const Lines: _i_signatures._T_Lines = ($) => _i_generic.process_unconstrained_list(
+export const Lines: _i_signatures._T_Lines = ($, $p) => _i_generic.process_unconstrained_list(
     $,
     {
         'value': ($) => _i_generic.process_text(

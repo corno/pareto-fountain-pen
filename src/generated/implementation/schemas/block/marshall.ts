@@ -5,13 +5,13 @@ import * as _i_out from "../../../interface/core/astn_target"
 import * as _i_signatures from "../../../interface/schemas/block/marshall"
 
 
-export const Block: _i_signatures._T_s_Block = ($, $p) => ['list', $.map(($) => Block_Part(
+export const Block: _i_signatures._T_Block = ($, $p) => ['list', $.map(($) => Block_Part(
     $,
     {
         'value serializers': $p['value serializers'],
     }
 ))]
-export const Block_Part: _i_signatures._T_s_Block_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'line': return _pa.ss($, ($) => ({
             'state': "line",
@@ -45,7 +45,7 @@ export const Block_Part: _i_signatures._T_s_Block_Part = ($, $p) => ['state', _p
         default: return _pa.au($[0])
     }
 })]
-export const Directory: _i_signatures._T_s_Directory = ($, $p) => ['dictionary', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'directory': return _pa.ss($, ($) => ({
             'state': "directory",
@@ -68,13 +68,13 @@ export const Directory: _i_signatures._T_s_Directory = ($, $p) => ['dictionary',
         default: return _pa.au($[0])
     }
 })])]
-export const Line: _i_signatures._T_s_Line = ($, $p) => ['list', $.map(($) => Line_Part(
+export const Line: _i_signatures._T_Line = ($, $p) => ['list', $.map(($) => Line_Part(
     $,
     {
         'value serializers': $p['value serializers'],
     }
 ))]
-export const Line_Part: _i_signatures._T_s_Line_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Line_Part: _i_signatures._T_Line_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'indent': return _pa.ss($, ($) => ({
             'state': "indent",
