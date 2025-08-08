@@ -1,8 +1,8 @@
 import * as pt from 'exupery-core-types'
 import * as pa from 'exupery-core-alg'
 
-import * as s_in from "../../generated/interface/schemas/block/unconstrained"
-import * as s_out from "../../generated/interface/schemas/semi_lines/unconstrained"
+import * as s_in from "../../generated/interface/schemas/block/data_types/unconstrained"
+import * as s_out from "../../generated/interface/schemas/semi_lines/data_types/unconstrained"
 
 export const Directory = (
     $: s_in.Directory,

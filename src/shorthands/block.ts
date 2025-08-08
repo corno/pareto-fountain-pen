@@ -1,6 +1,6 @@
 import * as pd from 'exupery-core-data'
 
-import * as _out from "../generated/interface/schemas/block/unconstrained"
+import * as _out from "../generated/interface/schemas/block/data_types/unconstrained"
 
 import * as sh from "exupery-core-data/dist/shorthands/unconstrained"
 
