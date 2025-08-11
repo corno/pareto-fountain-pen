@@ -31,7 +31,10 @@ export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $
 export const Lines: _i_signatures._T_Lines = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
     'indentation': _pa.cc($['indentation'], ($) => ['text', ({
         'delimiter': ['backtick', null],
-        'value': _pd.implement_me(),
+        'value': $p['value serializers']['default number'](
+            $,
+            null
+        ),
     })]),
     'text': _pa.cc($['text'], ($) => ['text', ({
         'delimiter': ['quote', null],
