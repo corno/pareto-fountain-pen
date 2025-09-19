@@ -13,10 +13,7 @@ export type _T_Block_Part = _i_core._T_State_Group<null,
     | readonly ['sub block', _T_Block]
 >
 
-export type _T_Directory = _i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
-    | readonly ['directory', _T_Directory]
-    | readonly ['file', _T_Block]
->>
+export type _T_Directory = _i_core._T_Dictionary<null, _T_Node>
 
 export type _T_Line = _i_core._T_List<null, _T_Line_Part>
 
@@ -25,6 +22,11 @@ export type _T_Line_Part = _i_core._T_State_Group<null,
     | readonly ['nothing', null]
     | readonly ['snippet', string]
     | readonly ['sub line', _T_Line]
+>
+
+export type _T_Node = _i_core._T_State_Group<null, 
+    | readonly ['directory', _T_Directory]
+    | readonly ['file', _T_Block]
 >
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
@@ -38,6 +40,8 @@ export type Directory = _T_Directory
 export type Line = _T_Line
 
 export type Line_Part = _T_Line_Part
+
+export type Node = _T_Node
 
 // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
 
@@ -72,25 +76,8 @@ export namespace _T_Block_Part {
 export namespace _T_Directory {
     
     export namespace D {
-        
-        export namespace SG {
-            
-            export namespace directory {
-            }
-            export type directory = _T_Directory
-            
-            export namespace file {
-            }
-            export type file = _T_Block
-        }
-        export type SG = 
-            | readonly ['directory', _T_Directory]
-            | readonly ['file', _T_Block]
     }
-    export type D = _i_core._T_State_Group<null, 
-        | readonly ['directory', _T_Directory]
-        | readonly ['file', _T_Block]
-    >
+    export type D = _T_Node
 }
 
 export namespace _T_Line {
@@ -119,6 +106,23 @@ export namespace _T_Line_Part {
         | readonly ['nothing', null]
         | readonly ['snippet', string]
         | readonly ['sub line', _T_Line]
+}
+
+export namespace _T_Node {
+    
+    export namespace SG {
+        
+        export namespace directory {
+        }
+        export type directory = _T_Directory
+        
+        export namespace file {
+        }
+        export type file = _T_Block
+    }
+    export type SG = 
+        | readonly ['directory', _T_Directory]
+        | readonly ['file', _T_Block]
 }
 
 // *** ALIASES FOR NESTED TYPES
@@ -154,25 +158,8 @@ export namespace Block_Part {
 export namespace Directory {
     
     export namespace D {
-        
-        export namespace SG {
-            
-            export namespace directory {
-            }
-            export type directory = _T_Directory
-            
-            export namespace file {
-            }
-            export type file = _T_Block
-        }
-        export type SG = 
-            | readonly ['directory', _T_Directory]
-            | readonly ['file', _T_Block]
     }
-    export type D = _i_core._T_State_Group<null, 
-        | readonly ['directory', _T_Directory]
-        | readonly ['file', _T_Block]
-    >
+    export type D = _T_Node
 }
 
 export namespace Line {
@@ -201,4 +188,21 @@ export namespace Line_Part {
         | readonly ['nothing', null]
         | readonly ['snippet', string]
         | readonly ['sub line', _T_Line]
+}
+
+export namespace Node {
+    
+    export namespace SG {
+        
+        export namespace directory {
+        }
+        export type directory = _T_Directory
+        
+        export namespace file {
+        }
+        export type file = _T_Block
+    }
+    export type SG = 
+        | readonly ['directory', _T_Directory]
+        | readonly ['file', _T_Block]
 }

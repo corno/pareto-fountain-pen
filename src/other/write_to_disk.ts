@@ -26,10 +26,48 @@ export const File = (
     temp_resources.fs['write file sync'](
         `${$p['directory path']}/${$p.filename}`,
         op['join list of texts'](
-            t_block_2_lines.Block($, {'indentation': $p.indentation}).map(($) => $ + $p.newline),
+            t_block_2_lines.Block($, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
         ),
         true,
     )
+}
+
+export const Node = (
+    $: s_in.Node,
+    $p: {
+        'path': string
+        'key': string
+        'indentation': string
+        'newline': string
+        'remove before creating': boolean
+    }
+) => {
+    switch ($[0]) {
+        case 'file':
+            pa.ss($, ($) => {
+                File($, {
+                    'directory path': $p.path,
+                    'filename': $p.key,
+                    'indentation': $p.indentation,
+                    'newline': $p.newline
+                })
+            })
+            break
+        case 'directory':
+            pa.ss($, ($) => {
+                Directory(
+                    $,
+                    {
+                        'path': `${$p.path}/${$p.key}`,
+                        'indentation': $p.indentation,
+                        'newline': $p.newline,
+                        'remove before creating': false,
+                    }
+                )
+            })
+            break
+        default: pa.au($[0])
+    }
 }
 
 export const Directory = (
@@ -38,40 +76,22 @@ export const Directory = (
         'path': string
         'indentation': string
         'newline': string
+        'remove before creating': boolean
     }
 ) => {
-    const write_directory_to_disk = (
-        $: s_in.Directory,
-        path: string
-    ) => {
-        $.map(($, key) => {
-            switch ($[0]) {
-                case 'file':
-                    pa.ss($, ($) => {
-                        File($, { 'directory path': path, 'filename': key, 'indentation': $p.indentation, 'newline': $p.newline })
-                    })
-                    break
-                case 'directory':
-                    pa.ss($, ($) => {
-                        write_directory_to_disk(
-                            $,
-                            `${path}/${key}`
-                        )
-                    })
-                    break
-                default: pa.au($[0])
-            }
-        })
-
-    }
-    if (temp_resources.fs.exists($p.path, false)) { //don't escape the path. It is a command line argument
+    if ($p['remove before creating'] && temp_resources.fs.exists($p.path, false)) { //don't escape the path. It is a command line argument
         temp_resources.fs['remove sync']($p.path, false, {
             'recursive': true,
         })
     }
-    write_directory_to_disk(
-        $,
-        $p.path
-    )
+    $.map(($, key) => {
+        Node($, {
+            'path': $p.path,
+            'key': key,
+            'indentation': $p.indentation,
+            'newline': $p.newline,
+            'remove before creating': $p['remove before creating'],
+        })
+    })
 }
 

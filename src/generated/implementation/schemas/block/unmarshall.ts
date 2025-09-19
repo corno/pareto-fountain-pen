@@ -48,23 +48,10 @@ export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => _i_generic.pro
 export const Directory: _i_signatures._T_Directory = ($, $p) => _i_generic.process_unconstrained_dictionary(
     $,
     {
-        'value': ($) => _i_generic.process_unconstrained_state_group(
+        'value': ($) => Node(
             $,
             {
-                'states': _pa.dictionary_literal({
-                    'directory': ($): _i_out._T_Directory.D.SG => ['directory', Directory(
-                        $,
-                        {
-                            'value deserializers': $p['value deserializers'],
-                        }
-                    )],
-                    'file': ($): _i_out._T_Directory.D.SG => ['file', Block(
-                        $,
-                        {
-                            'value deserializers': $p['value deserializers'],
-                        }
-                    )],
-                }),
+                'value deserializers': $p['value deserializers'],
             }
         ),
     }
@@ -99,6 +86,25 @@ export const Line_Part: _i_signatures._T_Line_Part = ($, $p) => _i_generic.proce
                 null
             )],
             'sub line': ($): _i_out._T_Line_Part.SG => ['sub line', Line(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+        }),
+    }
+)
+export const Node: _i_signatures._T_Node = ($, $p) => _i_generic.process_unconstrained_state_group(
+    $,
+    {
+        'states': _pa.dictionary_literal({
+            'directory': ($): _i_out._T_Node.SG => ['directory', Directory(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'file': ($): _i_out._T_Node.SG => ['file', Block(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],

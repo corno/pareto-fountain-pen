@@ -30,6 +30,11 @@ export type _T_Line_Part = (
     $$_p: null,
 ) => _i_out._T_Line_Part
 
+export type _T_Node = (
+    $$_: _i_in._T_Node,
+    $$_p: null,
+) => _i_out._T_Node
+
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
 
 export type Block = _T_Block
@@ -41,6 +46,8 @@ export type Directory = _T_Directory
 export type Line = _T_Line
 
 export type Line_Part = _T_Line_Part
+
+export type Node = _T_Node
 
 // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
 
@@ -114,6 +121,20 @@ export namespace _T_Line_Part {
     export type RESULT = _i_out._T_Line_Part
 }
 
+export namespace _T_Node {
+    
+    export namespace CONTEXT {
+    }
+    export type CONTEXT = _i_in._T_Node
+    
+    export namespace PARAMS {
+    }
+    
+    export namespace RESULT {
+    }
+    export type RESULT = _i_out._T_Node
+}
+
 // *** ALIASES FOR NESTED TYPES
 
 export namespace Block {
@@ -184,4 +205,18 @@ export namespace Line_Part {
     export namespace RESULT {
     }
     export type RESULT = _i_out._T_Line_Part
+}
+
+export namespace Node {
+    
+    export namespace CONTEXT {
+    }
+    export type CONTEXT = _i_in._T_Node
+    
+    export namespace PARAMS {
+    }
+    
+    export namespace RESULT {
+    }
+    export type RESULT = _i_out._T_Node
 }
