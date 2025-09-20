@@ -32,15 +32,15 @@ export namespace l {
 
 }
 
-export namespace d {
+export namespace n {
 
     export const file = (
         block: _out.Block
-    ): _out.Directory.D => ['file', block]
+    ): _out.Node => ['file', block]
 
     export const directory = (
-        children: sh.Raw_Or_Normal_Dictionary<_out.Directory.D>,
-    ): _out.Directory.D => ['directory', sh.wrap_dictionary(children)]
+        children: sh.Raw_Or_Normal_Dictionary<_out.Node>,
+    ): _out.Node => ['directory', sh.wrap_dictionary(children)]
 }
 
 export const block = (block_parts: _out.Block_Part[]): _out.Block => pd.a(block_parts)
