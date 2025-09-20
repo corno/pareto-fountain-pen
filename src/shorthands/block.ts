@@ -43,4 +43,8 @@ export namespace n {
     ): _out.Node => ['directory', sh.wrap_dictionary(children)]
 }
 
+export const directory = (
+    children: sh.Raw_Or_Normal_Dictionary<_out.Node>,
+): _out.Directory => sh.wrap_dictionary(children)
+
 export const block = (block_parts: _out.Block_Part[]): _out.Block => pd.a(block_parts)
