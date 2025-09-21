@@ -1,6 +1,6 @@
 import * as pa from 'exupery-core-alg'
 
-import * as _in from "../generated/interface/schemas/block/data_types/unconstrained"
+import * as _in from "../generated/interface/schemas/block/data_types/source"
 
 import * as t_fountain_pen_block_to_semi_lines from "../transformations/block/semi_lines"
 import * as s_semi_lines from "./semi_lines"
