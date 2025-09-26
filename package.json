@@ -41,7 +41,7 @@
     "exupery-core-alg": "^0.1.4",
     "exupery-core-data": "^0.1.10",
     "exupery-core-dev": "^0.1.1",
-    "exupery-core-resources": "^0.2.2",
+    "exupery-core-resources": "^0.2.13",
     "pareto-standard-operations": "^0.1.3"
   }
 }
