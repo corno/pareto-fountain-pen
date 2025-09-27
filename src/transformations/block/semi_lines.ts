@@ -1,16 +1,16 @@
 import * as pt from 'exupery-core-types'
-import * as pa from 'exupery-core-alg'
+import * as _ea from 'exupery-core-alg'
 
 import * as s_in from "../../generated/interface/schemas/block/data_types/source"
 import * as s_out from "../../generated/interface/schemas/semi_lines/data_types/target"
 
 export const Directory = (
     $: s_in.Directory,
-): s_out.Directory => $.map(($) => pa.cc($, ($): s_out.Directory.D => pa.cc($, ($) => {
+): s_out.Directory => $.map(($) => _ea.cc($, ($): s_out.Directory.D => _ea.cc($, ($) => {
     switch ($[0]) {
-        case 'file': return pa.ss($, ($) => ['file', Block($)])
-        case 'directory': return pa.ss($, ($) => ['directory', Directory($)])
-        default: return pa.au($[0])
+        case 'file': return _ea.ss($, ($) => ['file', Block($)])
+        case 'directory': return _ea.ss($, ($) => ['directory', Directory($)])
+        default: return _ea.au($[0])
     }
 })))
 
@@ -18,7 +18,7 @@ export const Block = (
     $: s_in.Block,
 ): s_out.Lines => {
 
-    return pa.pure.list.build(($i) => {
+    return _ea.build_list(($i) => {
 
         const Block_Part = (
             $: s_in.Block_Part,
@@ -28,7 +28,7 @@ export const Block = (
         ): void => {
             switch ($[0]) {
                 case 'line':
-                    pa.ss($, ($) => {
+                    _ea.ss($, ($) => {
                         $i['add element']({
                             'indentation': $p['current indentation'],
                             'text': $,
@@ -36,20 +36,20 @@ export const Block = (
                     })
                     break
                 case 'nested line':
-                    pa.ss($, ($) => {
+                    _ea.ss($, ($) => {
                         Line($, { 'current indentation': $p['current indentation'] })
                     })
                     break
                 case 'nothing':
-                    pa.ss($, ($) => {
+                    _ea.ss($, ($) => {
                         // do nothing
                     })
                     break
-                case 'sub block': pa.ss($, ($) => {
+                case 'sub block': _ea.ss($, ($) => {
                     Block($, { 'current indentation': $p['current indentation'] })
                 })
                     break
-                default: pa.au($[0])
+                default: _ea.au($[0])
             }
         }
         const Block = (
@@ -76,12 +76,12 @@ export const Block = (
                 $.__for_each(($) => {
                     switch ($[0]) {
                         case 'snippet':
-                            pa.ss($, ($) => {
+                            _ea.ss($, ($) => {
                                 current_line = current_line === null ? $ : current_line + $
                             })
                             break
                         case 'indent':
-                            pa.ss($, ($) => {
+                            _ea.ss($, ($) => {
                                 if (current_line !== null) {
                                     $i['add element']({
                                         'indentation': $p['current indentation'],
@@ -93,17 +93,17 @@ export const Block = (
                             })
                             break
                         case 'nothing':
-                            pa.ss($, ($) => {
+                            _ea.ss($, ($) => {
                                 // do nothing
                             })
                             break
                         case 'sub line':
-                            pa.ss($, ($) => {
+                            _ea.ss($, ($) => {
 
                                 Line2($)
                             })
                             break
-                        default: pa.au($[0])
+                        default: _ea.au($[0])
                     }
                 })
 

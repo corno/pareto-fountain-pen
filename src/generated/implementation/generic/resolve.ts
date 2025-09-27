@@ -2,6 +2,8 @@ import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 import * as _edata from 'exupery-core-data'
 
+import * as _esl from "exupery-standard-library"
+
 import * as unresolved$ from "../../interface/core/unresolved"
 import * as resolved$ from "../../interface/core/resolved"
 
@@ -67,7 +69,7 @@ export const abort = <Source>(location: Source, type: Resolve_Error_Type, locati
                 case 'no such entry': return _ea.ss($, ($) => `no such entry: '${$['key']}'`)
                 case 'missing denseness entry': return _ea.ss($, ($) => `missing denseness entry: '${$['key']}'`)
                 case 'circular dependency': return _ea.ss($, ($) => {
-                    const keys = _ea.pure.text.build(($i) => {
+                    const keys = _esl.pure.text.build(($i) => {
                         $['keys'].__for_each(($) => {
                             $i['add snippet'](` '${$}', `)
                         })
@@ -111,7 +113,7 @@ export const get_possibly_circular_dependent_sibling_entry = <Source, T>(
 }
 
 export const push_stack = <T>($: _et.Array<T>, $p: { 'element': T }): _et.Array<T> => {
-    return _ea.pure.list.build<T>(($i) => {
+    return _esl.pure.list.build<T>(($i) => {
         $i['add list']($)
         $i['add element']($p['element'])
     })
@@ -207,7 +209,7 @@ export const resolve_path = <Source, Unresolved_Element, Resolved_Element, Seed>
     }
     $.list.__for_each(($) => {
         const result = $p.map($.element, current.result.data)
-        const data = _ea.pure.list.build<Resolved_Element>(($i) => {
+        const data = _esl.pure.list.build<Resolved_Element>(($i) => {
             current.list.__for_each(($) => {
                 $i['add element']($)
             })
@@ -314,7 +316,7 @@ export const resolve_ordered_dictionary = <Source, TUnresolved, TResolved>(
 
     const finished: { [key: string]: TResolved } = {}
 
-    const ordered_list = _ea.pure.list.build<_et.Key_Value_Pair<TResolved>>(($i) => {
+    const ordered_list = _esl.pure.list.build<_et.Key_Value_Pair<TResolved>>(($i) => {
 
         const source_dictionary = $
 
@@ -367,7 +369,7 @@ export const resolve_ordered_dictionary = <Source, TUnresolved, TResolved>(
                             )
                         } else {
                             const get_keys_of_entries_being_processed = () => {
-                                return _ea.pure.list.build<string>(($i) => {
+                                return _esl.pure.list.build<string>(($i) => {
                                     _ea.dictionary_literal(status_dictionary).map(($, key) => {
                                         if ($[0] === 'processing') {
                                             $i['add element'](key)

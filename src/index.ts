@@ -1,4 +1,4 @@
-export * as write_to_disk from "./other/write_to_disk"
+export * as write_to_disk from "./commands/write_to_disk"
 
 export * as serialize_block from "./serialize/block"
 export * as serialize_semi_lines from "./serialize/semi_lines"
