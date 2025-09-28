@@ -14,11 +14,7 @@ import * as s_in from "../generated/interface/schemas/block/data_types/source"
 
 import * as t_block_2_lines from "../transformations/block/lines"
 
-import { pure } from "pareto-standard-operations"
-
-const op = {
-    'join list of texts': pure.text['join list of texts'],
-}
+import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/pure/text/join_list_of_texts"
 
 export type File_Error =
     | ['make directory', d_resources.Make_Directory_Error]
@@ -51,7 +47,7 @@ export const File = (
     ).then(
         () => write_file(
             `${$p['directory path']}/${$p.filename}`,
-            op['join list of texts'](
+            op_join_list_of_texts(
                 t_block_2_lines.Block($, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
             ),
             true,

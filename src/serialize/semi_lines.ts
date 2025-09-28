@@ -6,11 +6,7 @@ import * as t_fountain_pen_semi_lines_to_lines from "../transformations/semi_lin
 import * as s_in from "../generated/interface/schemas/semi_lines/data_types/source"
 import * as s_out from "../generated/interface/schemas/text/data_types/target"
 
-import { pure } from "pareto-standard-operations"
-
-const op = {
-    'join list of texts': pure.text['join list of texts'],
-}
+import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/pure/text/join_list_of_texts"
 
 export const Lines = (
     $: s_in.Lines,
@@ -18,7 +14,7 @@ export const Lines = (
         'indentation': string
         'newline': string
     }
-): string => op['join list of texts'](
+): string => op_join_list_of_texts(
     t_fountain_pen_semi_lines_to_lines.Lines(
         $,
         {
