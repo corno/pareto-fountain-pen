@@ -5,7 +5,6 @@
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
   "module": "./dist/index.js",
-  "bin": {},
   "files": [
     "dist",
     "README.md",
@@ -28,7 +27,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/corno/astn.git"
+    "url": "git+https://github.com/corno/astn.git"
   },
   "bugs": {
     "url": "https://github.com/corno/astn/issues"
@@ -42,7 +41,7 @@
     "exupery-core-data": "^0.1.10",
     "exupery-core-dev": "^0.1.1",
     "exupery-resources": "^0.1.1",
-    "exupery-standard-library": "^0.1.8",
+    "exupery-standard-library": "^0.1.9",
     "pareto-standard-operations": "^0.1.5"
   }
 }
