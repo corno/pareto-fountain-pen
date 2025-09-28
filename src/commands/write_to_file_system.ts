@@ -111,7 +111,7 @@ export const Directory = (
         () => $p['remove before creating']
             ? remove($p.path, true, {}).map_exception(($): Dir_Error => ['remove', $])
             : _easync.command.unsafe['create result']()
-    ).do_dictionary(
+    ).then_dictionary(
         $.map(($, key) => Node($, {
             'path': $p.path,
             'key': key,
