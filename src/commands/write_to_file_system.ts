@@ -42,7 +42,8 @@ export const File = (
     return make_directory(
         $p['directory path'],
         true,
-    ).map_exception<File_Error>(
+    ).process_exception<File_Error>(
+        ($) => _easync.command.safe['do nothing'](),
         ($) => ['make directory', $]
     ).then(
         () => write_file(
@@ -51,7 +52,8 @@ export const File = (
                 t_block_2_lines.Block($, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
             ),
             true,
-        ).map_exception(
+        ).process_exception(
+            ($) => _easync.command.safe['do nothing'](),
             ($) => ['write file', $]
         )
     )
@@ -77,7 +79,10 @@ export const Node = (
                     'filename': $p.key,
                     'indentation': $p.indentation,
                     'newline': $p.newline
-                }).map_exception<Node_Error>(($) => ['file', $])
+                }).process_exception<Node_Error>(
+                    ($) => _easync.command.safe['do nothing'](),
+                    ($) => ['file', $]
+                )
             })
         case 'directory':
             return _ea.ss($, ($) => {
@@ -89,7 +94,10 @@ export const Node = (
                         'newline': $p.newline,
                         'remove before creating': false,
                     }
-                ).map_exception(($) => ['directory', $])
+                ).process_exception<Node_Error>(
+                    ($) => _easync.command.safe['do nothing'](),
+                    ($) => ['directory', $]
+                )
             })
         default: return _ea.au($[0])
     }
@@ -106,11 +114,14 @@ export const Directory = (
 ): _easync.Unsafe_Command_Result<
     Dir_Error
 > => {
-    return _easync.command.unsafe['create result']<Dir_Error>(
+    return _easync.command.unsafe['do nothing']<Dir_Error>(
     ).then(
         () => $p['remove before creating']
-            ? remove($p.path, true, {}).map_exception(($): Dir_Error => ['remove', $])
-            : _easync.command.unsafe['create result']()
+            ? remove($p.path, true, {}).process_exception(
+                ($) => _easync.command.safe['do nothing'](),
+                ($): Dir_Error => ['remove', $]
+            )
+            : _easync.command.unsafe['do nothing']()
     ).then_dictionary(
         $.map(($, key) => Node($, {
             'path': $p.path,
