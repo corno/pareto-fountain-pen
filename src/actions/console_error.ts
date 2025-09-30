@@ -11,7 +11,7 @@ export const Block = (
     $p: {
         'indentation': string,
     }
-): _easync.Safe_Procedure_Context => {
+): _easync.Guaranteed_Procedure_Context => {
     return c_error(t_block_to_lines.Block(
         $,
         {

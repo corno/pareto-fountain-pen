@@ -36,24 +36,24 @@ export const File = (
         'indentation': string
         'newline': string
     }
-): _easync.Unsafe_Procedure_Context<
+): _easync.Unguaranteed_Procedure_Context<
     File_Error
 > => {
     return make_directory(
         $p['directory path'],
         true,
-    ).process_exception<File_Error>(
-        ($) => _easync.command.safe.initialize(),
+    ).process_exception_deprecated<File_Error>(
+        ($) => _easync.command.guaranteed.initialize(),
         ($) => ['make directory', $]
-    ).execute_unsafe(
+    ).execute_unguaranteed(
         () => write_file(
             `${$p['directory path']}/${$p.filename}`,
             op_join_list_of_texts(
                 t_block_2_lines.Block($, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
             ),
             true,
-        ).process_exception(
-            ($) => _easync.command.safe.initialize(),
+        ).process_exception_deprecated(
+            ($) => _easync.command.guaranteed.initialize(),
             ($) => ['write file', $]
         )
     )
@@ -68,7 +68,7 @@ export const Node = (
         'newline': string
         'remove before creating': boolean
     }
-): _easync.Unsafe_Procedure_Context<
+): _easync.Unguaranteed_Procedure_Context<
     Node_Error
 > => {
     switch ($[0]) {
@@ -79,8 +79,8 @@ export const Node = (
                     'filename': $p.key,
                     'indentation': $p.indentation,
                     'newline': $p.newline
-                }).process_exception<Node_Error>(
-                    ($) => _easync.command.safe.initialize(),
+                }).process_exception_deprecated<Node_Error>(
+                    ($) => _easync.command.guaranteed.initialize(),
                     ($) => ['file', $]
                 )
             })
@@ -94,8 +94,8 @@ export const Node = (
                         'newline': $p.newline,
                         'remove before creating': false,
                     }
-                ).process_exception<Node_Error>(
-                    ($) => _easync.command.safe.initialize(),
+                ).process_exception_deprecated<Node_Error>(
+                    ($) => _easync.command.guaranteed.initialize(),
                     ($) => ['directory', $]
                 )
             })
@@ -111,18 +111,18 @@ export const Directory = (
         'newline': string
         'remove before creating': boolean
     }
-): _easync.Unsafe_Procedure_Context<
+): _easync.Unguaranteed_Procedure_Context<
     Dir_Error
 > => {
-    return _easync.command.unsafe.initialize<Dir_Error>(
-    ).execute_unsafe(
+    return _easync.command.unguaranteed.initialize<Dir_Error>(
+    ).execute_unguaranteed(
         () => $p['remove before creating']
-            ? remove($p.path, true, {}).process_exception(
-                ($) => _easync.command.safe.initialize(),
+            ? remove($p.path, true, {}).process_exception_deprecated(
+                ($) => _easync.command.guaranteed.initialize(),
                 ($): Dir_Error => ['remove', $]
             )
-            : _easync.command.unsafe.initialize()
-    ).execute_dictionary_unsafe(
+            : _easync.command.unguaranteed.initialize()
+    ).execute_dictionary_unguaranteed(
         $.map(($, key) => Node($, {
             'path': $p.path,
             'key': key,
