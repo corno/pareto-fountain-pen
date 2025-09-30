@@ -6,9 +6,9 @@ import * as _easync from 'exupery-core-async'
 
 import * as d_resources from "exupery-resources/dist/types"
 
-import { $$ as make_directory } from "exupery-resources/dist/commands/make_directory"
-import { $$ as write_file } from "exupery-resources/dist/commands/write_file"
-import { $$ as remove } from "exupery-resources/dist/commands/remove"
+import { $$ as make_directory } from "exupery-resources/dist/actions/make_directory"
+import { $$ as write_file } from "exupery-resources/dist/actions/write_file"
+import { $$ as remove } from "exupery-resources/dist/actions/remove"
 
 import * as s_in from "../generated/interface/schemas/block/data_types/source"
 
@@ -36,7 +36,7 @@ export const File = (
         'indentation': string
         'newline': string
     }
-): _easync.Unsafe_Command_Result<
+): _easync.Unsafe_Procedure_Context<
     File_Error
 > => {
     return make_directory(
@@ -68,7 +68,7 @@ export const Node = (
         'newline': string
         'remove before creating': boolean
     }
-): _easync.Unsafe_Command_Result<
+): _easync.Unsafe_Procedure_Context<
     Node_Error
 > => {
     switch ($[0]) {
@@ -111,7 +111,7 @@ export const Directory = (
         'newline': string
         'remove before creating': boolean
     }
-): _easync.Unsafe_Command_Result<
+): _easync.Unsafe_Procedure_Context<
     Dir_Error
 > => {
     return _easync.command.unsafe.initialize<Dir_Error>(
