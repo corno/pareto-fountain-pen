@@ -43,7 +43,7 @@ export const File = (
         $p['directory path'],
         true,
     ).process_exception<File_Error>(
-        ($) => _easync.command.safe['do nothing'](),
+        ($) => _easync.command.safe.initialize(),
         ($) => ['make directory', $]
     ).then(
         () => write_file(
@@ -53,7 +53,7 @@ export const File = (
             ),
             true,
         ).process_exception(
-            ($) => _easync.command.safe['do nothing'](),
+            ($) => _easync.command.safe.initialize(),
             ($) => ['write file', $]
         )
     )
@@ -80,7 +80,7 @@ export const Node = (
                     'indentation': $p.indentation,
                     'newline': $p.newline
                 }).process_exception<Node_Error>(
-                    ($) => _easync.command.safe['do nothing'](),
+                    ($) => _easync.command.safe.initialize(),
                     ($) => ['file', $]
                 )
             })
@@ -95,7 +95,7 @@ export const Node = (
                         'remove before creating': false,
                     }
                 ).process_exception<Node_Error>(
-                    ($) => _easync.command.safe['do nothing'](),
+                    ($) => _easync.command.safe.initialize(),
                     ($) => ['directory', $]
                 )
             })
@@ -114,14 +114,14 @@ export const Directory = (
 ): _easync.Unsafe_Command_Result<
     Dir_Error
 > => {
-    return _easync.command.unsafe['do nothing']<Dir_Error>(
+    return _easync.command.unsafe.initialize<Dir_Error>(
     ).then(
         () => $p['remove before creating']
             ? remove($p.path, true, {}).process_exception(
-                ($) => _easync.command.safe['do nothing'](),
+                ($) => _easync.command.safe.initialize(),
                 ($): Dir_Error => ['remove', $]
             )
-            : _easync.command.unsafe['do nothing']()
+            : _easync.command.unsafe.initialize()
     ).then_dictionary(
         $.map(($, key) => Node($, {
             'path': $p.path,

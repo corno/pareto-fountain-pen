@@ -42,6 +42,6 @@
     "exupery-core-dev": "^0.1.2",
     "exupery-resources": "^0.1.1",
     "exupery-standard-library": "^0.1.9",
-    "pareto-standard-operations": "^0.1.5"
+    "pareto-standard-operations": "^0.1.6"
   }
 }
