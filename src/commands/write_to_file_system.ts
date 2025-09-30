@@ -45,7 +45,7 @@ export const File = (
     ).process_exception<File_Error>(
         ($) => _easync.command.safe.initialize(),
         ($) => ['make directory', $]
-    ).then(
+    ).execute_unsafe(
         () => write_file(
             `${$p['directory path']}/${$p.filename}`,
             op_join_list_of_texts(
@@ -115,14 +115,14 @@ export const Directory = (
     Dir_Error
 > => {
     return _easync.command.unsafe.initialize<Dir_Error>(
-    ).then(
+    ).execute_unsafe(
         () => $p['remove before creating']
             ? remove($p.path, true, {}).process_exception(
                 ($) => _easync.command.safe.initialize(),
                 ($): Dir_Error => ['remove', $]
             )
             : _easync.command.unsafe.initialize()
-    ).then_dictionary(
+    ).execute_dictionary_unsafe(
         $.map(($, key) => Node($, {
             'path': $p.path,
             'key': key,
