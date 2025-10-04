@@ -6,9 +6,9 @@ import * as _easync from 'exupery-core-async'
 
 import * as d_resources from "exupery-resources/dist/types"
 
-import { $$ as a_make_directory } from "exupery-resources/dist/actions/make_directory"
-import { $$ as a_write_file } from "exupery-resources/dist/actions/write_file"
-import { $$ as a_remove } from "exupery-resources/dist/actions/remove"
+import { $$ as p_make_directory } from "exupery-resources/dist/actions/make_directory"
+import { $$ as p_write_file } from "exupery-resources/dist/actions/write_file"
+import { $$ as p_remove } from "exupery-resources/dist/actions/remove"
 
 import * as s_in from "../generated/interface/schemas/block/data_types/source"
 
@@ -22,16 +22,16 @@ import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/pur
 export const $$: _easync.Unguaranteed_Procedure_Initializer<D.File_Parameters, D.File_Error> = (
     $p
 ) => {
-    return _easync.u.p.sequence([
-        _easync.u.a.u(
-            a_make_directory,
+    return _easync.up.sequence([
+        _easync.upi.u(
+            p_make_directory,
             ($): D.File_Error => ['make directory', $]
         )({
             'path': $p['directory path'],
             'escape spaces in path': true,
         }),
-        _easync.u.a.u(
-            a_write_file,
+        _easync.upi.u(
+            p_write_file,
             ($): D.File_Error => ['write file', $]
         )({
             'path': {

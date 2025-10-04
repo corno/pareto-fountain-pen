@@ -6,8 +6,8 @@ import * as _easync from 'exupery-core-async'
 
 import * as D from "./temp_types"
 
-import { $$ as a_write_to_file } from "./write_to_file"
-import { $$ as a_write_to_directory } from "./write_to_directory"
+import { $$ as p_write_to_file } from "./write_to_file"
+import { $$ as p_write_to_directory } from "./write_to_directory"
 
 export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Node_Parameters, D.Node_Error> = (
     $p
@@ -16,8 +16,8 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Node_Parameters, D
         switch ($[0]) {
             case 'file':
                 return _ea.ss($, ($) => {
-                    return _easync.u.a.u(
-                        a_write_to_file,
+                    return _easync.upi.u(
+                        p_write_to_file,
                         ($):D.Node_Error => ['file', $]
                     )({
                         'block': $,
@@ -29,8 +29,8 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Node_Parameters, D
                 })
             case 'directory':
                 return _ea.ss($, ($) => {
-                    return _easync.u.a.u(
-                        a_write_to_directory,
+                    return _easync.upi.u(
+                        p_write_to_directory,
                         ($): D.Node_Error => ['directory', $]
                     )({
                         'directory': $,
