@@ -6,10 +6,10 @@ import * as _easync from 'exupery-core-async'
 
 import * as d_resources from "exupery-resources/dist/types"
 
-import { $$ as p_make_directory } from "exupery-resources/dist/actions/make_directory"
-import { $$ as p_write_file } from "exupery-resources/dist/actions/write_file"
-import { $$ as p_remove } from "exupery-resources/dist/actions/remove"
-import { $$ as p_do_nothing } from "exupery-resources/dist/actions/do_nothing"
+import { $$ as p_make_directory } from "exupery-resources/dist/procedures/make_directory"
+import { $$ as p_write_file } from "exupery-resources/dist/procedures/write_file"
+import { $$ as p_remove } from "exupery-resources/dist/procedures/remove"
+import { $$ as p_do_nothing } from "exupery-resources/dist/procedures/do_nothing"
 
 import * as s_in from "../generated/interface/schemas/block/data_types/source"
 
@@ -31,14 +31,17 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Directory_Paramete
                 p_remove,
                 ($): D.Directory_Error => ['remove', $]
             )({
-                'path': $p.path,
-                'escape spaces in path': true,
+                'path': {
+                    'path': $p.path,
+                    'escape spaces in path': true,
+                },
+                'error if not exists': false
             })
             : _easync.upi.u(
                 p_do_nothing,
                 ($): D.Directory_Error => _ea.panic("not reachable")
             )(null),
-            
+
         _easync.up.dictionary(
             $p.directory.map(($, key) => p_write_to_node({
                 'node': $,

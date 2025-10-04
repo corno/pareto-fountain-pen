@@ -6,9 +6,9 @@ import * as _easync from 'exupery-core-async'
 
 import * as d_resources from "exupery-resources/dist/types"
 
-import { $$ as p_make_directory } from "exupery-resources/dist/actions/make_directory"
-import { $$ as p_write_file } from "exupery-resources/dist/actions/write_file"
-import { $$ as p_remove } from "exupery-resources/dist/actions/remove"
+import { $$ as p_make_directory } from "exupery-resources/dist/procedures/make_directory"
+import { $$ as p_write_file } from "exupery-resources/dist/procedures/write_file"
+import { $$ as p_remove } from "exupery-resources/dist/procedures/remove"
 
 import * as s_in from "../generated/interface/schemas/block/data_types/source"
 

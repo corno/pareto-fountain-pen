@@ -4,7 +4,7 @@ import * as _in from "../generated/interface/schemas/block/data_types/target"
 
 import * as t_block_to_lines from "../transformations/block/lines"
 
-import { $$ as c_log } from "exupery-resources/dist/actions/log"
+import { $$ as c_log } from "exupery-resources/dist/procedures/log"
 
 export type Parameters = {
     'block': _in.Block,
