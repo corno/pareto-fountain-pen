@@ -11,7 +11,7 @@ import { $$ as p_write_file } from "exupery-resources/dist/procedures/write_file
 import { $$ as p_remove } from "exupery-resources/dist/procedures/remove"
 import { $$ as p_do_nothing } from "exupery-resources/dist/procedures/do_nothing"
 
-import * as s_in from "../generated/interface/schemas/block/data_types/source"
+import * as d_in from "../generated/interface/schemas/block/data_types/source"
 
 import * as t_block_2_lines from "../transformations/block/lines"
 

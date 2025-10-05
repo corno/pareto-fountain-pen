@@ -1,12 +1,12 @@
 import * as pt from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 
-import * as s_in from "../../generated/interface/schemas/block/data_types/source"
-import * as s_out from "../../generated/interface/schemas/semi_lines/data_types/target"
+import * as d_in from "../../generated/interface/schemas/block/data_types/source"
+import * as d_out from "../../generated/interface/schemas/semi_lines/data_types/target"
 
 export const Directory = (
-    $: s_in.Directory,
-): s_out.Directory => $.map(($) => _ea.cc($, ($): s_out.Directory.D => _ea.cc($, ($) => {
+    $: d_in.Directory,
+): d_out.Directory => $.map(($) => _ea.cc($, ($): d_out.Directory.D => _ea.cc($, ($) => {
     switch ($[0]) {
         case 'file': return _ea.ss($, ($) => ['file', Block($)])
         case 'directory': return _ea.ss($, ($) => ['directory', Directory($)])
@@ -15,13 +15,13 @@ export const Directory = (
 })))
 
 export const Block = (
-    $: s_in.Block,
-): s_out.Lines => {
+    $: d_in.Block,
+): d_out.Lines => {
 
     return _ea.build_list(($i) => {
 
         const Block_Part = (
-            $: s_in.Block_Part,
+            $: d_in.Block_Part,
             $p: {
                 'current indentation': number
             }
@@ -53,7 +53,7 @@ export const Block = (
             }
         }
         const Block = (
-            $: s_in.Block,
+            $: d_in.Block,
             $p: {
                 'current indentation': number
             }
@@ -63,14 +63,14 @@ export const Block = (
             })
         }
         const Line = (
-            $: s_in.Line,
+            $: d_in.Line,
             $p: {
                 'current indentation': number
             }
         ): void => {
             let current_line: null | string = null
             const Line2 = (
-                $: s_in.Line
+                $: d_in.Line
             ): void => {
 
                 $.__for_each(($) => {

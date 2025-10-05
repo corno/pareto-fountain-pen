@@ -1,7 +1,7 @@
 import * as _et from 'exupery-core-types'
 
 import * as d_resources from "exupery-resources/dist/types"
-import * as s_in from "../generated/interface/schemas/block/data_types/source"
+import * as d_in from "../generated/interface/schemas/block/data_types/source"
 
 export type File_Error =
     | ['make directory', d_resources.Make_Directory_Error]
@@ -16,7 +16,7 @@ export type Node_Error =
     | ['file', File_Error]
 
 export type File_Parameters = {
-    'block': s_in.Block,
+    'block': d_in.Block,
     'directory path': string
     'filename': string
     'indentation': string
@@ -24,7 +24,7 @@ export type File_Parameters = {
 }
 
 export type Directory_Parameters = {
-    'directory': s_in.Directory,
+    'directory': d_in.Directory,
     'path': string
     'indentation': string
     'newline': string
@@ -32,7 +32,7 @@ export type Directory_Parameters = {
 }
 
 export type Node_Parameters = {
-    'node': s_in.Node,
+    'node': d_in.Node,
     'path': string
     'key': string
     'indentation': string

@@ -10,7 +10,7 @@ import { $$ as p_make_directory } from "exupery-resources/dist/procedures/make_d
 import { $$ as p_write_file } from "exupery-resources/dist/procedures/write_file"
 import { $$ as p_remove } from "exupery-resources/dist/procedures/remove"
 
-import * as s_in from "../generated/interface/schemas/block/data_types/source"
+import * as d_in from "../generated/interface/schemas/block/data_types/source"
 
 import * as t_block_2_lines from "../transformations/block/lines"
 

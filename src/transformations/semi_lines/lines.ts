@@ -1,29 +1,29 @@
 import * as pt from 'exupery-core-types'
 import * as pa from 'exupery-core-alg'
 
-import * as s_in from "../../generated/interface/schemas/semi_lines/data_types/source"
-import * as s_out from "../../generated/interface/schemas/lines/data_types/target"
+import * as d_in from "../../generated/interface/schemas/semi_lines/data_types/source"
+import * as d_out from "../../generated/interface/schemas/lines/data_types/target"
 
 import { $$ as op_repeat } from "pareto-standard-operations/dist/impure/text/repeat"
 
 export const Lines = (
-    $: s_in.Lines,
+    $: d_in.Lines,
     $p: {
         'indentation': string
     }
-): s_out.Lines => {
+): d_out.Lines => {
     return $.map(($) => {
         return op_repeat($p.indentation, { 'count': $.indentation }) + $.text
     })
 }
 
 export const Directory = (
-    $: s_in.Directory,
+    $: d_in.Directory,
     $p: {
         'indentation': string
     }
-): s_out.Directory => {
-    return $.map(($) => pa.cc($, ($): s_out.Directory.D => {
+): d_out.Directory => {
+    return $.map(($) => pa.cc($, ($): d_out.Directory.D => {
         switch ($[0]) {
             case 'file': return pa.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
             case 'directory': return pa.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])

@@ -25,7 +25,7 @@ The library automatically handles:
 ### Importing
 
 ```typescript
-import * as s_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unresolved"
+import * as d_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unresolved"
 import { b, l, block } from "pareto-fountain-pen/dist/shorthands/block"
 ```
 
@@ -33,7 +33,7 @@ import { b, l, block } from "pareto-fountain-pen/dist/shorthands/block"
 
 ```typescript
 // Create a basic block with a single line
-const simpleBlock: s_out.Block = block([
+const simpleBlock: d_out.Block = block([
     b.nested_line([
         l.snippet("Hello, "),
         l.snippet("world!")
@@ -151,7 +151,7 @@ b.sub_decorated(items.map(item => {
 
 Create complex nested documents:
 ```typescript
-export const generateClass = (classData: ClassData): s_out.Block => {
+export const generateClass = (classData: ClassData): d_out.Block => {
     return block([
         b.nested_line([
             l.snippet(`class ${classData.name} {`)
@@ -225,7 +225,7 @@ Build formatted reports with tables, sections, and hierarchical data.
 
 ## Type Safety
 
-Fountain Pen is fully typed and integrates seamlessly with TypeScript's type system. The `s_out.Block` and `s_out.Line_Part` types ensure compile-time correctness of your document structure.
+Fountain Pen is fully typed and integrates seamlessly with TypeScript's type system. The `d_out.Block` and `d_out.Line_Part` types ensure compile-time correctness of your document structure.
 
 ## Writing Output to Disk
 
@@ -307,7 +307,7 @@ The `write_to_disk` function takes:
 
 ```typescript
 write_to_disk(
-    content,  // s_out.Block or directory structure
+    content,  // d_out.Block or directory structure
     { 'path': string }  // output path configuration
 )
 ```

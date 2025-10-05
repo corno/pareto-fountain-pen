@@ -3,13 +3,13 @@ import * as pa from 'exupery-core-alg'
 
 import * as t_fountain_pen_semi_lines_to_lines from "../transformations/semi_lines/lines"
 
-import * as s_in from "../generated/interface/schemas/semi_lines/data_types/source"
-import * as s_out from "../generated/interface/schemas/text/data_types/target"
+import * as d_in from "../generated/interface/schemas/semi_lines/data_types/source"
+import * as d_out from "../generated/interface/schemas/text/data_types/target"
 
 import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/pure/text/join_list_of_texts"
 
 export const Lines = (
-    $: s_in.Lines,
+    $: d_in.Lines,
     $p: {
         'indentation': string
         'newline': string
@@ -24,13 +24,13 @@ export const Lines = (
 )
 
 export const Directory = (
-    $: s_in.Directory,
+    $: d_in.Directory,
     $p: {
         'indentation': string,
         'newline': string
     }
-): s_out.Directory => {
-    return $.map(($) => pa.cc($, ($): s_out.Directory.D => {
+): d_out.Directory => {
+    return $.map(($) => pa.cc($, ($): d_out.Directory.D => {
         switch ($[0]) {
             case 'file': return pa.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation, 'newline': $p.newline })])
             case 'directory': return pa.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation, 'newline': $p.newline })])
