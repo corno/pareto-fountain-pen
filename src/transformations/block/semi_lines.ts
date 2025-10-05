@@ -45,9 +45,18 @@ export const Block = (
                         // do nothing
                     })
                     break
-                case 'sub block': _ea.ss($, ($) => {
-                    Block($, { 'current indentation': $p['current indentation'] })
-                })
+                case 'sub block':
+                    _ea.ss($, ($) => {
+                        Block($, { 'current indentation': $p['current indentation'] })
+                    })
+                    break
+                case 'optional':
+                    _ea.ss($, ($) => {
+                        $.map(($) => {
+                            Block_Part($, { 'current indentation': $p['current indentation'] })
+
+                        })
+                    })
                     break
                 default: _ea.au($[0])
             }
@@ -72,40 +81,53 @@ export const Block = (
             const Line2 = (
                 $: d_in.Line
             ): void => {
-
                 $.__for_each(($) => {
-                    switch ($[0]) {
-                        case 'snippet':
-                            _ea.ss($, ($) => {
-                                current_line = current_line === null ? $ : current_line + $
-                            })
-                            break
-                        case 'indent':
-                            _ea.ss($, ($) => {
-                                if (current_line !== null) {
-                                    $i['add element']({
-                                        'indentation': $p['current indentation'],
-                                        'text': current_line,
-                                    })
-                                }
-                                current_line = null
-                                Block($, { 'current indentation': $p['current indentation'] + 1 })
-                            })
-                            break
-                        case 'nothing':
-                            _ea.ss($, ($) => {
-                                // do nothing
-                            })
-                            break
-                        case 'sub line':
-                            _ea.ss($, ($) => {
-
-                                Line2($)
-                            })
-                            break
-                        default: _ea.au($[0])
-                    }
+                    Line_Part($)
                 })
+            }
+            const Line_Part = (
+                $: d_in.Line_Part
+            ): void => {
+
+                switch ($[0]) {
+                    case 'snippet':
+                        _ea.ss($, ($) => {
+                            current_line = current_line === null ? $ : current_line + $
+                        })
+                        break
+                    case 'indent':
+                        _ea.ss($, ($) => {
+                            if (current_line !== null) {
+                                $i['add element']({
+                                    'indentation': $p['current indentation'],
+                                    'text': current_line,
+                                })
+                            }
+                            current_line = null
+                            Block($, { 'current indentation': $p['current indentation'] + 1 })
+                        })
+                        break
+                    case 'nothing':
+                        _ea.ss($, ($) => {
+                            // do nothing
+                        })
+                        break
+                    case 'sub line':
+                        _ea.ss($, ($) => {
+
+                            Line2($)
+                        })
+                        break
+                    case 'optional':
+                        _ea.ss($, ($) => {
+                            $.map(($) => {
+                                Line_Part($)
+
+                            })
+                        })
+                        break
+                    default: _ea.au($[0])
+                }
 
             }
             Line2($)

@@ -36,6 +36,17 @@ export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => _i_generic.pro
                 $,
                 null
             )],
+            'optional': ($): _i_out._T_Block_Part.SG => ['optional', _i_generic.process_optional(
+                $,
+                {
+                    'value': ($) => Block_Part(
+                        $,
+                        {
+                            'value deserializers': $p['value deserializers'],
+                        }
+                    ),
+                }
+            )],
             'sub block': ($): _i_out._T_Block_Part.SG => ['sub block', Block(
                 $,
                 {
@@ -80,6 +91,17 @@ export const Line_Part: _i_signatures._T_Line_Part = ($, $p) => _i_generic.proce
             'nothing': ($): _i_out._T_Line_Part.SG => ['nothing', _i_generic.process_nothing(
                 $,
                 null
+            )],
+            'optional': ($): _i_out._T_Line_Part.SG => ['optional', _i_generic.process_optional(
+                $,
+                {
+                    'value': ($) => Line_Part(
+                        $,
+                        {
+                            'value deserializers': $p['value deserializers'],
+                        }
+                    ),
+                }
             )],
             'snippet': ($): _i_out._T_Line_Part.SG => ['snippet', _i_generic.process_text(
                 $,

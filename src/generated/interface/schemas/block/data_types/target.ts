@@ -10,6 +10,7 @@ export type _T_Block_Part = _i_core._T_State_Group<null,
     | readonly ['line', string]
     | readonly ['nested line', _T_Line]
     | readonly ['nothing', null]
+    | readonly ['optional', _pt.Optional_Value<_T_Block_Part>]
     | readonly ['sub block', _T_Block]
 >
 
@@ -20,6 +21,7 @@ export type _T_Line = _i_core._T_List<null, _T_Line_Part>
 export type _T_Line_Part = _i_core._T_State_Group<null, 
     | readonly ['indent', _T_Block]
     | readonly ['nothing', null]
+    | readonly ['optional', _pt.Optional_Value<_T_Line_Part>]
     | readonly ['snippet', string]
     | readonly ['sub line', _T_Line]
 >
@@ -62,6 +64,14 @@ export namespace _T_Block_Part {
         export type nested_line = _T_Line
         export type nothing = null
         
+        export namespace optional {
+            
+            export namespace O {
+            }
+            export type O = _T_Block_Part
+        }
+        export type optional = _pt.Optional_Value<_T_Block_Part>
+        
         export namespace sub_block {
         }
         export type sub_block = _T_Block
@@ -70,6 +80,7 @@ export namespace _T_Block_Part {
         | readonly ['line', string]
         | readonly ['nested line', _T_Line]
         | readonly ['nothing', null]
+        | readonly ['optional', _pt.Optional_Value<_T_Block_Part>]
         | readonly ['sub block', _T_Block]
 }
 
@@ -95,6 +106,14 @@ export namespace _T_Line_Part {
         }
         export type indent = _T_Block
         export type nothing = null
+        
+        export namespace optional {
+            
+            export namespace O {
+            }
+            export type O = _T_Line_Part
+        }
+        export type optional = _pt.Optional_Value<_T_Line_Part>
         export type snippet = string
         
         export namespace sub_line {
@@ -104,6 +123,7 @@ export namespace _T_Line_Part {
     export type SG = 
         | readonly ['indent', _T_Block]
         | readonly ['nothing', null]
+        | readonly ['optional', _pt.Optional_Value<_T_Line_Part>]
         | readonly ['snippet', string]
         | readonly ['sub line', _T_Line]
 }
@@ -144,6 +164,14 @@ export namespace Block_Part {
         export type nested_line = _T_Line
         export type nothing = null
         
+        export namespace optional {
+            
+            export namespace O {
+            }
+            export type O = _T_Block_Part
+        }
+        export type optional = _pt.Optional_Value<_T_Block_Part>
+        
         export namespace sub_block {
         }
         export type sub_block = _T_Block
@@ -152,6 +180,7 @@ export namespace Block_Part {
         | readonly ['line', string]
         | readonly ['nested line', _T_Line]
         | readonly ['nothing', null]
+        | readonly ['optional', _pt.Optional_Value<_T_Block_Part>]
         | readonly ['sub block', _T_Block]
 }
 
@@ -177,6 +206,14 @@ export namespace Line_Part {
         }
         export type indent = _T_Block
         export type nothing = null
+        
+        export namespace optional {
+            
+            export namespace O {
+            }
+            export type O = _T_Line_Part
+        }
+        export type optional = _pt.Optional_Value<_T_Line_Part>
         export type snippet = string
         
         export namespace sub_line {
@@ -186,6 +223,7 @@ export namespace Line_Part {
     export type SG = 
         | readonly ['indent', _T_Block]
         | readonly ['nothing', null]
+        | readonly ['optional', _pt.Optional_Value<_T_Line_Part>]
         | readonly ['snippet', string]
         | readonly ['sub line', _T_Line]
 }

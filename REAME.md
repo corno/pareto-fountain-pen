@@ -56,10 +56,10 @@ b.nested_line([
 ])
 ```
 
-#### `b.sub_decorated(blocks: Block[])`
+#### `b.sub(blocks: Block[])`
 Creates a collection of sub-blocks with automatic formatting:
 ```typescript
-b.sub_decorated(items.map(item => 
+b.sub(items.map(item => 
     b.nested_line([l.snippet(`- ${item}`)])
 ))
 ```
@@ -93,10 +93,10 @@ l.indent([
 ])
 ```
 
-#### `l.sub_decorated(parts: Line_Part[])`
+#### `l.sub(parts: Line_Part[])`
 Creates a decorated collection of line parts:
 ```typescript
-l.sub_decorated(parameters.map(param => 
+l.sub(parameters.map(param => 
     l.snippet(param.name)
 ))
 ```
@@ -139,7 +139,7 @@ name.transform(
 
 Process arrays with automatic positioning:
 ```typescript
-b.sub_decorated(items.map(item => {
+b.sub(items.map(item => {
     return b.nested_line([
         l.snippet(`${item.name}: `),
         l.snippet(item.value)
@@ -157,10 +157,10 @@ export const generateClass = (classData: ClassData): d_out.Block => {
             l.snippet(`class ${classData.name} {`)
         ]),
         l.indent([
-            b.sub_decorated(classData.methods.map(method => 
+            b.sub(classData.methods.map(method => 
                 b.nested_line([
                     l.snippet(`${method.name}(`),
-                    l.sub_decorated(method.parameters.map((param, index) =>
+                    l.sub(method.parameters.map((param, index) =>
                         l.sub([
                             l.snippet(param.name),
                             index < method.parameters.length - 1 

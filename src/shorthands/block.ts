@@ -1,4 +1,5 @@
 import * as _edata from 'exupery-core-data'
+import * as _et from 'exupery-core-types'
 
 import * as _target from "../generated/interface/schemas/block/data_types/target"
 
@@ -12,9 +13,9 @@ export namespace b {
 
     export const sub = (block_parts: sh.Raw_Or_Normal_Array<_target.Block.L>): _target.Block_Part => ['sub block', sh.wrap_list(block_parts)]
 
-    export const sub_decorated = (block: _target.Block): _target.Block_Part => ['sub block', block]
-
     export const nothing = (): _target.Block_Part => ['nothing', null]
+
+    export const optional = (block_part: _et.Optional_Value<_target.Block.L>): _target.Block_Part => ['optional', block_part]
 
 }
 
@@ -26,9 +27,9 @@ export namespace l {
 
     export const sub = (line_parts: sh.Raw_Or_Normal_Array<_target.Line.L>): _target.Line_Part => ['sub line', sh.wrap_list(line_parts)]
 
-    export const sub_decorated = (line: _target.Line): _target.Line_Part => ['sub line', line]
-
     export const nothing = (): _target.Line_Part => ['nothing', null]
+
+    export const optional = (line_part: _et.Optional_Value<_target.Line.L>): _target.Line_Part => ['optional', line_part]
 
 }
 

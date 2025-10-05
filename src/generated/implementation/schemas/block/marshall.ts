@@ -33,6 +33,18 @@ export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.
             'state': "nothing",
             'value': ['nothing', null],
         }))
+        case 'optional': return _pa.ss($, ($) => ({
+            'state': "optional",
+            'value': ['optional', $.transform(
+                ($): _i_out._T_Value.SG.optional => ['set', Block_Part(
+                    $,
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
+                )],
+                () => ['not set', null]
+            )],
+        }))
         case 'sub block': return _pa.ss($, ($) => ({
             'state': "sub block",
             'value': Block(
@@ -71,6 +83,18 @@ export const Line_Part: _i_signatures._T_Line_Part = ($, $p) => ['state', _pa.cc
         case 'nothing': return _pa.ss($, ($) => ({
             'state': "nothing",
             'value': ['nothing', null],
+        }))
+        case 'optional': return _pa.ss($, ($) => ({
+            'state': "optional",
+            'value': ['optional', $.transform(
+                ($): _i_out._T_Value.SG.optional => ['set', Line_Part(
+                    $,
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
+                )],
+                () => ['not set', null]
+            )],
         }))
         case 'snippet': return _pa.ss($, ($) => ({
             'state': "snippet",
