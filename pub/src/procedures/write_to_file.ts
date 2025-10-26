@@ -37,7 +37,7 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<D.File_Parameters, D
                 'escape spaces in path': true,
             },
             'data': op_join_list_of_texts(
-                t_block_2_lines.Block($p.block, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
+                t_block_2_lines.Group($p.group, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
             ),
         })
     ])

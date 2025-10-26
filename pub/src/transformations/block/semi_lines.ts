@@ -8,20 +8,20 @@ export const Directory = (
     $: d_in.Directory,
 ): d_out.Directory => $.map(($) => _ea.cc($, ($): d_out.Directory.D => _ea.cc($, ($) => {
     switch ($[0]) {
-        case 'file': return _ea.ss($, ($) => ['file', Block($)])
+        case 'file': return _ea.ss($, ($) => ['file', Group($)])
         case 'directory': return _ea.ss($, ($) => ['directory', Directory($)])
         default: return _ea.au($[0])
     }
 })))
 
-export const Block = (
-    $: d_in.Block,
+export const Group = (
+    $: d_in.Group,
 ): d_out.Lines => {
 
     return _ea.build_list(($i) => {
 
-        const Block_Part = (
-            $: d_in.Block_Part,
+        const Group_Part = (
+            $: d_in.Group_Part,
             $p: {
                 'current indentation': number
             }
@@ -45,15 +45,15 @@ export const Block = (
                         // do nothing
                     })
                     break
-                case 'sub block':
+                case 'sub group':
                     _ea.ss($, ($) => {
-                        Block($, { 'current indentation': $p['current indentation'] })
+                        Group($, { 'current indentation': $p['current indentation'] })
                     })
                     break
                 case 'optional':
                     _ea.ss($, ($) => {
                         $.map(($) => {
-                            Block_Part($, { 'current indentation': $p['current indentation'] })
+                            Group_Part($, { 'current indentation': $p['current indentation'] })
 
                         })
                     })
@@ -61,14 +61,14 @@ export const Block = (
                 default: _ea.au($[0])
             }
         }
-        const Block = (
-            $: d_in.Block,
+        const Group = (
+            $: d_in.Group,
             $p: {
                 'current indentation': number
             }
         ): void => {
             $.__for_each(($) => {
-                Block_Part($, { 'current indentation': $p['current indentation'] })
+                Group_Part($, { 'current indentation': $p['current indentation'] })
             })
         }
         const Line = (
@@ -104,7 +104,7 @@ export const Block = (
                                 })
                             }
                             current_line = null
-                            Block($, { 'current indentation': $p['current indentation'] + 1 })
+                            Group($, { 'current indentation': $p['current indentation'] + 1 })
                         })
                         break
                     case 'nothing':
@@ -139,7 +139,7 @@ export const Block = (
             }
         }
 
-        Block(
+        Group(
             $,
             { 'current indentation': 0 }
         )

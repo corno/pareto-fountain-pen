@@ -19,12 +19,12 @@ export  const Directory = (
     )
 }
 
-export const Block = (
-    $: d_in.Block,
+export const Group = (
+    $: d_in.Group,
     $p: {
         'indentation': string
     }
 ): d_out.Lines => {
 
-    return t.Lines(t_2.Block($,), { 'indentation': $p.indentation})
+    return t.Lines(t_2.Group($,), { 'indentation': $p.indentation})
 }

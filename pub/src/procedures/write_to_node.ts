@@ -20,7 +20,7 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Node_Parameters, D
                         p_write_to_file,
                         ($):D.Node_Error => ['file', $]
                     )({
-                        'block': $,
+                        'group': $,
                         'directory path': $p.path,
                         'filename': $p.key,
                         'indentation': $p.indentation,

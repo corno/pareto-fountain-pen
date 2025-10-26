@@ -7,7 +7,7 @@ import * as t_block_to_lines from "../transformations/block/lines"
 import { $$ as c_log } from "exupery-resources/dist/procedures/log"
 
 export type Parameters = {
-    'block': _in.Block,
+    'group': _in.Group,
     'indentation': string,
 }
 
@@ -15,8 +15,8 @@ export const $$: _easync.Guaranteed_Procedure_Initializer<Parameters> = (
     $p
 ) => {
     return c_log({
-        'lines': t_block_to_lines.Block(
-            $p.block,
+        'lines': t_block_to_lines.Group(
+            $p.group,
             {
                 'indentation': $p.indentation
             }

@@ -5,23 +5,23 @@ import * as _target from "../generated/interface/schemas/block/data_types/target
 
 import * as sh from "exupery-core-data/dist/shorthands/unconstrained"
 
-export namespace b {
+export namespace g {
 
-    export const simple_line = (line: string): _target.Block_Part => ['line', line]
+    export const simple_line = (line: string): _target.Group_Part => ['line', line]
 
-    export const nested_line = (snippets: sh.Raw_Or_Normal_Array<_target.Line.L>): _target.Block_Part => ['nested line', sh.wrap_list(snippets)]
+    export const nested_line = (snippets: sh.Raw_Or_Normal_Array<_target.Line.L>): _target.Group_Part => ['nested line', sh.wrap_list(snippets)]
 
-    export const sub = (block_parts: sh.Raw_Or_Normal_Array<_target.Block.L>): _target.Block_Part => ['sub block', sh.wrap_list(block_parts)]
+    export const sub = (group_parts: sh.Raw_Or_Normal_Array<_target.Group.L>): _target.Group_Part => ['sub group', sh.wrap_list(group_parts)]
 
-    export const nothing = (): _target.Block_Part => ['nothing', null]
+    export const nothing = (): _target.Group_Part => ['nothing', null]
 
-    export const optional = (block_part: _et.Optional_Value<_target.Block.L>): _target.Block_Part => ['optional', block_part]
+    export const optional = (block_part: _et.Optional_Value<_target.Group.L>): _target.Group_Part => ['optional', block_part]
 
 }
 
 export namespace l {
 
-    export const indent = (lines: sh.Raw_Or_Normal_Array<_target.Block.L>): _target.Line_Part => ['indent', sh.wrap_list(lines)]
+    export const indent = (lines: sh.Raw_Or_Normal_Array<_target.Group.L>): _target.Line_Part => ['indent', sh.wrap_list(lines)]
 
     export const snippet = (snippet: string): _target.Line_Part => ['snippet', snippet]
 
@@ -36,7 +36,7 @@ export namespace l {
 export namespace n {
 
     export const file = (
-        block: _target.Block
+        block: _target.Group
     ): _target.Node => ['file', block]
 
     export const directory = (
@@ -48,4 +48,4 @@ export const directory = (
     children: sh.Raw_Or_Normal_Dictionary<_target.Node>,
 ): _target.Directory => sh.wrap_dictionary(children)
 
-export const block = (block_parts: sh.Raw_Or_Normal_Array<_target.Block.L>): _target.Block => sh.wrap_list(block_parts)
+export const group = (block_parts: sh.Raw_Or_Normal_Array<_target.Group.L>): _target.Group => sh.wrap_list(block_parts)
