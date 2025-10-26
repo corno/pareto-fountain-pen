@@ -4,8 +4,6 @@ import * as _et from 'exupery-core-types'
 import * as _ei from 'exupery-core-internals'
 import * as _easync from 'exupery-core-async'
 
-import * as d_resources from "exupery-resources/dist/types"
-
 import { $$ as p_make_directory } from "exupery-resources/dist/procedures/make_directory"
 import { $$ as p_write_file } from "exupery-resources/dist/procedures/write_file"
 import { $$ as p_remove } from "exupery-resources/dist/procedures/remove"
