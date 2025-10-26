@@ -1,14 +1,16 @@
 import * as _et from 'exupery-core-types'
 
-import * as d_resources_errors from "exupery-resources/dist/generated/interface/schemas/errors/data_types/target"
+import * as d_write_file from "exupery-resources/dist/generated/interface/schemas/write_file/data_types/target"
+import * as d_remove from "exupery-resources/dist/generated/interface/schemas/remove/data_types/target"
+import * as d_make_directory from "exupery-resources/dist/generated/interface/schemas/make_directory/data_types/target"
 import * as d_in from "../generated/interface/schemas/block/data_types/source"
 
 export type File_Error =
-    | ['make directory', d_resources_errors.Make_Directory]
-    | ['write file', d_resources_errors.Write_File]
+    | ['make directory', d_make_directory.Errors]
+    | ['write file', d_write_file.Errors]
 
 export type Directory_Error =
-    | ['remove', d_resources_errors.Remove]
+    | ['remove', d_remove.Errors]
     | ['nodes', _et.Dictionary<Node_Error>]
 
 export type Node_Error =
