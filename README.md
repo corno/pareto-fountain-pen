@@ -48,7 +48,7 @@ const simpleBlock: d_out.Block = block([
 Blocks represent structural units and provide methods for organizing content:
 
 #### `b.nested_line(parts: Line_Part[])`
-Creates a single line with nested parts:
+Creates a 'single' line with nested parts:
 ```typescript
 b.nested_line([
     l.snippet("function "),
