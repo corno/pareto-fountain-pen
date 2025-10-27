@@ -15,7 +15,7 @@ export namespace g {
 
     export const nothing = (): _target.Group_Part => ['nothing', null]
 
-    export const optional = (block_part: _et.Optional_Value<_target.Group.L>): _target.Group_Part => ['optional', block_part]
+    export const optional = (Group_Part: _et.Optional_Value<_target.Group.L>): _target.Group_Part => ['optional', Group_Part]
 
 }
 
@@ -48,4 +48,4 @@ export const directory = (
     children: sh.Raw_Or_Normal_Dictionary<_target.Node>,
 ): _target.Directory => sh.wrap_dictionary(children)
 
-export const group = (block_parts: sh.Raw_Or_Normal_Array<_target.Group.L>): _target.Group => sh.wrap_list(block_parts)
+export const group = (Group_Parts: sh.Raw_Or_Normal_Array<_target.Group.L>): _target.Group => sh.wrap_list(Group_Parts)

@@ -26,7 +26,7 @@ The library automatically handles:
 
 ```typescript
 import * as d_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unresolved"
-import { b, l, block } from "pareto-fountain-pen/dist/shorthands/block"
+import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 ```
 
 ### Creating Simple Output
@@ -34,9 +34,9 @@ import { b, l, block } from "pareto-fountain-pen/dist/shorthands/block"
 ```typescript
 // Create a basic block with a single line
 const simpleBlock: d_out.Block = block([
-    b.nested_line([
-        l.snippet("Hello, "),
-        l.snippet("world!")
+    sh.g.nested_line([
+        sh.l.snippet("Hello, "),
+        sh.l.snippet("world!")
     ])
 ])
 ```
@@ -47,20 +47,20 @@ const simpleBlock: d_out.Block = block([
 
 Blocks represent structural units and provide methods for organizing content:
 
-#### `b.nested_line(parts: Line_Part[])`
+#### ` sh.g.nested_line(parts: Line_Part[])`
 Creates a 'single' line with nested parts:
 ```typescript
-b.nested_line([
-    l.snippet("function "),
-    l.snippet("myFunction() {")
+sh.g.nested_line([
+    sh.l.snippet("function "),
+    sh.l.snippet("myFunction() {")
 ])
 ```
 
-#### `b.sub(blocks: Block[])`
+#### ` sh.g.sub(blocks: Block[])`
 Creates a collection of sub-blocks with automatic formatting:
 ```typescript
-b.sub(items.map(item => 
-    b.nested_line([l.snippet(`- ${item}`)])
+sh.g.sub(items.map(item => 
+    sh.g.nested_line([ sh.l.snippet(`- ${item}`)])
 ))
 ```
 
@@ -68,28 +68,28 @@ b.sub(items.map(item =>
 
 Line parts are the building blocks of individual lines:
 
-#### `l.snippet(text: string)`
+#### ` sh.l.snippet(text: string)`
 Outputs literal text:
 ```typescript
-l.snippet("const x = 42;")
+sh.l.snippet("const x = 42;")
 ```
 
 #### `l.sub(parts: Line_Part[])`
 Combines multiple line parts:
 ```typescript
 l.sub([
-    l.snippet("if ("),
-    l.snippet("condition"),
-    l.snippet(") {")
+    sh.l.snippet("if ("),
+    sh.l.snippet("condition"),
+    sh.l.snippet(") {")
 ])
 ```
 
-#### `l.indent(blocks: Block[])`
+#### ` sh.l.indent(blocks: Block[])`
 Creates indented content blocks:
 ```typescript
-l.indent([
-    b.nested_line([l.snippet("// indented comment")]),
-    b.nested_line([l.snippet("console.log('indented');")]) 
+sh.l.indent([
+    sh.g.nested_line([ sh.l.snippet("// indented comment")]),
+    sh.g.nested_line([ sh.l.snippet("console.log('indented');")]) 
 ])
 ```
 
@@ -97,7 +97,7 @@ l.indent([
 Creates a decorated collection of line parts:
 ```typescript
 l.sub(parameters.map(param => 
-    l.snippet(param.name)
+    sh.l.snippet(param.name)
 ))
 ```
 
@@ -105,8 +105,8 @@ l.sub(parameters.map(param =>
 Represents empty/optional content:
 ```typescript
 optionalValue.transform(
-    (value) => l.snippet(value),
-    () => l.nothing()  // renders nothing if value is absent
+    (value) => sh.l.snippet(value),
+    () => sh.l.nothing()  // renders nothing if value is absent
 )
 ```
 
@@ -116,9 +116,9 @@ optionalValue.transform(
 
 Use ternary operators for conditional content:
 ```typescript
-b.nested_line([
-    isStrict ? l.snippet("strict ") : l.nothing(),
-    l.snippet("digraph myGraph")
+sh.g.nested_line([
+    isStrict ? sh.l.snippet("strict ") : sh.l.nothing(),
+    sh.l.snippet("digraph myGraph")
 ])
 ```
 
@@ -127,11 +127,11 @@ b.nested_line([
 Handle optional values elegantly:
 ```typescript
 name.transform(
-    (value) => l.sub([
-        l.snippet("name: "),
-        l.snippet(value)
+    (value) => sh.l.sub([
+        sh.l.snippet("name: "),
+        sh.l.snippet(value)
     ]),
-    () => l.nothing()  // renders nothing if name is undefined
+    () => sh.l.nothing()  // renders nothing if name is undefined
 )
 ```
 
@@ -139,10 +139,10 @@ name.transform(
 
 Process arrays with automatic positioning:
 ```typescript
-b.sub(items.map(item => {
-    return b.nested_line([
-        l.snippet(`${item.name}: `),
-        l.snippet(item.value)
+sh.g.sub(items.map(item => {
+    return sh.g.nested_line([
+        sh.l.snippet(`${item.name}: `),
+        sh.l.snippet(item.value)
     ])
 }))
 ```
@@ -153,31 +153,31 @@ Create complex nested documents:
 ```typescript
 export const generateClass = (classData: ClassData): d_out.Block => {
     return block([
-        b.nested_line([
-            l.snippet(`class ${classData.name} {`)
+        sh.g.nested_line([
+            sh.l.snippet(`class ${classData.name} {`)
         ]),
-        l.indent([
-            b.sub(classData.methods.map(method => 
-                b.nested_line([
-                    l.snippet(`${method.name}(`),
-                    l.sub(method.parameters.map((param, index) =>
-                        l.sub([
-                            l.snippet(param.name),
+        sh.l.indent([
+            sh.g.sub(classData.methods.map(method => 
+                sh.g.nested_line([
+                    sh.l.snippet(`${method.name}(`),
+                   sh.l.sub(method.parameters.map((param, index) =>
+                       sh.l.sub([
+                            sh.l.snippet(param.name),
                             index < method.parameters.length - 1 
-                                ? l.snippet(", ") 
-                                : l.nothing()
+                                ? sh.l.snippet(", ") 
+                                : sh.l.nothing()
                         ])
                     )),
-                    l.snippet(") {"),
-                    l.indent([
-                        b.nested_line([l.snippet("// method body")])
+                    sh.l.snippet(") {"),
+                    sh.l.indent([
+                        sh.g.nested_line([ sh.l.snippet("// method body")])
                     ]),
-                    l.snippet("}")
+                    sh.l.snippet("}")
                 ])
             ))
         ]),
-        b.nested_line([
-            l.snippet("}")
+        sh.g.nested_line([
+            sh.l.snippet("}")
         ])
     ])
 }
@@ -191,10 +191,10 @@ Fountain Pen works well with pattern-matched state groups:
 pa.cc(node.type, (type) => {
     switch (type[0]) {
         case 'function': return pa.ss(type, (func) => 
-            l.snippet(`function ${func.name}()`)
+            sh.l.snippet(`function ${func.name}()`)
         )
         case 'variable': return pa.ss(type, (variable) => 
-            l.snippet(`const ${variable.name} = ${variable.value}`)
+            sh.l.snippet(`const ${variable.name} = ${variable.value}`)
         )
         default: return pa.au(type[0])
     }
@@ -220,7 +220,7 @@ Build formatted reports with tables, sections, and hierarchical data.
 1. **Use meaningful names**: Choose descriptive variable names for complex structures
 2. **Leverage transform**: Use `transform()` for optional content rather than manual conditionals
 3. **Group related content**: Use `l.sub()` to group logically related line parts
-4. **Consistent indentation**: Let `l.indent()` handle indentation automatically
+4. **Consistent indentation**: Let ` sh.l.indent()` handle indentation automatically
 5. **Separate concerns**: Keep block structure separate from content generation logic
 
 ## Type Safety

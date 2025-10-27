@@ -7,7 +7,7 @@ import * as _easync from 'exupery-core-async'
 import { $$ as p_remove } from "exupery-resources/dist/procedures/remove"
 import { $$ as p_do_nothing } from "exupery-resources/dist/procedures/do_nothing"
 
-import * as D from "./temp_types"
+import * as D from "../../temp/temp_types"
 
 import { $$ as p_write_to_node } from "./write_to_node"
 
