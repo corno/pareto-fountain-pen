@@ -4,8 +4,8 @@ import * as _et from 'exupery-core-types'
 import * as _ei from 'exupery-core-internals'
 import * as _easync from 'exupery-core-async'
 
-import { $$ as p_remove } from "exupery-resources/dist/procedures/remove"
-import { $$ as p_do_nothing } from "exupery-resources/dist/procedures/do_nothing"
+import { $$ as p_remove } from "exupery-resources/dist/procedures/unguaranteed/remove"
+import { $$ as p_do_nothing } from "exupery-resources/dist/procedures/guaranteed/do_nothing"
 
 import * as D from "../../temp/temp_types"
 
