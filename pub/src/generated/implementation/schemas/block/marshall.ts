@@ -5,6 +5,58 @@ import * as _i_out from "../../../interface/core/astn_target"
 import * as _i_signatures from "../../../interface/schemas/block/marshall"
 
 
+export const Block: _i_signatures._T_Block = ($, $p) => ['list', $.map(($) => Block_Part(
+    $,
+    {
+        'value serializers': $p['value serializers'],
+    }
+))]
+export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+    switch ($[0]) {
+        case 'indent': return _pa.ss($, ($) => ({
+            'state': "indent",
+            'value': Group(
+                $,
+                {
+                    'value serializers': $p['value serializers'],
+                }
+            ),
+        }))
+        case 'nothing': return _pa.ss($, ($) => ({
+            'state': "nothing",
+            'value': ['nothing', null],
+        }))
+        case 'optional': return _pa.ss($, ($) => ({
+            'state': "optional",
+            'value': ['optional', $.transform(
+                ($): _i_out._T_Value.SG.optional => ['set', Block_Part(
+                    $,
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
+                )],
+                () => ['not set', null]
+            )],
+        }))
+        case 'snippet': return _pa.ss($, ($) => ({
+            'state': "snippet",
+            'value': ['text', ({
+                'delimiter': ['quote', null],
+                'value': $,
+            })],
+        }))
+        case 'sub block': return _pa.ss($, ($) => ({
+            'state': "sub block",
+            'value': Block(
+                $,
+                {
+                    'value serializers': $p['value serializers'],
+                }
+            ),
+        }))
+        default: return _pa.au($[0])
+    }
+})]
 export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.map(($) => Node(
     $,
     {
@@ -19,16 +71,16 @@ export const Group: _i_signatures._T_Group = ($, $p) => ['list', $.map(($) => Gr
 ))]
 export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
-        case 'line': return _pa.ss($, ($) => ({
-            'state': "line",
+        case 'block': return _pa.ss($, ($) => ({
+            'state': "block",
             'value': ['text', ({
                 'delimiter': ['quote', null],
                 'value': $,
             })],
         }))
-        case 'nested line': return _pa.ss($, ($) => ({
-            'state': "nested line",
-            'value': Line(
+        case 'nested block': return _pa.ss($, ($) => ({
+            'state': "nested block",
+            'value': Block(
                 $,
                 {
                     'value serializers': $p['value serializers'],
@@ -54,58 +106,6 @@ export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _pa.
         case 'sub group': return _pa.ss($, ($) => ({
             'state': "sub group",
             'value': Group(
-                $,
-                {
-                    'value serializers': $p['value serializers'],
-                }
-            ),
-        }))
-        default: return _pa.au($[0])
-    }
-})]
-export const Line: _i_signatures._T_Line = ($, $p) => ['list', $.map(($) => Line_Part(
-    $,
-    {
-        'value serializers': $p['value serializers'],
-    }
-))]
-export const Line_Part: _i_signatures._T_Line_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
-    switch ($[0]) {
-        case 'indent': return _pa.ss($, ($) => ({
-            'state': "indent",
-            'value': Group(
-                $,
-                {
-                    'value serializers': $p['value serializers'],
-                }
-            ),
-        }))
-        case 'nothing': return _pa.ss($, ($) => ({
-            'state': "nothing",
-            'value': ['nothing', null],
-        }))
-        case 'optional': return _pa.ss($, ($) => ({
-            'state': "optional",
-            'value': ['optional', $.transform(
-                ($): _i_out._T_Value.SG.optional => ['set', Line_Part(
-                    $,
-                    {
-                        'value serializers': $p['value serializers'],
-                    }
-                )],
-                () => ['not set', null]
-            )],
-        }))
-        case 'snippet': return _pa.ss($, ($) => ({
-            'state': "snippet",
-            'value': ['text', ({
-                'delimiter': ['quote', null],
-                'value': $,
-            })],
-        }))
-        case 'sub line': return _pa.ss($, ($) => ({
-            'state': "sub line",
-            'value': Line(
                 $,
                 {
                     'value serializers': $p['value serializers'],

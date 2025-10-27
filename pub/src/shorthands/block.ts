@@ -7,9 +7,9 @@ import * as sh from "exupery-core-data/dist/shorthands/unconstrained"
 
 export namespace g {
 
-    export const simple_line = (line: string): _target.Group_Part => ['line', line]
+    export const simple_block = (block: string): _target.Group_Part => ['block', block]
 
-    export const nested_line = (snippets: sh.Raw_Or_Normal_Array<_target.Line.L>): _target.Group_Part => ['nested line', sh.wrap_list(snippets)]
+    export const nested_block = (snippets: sh.Raw_Or_Normal_Array<_target.Block.L>): _target.Group_Part => ['nested block', sh.wrap_list(snippets)]
 
     export const sub = (group_parts: sh.Raw_Or_Normal_Array<_target.Group.L>): _target.Group_Part => ['sub group', sh.wrap_list(group_parts)]
 
@@ -19,17 +19,17 @@ export namespace g {
 
 }
 
-export namespace l {
+export namespace b {
 
-    export const indent = (lines: sh.Raw_Or_Normal_Array<_target.Group.L>): _target.Line_Part => ['indent', sh.wrap_list(lines)]
+    export const indent = (blocks: sh.Raw_Or_Normal_Array<_target.Group.L>): _target.Block_Part => ['indent', sh.wrap_list(blocks)]
 
-    export const snippet = (snippet: string): _target.Line_Part => ['snippet', snippet]
+    export const snippet = (snippet: string): _target.Block_Part => ['snippet', snippet]
 
-    export const sub = (line_parts: sh.Raw_Or_Normal_Array<_target.Line.L>): _target.Line_Part => ['sub line', sh.wrap_list(line_parts)]
+    export const sub = (block_parts: sh.Raw_Or_Normal_Array<_target.Block.L>): _target.Block_Part => ['sub block', sh.wrap_list(block_parts)]
 
-    export const nothing = (): _target.Line_Part => ['nothing', null]
+    export const nothing = (): _target.Block_Part => ['nothing', null]
 
-    export const optional = (line_part: _et.Optional_Value<_target.Line.L>): _target.Line_Part => ['optional', line_part]
+    export const optional = (block_part: _et.Optional_Value<_target.Block.L>): _target.Block_Part => ['optional', block_part]
 
 }
 

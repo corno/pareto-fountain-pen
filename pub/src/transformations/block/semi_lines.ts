@@ -27,7 +27,7 @@ export const Group = (
             }
         ): void => {
             switch ($[0]) {
-                case 'line':
+                case 'block':
                     _ea.ss($, ($) => {
                         $i['add element']({
                             'indentation': $p['current indentation'],
@@ -35,9 +35,9 @@ export const Group = (
                         })
                     })
                     break
-                case 'nested line':
+                case 'nested block':
                     _ea.ss($, ($) => {
-                        Line($, { 'current indentation': $p['current indentation'] })
+                        Block($, { 'current indentation': $p['current indentation'] })
                     })
                     break
                 case 'nothing':
@@ -71,22 +71,22 @@ export const Group = (
                 Group_Part($, { 'current indentation': $p['current indentation'] })
             })
         }
-        const Line = (
-            $: d_in.Line,
+        const Block = (
+            $: d_in.Block,
             $p: {
                 'current indentation': number
             }
         ): void => {
             let current_line: null | string = null
-            const Line2 = (
-                $: d_in.Line
+            const Block2 = (
+                $: d_in.Block
             ): void => {
                 $.__for_each(($) => {
-                    Line_Part($)
+                    Block_Part($)
                 })
             }
-            const Line_Part = (
-                $: d_in.Line_Part
+            const Block_Part = (
+                $: d_in.Block_Part
             ): void => {
 
                 switch ($[0]) {
@@ -112,16 +112,16 @@ export const Group = (
                             // do nothing
                         })
                         break
-                    case 'sub line':
+                    case 'sub block':
                         _ea.ss($, ($) => {
 
-                            Line2($)
+                            Block2($)
                         })
                         break
                     case 'optional':
                         _ea.ss($, ($) => {
                             $.map(($) => {
-                                Line_Part($)
+                                Block_Part($)
 
                             })
                         })
@@ -130,7 +130,7 @@ export const Group = (
                 }
 
             }
-            Line2($)
+            Block2($)
             if (current_line !== null) {
                 $i['add element']({
                     'indentation': $p['current indentation'],
