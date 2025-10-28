@@ -4,7 +4,7 @@ import * as _in from "../../../interface/generated/pareto/schemas/block/data_typ
 
 import * as t_block_to_lines from "../../transformations/block/lines"
 
-import { $$ as c_error } from "exupery-resources/dist/procedures/guaranteed/log_error"
+import { $$ as c_error } from "exupery-resources/dist/implementation/procedures/guaranteed/log_error"
 
 export type Parameters = {
     'group': _in.Group,
