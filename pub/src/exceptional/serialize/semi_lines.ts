@@ -3,8 +3,8 @@ import * as pa from 'exupery-core-alg'
 
 import * as t_fountain_pen_semi_lines_to_lines from "../../transformations/semi_lines/lines"
 
-import * as d_in from "../../generated/interface/schemas/semi_lines/data_types/source"
-import * as d_out from "../../generated/interface/schemas/text/data_types/target"
+import * as d_in from "../../interface/generated/pareto/schemas/semi_lines/data_types/source"
+import * as d_out from "../../interface/generated/pareto/schemas/text/data_types/target"
 
 import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/operations/pure/text/join_list_of_texts"
 

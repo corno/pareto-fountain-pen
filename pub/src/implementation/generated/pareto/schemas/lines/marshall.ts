@@ -1,8 +1,8 @@
 import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
-import * as _i_out from "../../../interface/core/astn_target"
-import * as _i_signatures from "../../../interface/schemas/text/marshall"
+import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
+import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/lines/marshall"
 
 
 export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
@@ -28,7 +28,7 @@ export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $
         default: return _pa.au($[0])
     }
 })])]
-export const Lines: _i_signatures._T_Lines = ($, $p) => ['text', ({
+export const Lines: _i_signatures._T_Lines = ($, $p) => ['list', $.map(($) => ['text', ({
     'delimiter': ['quote', null],
     'value': $,
-})]
+})])]

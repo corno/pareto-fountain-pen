@@ -1,8 +1,8 @@
 import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
-import * as _i_out from "../../../interface/core/astn_target"
-import * as _i_signatures from "../../../interface/schemas/lines/marshall"
+import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
+import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/semi_lines/marshall"
 
 
 export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
@@ -28,7 +28,16 @@ export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $
         default: return _pa.au($[0])
     }
 })])]
-export const Lines: _i_signatures._T_Lines = ($, $p) => ['list', $.map(($) => ['text', ({
-    'delimiter': ['quote', null],
-    'value': $,
+export const Lines: _i_signatures._T_Lines = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
+    'indentation': _pa.cc($['indentation'], ($) => ['text', ({
+        'delimiter': ['backtick', null],
+        'value': $p['value serializers']['default number'](
+            $,
+            null
+        ),
+    })]),
+    'text': _pa.cc($['text'], ($) => ['text', ({
+        'delimiter': ['quote', null],
+        'value': $,
+    })]),
 })])]

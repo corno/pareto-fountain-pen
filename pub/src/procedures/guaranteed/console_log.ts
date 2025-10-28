@@ -1,6 +1,6 @@
 import * as _easync from 'exupery-core-async'
 
-import * as _in from "../../generated/interface/schemas/block/data_types/target"
+import * as _in from "../../interface/generated/pareto/schemas/block/data_types/target"
 
 import * as t_block_to_lines from "../../transformations/block/lines"
 
