@@ -1,7 +1,7 @@
 import * as pt from 'exupery-core-types'
 import * as pa from 'exupery-core-alg'
 
-import * as t_fountain_pen_semi_lines_to_lines from "../../transformations/semi_lines/lines"
+import * as t_fountain_pen_semi_lines_to_lines from "../../implementation/transformations/semi_lines/lines"
 
 import * as d_in from "../../interface/generated/pareto/schemas/semi_lines/data_types/source"
 import * as d_out from "../../interface/generated/pareto/schemas/text/data_types/target"

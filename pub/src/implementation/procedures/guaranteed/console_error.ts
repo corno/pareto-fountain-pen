@@ -1,10 +1,10 @@
 import * as _easync from 'exupery-core-async'
 
-import * as _in from "../../interface/generated/pareto/schemas/block/data_types/target"
+import * as _in from "../../../interface/generated/pareto/schemas/block/data_types/target"
 
 import * as t_block_to_lines from "../../transformations/block/lines"
 
-import { $$ as c_log } from "exupery-resources/dist/procedures/guaranteed/log"
+import { $$ as c_error } from "exupery-resources/dist/procedures/guaranteed/log_error"
 
 export type Parameters = {
     'group': _in.Group,
@@ -12,9 +12,9 @@ export type Parameters = {
 }
 
 export const $$: _easync.Guaranteed_Procedure_Initializer<Parameters> = (
-    $p
+    $p,
 ) => {
-    return c_log({
+    return c_error({
         'lines': t_block_to_lines.Group(
             $p.group,
             {
