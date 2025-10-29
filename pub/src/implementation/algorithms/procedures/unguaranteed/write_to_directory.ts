@@ -7,10 +7,10 @@ import * as _easync from 'exupery-core-async'
 import { $$ as p_remove } from "exupery-resources/dist/implementation/procedures/unguaranteed/remove"
 import { $$ as p_do_nothing } from "exupery-resources/dist/implementation/procedures/guaranteed/do_nothing"
 
-import * as D from "../../../temp/temp_types"
+import * as D from "../../../../temp/temp_types"
 
 import { $$ as p_write_to_node } from "./write_to_node"
-import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_directory"
+import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/write_to_directory"
 
 
 export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Directory_Parameters, D.Directory_Error> = (

@@ -8,14 +8,14 @@ import { $$ as p_make_directory } from "exupery-resources/dist/implementation/pr
 import { $$ as p_write_file } from "exupery-resources/dist/implementation/procedures/unguaranteed/write_file"
 import { $$ as p_remove } from "exupery-resources/dist/implementation/procedures/unguaranteed/remove"
 
-import * as d_in from "../../../interface/generated/pareto/schemas/block/data_types/source"
+import * as d_in from "../../../../interface/generated/pareto/schemas/block/data_types/source"
 
 import * as t_block_2_lines from "../../transformations/block/lines"
 
-import * as D from "../../../temp/temp_types"
+import * as D from "../../../../temp/temp_types"
 
 import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/implementation/operations/pure/text/join_list_of_texts"
-import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_file"
+import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/write_to_file"
 
 
 

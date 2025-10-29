@@ -1,9 +1,9 @@
 import * as pt from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 
-import * as d_in from "../../../interface/generated/pareto/schemas/block/data_types/source"
-import * as d_out from "../../../interface/generated/pareto/schemas/semi_lines/data_types/target"
-import { Signature } from "../../../interface/algorithms/transformations/block/semi_lines"
+import * as d_in from "../../../../interface/generated/pareto/schemas/block/data_types/source"
+import * as d_out from "../../../../interface/generated/pareto/schemas/semi_lines/data_types/target"
+import { Signature } from "../../../../interface/algorithms/transformations/block/semi_lines"
 
 
 export const Directory = (

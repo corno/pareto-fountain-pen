@@ -4,11 +4,11 @@ import * as _et from 'exupery-core-types'
 import * as _ei from 'exupery-core-internals'
 import * as _easync from 'exupery-core-async'
 
-import * as D from "../../../temp/temp_types"
+import * as D from "../../../../temp/temp_types"
 
 import { $$ as p_write_to_file } from "./write_to_file"
 import { $$ as p_write_to_directory } from "./write_to_directory"
-import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_node"
+import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/write_to_node"
 
 
 export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Node_Parameters, D.Node_Error> = (
