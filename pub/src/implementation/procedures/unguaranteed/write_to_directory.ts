@@ -10,6 +10,8 @@ import { $$ as p_do_nothing } from "exupery-resources/dist/implementation/proced
 import * as D from "../../../temp/temp_types"
 
 import { $$ as p_write_to_node } from "./write_to_node"
+import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_directory"
+
 
 export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Directory_Parameters, D.Directory_Error> = (
     $p

@@ -15,6 +15,8 @@ import * as t_block_2_lines from "../../transformations/block/lines"
 import * as D from "../../../temp/temp_types"
 
 import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/implementation/operations/pure/text/join_list_of_texts"
+import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_file"
+
 
 
 export const $$: _easync.Unguaranteed_Procedure_Initializer<D.File_Parameters, D.File_Error> = (

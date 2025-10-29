@@ -6,6 +6,8 @@ import * as d_out from "../../../interface/generated/pareto/schemas/lines/data_t
 
 import * as t from "../semi_lines/lines"
 import * as t_2 from "./semi_lines"
+import { Signature } from "../../../interface/algorithms/transformations/block/lines"
+
 
 export  const Directory = (
     $: d_in.Directory,
