@@ -3,7 +3,7 @@ import * as _et from 'exupery-core-types'
 
 import * as _target from "../interface/generated/pareto/schemas/block/data_types/target"
 
-import * as sh from "exupery-core-data/dist/shorthands/unconstrained"
+import * as sh from 'exupery-core-data/dist/shorthands/unconstrained'
 
 export namespace g {
 

@@ -1,5 +1,4 @@
-import * as pt from 'exupery-core-types'
-import * as pa from 'exupery-core-alg'
+import * as _ea from 'exupery-core-alg'
 
 import * as d_in from "../../../../interface/generated/pareto/schemas/semi_lines/data_types/source"
 import * as d_out from "../../../../interface/generated/pareto/schemas/lines/data_types/target"
@@ -25,11 +24,11 @@ export const Directory = (
         'indentation': string
     }
 ): d_out.Directory => {
-    return $.map(($) => pa.cc($, ($): d_out.Directory.D => {
+    return $.map(($) => _ea.cc($, ($): d_out.Directory.D => {
         switch ($[0]) {
-            case 'file': return pa.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
-            case 'directory': return pa.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])
-            default: return pa.au($[0])
+            case 'file': return _ea.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
+            case 'directory': return _ea.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])
+            default: return _ea.au($[0])
         }
     }))
 }

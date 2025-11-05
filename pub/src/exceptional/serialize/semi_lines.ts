@@ -1,5 +1,4 @@
-import * as pt from 'exupery-core-types'
-import * as pa from 'exupery-core-alg'
+import * as _ea from 'exupery-core-alg'
 
 import * as t_fountain_pen_semi_lines_to_lines from "../../implementation/algorithms/transformations/semi_lines/lines"
 
@@ -30,11 +29,11 @@ export const Directory = (
         'newline': string
     }
 ): d_out.Directory => {
-    return $.map(($) => pa.cc($, ($): d_out.Directory.D => {
+    return $.map(($) => _ea.cc($, ($): d_out.Directory.D => {
         switch ($[0]) {
-            case 'file': return pa.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation, 'newline': $p.newline })])
-            case 'directory': return pa.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation, 'newline': $p.newline })])
-            default: return pa.au($[0])
+            case 'file': return _ea.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation, 'newline': $p.newline })])
+            case 'directory': return _ea.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation, 'newline': $p.newline })])
+            default: return _ea.au($[0])
         }
     }))
 }
