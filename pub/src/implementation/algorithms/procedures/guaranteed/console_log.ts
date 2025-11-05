@@ -4,7 +4,7 @@ import * as _in from "../../../../interface/generated/pareto/schemas/block/data_
 
 import * as t_block_to_lines from "../../transformations/block/lines"
 
-import { $$ as c_log } from "exupery-resources/dist/implementation/procedures/guaranteed/log"
+import { $$ as c_log } from "exupery-resources/dist/implementation/algorithms/procedures/guaranteed/log"
 import { Signature } from "../../../../interface/algorithms/procedures/guaranteed/console_log"
 
 

@@ -4,8 +4,8 @@ import * as _et from 'exupery-core-types'
 import * as _ei from 'exupery-core-internals'
 import * as _easync from 'exupery-core-async'
 
-import { $$ as p_remove } from "exupery-resources/dist/implementation/procedures/unguaranteed/remove"
-import { $$ as p_do_nothing } from "exupery-resources/dist/implementation/procedures/guaranteed/do_nothing"
+import { $$ as p_remove } from "exupery-resources/dist/implementation/algorithms/procedures/unguaranteed/remove"
+import { $$ as p_do_nothing } from "exupery-resources/dist/implementation/algorithms/procedures/guaranteed/do_nothing"
 
 import * as D from "../../../../temp/temp_types"
 
@@ -31,7 +31,7 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Directory_Paramete
             })
             : _easync.upi.u(
                 p_do_nothing,
-                ($): D.Directory_Error => _ea.panic("not reachable")
+                ($): D.Directory_Error => _ea.deprecated_panic("not reachable")
             )(null),
 
         _easync.up.dictionary(

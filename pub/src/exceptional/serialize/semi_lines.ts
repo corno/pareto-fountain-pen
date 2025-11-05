@@ -5,7 +5,7 @@ import * as t_fountain_pen_semi_lines_to_lines from "../../implementation/algori
 import * as d_in from "../../interface/generated/pareto/schemas/semi_lines/data_types/source"
 import * as d_out from "../../interface/generated/pareto/schemas/text/data_types/target"
 
-import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/implementation/operations/pure/text/join_list_of_texts"
+import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/text/join_list_of_texts"
 
 export const Lines = (
     $: d_in.Lines,
