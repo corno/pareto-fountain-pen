@@ -6,11 +6,11 @@ import * as d_make_directory from "exupery-resources/dist/interface/generated/pa
 import * as d_in from "../interface/generated/pareto/schemas/block/data_types/source"
 
 export type File_Error =
-    | ['make directory', d_make_directory.Errors]
-    | ['write file', d_write_file.Errors]
+    | ['make directory', d_make_directory.Error]
+    | ['write file', d_write_file.Error]
 
 export type Directory_Error =
-    | ['remove', d_remove.Errors]
+    | ['remove', d_remove.Error]
     | ['nodes', _et.Dictionary<Node_Error>]
 
 export type Node_Error =
