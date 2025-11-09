@@ -1,0 +1,8 @@
+Repository: pareto-fountain-pen
+Path: /home/corno/workspace/pareto-canon/packages/pareto-fountain-pen
+Last Commit: 2025-11-07 (8fe922b)
+Message: new version
+Branch: main
+Remote: git@github.com:corno/pareto-fountain-pen
+-------------------------------------------------
+

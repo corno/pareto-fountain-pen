@@ -13,7 +13,7 @@ import { $$ as p_write_to_node } from "./write_to_node"
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/write_to_directory"
 
 
-export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Directory_Parameters, D.Directory_Error> = (
+export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Directory_Parameters, D.Directory_Error, null> = (
     $p
 ) => {
     return _easync.up.sequence<D.Directory_Error>([
@@ -22,27 +22,33 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Directory_Paramete
             ? _easync.upi.u(
                 p_remove,
                 ($): D.Directory_Error => ['remove', $]
-            )({
-                'path': {
-                    'path': $p.path,
-                    'escape spaces in path': true,
+            )(
+                {
+                    'path': {
+                        'path': $p.path,
+                        'escape spaces in path': true,
+                    },
+                    'error if not exists': false
                 },
-                'error if not exists': false
-            })
+                null,
+            )
             : _easync.upi.u(
                 p_do_nothing,
                 ($): D.Directory_Error => _ea.deprecated_panic("not reachable")
-            )(null),
+            )(null, null),
 
         _easync.up.dictionary(
-            $p.directory.map(($, key) => p_write_to_node({
-                'node': $,
-                'path': $p.path,
-                'key': key,
-                'indentation': $p.indentation,
-                'newline': $p.newline,
-                'remove before creating': false,
-            })),
+            $p.directory.map(($, key) => p_write_to_node(
+                {
+                    'node': $,
+                    'path': $p.path,
+                    'key': key,
+                    'indentation': $p.indentation,
+                    'newline': $p.newline,
+                    'remove before creating': false,
+                },
+                null,
+            )),
             ($): D.Directory_Error => ['nodes', $]
         )
     ])

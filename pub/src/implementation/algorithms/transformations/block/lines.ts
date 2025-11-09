@@ -26,5 +26,5 @@ export const Group = (
     }
 ): d_out.Lines => {
 
-    return t.Lines(t_2.Group($,), { 'indentation': $p.indentation})
+    return t.Lines(t_2.Group($), { 'indentation': $p.indentation})
 }

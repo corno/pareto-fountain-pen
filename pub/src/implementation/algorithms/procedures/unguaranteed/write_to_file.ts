@@ -19,28 +19,34 @@ import { Signature } from "../../../../interface/algorithms/procedures/unguarant
 
 
 
-export const $$: _easync.Unguaranteed_Procedure_Initializer<D.File_Parameters, D.File_Error> = (
+export const $$: _easync.Unguaranteed_Procedure_Initializer<D.File_Parameters, D.File_Error, null> = (
     $p
 ) => {
     return _easync.up.sequence([
         _easync.upi.u(
             p_make_directory,
             ($): D.File_Error => ['make directory', $]
-        )({
-            'path': $p['directory path'],
-            'escape spaces in path': true,
-        }),
+        )(
+            {
+                'path': $p['directory path'],
+                'escape spaces in path': true,
+            },
+            null,
+        ),
         _easync.upi.u(
             p_write_file,
             ($): D.File_Error => ['write file', $]
-        )({
-            'path': {
-                'path': `${$p['directory path']}/${$p.filename}`,
-                'escape spaces in path': true,
+        )(
+            {
+                'path': {
+                    'path': `${$p['directory path']}/${$p.filename}`,
+                    'escape spaces in path': true,
+                },
+                'data': op_join_list_of_texts(
+                    t_block_2_lines.Group($p.group, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
+                ),
             },
-            'data': op_join_list_of_texts(
-                t_block_2_lines.Group($p.group, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
-            ),
-        })
+            null,
+        )
     ])
 }

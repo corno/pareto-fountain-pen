@@ -13,15 +13,20 @@ export type Parameters = {
     'indentation': string,
 }
 
-export const $$: _easync.Guaranteed_Procedure_Initializer<Parameters> = (
+export type Resources = null
+
+export const $$: _easync.Guaranteed_Procedure_Initializer<Parameters, Resources> = (
     $p
 ) => {
-    return c_log({
-        'lines': t_block_to_lines.Group(
-            $p.group,
-            {
-                'indentation': $p.indentation
-            }
-        )
-    })
+    return c_log(
+        {
+            'lines': t_block_to_lines.Group(
+                $p.group,
+                {
+                    'indentation': $p.indentation
+                }
+            )
+        },
+        null,
+    )
 }
