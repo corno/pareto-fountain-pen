@@ -13,7 +13,7 @@ import { $$ as p_write_to_node } from "./write_to_node"
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/write_to_directory"
 
 
-export const $$: _easync.Unguaranteed_Procedure_Initializer<D.Directory_Parameters, D.Directory_Error, null> = (
+export const $$: _easync.Unguaranteed_Procedure<D.Directory_Parameters, D.Directory_Error, null> = (
     $p
 ) => {
     return _easync.up.sequence<D.Directory_Error>([

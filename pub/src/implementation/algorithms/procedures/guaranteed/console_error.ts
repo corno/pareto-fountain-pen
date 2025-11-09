@@ -15,7 +15,7 @@ export type Parameters = {
 
 export type Resources = null
 
-export const $$: _easync.Guaranteed_Procedure_Initializer<Parameters, Resources> = (
+export const $$: _easync.Guaranteed_Procedure<Parameters, Resources> = (
     $p,
 ) => {
     return c_error(

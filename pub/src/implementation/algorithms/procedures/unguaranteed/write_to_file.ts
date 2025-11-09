@@ -19,7 +19,7 @@ import { Signature } from "../../../../interface/algorithms/procedures/unguarant
 
 
 
-export const $$: _easync.Unguaranteed_Procedure_Initializer<D.File_Parameters, D.File_Error, null> = (
+export const $$: _easync.Unguaranteed_Procedure<D.File_Parameters, D.File_Error, null> = (
     $p
 ) => {
     return _easync.up.sequence([
