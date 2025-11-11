@@ -35,8 +35,8 @@ const temp_conditional_sync = <Procedure_Error>( //move this one to _easync
 export type Resources = {
     'procedures': {
         'remove': _easync.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
-                'make directory': _easync.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
-                'write file': _easync.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
+        'make directory': _easync.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
+        'write file': _easync.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
     }
 }
 
