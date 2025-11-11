@@ -4,8 +4,9 @@ import * as _in from "../../../../interface/generated/pareto/schemas/block/data_
 
 import * as t_block_to_lines from "../../transformations/block/lines"
 
-import { $$ as c_log } from "exupery-resources/dist/implementation/algorithms/procedures/guaranteed/log"
 import { Signature } from "../../../../interface/algorithms/procedures/guaranteed/console_log"
+
+import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/source"
 
 
 export type Parameters = {
@@ -13,12 +14,18 @@ export type Parameters = {
     'indentation': string,
 }
 
-export type Resources = null
+export type Resources = {
+
+    'procedures': {
+        'log': _easync.Guaranteed_Procedure<d_log.Parameters, null>
+
+    }
+}
 
 export const $$: _easync.Guaranteed_Procedure<Parameters, Resources> = (
-    $p
+    $p, $r
 ) => {
-    return c_log(
+    return $r.procedures.log(
         {
             'lines': t_block_to_lines.Group(
                 $p.group,

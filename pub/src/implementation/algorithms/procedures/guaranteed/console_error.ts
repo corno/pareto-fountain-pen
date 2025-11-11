@@ -4,7 +4,9 @@ import * as _in from "../../../../interface/generated/pareto/schemas/block/data_
 
 import * as t_block_to_lines from "../../transformations/block/lines"
 
-import { $$ as c_error } from "exupery-resources/dist/implementation/algorithms/procedures/guaranteed/log_error"
+import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/source"
+
+
 import { Signature } from "../../../../interface/algorithms/procedures/guaranteed/console_error"
 
 
@@ -13,12 +15,18 @@ export type Parameters = {
     'indentation': string,
 }
 
-export type Resources = null
 
+export type Resources = {
+
+    'procedures': {
+        'log error': _easync.Guaranteed_Procedure<d_log_error.Parameters, null>
+
+    }
+}
 export const $$: _easync.Guaranteed_Procedure<Parameters, Resources> = (
-    $p,
+    $p, $r
 ) => {
-    return c_error(
+    return $r.procedures['log error'](
         {
             'lines': t_block_to_lines.Group(
                 $p.group,
