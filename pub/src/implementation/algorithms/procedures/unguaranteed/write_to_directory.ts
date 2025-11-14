@@ -16,8 +16,8 @@ import { Signature } from "../../../../interface/algorithms/procedures/unguarant
 
 const temp_conditional_sync = <Procedure_Error>( //move this one to _easync
     precondition: boolean,
-    procedure: _easync.Unguaranteed_Procedure_Promise<Procedure_Error>,
-): _easync.Unguaranteed_Procedure_Promise<Procedure_Error> => {
+    procedure: _et.Unguaranteed_Procedure_Promise<Procedure_Error>,
+): _et.Unguaranteed_Procedure_Promise<Procedure_Error> => {
     return _easync.__create_unguaranteed_procedure({
         'execute': (on_success, on_exception) => {
             if (precondition) {
@@ -34,14 +34,14 @@ const temp_conditional_sync = <Procedure_Error>( //move this one to _easync
 
 export type Resources = {
     'procedures': {
-        'remove': _easync.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
-        'make directory': _easync.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
-        'write file': _easync.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
+        'remove': _et.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
+        'make directory': _et.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
+        'write file': _et.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
     }
 }
 
 
-export const $$: _easync.Unguaranteed_Procedure<D.Directory_Parameters, D.Directory_Error, Resources> = (
+export const $$: _et.Unguaranteed_Procedure<D.Directory_Parameters, D.Directory_Error, Resources> = (
     $p, $r,
 ) => {
     return _easync.up.sequence<D.Directory_Error>([

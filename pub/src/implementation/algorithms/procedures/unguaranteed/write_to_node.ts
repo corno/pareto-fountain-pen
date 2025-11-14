@@ -16,13 +16,13 @@ import * as d_write_file from "exupery-resources/dist/interface/generated/pareto
 
 export type Resources = {
     'procedures': {
-        'remove': _easync.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
-                'make directory': _easync.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
-                'write file': _easync.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
+        'remove': _et.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
+                'make directory': _et.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
+                'write file': _et.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
     }
 }
 
-export const $$: _easync.Unguaranteed_Procedure<D.Node_Parameters, D.Node_Error, Resources> = (
+export const $$: _et.Unguaranteed_Procedure<D.Node_Parameters, D.Node_Error, Resources> = (
     $p, $r
 ) => {
     return _ea.cc($p.node, ($) => {

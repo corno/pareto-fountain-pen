@@ -20,12 +20,12 @@ import * as d_write_file from "exupery-resources/dist/interface/generated/pareto
 
 export type Resources = {
     'procedures': {
-        'make directory': _easync.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
-        'write file': _easync.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
+        'make directory': _et.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
+        'write file': _et.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
     }
 }
 
-export const $$: _easync.Unguaranteed_Procedure<D.File_Parameters, D.File_Error, Resources> = (
+export const $$: _et.Unguaranteed_Procedure<D.File_Parameters, D.File_Error, Resources> = (
     $p, $r
 ) => {
     return _easync.up.sequence([

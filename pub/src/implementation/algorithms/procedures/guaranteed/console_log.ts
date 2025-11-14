@@ -1,4 +1,4 @@
-import * as _easync from 'exupery-core-async'
+import * as _et from 'exupery-core-types'
 
 import * as _in from "../../../../interface/generated/pareto/schemas/block/data_types/target"
 
@@ -17,12 +17,12 @@ export type Parameters = {
 export type Resources = {
 
     'procedures': {
-        'log': _easync.Guaranteed_Procedure<d_log.Parameters, null>
+        'log': _et.Guaranteed_Procedure<d_log.Parameters, null>
 
     }
 }
 
-export const $$: _easync.Guaranteed_Procedure<Parameters, Resources> = (
+export const $$: _et.Guaranteed_Procedure<Parameters, Resources> = (
     $p, $r
 ) => {
     return $r.procedures.log(
