@@ -14,23 +14,23 @@ import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/imp
 import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_file"
 
 export type Resources = {
-    'procedures': {
+    'commands': {
         'make directory': _et.Command<d_make_directory.Parameters, d_make_directory.Error>
         'write file': _et.Command<d_write_file.Parameters, d_write_file.Error>
     }
 }
 
-export const $$: _et.Command_Procedure<D.File_Parameters, D.File_Error, Resources> = (
-    $r
-) => {
-    return ($p) => _easync.sequence<D.File_Error>(_ea.array_literal([
-        $r.commands['make directory'](
+export const $$: _et.Command_Procedure<D.File_Parameters, D.File_Error, Resources> = _easync.create_command_procedure(
+    ($r, $p) => _easync.p.sequence<D.File_Error>([
+        $r.commands['make directory'].execute.direct(
+            ($) => ['make directory', $],
             {
                 'path': $p['directory path'],
                 'escape spaces in path': true,
             },
-        ).map_error(($) => ['make directory', $]),
-        $r.commands['write file'](
+        ),
+        $r.commands['write file'].execute.direct(
+            ($) => ['write file', $],
             {
                 'path': {
                     'path': `${$p['directory path']}/${$p.filename}`,
@@ -40,6 +40,6 @@ export const $$: _et.Command_Procedure<D.File_Parameters, D.File_Error, Resource
                     t_block_2_lines.Group($p.group, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
                 ),
             },
-        ).map_error(($) => ['write file', $])
-    ]))
-}
+        )
+    ])
+)

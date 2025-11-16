@@ -15,39 +15,42 @@ import * as d_make_directory from "exupery-resources/dist/interface/generated/pa
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
 
 export type Resources = {
-    'procedures': {
+    'commands': {
         'remove': _et.Command<d_remove.Parameters, d_remove.Error>
-                'make directory': _et.Command<d_make_directory.Parameters, d_make_directory.Error>
-                'write file': _et.Command<d_write_file.Parameters, d_write_file.Error>
+        'make directory': _et.Command<d_make_directory.Parameters, d_make_directory.Error>
+        'write file': _et.Command<d_write_file.Parameters, d_write_file.Error>
     }
 }
 
-export const $$: _et.Command_Procedure<D.Node_Parameters, D.Node_Error, Resources> = (
- $r
-) => {
-    return ($p) => _ea.cc($p.node, ($) => {
+export const $$: _et.Command_Procedure<D.Node_Parameters, D.Node_Error, Resources> = _easync.create_command_procedure(
+    ($r, $p) => _ea.cc($p.node, ($) => {
         switch ($[0]) {
             case 'file':
                 return _ea.ss($, ($) => {
-                    return p_write_to_file($r)({
+                    return p_write_to_file($r).execute.direct(
+                        ($): D.Node_Error => ['file', $],
+                        {
                             'group': $,
                             'directory path': $p.path,
                             'filename': $p.key,
                             'indentation': $p.indentation,
                             'newline': $p.newline
-                        }).map_error(($): D.Node_Error => ['file', $])
+                        })
                 })
             case 'directory':
                 return _ea.ss($, ($) => {
-                    return p_write_to_directory($r)({
+                    return p_write_to_directory($r).execute.direct(
+                        ($): D.Node_Error => ['directory', $],
+                        {
                             'directory': $,
                             'path': `${$p.path}/${$p.key}`,
                             'indentation': $p.indentation,
                             'newline': $p.newline,
                             'remove before creating': false,
-                        }).map_error(($): D.Node_Error => ['directory', $])
+                        }
+                    )
                 })
             default: return _ea.au($[0])
         }
     })
-}
+)
