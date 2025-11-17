@@ -6,6 +6,7 @@ import * as t from "../semi_lines/lines"
 import * as t_2 from "./semi_lines"
 import { Signature } from "../../../../interface/algorithms/transformations/block/lines"
 
+import * as sh from "../../../../shorthands/block"
 
 export  const Directory = (
     $: d_in.Directory,
@@ -27,4 +28,13 @@ export const Group = (
 ): d_out.Lines => {
 
     return t.Lines(t_2.Group($), { 'indentation': $p.indentation})
+}
+
+export const Block_Part = (
+    $: d_in.Block_Part,
+    $p: {
+        'indentation': string,
+    }
+): d_out.Lines => {
+    return t.Lines(t_2.Group(sh.group([sh.g.nested_block([$])])), { 'indentation': $p.indentation })
 }
