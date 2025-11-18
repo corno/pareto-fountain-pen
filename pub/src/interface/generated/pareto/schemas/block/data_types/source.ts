@@ -1,4 +1,4 @@
-import * as _pt from 'exupery-core-types'
+import * as _et from 'exupery-core-types'
 
 import * as _i_core from "../../../core/resolved"
 
@@ -8,7 +8,7 @@ export type _T_Block_Part = _i_core._T_State_Group<null,
     | readonly ['snippet', string]
     | readonly ['indent', _T_Group]
     | readonly ['sub block', _T_Block]
-    | readonly ['optional', _pt.Optional_Value<_T_Block_Part>]
+    | readonly ['optional', _et.Optional_Value<_T_Block_Part>]
     | readonly ['nothing', null]
 >
 
@@ -18,7 +18,7 @@ export type _T_Group_Part = _i_core._T_State_Group<null,
     | readonly ['nested block', _T_Block]
     | readonly ['block', string]
     | readonly ['sub group', _T_Group]
-    | readonly ['optional', _pt.Optional_Value<_T_Group_Part>]
+    | readonly ['optional', _et.Optional_Value<_T_Group_Part>]
     | readonly ['nothing', null]
 >
 
@@ -66,14 +66,14 @@ export namespace _T_Block_Part {
             }
             export type O = _T_Block_Part
         }
-        export type optional = _pt.Optional_Value<_T_Block_Part>
+        export type optional = _et.Optional_Value<_T_Block_Part>
         export type nothing = null
     }
     export type SG = 
         | readonly ['snippet', string]
         | readonly ['indent', _T_Group]
         | readonly ['sub block', _T_Block]
-        | readonly ['optional', _pt.Optional_Value<_T_Block_Part>]
+        | readonly ['optional', _et.Optional_Value<_T_Block_Part>]
         | readonly ['nothing', null]
 }
 
@@ -103,14 +103,14 @@ export namespace _T_Group_Part {
             }
             export type O = _T_Group_Part
         }
-        export type optional = _pt.Optional_Value<_T_Group_Part>
+        export type optional = _et.Optional_Value<_T_Group_Part>
         export type nothing = null
     }
     export type SG = 
         | readonly ['nested block', _T_Block]
         | readonly ['block', string]
         | readonly ['sub group', _T_Group]
-        | readonly ['optional', _pt.Optional_Value<_T_Group_Part>]
+        | readonly ['optional', _et.Optional_Value<_T_Group_Part>]
         | readonly ['nothing', null]
 }
 
@@ -166,14 +166,14 @@ export namespace Block_Part {
             }
             export type O = _T_Block_Part
         }
-        export type optional = _pt.Optional_Value<_T_Block_Part>
+        export type optional = _et.Optional_Value<_T_Block_Part>
         export type nothing = null
     }
     export type SG = 
         | readonly ['snippet', string]
         | readonly ['indent', _T_Group]
         | readonly ['sub block', _T_Block]
-        | readonly ['optional', _pt.Optional_Value<_T_Block_Part>]
+        | readonly ['optional', _et.Optional_Value<_T_Block_Part>]
         | readonly ['nothing', null]
 }
 
@@ -203,14 +203,14 @@ export namespace Group_Part {
             }
             export type O = _T_Group_Part
         }
-        export type optional = _pt.Optional_Value<_T_Group_Part>
+        export type optional = _et.Optional_Value<_T_Group_Part>
         export type nothing = null
     }
     export type SG = 
         | readonly ['nested block', _T_Block]
         | readonly ['block', string]
         | readonly ['sub group', _T_Group]
-        | readonly ['optional', _pt.Optional_Value<_T_Group_Part>]
+        | readonly ['optional', _et.Optional_Value<_T_Group_Part>]
         | readonly ['nothing', null]
 }
 
