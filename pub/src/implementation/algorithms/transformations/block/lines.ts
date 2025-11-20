@@ -30,6 +30,16 @@ export const Group = (
     return t.Lines(t_2.Group($), { 'indentation': $p.indentation})
 }
 
+export const Group_Part = (
+    $: d_in.Group_Part,
+    $p: {
+        'indentation': string
+    }
+): d_out.Lines => {
+
+    return t.Lines(t_2.Group(sh.group([$])), { 'indentation': $p.indentation})
+}
+
 export const Block_Part = (
     $: d_in.Block_Part,
     $p: {
