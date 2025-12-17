@@ -33,6 +33,6 @@
     "exupery-core-alg": "^0.5.14",
     "exupery-core-data": "^0.3.3",
     "exupery-core-dev": "^0.3.2",
-    "pareto-standard-operations": "^0.3.14"
+    "pareto-standard-operations": "^0.3.15"
   }
 }
