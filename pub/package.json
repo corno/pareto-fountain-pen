@@ -32,7 +32,7 @@
   "dependencies": {
     "exupery-core-alg": "^0.5.15",
     "exupery-core-data": "^0.3.3",
-    "exupery-core-dev": "^0.3.2",
+    "exupery-core-dev": "^0.3.3",
     "pareto-standard-operations": "^0.3.16"
   }
 }
