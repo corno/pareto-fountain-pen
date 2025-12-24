@@ -5,7 +5,7 @@ import { Signature } from "../../../../interface/algorithms/transformations/bloc
 
 import * as t from "./lines"
 
-import { $$ as op_join } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_join } from "pareto-standard-operations/dist/implementation/operations/impure/text/join_list_of_texts_with_separator"
 
 import * as sh from "../../../../shorthands/block"
 

@@ -3,7 +3,7 @@ import * as _ea from 'exupery-core-alg'
 import * as d_in from "../../../../interface/generated/pareto/schemas/semi_lines/data_types/source"
 import * as d_out from "../../../../interface/generated/pareto/schemas/lines/data_types/target"
 
-import { $$ as op_repeat } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/repeat"
+import { $$ as op_repeat } from "pareto-standard-operations/dist/implementation/operations/impure/text/repeat"
 import { Signature } from "../../../../interface/algorithms/transformations/semi_lines/lines"
 
 
