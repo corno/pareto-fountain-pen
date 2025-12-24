@@ -4,7 +4,6 @@ import * as d_out from "../../../../interface/generated/pareto/schemas/lines/dat
 
 import * as t from "../semi_lines/lines"
 import * as t_2 from "./semi_lines"
-import { Signature } from "../../../../interface/algorithms/transformations/block/lines"
 
 import * as sh from "../../../../shorthands/block"
 

@@ -1,8 +1,6 @@
 
 import * as d_in from "../../../../interface/generated/pareto/schemas/block/data_types/source"
 
-import { Signature } from "../../../../interface/algorithms/transformations/block/lines"
-
 import * as t from "./lines"
 
 import { $$ as op_join } from "pareto-standard-operations/dist/implementation/operations/impure/text/join_list_of_texts_with_separator"
