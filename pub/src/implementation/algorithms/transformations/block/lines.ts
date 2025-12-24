@@ -8,7 +8,7 @@ import { Signature } from "../../../../interface/algorithms/transformations/bloc
 
 import * as sh from "../../../../shorthands/block"
 
-export  const Directory = (
+export const Directory = (
     $: d_in.Directory,
     $p: {
         'indentation': string,
