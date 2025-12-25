@@ -1,9 +1,9 @@
 import * as _ea from 'exupery-core-alg'
 
-import * as t_fountain_pen_semi_lines_to_lines from "../transformers/schemas/semi_lines/lines"
+import * as t_fountain_pen_semi_lines_to_lines from "../../transformers/schemas/semi_lines/lines"
 
-import * as d_in from "../../interface/generated/pareto/schemas/semi_lines/data_types/source"
-import * as d_out from "../../interface/generated/pareto/schemas/text/data_types/target"
+import * as d_in from "../../../interface/generated/pareto/schemas/semi_lines/data_types/source"
+import * as d_out from "../../../interface/generated/pareto/schemas/text/data_types/target"
 
 import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/implementation/operations/pure/text/join_list_of_texts"
 

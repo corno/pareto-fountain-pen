@@ -1,10 +1,10 @@
 
-import * as d_in from "../../interface/generated/pareto/schemas/block/data_types/source"
+import * as d_in from "../../../interface/generated/pareto/schemas/block/data_types/source"
 
-import * as t_fountain_pen_block_to_semi_lines from "../transformers/schemas/block/semi_lines"
+import * as t_fountain_pen_block_to_semi_lines from "../../transformers/schemas/block/semi_lines"
 import * as s_semi_lines from "./semi_lines"
 
-import * as sh from "../../shorthands/block"
+import * as sh from "../../../shorthands/block"
 
 export const Group = (
     $: d_in.Group,
