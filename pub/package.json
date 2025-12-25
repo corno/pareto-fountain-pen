@@ -1,6 +1,6 @@
 {
   "name": "pareto-fountain-pen",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "A TypeScript library for easily generating source code files with proper indentation in the pareto programming style/language",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,6 +33,6 @@
     "exupery-core-alg": "^0.5.15",
     "exupery-core-data": "^0.3.3",
     "exupery-core-dev": "^0.3.3",
-    "pareto-standard-operations": "^0.3.21"
+    "pareto-standard-operations": "^0.3.22"
   }
 }
