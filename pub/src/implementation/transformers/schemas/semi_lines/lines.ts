@@ -3,7 +3,7 @@ import * as _ea from 'exupery-core-alg'
 import * as d_in from "../../../../interface/generated/pareto/schemas/semi_lines/data_types/source"
 import * as d_out from "../../../../interface/generated/pareto/schemas/lines/data_types/target"
 
-import { $$ as op_repeat } from "pareto-standard-operations/dist/implementation/serializers/primitives/text/repeated"
+import { $$ as s_repeated } from "pareto-standard-operations/dist/implementation/serializers/primitives/text/repeated"
 
 export const Lines = (
     $: d_in.Lines,
@@ -12,7 +12,7 @@ export const Lines = (
     }
 ): d_out.Lines => {
     return $.map(($) => {
-        return op_repeat($p.indentation, { 'count': $.indentation }) + $.text
+        return s_repeated($p.indentation, { 'count': $.indentation }) + $.text
     })
 }
 
