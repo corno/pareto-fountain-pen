@@ -30,9 +30,9 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "exupery-core-alg": "^0.5.15",
+    "exupery-core-alg": "^0.5.18",
     "exupery-core-data": "^0.3.3",
     "exupery-core-dev": "^0.3.3",
-    "pareto-standard-operations": "^0.3.24"
+    "pareto-standard-operations": "^0.3.26"
   }
 }
