@@ -7,7 +7,7 @@ export const $$ = <T>($: _et.List<T>): _et.List<{
     'is last': boolean
     'index': number
 }> => {
-    const length = $.__get_number_of_elements()
+    const length = $.get_number_of_elements()
     let index = -1
     return $.map(($) => {
         index += 1
