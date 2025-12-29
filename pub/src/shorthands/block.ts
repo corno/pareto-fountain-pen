@@ -1,9 +1,8 @@
-import * as _edata from 'exupery-core-data'
-import * as _et from 'exupery-core-types'
+import * as _pi from 'pareto-core-interface'
+import * as sh from 'pareto-core-shorthands/dist/unconstrained'
 
 import * as _target from "../interface/generated/pareto/schemas/block/data_types/target"
 
-import * as sh from 'exupery-core-data/dist/shorthands/unconstrained'
 
 export namespace g {
 
@@ -15,7 +14,7 @@ export namespace g {
 
     export const nothing = (): _target.Group_Part => ['nothing', null]
 
-    export const optional = (Group_Part: _et.Optional_Value<_target.Group.L>): _target.Group_Part => ['optional', Group_Part]
+    export const optional = (Group_Part: _pi.Optional_Value<_target.Group.L>): _target.Group_Part => ['optional', Group_Part]
 
 }
 
@@ -29,7 +28,7 @@ export namespace b {
 
     export const nothing = (): _target.Block_Part => ['nothing', null]
 
-    export const optional = (block_part: _et.Optional_Value<_target.Block.L>): _target.Block_Part => ['optional', block_part]
+    export const optional = (block_part: _pi.Optional_Value<_target.Block.L>): _target.Block_Part => ['optional', block_part]
 
 }
 

@@ -1,7 +1,7 @@
-import * as _et from 'exupery-core-types'
-import * as _ea from 'exupery-core-alg'
+import * as _pi from 'pareto-core-interface'
+import * as _pt from 'pareto-core-transformer'
 
-export const $$ = <T>($: _et.List<T>): _et.List<{
+export const $$ = <T>($: _pi.List<T>): _pi.List<{
     'value': T
     'is first': boolean
     'is last': boolean

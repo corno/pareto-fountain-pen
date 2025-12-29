@@ -1,4 +1,4 @@
-import * as _et from 'exupery-core-types'
+import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../interface/generated/pareto/schemas/block/data_types/source"
 import * as d_x from "../../../interface/to_be_generated/block_serialize"
@@ -8,7 +8,7 @@ import * as s_semi_lines from "./semi_lines"
 
 import * as sh from "../../../shorthands/block"
 
-export const Group: _et.Serializer_With_Parameters<d_in.Group, d_x.Parameters> = ($, $p) => s_semi_lines.Lines(
+export const Group: _pi.Serializer_With_Parameters<d_in.Group, d_x.Parameters> = ($, $p) => s_semi_lines.Lines(
     t_fountain_pen_block_to_semi_lines.Group($),
     {
         'indentation': $p.indentation,
@@ -17,7 +17,7 @@ export const Group: _et.Serializer_With_Parameters<d_in.Group, d_x.Parameters> =
 )
 
 
-export const Block_Part: _et.Serializer_With_Parameters<d_in.Block_Part, d_x.Parameters> = ($, $p) => s_semi_lines.Lines(
+export const Block_Part: _pi.Serializer_With_Parameters<d_in.Block_Part, d_x.Parameters> = ($, $p) => s_semi_lines.Lines(
     t_fountain_pen_block_to_semi_lines.Group(sh.group([sh.g.nested_block([$])])),
     {
         'indentation': $p.indentation,
