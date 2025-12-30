@@ -1,8 +1,8 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pinternals from 'pareto-core-internals'
 
-import * as d_in from "../../../../interface/generated/pareto/schemas/block/data_types/source"
-import * as d_out from "../../../../interface/generated/pareto/schemas/semi_lines/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/block/data_types/source"
+import * as d_out from "../../../../../interface/generated/pareto/schemas/semi_lines/data_types/target"
 
 export const Directory = (
     $: d_in.Directory,

@@ -1,12 +1,12 @@
 import * as _pi from 'pareto-core-interface'
 
-import * as d_in from "../../../interface/generated/pareto/schemas/block/data_types/source"
-import * as d_x from "../../../interface/to_be_generated/block_serialize"
+import * as d_in from "../../../../interface/generated/pareto/schemas/block/data_types/source"
+import * as d_x from "../../../../interface/to_be_generated/block_serialize"
 
-import * as t_fountain_pen_block_to_semi_lines from "../../transformers/schemas/block/semi_lines"
-import * as s_semi_lines from "./semi_lines"
+import * as t_fountain_pen_block_to_semi_lines from "./transformers/semi_lines"
+import * as s_semi_lines from "../semi_lines/serializers"
 
-import * as sh from "../../../shorthands/block"
+import * as sh from "../../../../shorthands/block"
 
 export const Group: _pi.Serializer_With_Parameters<d_in.Group, d_x.Parameters> = ($, $p) => s_semi_lines.Lines(
     t_fountain_pen_block_to_semi_lines.Group($),
