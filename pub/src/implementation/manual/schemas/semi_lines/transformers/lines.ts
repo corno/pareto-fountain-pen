@@ -3,7 +3,7 @@ import * as _pt from 'pareto-core-transformer'
 import * as d_in from "../../../../../interface/generated/pareto/schemas/semi_lines/data_types/source"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/lines/data_types/target"
 
-import { $$ as s_repeated } from "pareto-standard-operations/dist/implementation/serializers/primitives/text/repeated"
+import { $$ as s_repeated } from "pareto-standard-operations/dist/implementation/manual/primitives/text/serializers/repeated"
 
 export const Lines = (
     $: d_in.Lines,
