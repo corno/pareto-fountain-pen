@@ -1,4 +1,4 @@
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pinternals from 'pareto-core-internals'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/block/data_types/source"
@@ -6,11 +6,11 @@ import * as d_out from "../../../../../interface/generated/pareto/schemas/semi_l
 
 export const Directory = (
     $: d_in.Directory,
-): d_out.Directory => $.map(($) => _pt.cc($, ($): d_out.Directory.D => _pt.cc($, ($) => {
+): d_out.Directory => $.map(($) => _p.cc($, ($): d_out.Directory.D => _p.cc($, ($) => {
     switch ($[0]) {
-        case 'file': return _pt.ss($, ($) => ['file', Group($)])
-        case 'directory': return _pt.ss($, ($) => ['directory', Directory($)])
-        default: return _pt.au($[0])
+        case 'file': return _p.ss($, ($) => ['file', Group($)])
+        case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
+        default: return _p.au($[0])
     }
 })))
 
@@ -28,7 +28,7 @@ export const Group = (
         ): void => {
             switch ($[0]) {
                 case 'block':
-                    _pt.ss($, ($) => {
+                    _p.ss($, ($) => {
                         $i['add element']({
                             'indentation': $p['current indentation'],
                             'text': $,
@@ -36,29 +36,29 @@ export const Group = (
                     })
                     break
                 case 'nested block':
-                    _pt.ss($, ($) => {
+                    _p.ss($, ($) => {
                         Block($, { 'current indentation': $p['current indentation'] })
                     })
                     break
                 case 'nothing':
-                    _pt.ss($, ($) => {
+                    _p.ss($, ($) => {
                         // do nothing
                     })
                     break
                 case 'sub group':
-                    _pt.ss($, ($) => {
+                    _p.ss($, ($) => {
                         Group($, { 'current indentation': $p['current indentation'] })
                     })
                     break
                 case 'optional':
-                    _pt.ss($, ($) => {
+                    _p.ss($, ($) => {
                         $.map(($) => {
                             Group_Part($, { 'current indentation': $p['current indentation'] })
 
                         })
                     })
                     break
-                default: _pt.au($[0])
+                default: _p.au($[0])
             }
         }
         const Group = (
@@ -91,12 +91,12 @@ export const Group = (
 
                 switch ($[0]) {
                     case 'snippet':
-                        _pt.ss($, ($) => {
+                        _p.ss($, ($) => {
                             current_line = current_line === null ? $ : current_line + $
                         })
                         break
                     case 'indent':
-                        _pt.ss($, ($) => {
+                        _p.ss($, ($) => {
                             if (current_line !== null) {
                                 $i['add element']({
                                     'indentation': $p['current indentation'],
@@ -108,25 +108,25 @@ export const Group = (
                         })
                         break
                     case 'nothing':
-                        _pt.ss($, ($) => {
+                        _p.ss($, ($) => {
                             // do nothing
                         })
                         break
                     case 'sub block':
-                        _pt.ss($, ($) => {
+                        _p.ss($, ($) => {
 
                             Block2($)
                         })
                         break
                     case 'optional':
-                        _pt.ss($, ($) => {
+                        _p.ss($, ($) => {
                             $.map(($) => {
                                 Block_Part($)
 
                             })
                         })
                         break
-                    default: _pt.au($[0])
+                    default: _p.au($[0])
                 }
 
             }

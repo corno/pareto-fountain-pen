@@ -1,4 +1,4 @@
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/semi_lines/data_types/source"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/lines/data_types/target"
@@ -22,11 +22,11 @@ export const Directory = (
         'indentation': string
     }
 ): d_out.Directory => {
-    return $.map(($) => _pt.cc($, ($): d_out.Directory.D => {
+    return $.map(($) => _p.cc($, ($): d_out.Directory.D => {
         switch ($[0]) {
-            case 'file': return _pt.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
-            case 'directory': return _pt.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])
-            default: return _pt.au($[0])
+            case 'file': return _p.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
+            case 'directory': return _p.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])
+            default: return _p.au($[0])
         }
     }))
 }
