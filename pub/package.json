@@ -31,9 +31,9 @@
   },
   "dependencies": {
     "pareto-core-dev": "^0.11.1",
-    "pareto-core-refiner": "^0.1.6",
-    "pareto-core-shorthands": "^0.1.3",
-    "pareto-core-transformer": "^0.1.6",
+    "pareto-core-refiner": "^0.1.7",
+    "pareto-core-shorthands": "^0.1.4",
+    "pareto-core-transformer": "^0.1.7",
     "pareto-standard-operations": "^0.3.33"
   }
 }
