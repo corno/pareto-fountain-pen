@@ -1,0 +1,246 @@
+(
+    'operations': {
+    }
+    'schema tree': | 'set' {
+        `block`: | 'schema' (
+            'complexity': | 'unconstrained' ~
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'number types': {
+                }
+                'text types': {
+                    `Output`: (
+                        'type': | 'single line' ~
+                    )
+                }
+            )
+            'imports': {
+            }
+            'types': {
+                `Block Part`: (
+                    'node': | 'state group' {
+                        `snippet`: (
+                            'description': ~
+                            'node': | 'text' | 'global' `Output`
+                        )
+                        `indent`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Group`
+                        )
+                        `sub block`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Block`
+                        )
+                        `optional`: (
+                            'description': ~
+                            'node': | 'optional' | 'component' | 'internal cyclic' `Block Part`
+                        )
+                        `nothing`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                    }
+                    'type parameters': {
+                    }
+                )
+                `Block`: (
+                    'node': | 'list' (
+                        'node': | 'component' | 'internal' `Block Part`
+                    )
+                    'type parameters': {
+                    }
+                )
+                `Group Part`: (
+                    'node': | 'state group' {
+                        `nested block`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Block`
+                        )
+                        `block`: (
+                            'description': ~
+                            'node': | 'text' | 'global' `Output`
+                        )
+                        `sub group`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Group`
+                        )
+                        `optional`: (
+                            'description': ~
+                            'node': | 'optional' | 'component' | 'internal cyclic' `Group Part`
+                        )
+                        `nothing`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                    }
+                    'type parameters': {
+                    }
+                )
+                `Group`: (
+                    'node': | 'list' (
+                        'node': | 'component' | 'internal' `Group Part`
+                    )
+                    'type parameters': {
+                    }
+                )
+                `Node`: (
+                    'node': | 'state group' {
+                        `file`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Group`
+                        )
+                        `directory`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Directory`
+                        )
+                    }
+                    'type parameters': {
+                    }
+                )
+                `Directory`: (
+                    'node': | 'dictionary' (
+                        'node': | 'component' | 'internal' `Node`
+                        'ordered': `false`
+                    )
+                    'type parameters': {
+                    }
+                )
+            }
+        )
+        `lines`: | 'schema' (
+            'complexity': | 'unconstrained' ~
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'number types': {
+                }
+                'text types': {
+                    `Output`: (
+                        'type': | 'single line' ~
+                    )
+                }
+            )
+            'imports': {
+            }
+            'types': {
+                `Lines`: (
+                    'node': | 'list' (
+                        'node': | 'text' | 'global' `Output`
+                    )
+                    'type parameters': {
+                    }
+                )
+                `Directory`: (
+                    'node': | 'dictionary' (
+                        'node': | 'state group' {
+                            `file`: (
+                                'description': ~
+                                'node': | 'component' | 'internal' `Lines`
+                            )
+                            `directory`: (
+                                'description': ~
+                                'node': | 'component' | 'internal cyclic' `Directory`
+                            )
+                        }
+                        'ordered': `false`
+                    )
+                    'type parameters': {
+                    }
+                )
+            }
+        )
+        `semi lines`: | 'schema' (
+            'complexity': | 'unconstrained' ~
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'number types': {
+                }
+                'text types': {
+                    `Output`: (
+                        'type': | 'single line' ~
+                    )
+                }
+            )
+            'imports': {
+            }
+            'types': {
+                `Lines`: (
+                    'node': | 'list' (
+                        'node': | 'group' {
+                            `text`: (
+                                'description': ~
+                                'node': | 'text' | 'global' `Output`
+                            )
+                            `indentation`: (
+                                'description': ~
+                                'node': | 'number' | 'local' (
+                                    'precision': | 'exact' (
+                                        'decimal separator offset': ~
+                                        'type': | 'natural' ~
+                                    )
+                                )
+                            )
+                        }
+                    )
+                    'type parameters': {
+                    }
+                )
+                `Directory`: (
+                    'node': | 'dictionary' (
+                        'node': | 'state group' {
+                            `file`: (
+                                'description': ~
+                                'node': | 'component' | 'internal' `Lines`
+                            )
+                            `directory`: (
+                                'description': ~
+                                'node': | 'component' | 'internal cyclic' `Directory`
+                            )
+                        }
+                        'ordered': `false`
+                    )
+                    'type parameters': {
+                    }
+                )
+            }
+        )
+        `text`: | 'schema' (
+            'complexity': | 'unconstrained' ~
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'number types': {
+                }
+                'text types': {
+                    `Output`: (
+                        'type': | 'single line' ~
+                    )
+                }
+            )
+            'imports': {
+            }
+            'types': {
+                `Lines`: (
+                    'node': | 'text' | 'global' `Output`
+                    'type parameters': {
+                    }
+                )
+                `Directory`: (
+                    'node': | 'dictionary' (
+                        'node': | 'state group' {
+                            `file`: (
+                                'description': ~
+                                'node': | 'component' | 'internal' `Lines`
+                            )
+                            `directory`: (
+                                'description': ~
+                                'node': | 'component' | 'internal cyclic' `Directory`
+                            )
+                        }
+                        'ordered': `false`
+                    )
+                    'type parameters': {
+                    }
+                )
+            }
+        )
+    }
+)
