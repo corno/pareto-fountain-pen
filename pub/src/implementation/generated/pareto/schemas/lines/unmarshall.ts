@@ -22,7 +22,7 @@ export const Directory: _i_signatures._T_Directory = ($, $p) => _i_generic.proce
         'value': ($) => _i_generic.process_unconstrained_state_group(
             $,
             {
-                'states': _pa.dictionary_literal({
+                'states': _pa.dictionary.literal({
                     'file': ($): _i_out._T_Directory.D.SG => ['file', Lines(
                         $,
                         {

@@ -1,4 +1,4 @@
-import * as _pa from 'pareto-core-refiner'
+import * as _p from 'pareto-core-refiner'
 import * as _pd from 'pareto-core-dev'
 
 import * as _i_generic from "../../generic/unmarshall"
@@ -10,7 +10,7 @@ import * as _i_out from "../../../../../interface/generated/pareto/schemas/block
 export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => _i_generic.process_unconstrained_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _p.dictionary.literal({
             'snippet': ($): _i_out._T_Block_Part.SG => ['snippet', _i_generic.process_text(
                 $,
                 null
@@ -59,7 +59,7 @@ export const Block: _i_signatures._T_Block = ($, $p) => _i_generic.process_uncon
 export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => _i_generic.process_unconstrained_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _p.dictionary.literal({
             'nested block': ($): _i_out._T_Group_Part.SG => ['nested block', Block(
                 $,
                 {
@@ -108,7 +108,7 @@ export const Group: _i_signatures._T_Group = ($, $p) => _i_generic.process_uncon
 export const Node: _i_signatures._T_Node = ($, $p) => _i_generic.process_unconstrained_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _p.dictionary.literal({
             'file': ($): _i_out._T_Node.SG => ['file', Group(
                 $,
                 {

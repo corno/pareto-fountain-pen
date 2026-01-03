@@ -18,7 +18,7 @@ export const Group = (
     $: d_in.Group,
 ): d_out.Lines => {
 
-    return _pinternals.build_list(($i) => {
+    return _pinternals.list_build(($i) => {
 
         const Group_Part = (
             $: d_in.Group_Part,
