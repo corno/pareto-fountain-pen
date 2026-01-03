@@ -12,38 +12,28 @@ export const Directory = (
     $p: {
         'indentation': string,
     }
-): d_out.Directory => {
-    return t.Directory(
-        t_2.Directory($),
-        $p
-    )
-}
+): d_out.Directory => t.Directory(
+    t_2.Directory($),
+    $p
+)
 
 export const Group = (
     $: d_in.Group,
     $p: {
         'indentation': string
     }
-): d_out.Lines => {
-
-    return t.Lines(t_2.Group($), { 'indentation': $p.indentation})
-}
+): d_out.Lines => t.Lines(t_2.Group($), { 'indentation': $p.indentation })
 
 export const Group_Part = (
     $: d_in.Group_Part,
     $p: {
         'indentation': string
     }
-): d_out.Lines => {
-
-    return t.Lines(t_2.Group(sh.group([$])), { 'indentation': $p.indentation})
-}
+): d_out.Lines => t.Lines(t_2.Group(sh.group([$])), { 'indentation': $p.indentation })
 
 export const Block_Part = (
     $: d_in.Block_Part,
     $p: {
         'indentation': string,
     }
-): d_out.Lines => {
-    return t.Lines(t_2.Group(sh.group([sh.g.nested_block([$])])), { 'indentation': $p.indentation })
-}
+): d_out.Lines => t.Lines(t_2.Group(sh.group([sh.g.nested_block([$])])), { 'indentation': $p.indentation })
