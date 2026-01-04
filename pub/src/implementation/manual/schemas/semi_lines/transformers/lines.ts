@@ -10,23 +10,17 @@ export const Lines = (
     $p: {
         'indentation': string
     }
-): d_out.Lines => {
-    return $.map(($) => {
-        return s_repeated($p.indentation, { 'count': $.indentation }) + $.text
-    })
-}
+): d_out.Lines => $.map(($) => s_repeated($p.indentation, { 'count': $.indentation }) + $.text)
 
 export const Directory = (
     $: d_in.Directory,
     $p: {
         'indentation': string
     }
-): d_out.Directory => {
-    return $.map(($) => _p.cc($, ($): d_out.Directory.D => {
-        switch ($[0]) {
-            case 'file': return _p.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
-            case 'directory': return _p.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])
-            default: return _p.au($[0])
-        }
-    }))
-}
+): d_out.Directory => $.map(($) => _p.cc($, ($): d_out.Directory.D => {
+    switch ($[0]) {
+        case 'file': return _p.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
+        case 'directory': return _p.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])
+        default: return _p.au($[0])
+    }
+}))

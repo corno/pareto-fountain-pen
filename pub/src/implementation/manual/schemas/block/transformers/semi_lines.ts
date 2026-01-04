@@ -16,28 +16,93 @@ export const Directory = (
 
 export const Group = (
     $: d_in.Group,
-): d_out.Lines => {
+): d_out.Lines => _pinternals.list_build(($i) => {
 
-    return _pinternals.list_build(($i) => {
+    const Group_Part = (
+        $: d_in.Group_Part,
+        $p: {
+            'current indentation': number
+        }
+    ): void => {
+        switch ($[0]) {
+            case 'block':
+                _p.ss($, ($) => {
+                    $i['add element']({
+                        'indentation': $p['current indentation'],
+                        'text': $,
+                    })
+                })
+                break
+            case 'nested block':
+                _p.ss($, ($) => {
+                    Block($, { 'current indentation': $p['current indentation'] })
+                })
+                break
+            case 'nothing':
+                _p.ss($, ($) => {
+                    // do nothing
+                })
+                break
+            case 'sub group':
+                _p.ss($, ($) => {
+                    Group($, { 'current indentation': $p['current indentation'] })
+                })
+                break
+            case 'optional':
+                _p.ss($, ($) => {
+                    $.map(($) => {
+                        Group_Part($, { 'current indentation': $p['current indentation'] })
 
-        const Group_Part = (
-            $: d_in.Group_Part,
-            $p: {
-                'current indentation': number
-            }
+                    })
+                })
+                break
+            default: _p.au($[0])
+        }
+    }
+    const Group = (
+        $: d_in.Group,
+        $p: {
+            'current indentation': number
+        }
+    ): void => {
+        $.__for_each(($) => {
+            Group_Part($, { 'current indentation': $p['current indentation'] })
+        })
+    }
+    const Block = (
+        $: d_in.Block,
+        $p: {
+            'current indentation': number
+        }
+    ): void => {
+        let current_line: null | string = null
+        const Block2 = (
+            $: d_in.Block
         ): void => {
+            $.__for_each(($) => {
+                Block_Part($)
+            })
+        }
+        const Block_Part = (
+            $: d_in.Block_Part
+        ): void => {
+
             switch ($[0]) {
-                case 'block':
+                case 'snippet':
                     _p.ss($, ($) => {
-                        $i['add element']({
-                            'indentation': $p['current indentation'],
-                            'text': $,
-                        })
+                        current_line = current_line === null ? $ : current_line + $
                     })
                     break
-                case 'nested block':
+                case 'indent':
                     _p.ss($, ($) => {
-                        Block($, { 'current indentation': $p['current indentation'] })
+                        if (current_line !== null) {
+                            $i['add element']({
+                                'indentation': $p['current indentation'],
+                                'text': current_line,
+                            })
+                        }
+                        current_line = null
+                        Group($, { 'current indentation': $p['current indentation'] + 1 })
                     })
                     break
                 case 'nothing':
@@ -45,103 +110,35 @@ export const Group = (
                         // do nothing
                     })
                     break
-                case 'sub group':
+                case 'sub block':
                     _p.ss($, ($) => {
-                        Group($, { 'current indentation': $p['current indentation'] })
+
+                        Block2($)
                     })
                     break
                 case 'optional':
                     _p.ss($, ($) => {
                         $.map(($) => {
-                            Group_Part($, { 'current indentation': $p['current indentation'] })
+                            Block_Part($)
 
                         })
                     })
                     break
                 default: _p.au($[0])
             }
+
         }
-        const Group = (
-            $: d_in.Group,
-            $p: {
-                'current indentation': number
-            }
-        ): void => {
-            $.__for_each(($) => {
-                Group_Part($, { 'current indentation': $p['current indentation'] })
+        Block2($)
+        if (current_line !== null) {
+            $i['add element']({
+                'indentation': $p['current indentation'],
+                'text': current_line,
             })
         }
-        const Block = (
-            $: d_in.Block,
-            $p: {
-                'current indentation': number
-            }
-        ): void => {
-            let current_line: null | string = null
-            const Block2 = (
-                $: d_in.Block
-            ): void => {
-                $.__for_each(($) => {
-                    Block_Part($)
-                })
-            }
-            const Block_Part = (
-                $: d_in.Block_Part
-            ): void => {
+    }
 
-                switch ($[0]) {
-                    case 'snippet':
-                        _p.ss($, ($) => {
-                            current_line = current_line === null ? $ : current_line + $
-                        })
-                        break
-                    case 'indent':
-                        _p.ss($, ($) => {
-                            if (current_line !== null) {
-                                $i['add element']({
-                                    'indentation': $p['current indentation'],
-                                    'text': current_line,
-                                })
-                            }
-                            current_line = null
-                            Group($, { 'current indentation': $p['current indentation'] + 1 })
-                        })
-                        break
-                    case 'nothing':
-                        _p.ss($, ($) => {
-                            // do nothing
-                        })
-                        break
-                    case 'sub block':
-                        _p.ss($, ($) => {
-
-                            Block2($)
-                        })
-                        break
-                    case 'optional':
-                        _p.ss($, ($) => {
-                            $.map(($) => {
-                                Block_Part($)
-
-                            })
-                        })
-                        break
-                    default: _p.au($[0])
-                }
-
-            }
-            Block2($)
-            if (current_line !== null) {
-                $i['add element']({
-                    'indentation': $p['current indentation'],
-                    'text': current_line,
-                })
-            }
-        }
-
-        Group(
-            $,
-            { 'current indentation': 0 }
-        )
-    })
-}
+    Group(
+        $,
+        { 'current indentation': 0 }
+    )
+})
