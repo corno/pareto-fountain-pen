@@ -1,22 +1,22 @@
 import * as _p from 'pareto-core-transformer'
-import * as _pinternals from 'pareto-core-internals'
+import * as _p_temp_serializer from 'pareto-core-serializer'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/block/data_types/source"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/semi_lines/data_types/target"
 
 export const Directory = (
     $: d_in.Directory,
-): d_out.Directory => $.map(($) => _p.cc($, ($): d_out.Directory.D => _p.cc($, ($) => {
+): d_out.Directory => $.map(($) => _p.sg($, ($): d_out.Directory.D => {
     switch ($[0]) {
         case 'file': return _p.ss($, ($) => ['file', Group($)])
         case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
         default: return _p.au($[0])
     }
-})))
+}))
 
 export const Group = (
     $: d_in.Group,
-): d_out.Lines => _pinternals.list_build(($i) => {
+): d_out.Lines => _p_temp_serializer.list.deprecated_build(($i) => {
 
     const Group_Part = (
         $: d_in.Group_Part,

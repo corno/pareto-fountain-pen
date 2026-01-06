@@ -5,7 +5,7 @@ import * as _i_signatures from "../../../../../interface/generated/pareto/schema
 import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
 
 
-export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'snippet': return _pa.ss($, ($) => ({
             'state': "snippet",
@@ -57,7 +57,7 @@ export const Block: _i_signatures._T_Block = ($, $p) => ['list', $.map(($) => Bl
         'value serializers': $p['value serializers'],
     }
 ))]
-export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'nested block': return _pa.ss($, ($) => ({
             'state': "nested block",
@@ -109,7 +109,7 @@ export const Group: _i_signatures._T_Group = ($, $p) => ['list', $.map(($) => Gr
         'value serializers': $p['value serializers'],
     }
 ))]
-export const Node: _i_signatures._T_Node = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Node: _i_signatures._T_Node = ($, $p) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'file': return _pa.ss($, ($) => ({
             'state': "file",

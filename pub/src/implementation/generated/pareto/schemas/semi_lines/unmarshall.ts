@@ -14,7 +14,7 @@ export const Lines: _i_signatures._T_Lines = ($, $p) => _i_generic.process_uncon
             $,
             {
                 'properties': ($) => ({
-                    'text': _pa.cc(_i_generic.get_entry(
+                    'text': _pa.deprecated_cc(_i_generic.get_entry(
                         $,
                         {
                             'key': "text",
@@ -23,7 +23,7 @@ export const Lines: _i_signatures._T_Lines = ($, $p) => _i_generic.process_uncon
                         $,
                         null
                     )),
-                    'indentation': _pa.cc(_i_generic.get_entry(
+                    'indentation': _pa.deprecated_cc(_i_generic.get_entry(
                         $,
                         {
                             'key': "indentation",

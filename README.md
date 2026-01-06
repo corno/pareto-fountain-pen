@@ -188,7 +188,7 @@ export const generateClass = (classData: ClassData): d_out.Block => {
 Fountain Pen works well with pattern-matched state groups:
 
 ```typescript
-pa.cc(node.type, (type) => {
+pa.sg(node.type, (type) => {
     switch (type[0]) {
         case 'function': return pa.ss(type, (func) => 
             sh.b.snippet(`function ${func.name}()`)
