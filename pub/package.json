@@ -30,7 +30,7 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "pareto-core-dev": "^0.11.2",
+    "pareto-core-dev": "^0.11.4",
     "pareto-core-refiner": "^0.1.17",
     "pareto-core-shorthands": "^0.1.11",
     "pareto-core-transformer": "^0.1.10",
