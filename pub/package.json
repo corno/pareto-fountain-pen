@@ -34,6 +34,6 @@
     "pareto-core-refiner": "^0.1.17",
     "pareto-core-shorthands": "^0.1.11",
     "pareto-core-transformer": "^0.1.10",
-    "pareto-standard-operations": "^0.3.36"
+    "pareto-standard-operations": "^0.3.37"
   }
 }
