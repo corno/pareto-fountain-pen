@@ -1,20 +1,20 @@
-import * as _pa from 'pareto-core-transformer'
-import * as _pd from 'pareto-core-dev'
+import * as _p from 'pareto-core-transformer'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/block/marshall"
 import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
 
 
-export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
-        case 'snippet': return _pa.ss($, ($) => ({
+        case 'snippet': return _p.ss($, ($) => ({
             'state': "snippet",
             'value': ['text', ({
                 'delimiter': ['quote', null],
                 'value': $,
             })],
         }))
-        case 'indent': return _pa.ss($, ($) => ({
+        case 'indent': return _p.ss($, ($) => ({
             'state': "indent",
             'value': Group(
                 $,
@@ -23,7 +23,7 @@ export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.
                 }
             ),
         }))
-        case 'sub block': return _pa.ss($, ($) => ({
+        case 'sub block': return _p.ss($, ($) => ({
             'state': "sub block",
             'value': Block(
                 $,
@@ -32,7 +32,7 @@ export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.
                 }
             ),
         }))
-        case 'optional': return _pa.ss($, ($) => ({
+        case 'optional': return _p.ss($, ($) => ({
             'state': "optional",
             'value': ['optional', $.transform(
                 ($): _i_out._T_Value.SG.optional => ['set', Block_Part(
@@ -44,11 +44,11 @@ export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _pa.
                 () => ['not set', null]
             )],
         }))
-        case 'nothing': return _pa.ss($, ($) => ({
+        case 'nothing': return _p.ss($, ($) => ({
             'state': "nothing",
             'value': ['nothing', null],
         }))
-        default: return _pa.au($[0])
+        default: return _p.au($[0])
     }
 })]
 export const Block: _i_signatures._T_Block = ($, $p) => ['list', $.map(($) => Block_Part(
@@ -57,9 +57,9 @@ export const Block: _i_signatures._T_Block = ($, $p) => ['list', $.map(($) => Bl
         'value serializers': $p['value serializers'],
     }
 ))]
-export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
-        case 'nested block': return _pa.ss($, ($) => ({
+        case 'nested block': return _p.ss($, ($) => ({
             'state': "nested block",
             'value': Block(
                 $,
@@ -68,14 +68,14 @@ export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _pa.
                 }
             ),
         }))
-        case 'block': return _pa.ss($, ($) => ({
+        case 'block': return _p.ss($, ($) => ({
             'state': "block",
             'value': ['text', ({
                 'delimiter': ['quote', null],
                 'value': $,
             })],
         }))
-        case 'sub group': return _pa.ss($, ($) => ({
+        case 'sub group': return _p.ss($, ($) => ({
             'state': "sub group",
             'value': Group(
                 $,
@@ -84,7 +84,7 @@ export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _pa.
                 }
             ),
         }))
-        case 'optional': return _pa.ss($, ($) => ({
+        case 'optional': return _p.ss($, ($) => ({
             'state': "optional",
             'value': ['optional', $.transform(
                 ($): _i_out._T_Value.SG.optional => ['set', Group_Part(
@@ -96,11 +96,11 @@ export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _pa.
                 () => ['not set', null]
             )],
         }))
-        case 'nothing': return _pa.ss($, ($) => ({
+        case 'nothing': return _p.ss($, ($) => ({
             'state': "nothing",
             'value': ['nothing', null],
         }))
-        default: return _pa.au($[0])
+        default: return _p.au($[0])
     }
 })]
 export const Group: _i_signatures._T_Group = ($, $p) => ['list', $.map(($) => Group_Part(
@@ -109,9 +109,9 @@ export const Group: _i_signatures._T_Group = ($, $p) => ['list', $.map(($) => Gr
         'value serializers': $p['value serializers'],
     }
 ))]
-export const Node: _i_signatures._T_Node = ($, $p) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+export const Node: _i_signatures._T_Node = ($, $p) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
-        case 'file': return _pa.ss($, ($) => ({
+        case 'file': return _p.ss($, ($) => ({
             'state': "file",
             'value': Group(
                 $,
@@ -120,7 +120,7 @@ export const Node: _i_signatures._T_Node = ($, $p) => ['state', _pa.deprecated_c
                 }
             ),
         }))
-        case 'directory': return _pa.ss($, ($) => ({
+        case 'directory': return _p.ss($, ($) => ({
             'state': "directory",
             'value': Directory(
                 $,
@@ -129,7 +129,7 @@ export const Node: _i_signatures._T_Node = ($, $p) => ['state', _pa.deprecated_c
                 }
             ),
         }))
-        default: return _pa.au($[0])
+        default: return _p.au($[0])
     }
 })]
 export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.map(($) => Node(

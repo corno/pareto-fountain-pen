@@ -1,5 +1,5 @@
-import * as _pa from 'pareto-core-refiner'
-import * as _pd from 'pareto-core-dev'
+import * as _p from 'pareto-core-refiner'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _i_generic from "../../generic/unmarshall"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/semi_lines/unmarshall"
@@ -14,7 +14,7 @@ export const Lines: _i_signatures._T_Lines = ($, $p) => _i_generic.process_uncon
             $,
             {
                 'properties': ($) => ({
-                    'text': _pa.deprecated_cc(_i_generic.get_entry(
+                    'text': _p.deprecated_cc(_i_generic.get_entry(
                         $,
                         {
                             'key': "text",
@@ -23,7 +23,7 @@ export const Lines: _i_signatures._T_Lines = ($, $p) => _i_generic.process_uncon
                         $,
                         null
                     )),
-                    'indentation': _pa.deprecated_cc(_i_generic.get_entry(
+                    'indentation': _p.deprecated_cc(_i_generic.get_entry(
                         $,
                         {
                             'key': "indentation",
@@ -45,7 +45,7 @@ export const Directory: _i_signatures._T_Directory = ($, $p) => _i_generic.proce
         'value': ($) => _i_generic.process_unconstrained_state_group(
             $,
             {
-                'states': _pa.dictionary.literal({
+                'states': _p.dictionary.literal({
                     'file': ($): _i_out._T_Directory.D.SG => ['file', Lines(
                         $,
                         {

@@ -1,5 +1,5 @@
 import * as _p from 'pareto-core-refiner'
-import * as _pd from 'pareto-core-dev'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _i_generic from "../../generic/unmarshall"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/block/unmarshall"
