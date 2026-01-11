@@ -50,7 +50,7 @@ export const Group = (
                 break
             case 'optional':
                 _p.ss($, ($) => {
-                    $.map(($) => {
+                    $.__o_map(($) => {
                         Group_Part($, { 'current indentation': $p['current indentation'] })
 
                     })
@@ -118,7 +118,7 @@ export const Group = (
                     break
                 case 'optional':
                     _p.ss($, ($) => {
-                        $.map(($) => {
+                        $.__o_map(($) => {
                             Block_Part($)
 
                         })

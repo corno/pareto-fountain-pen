@@ -34,7 +34,7 @@ export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _p.d
         }))
         case 'optional': return _p.ss($, ($) => ({
             'state': "optional",
-            'value': ['optional', $.transform(
+            'value': ['optional', $.__decide(
                 ($): _i_out._T_Value.SG.optional => ['set', Block_Part(
                     $,
                     {
@@ -86,7 +86,7 @@ export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _p.d
         }))
         case 'optional': return _p.ss($, ($) => ({
             'state': "optional",
-            'value': ['optional', $.transform(
+            'value': ['optional', $.__decide(
                 ($): _i_out._T_Value.SG.optional => ['set', Group_Part(
                     $,
                     {
