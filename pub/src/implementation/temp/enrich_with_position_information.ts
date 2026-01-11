@@ -9,7 +9,7 @@ export const $$ = <T>($: _pi.List<T>): _pi.List<{
 }> => {
     const length = $.__get_number_of_elements()
     let index = -1
-    return $.map(($) => {
+    return $.__l_map(($) => {
         index += 1
         return {
             'value': $,

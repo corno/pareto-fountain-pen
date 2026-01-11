@@ -5,7 +5,7 @@ import * as _i_signatures from "../../../../../interface/generated/pareto/schema
 import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
 
 
-export const Lines: _i_signatures._T_Lines = ($, $p) => ['list', $.map(($) => ['text', ({
+export const Lines: _i_signatures._T_Lines = ($, $p) => ['list', $.__l_map(($) => ['text', ({
     'delimiter': ['quote', null],
     'value': $,
 })])]

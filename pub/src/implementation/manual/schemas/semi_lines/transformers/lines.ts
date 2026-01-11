@@ -10,7 +10,7 @@ export const Lines = (
     $p: {
         'indentation': string
     }
-): d_out.Lines => $.map(($) => s_repeated($p.indentation, { 'count': $.indentation }) + $.text)
+): d_out.Lines => $.__l_map(($) => s_repeated($p.indentation, { 'count': $.indentation }) + $.text)
 
 export const Directory = (
     $: d_in.Directory,

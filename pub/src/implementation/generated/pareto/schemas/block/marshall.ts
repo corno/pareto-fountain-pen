@@ -51,7 +51,7 @@ export const Block_Part: _i_signatures._T_Block_Part = ($, $p) => ['state', _p.d
         default: return _p.au($[0])
     }
 })]
-export const Block: _i_signatures._T_Block = ($, $p) => ['list', $.map(($) => Block_Part(
+export const Block: _i_signatures._T_Block = ($, $p) => ['list', $.__l_map(($) => Block_Part(
     $,
     {
         'value serializers': $p['value serializers'],
@@ -103,7 +103,7 @@ export const Group_Part: _i_signatures._T_Group_Part = ($, $p) => ['state', _p.d
         default: return _p.au($[0])
     }
 })]
-export const Group: _i_signatures._T_Group = ($, $p) => ['list', $.map(($) => Group_Part(
+export const Group: _i_signatures._T_Group = ($, $p) => ['list', $.__l_map(($) => Group_Part(
     $,
     {
         'value serializers': $p['value serializers'],

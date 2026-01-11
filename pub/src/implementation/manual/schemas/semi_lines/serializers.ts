@@ -14,5 +14,5 @@ export const Lines: _pi.Serializer_With_Parameters<d_in.Lines, d_x.Parameters> =
         {
             'indentation': $p.indentation,
         }
-    ).map(($) => $ + $p.newline),
+    ).__l_map(($) => $ + $p.newline),
 )
