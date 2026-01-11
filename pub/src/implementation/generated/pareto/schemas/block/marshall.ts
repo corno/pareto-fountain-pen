@@ -132,7 +132,7 @@ export const Node: _i_signatures._T_Node = ($, $p) => ['state', _p.deprecated_cc
         default: return _p.au($[0])
     }
 })]
-export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.map(($) => Node(
+export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.__d_map(($) => Node(
     $,
     {
         'value serializers': $p['value serializers'],

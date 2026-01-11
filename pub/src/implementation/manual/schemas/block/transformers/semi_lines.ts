@@ -6,7 +6,7 @@ import * as d_out from "../../../../../interface/generated/pareto/schemas/semi_l
 
 export const Directory = (
     $: d_in.Directory,
-): d_out.Directory => $.map(($) => _p.sg($, ($): d_out.Directory.D => {
+): d_out.Directory => $.__d_map(($) => _p.sg($, ($): d_out.Directory.D => {
     switch ($[0]) {
         case 'file': return _p.ss($, ($) => ['file', Group($)])
         case 'directory': return _p.ss($, ($) => ['directory', Directory($)])

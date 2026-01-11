@@ -9,7 +9,7 @@ export const Lines: _i_signatures._T_Lines = ($, $p) => ['text', ({
     'delimiter': ['quote', null],
     'value': $,
 })]
-export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+export const Directory: _i_signatures._T_Directory = ($, $p) => ['dictionary', $.__d_map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'file': return _p.ss($, ($) => ({
             'state': "file",
