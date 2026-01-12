@@ -1,23 +1,22 @@
 (
-    'operations': {
-    }
     'schema tree': | 'set' {
         `block`: | 'schema' (
-            'complexity': | 'unconstrained' ~
+            'imports': {
+            }
             'globals': (
                 'complexity': | 'unconstrained' ~
-                'number types': {
-                }
                 'text types': {
                     `Output`: (
                         'type': | 'single line' ~
                     )
                 }
+                'number types': {
+                }
             )
-            'imports': {
-            }
             'types': {
                 `Block Part`: (
+                    'type parameters': {
+                    }
                     'node': | 'state group' {
                         `snippet`: (
                             'description': ~
@@ -40,17 +39,17 @@
                             'node': | 'nothing' ~
                         )
                     }
-                    'type parameters': {
-                    }
                 )
                 `Block`: (
+                    'type parameters': {
+                    }
                     'node': | 'list' (
                         'node': | 'component' | 'internal' `Block Part`
                     )
-                    'type parameters': {
-                    }
                 )
                 `Group Part`: (
+                    'type parameters': {
+                    }
                     'node': | 'state group' {
                         `nested block`: (
                             'description': ~
@@ -73,17 +72,17 @@
                             'node': | 'nothing' ~
                         )
                     }
-                    'type parameters': {
-                    }
                 )
                 `Group`: (
+                    'type parameters': {
+                    }
                     'node': | 'list' (
                         'node': | 'component' | 'internal' `Group Part`
                     )
-                    'type parameters': {
-                    }
                 )
                 `Node`: (
+                    'type parameters': {
+                    }
                     'node': | 'state group' {
                         `file`: (
                             'description': ~
@@ -94,42 +93,42 @@
                             'node': | 'component' | 'internal cyclic' `Directory`
                         )
                     }
-                    'type parameters': {
-                    }
                 )
                 `Directory`: (
+                    'type parameters': {
+                    }
                     'node': | 'dictionary' (
                         'node': | 'component' | 'internal' `Node`
                         'ordered': `false`
                     )
-                    'type parameters': {
-                    }
                 )
             }
+            'complexity': | 'unconstrained' ~
         )
         `lines`: | 'schema' (
-            'complexity': | 'unconstrained' ~
+            'imports': {
+            }
             'globals': (
                 'complexity': | 'unconstrained' ~
-                'number types': {
-                }
                 'text types': {
                     `Output`: (
                         'type': | 'single line' ~
                     )
                 }
+                'number types': {
+                }
             )
-            'imports': {
-            }
             'types': {
                 `Lines`: (
+                    'type parameters': {
+                    }
                     'node': | 'list' (
                         'node': | 'text' | 'global' `Output`
                     )
-                    'type parameters': {
-                    }
                 )
                 `Directory`: (
+                    'type parameters': {
+                    }
                     'node': | 'dictionary' (
                         'node': | 'state group' {
                             `file`: (
@@ -143,27 +142,27 @@
                         }
                         'ordered': `false`
                     )
-                    'type parameters': {
-                    }
                 )
             }
+            'complexity': | 'unconstrained' ~
         )
         `semi lines`: | 'schema' (
-            'complexity': | 'unconstrained' ~
+            'imports': {
+            }
             'globals': (
                 'complexity': | 'unconstrained' ~
-                'number types': {
-                }
                 'text types': {
                     `Output`: (
                         'type': | 'single line' ~
                     )
                 }
+                'number types': {
+                }
             )
-            'imports': {
-            }
             'types': {
                 `Lines`: (
+                    'type parameters': {
+                    }
                     'node': | 'list' (
                         'node': | 'group' {
                             `text`: (
@@ -181,10 +180,10 @@
                             )
                         }
                     )
-                    'type parameters': {
-                    }
                 )
                 `Directory`: (
+                    'type parameters': {
+                    }
                     'node': | 'dictionary' (
                         'node': | 'state group' {
                             `file`: (
@@ -198,32 +197,32 @@
                         }
                         'ordered': `false`
                     )
-                    'type parameters': {
-                    }
                 )
             }
+            'complexity': | 'unconstrained' ~
         )
         `text`: | 'schema' (
-            'complexity': | 'unconstrained' ~
+            'imports': {
+            }
             'globals': (
                 'complexity': | 'unconstrained' ~
-                'number types': {
-                }
                 'text types': {
                     `Output`: (
                         'type': | 'single line' ~
                     )
                 }
+                'number types': {
+                }
             )
-            'imports': {
-            }
             'types': {
                 `Lines`: (
-                    'node': | 'text' | 'global' `Output`
                     'type parameters': {
                     }
+                    'node': | 'text' | 'global' `Output`
                 )
                 `Directory`: (
+                    'type parameters': {
+                    }
                     'node': | 'dictionary' (
                         'node': | 'state group' {
                             `file`: (
@@ -237,10 +236,11 @@
                         }
                         'ordered': `false`
                     )
-                    'type parameters': {
-                    }
                 )
             }
+            'complexity': | 'unconstrained' ~
         )
+    }
+    'operations': {
     }
 )
