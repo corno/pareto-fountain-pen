@@ -1,8 +1,8 @@
 import * as _p from 'pareto-core-transformer'
 import * as _p_temp_serializer from 'pareto-core-serializer'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/block/data_types/source"
-import * as d_out from "../../../../../interface/generated/pareto/schemas/semi_lines/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/block/data"
+import * as d_out from "../../../../../interface/generated/pareto/schemas/semi_lines/data"
 
 export const Directory = (
     $: d_in.Directory,

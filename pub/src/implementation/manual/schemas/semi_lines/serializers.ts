@@ -3,7 +3,7 @@ import * as _pi from 'pareto-core-interface'
 
 import * as t_fountain_pen_semi_lines_to_lines from "./transformers/lines"
 
-import * as d_in from "../../../../interface/generated/pareto/schemas/semi_lines/data_types/source"
+import * as d_in from "../../../../interface/generated/pareto/schemas/semi_lines/data"
 import * as d_x from "../../../../interface/to_be_generated/block_serialize"
 
 import { $$ as s_join_list_of_texts } from "pareto-standard-operations/dist/implementation/temp_serializers/schemas/list_of_texts"

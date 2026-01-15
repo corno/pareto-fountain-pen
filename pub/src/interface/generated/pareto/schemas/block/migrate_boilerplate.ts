@@ -1,222 +1,111 @@
+
 import * as _pi from "pareto-core-interface"
+
+import * as i_out from "./data"
+
+import * as i_in from "./data"
+
+export namespace Block_Part_ {
     
-    import * as _i_out from "./data_types/target"
-    import * as _i_in from "./data_types/source"
+    export type I = i_in.Block_Part
     
-    // **** TYPES
+    export type O = i_out.Block_Part
     
-    export type _T_Block_Part = (
-        $$_: _i_in._T_Block_Part,
-        $$_p: null,
-    ) => _i_out._T_Block_Part
-    
-    export type _T_Block = (
-        $$_: _i_in._T_Block,
-        $$_p: null,
-    ) => _i_out._T_Block
-    
-    export type _T_Group_Part = (
-        $$_: _i_in._T_Group_Part,
-        $$_p: null,
-    ) => _i_out._T_Group_Part
-    
-    export type _T_Group = (
-        $$_: _i_in._T_Group,
-        $$_p: null,
-    ) => _i_out._T_Group
-    
-    export type _T_Node = (
-        $$_: _i_in._T_Node,
-        $$_p: null,
-    ) => _i_out._T_Node
-    
-    export type _T_Directory = (
-        $$_: _i_in._T_Directory,
-        $$_p: null,
-    ) => _i_out._T_Directory
-    
-    // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
-    
-    export type Block_Part = _T_Block_Part
-    
-    export type Block = _T_Block
-    
-    export type Group_Part = _T_Group_Part
-    
-    export type Group = _T_Group
-    
-    export type Node = _T_Node
-    
-    export type Directory = _T_Directory
-    
-    // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
-    
-    export namespace _T_Block_Part {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Block_Part
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Block_Part
     }
     
-    export namespace _T_Block {
+}
+
+export type Block_Part_ = (
+    $$_: Block_Part_.I,
+) => Block_Part_.O
+
+export namespace Block_ {
+    
+    export type I = i_in.Block
+    
+    export type O = i_out.Block
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Block
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Block
     }
     
-    export namespace _T_Group_Part {
+}
+
+export type Block_ = (
+    $$_: Block_.I,
+) => Block_.O
+
+export namespace Group_Part_ {
+    
+    export type I = i_in.Group_Part
+    
+    export type O = i_out.Group_Part
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Group_Part
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Group_Part
     }
     
-    export namespace _T_Group {
+}
+
+export type Group_Part_ = (
+    $$_: Group_Part_.I,
+) => Group_Part_.O
+
+export namespace Group_ {
+    
+    export type I = i_in.Group
+    
+    export type O = i_out.Group
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Group
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Group
     }
     
-    export namespace _T_Node {
+}
+
+export type Group_ = (
+    $$_: Group_.I,
+) => Group_.O
+
+export namespace Node_ {
+    
+    export type I = i_in.Node
+    
+    export type O = i_out.Node
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Node
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Node
     }
     
-    export namespace _T_Directory {
+}
+
+export type Node_ = (
+    $$_: Node_.I,
+) => Node_.O
+
+export namespace Directory_ {
+    
+    export type I = i_in.Directory
+    
+    export type O = i_out.Directory
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Directory
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Directory
     }
     
-    // *** ALIASES FOR NESTED TYPES
-    
-    export namespace Block_Part {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Block_Part
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Block_Part
-    }
-    
-    export namespace Block {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Block
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Block
-    }
-    
-    export namespace Group_Part {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Group_Part
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Group_Part
-    }
-    
-    export namespace Group {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Group
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Group
-    }
-    
-    export namespace Node {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Node
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Node
-    }
-    
-    export namespace Directory {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Directory
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Directory
-    }
+}
+
+export type Directory_ = (
+    $$_: Directory_.I,
+) => Directory_.O
+
+export { 
+    Block_Part_ as Block_Part, 
+    Block_ as Block, 
+    Group_Part_ as Group_Part, 
+    Group_ as Group, 
+    Node_ as Node, 
+    Directory_ as Directory, 
+}

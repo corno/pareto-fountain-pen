@@ -1,82 +1,43 @@
+
 import * as _pi from "pareto-core-interface"
+
+import * as i_out from "./data"
+
+import * as i_in from "./data"
+
+export namespace Lines_ {
     
-    import * as _i_out from "./data_types/target"
-    import * as _i_in from "./data_types/source"
+    export type I = i_in.Lines
     
-    // **** TYPES
+    export type O = i_out.Lines
     
-    export type _T_Lines = (
-        $$_: _i_in._T_Lines,
-        $$_p: null,
-    ) => _i_out._T_Lines
-    
-    export type _T_Directory = (
-        $$_: _i_in._T_Directory,
-        $$_p: null,
-    ) => _i_out._T_Directory
-    
-    // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
-    
-    export type Lines = _T_Lines
-    
-    export type Directory = _T_Directory
-    
-    // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
-    
-    export namespace _T_Lines {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Lines
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Lines
     }
     
-    export namespace _T_Directory {
+}
+
+export type Lines_ = (
+    $$_: Lines_.I,
+) => Lines_.O
+
+export namespace Directory_ {
+    
+    export type I = i_in.Directory
+    
+    export type O = i_out.Directory
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Directory
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Directory
     }
     
-    // *** ALIASES FOR NESTED TYPES
-    
-    export namespace Lines {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Lines
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Lines
-    }
-    
-    export namespace Directory {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Directory
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Directory
-    }
+}
+
+export type Directory_ = (
+    $$_: Directory_.I,
+) => Directory_.O
+
+export { 
+    Lines_ as Lines, 
+    Directory_ as Directory, 
+}

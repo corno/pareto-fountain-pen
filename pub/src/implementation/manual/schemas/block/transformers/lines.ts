@@ -1,6 +1,6 @@
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/block/data_types/source"
-import * as d_out from "../../../../../interface/generated/pareto/schemas/lines/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/block/data"
+import * as d_out from "../../../../../interface/generated/pareto/schemas/lines/data"
 
 import * as t from "../../semi_lines/transformers/lines"
 import * as t_2 from "./semi_lines"

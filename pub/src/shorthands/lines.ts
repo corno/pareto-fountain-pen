@@ -1,6 +1,6 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 
-import * as d_target from "../interface/generated/pareto/schemas/lines/data_types/target"
+import * as d_target from "../interface/generated/pareto/schemas/lines/data"
 
 export namespace d {
 

@@ -1,6 +1,6 @@
 import * as _pi from 'pareto-core-interface'
 
-import * as d_in from "../../../../interface/generated/pareto/schemas/block/data_types/source"
+import * as d_in from "../../../../interface/generated/pareto/schemas/block/data"
 import * as d_x from "../../../../interface/to_be_generated/block_serialize"
 
 import * as t_fountain_pen_block_to_semi_lines from "./transformers/semi_lines"
