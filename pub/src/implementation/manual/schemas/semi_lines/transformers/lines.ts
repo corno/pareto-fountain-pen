@@ -1,11 +1,12 @@
-import * as _p from 'pareto-core-serializer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
+import * as _ps from 'pareto-core-serializer'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/semi_lines/data"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/lines/data"
 
 
-const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _p.text.deprecated_build(($i) => {
+const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _ps.text.deprecated_build(($i) => {
     for (let i = 0; i < $p.count; i++) {
         $i['add snippet']($)
     }

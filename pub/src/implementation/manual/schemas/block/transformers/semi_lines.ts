@@ -16,7 +16,7 @@ export const Directory = (
 
 export const Group = (
     $: d_in.Group,
-): d_out.Lines => _p_temp_serializer.list.deprecated_build(($i) => {
+): d_out.Lines => _p.list.deprecated_build(($i) => {
 
     const Group_Part = (
         $: d_in.Group_Part,
