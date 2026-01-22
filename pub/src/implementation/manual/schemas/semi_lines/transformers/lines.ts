@@ -8,7 +8,7 @@ import * as d_out from "../../../../../interface/generated/pareto/schemas/lines/
 
 const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _ps.text.deprecated_build(($i) => {
     for (let i = 0; i < $p.count; i++) {
-        $i['add snippet']($)
+        $i.add_snippet($)
     }
 })
 

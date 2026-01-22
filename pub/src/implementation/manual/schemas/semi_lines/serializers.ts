@@ -8,7 +8,7 @@ import * as d_x from "../../../../interface/to_be_generated/block_serialize"
 
 const s_join_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _p.text.deprecated_build(($i) => {
     $.__for_each(($) => {
-        $i['add snippet']($)
+        $i.add_snippet($)
     })
 })
 
