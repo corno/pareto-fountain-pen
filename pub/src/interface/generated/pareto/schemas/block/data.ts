@@ -21,6 +21,42 @@ export namespace Block_Part_ {
     
     export type nothing = null
     
+    export namespace rich_list {
+        
+        export namespace elements {
+            
+            export type L = Block_Part_
+            
+        }
+        
+        export type elements = _pi.List<elements.L>
+        
+        export type if_empty = Block_Part_
+        
+        export namespace if_not_empty {
+            
+            export type before = Block_Part_
+            
+            export type separator = Block_Part_
+            
+            export type after = Block_Part_
+            
+        }
+        
+        export type if_not_empty = {
+            readonly 'before': if_not_empty.before
+            readonly 'separator': if_not_empty.separator
+            readonly 'after': if_not_empty.after
+        }
+        
+    }
+    
+    export type rich_list = {
+        readonly 'elements': rich_list.elements
+        readonly 'if empty': rich_list.if_empty
+        readonly 'if not empty': rich_list.if_not_empty
+    }
+    
 }
 
 export type Block_Part_ = 
@@ -29,6 +65,7 @@ export type Block_Part_ =
     | readonly ['sub block', Block_Part_.sub_block]
     | readonly ['optional', Block_Part_.optional]
     | readonly ['nothing', Block_Part_.nothing]
+    | readonly ['rich list', Block_Part_.rich_list]
 
 export namespace Block_ {
     
@@ -56,6 +93,42 @@ export namespace Group_Part_ {
     
     export type nothing = null
     
+    export namespace rich_list {
+        
+        export namespace elements {
+            
+            export type L = Group_Part_
+            
+        }
+        
+        export type elements = _pi.List<elements.L>
+        
+        export type if_empty = Group_Part_
+        
+        export namespace if_not_empty {
+            
+            export type before = Group_Part_
+            
+            export type separator = Group_Part_
+            
+            export type after = Group_Part_
+            
+        }
+        
+        export type if_not_empty = {
+            readonly 'before': if_not_empty.before
+            readonly 'separator': if_not_empty.separator
+            readonly 'after': if_not_empty.after
+        }
+        
+    }
+    
+    export type rich_list = {
+        readonly 'elements': rich_list.elements
+        readonly 'if empty': rich_list.if_empty
+        readonly 'if not empty': rich_list.if_not_empty
+    }
+    
 }
 
 export type Group_Part_ = 
@@ -64,6 +137,7 @@ export type Group_Part_ =
     | readonly ['sub group', Group_Part_.sub_group]
     | readonly ['optional', Group_Part_.optional]
     | readonly ['nothing', Group_Part_.nothing]
+    | readonly ['rich list', Group_Part_.rich_list]
 
 export namespace Group_ {
     

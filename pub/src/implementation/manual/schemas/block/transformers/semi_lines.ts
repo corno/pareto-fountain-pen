@@ -43,6 +43,24 @@ export const Group = (
                     // do nothing
                 })
                 break
+            case 'rich list':
+                _p.ss($, ($) => {
+                    if ($.elements.__get_number_of_elements() === 0) {
+                        Group_Part($['if empty'], { 'current indentation': $p['current indentation'] })
+                    } else {
+                        Group_Part($['if not empty'].before, { 'current indentation': $p['current indentation'] })
+                        let is_first = true
+                        const sep = $['if not empty'].separator
+                        $.elements.__for_each(($) => {
+                            if (!is_first) {
+                                Group_Part(sep, { 'current indentation': $p['current indentation'] })
+                            }
+                            Group_Part($, { 'current indentation': $p['current indentation'] })
+                        })
+                        Group_Part($['if not empty'].after, { 'current indentation': $p['current indentation'] })
+                    }
+                })
+                break
             case 'sub group':
                 _p.ss($, ($) => {
                     Group($, { 'current indentation': $p['current indentation'] })
@@ -108,6 +126,24 @@ export const Group = (
                 case 'nothing':
                     _p.ss($, ($) => {
                         // do nothing
+                    })
+                    break
+                case 'rich list':
+                    _p.ss($, ($) => {
+                        if ($.elements.__get_number_of_elements() === 0) {
+                            Block_Part($['if empty'])
+                        } else {
+                            Block_Part($['if not empty'].before)
+                            let is_first = true
+                            const sep = $['if not empty'].separator
+                            $.elements.__for_each(($) => {
+                                if (!is_first) {
+                                    Block_Part(sep)
+                                }
+                                Block_Part($)
+                            })
+                            Block_Part($['if not empty'].after)
+                        }
                     })
                     break
                 case 'sub block':
