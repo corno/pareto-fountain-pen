@@ -33,7 +33,7 @@
     "pareto-core-interface": "^0.2.1",
     "pareto-core-refiner": "^0.2.2",
     "pareto-core-serializer": "^0.2.2",
-    "pareto-core-shorthands": "^0.2.3",
+    "pareto-core-shorthands": "^0.2.4",
     "pareto-core-transformer": "^0.2.1"
   }
 }
