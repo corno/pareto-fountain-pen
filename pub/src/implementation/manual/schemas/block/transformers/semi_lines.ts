@@ -1,8 +1,8 @@
 import * as _p from 'pareto-core/dist/transformer'
 import * as _p_temp_serializer from 'pareto-core/dist/serializer'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/block/data"
-import * as d_out from "../../../../../interface/generated/pareto/schemas/semi_lines/data"
+import * as d_in from "../../../../../interface/generated/liana/schemas/block/data"
+import * as d_out from "../../../../../interface/generated/liana/schemas/semi_lines/data"
 
 export const Directory = (
     $: d_in.Directory,

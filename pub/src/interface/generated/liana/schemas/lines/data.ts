@@ -1,9 +1,15 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
-import * as i__location from "../../core/location"
+import * as i__location from "../../generic/location"
 
-export type Lines_ = string
+export namespace Lines_ {
+    
+    export type L = string
+    
+}
+
+export type Lines_ = _pi.List<Lines_.L>
 
 export namespace Directory_ {
     

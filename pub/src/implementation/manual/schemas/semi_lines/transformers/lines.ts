@@ -2,8 +2,8 @@ import * as _p from 'pareto-core/dist/transformer'
 import * as _pi from 'pareto-core/dist/interface'
 import * as _ps from 'pareto-core/dist/serializer'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/semi_lines/data"
-import * as d_out from "../../../../../interface/generated/pareto/schemas/lines/data"
+import * as d_in from "../../../../../interface/generated/liana/schemas/semi_lines/data"
+import * as d_out from "../../../../../interface/generated/liana/schemas/lines/data"
 
 
 const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _ps.text.deprecated_build(($i) => {

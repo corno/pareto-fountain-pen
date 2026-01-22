@@ -1,8 +1,8 @@
 import * as _p from 'pareto-core/dist/transformer'
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/semi_lines/data"
-import * as d_out from "../../../../../interface/generated/pareto/schemas/text/data"
+import * as d_in from "../../../../../interface/generated/liana/schemas/semi_lines/data"
+import * as d_out from "../../../../../interface/generated/liana/schemas/text/data"
 import * as d_block_serialize from "../../../../../interface/to_be_generated/block_serialize"
 
 import * as s_semi_lines from "../serializers"

@@ -1,7 +1,7 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as d_target from "../interface/generated/pareto/schemas/block/data"
+import * as d_target from "../interface/generated/liana/schemas/block/data"
 
 
 export namespace g {

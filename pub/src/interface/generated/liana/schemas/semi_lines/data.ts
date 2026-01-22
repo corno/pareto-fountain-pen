@@ -1,11 +1,22 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
-import * as i__location from "../../core/location"
+import * as i__location from "../../generic/location"
 
 export namespace Lines_ {
     
-    export type L = string
+    export namespace L {
+        
+        export type text = string
+        
+        export type indentation = number
+        
+    }
+    
+    export type L = {
+        readonly 'text': L.text
+        readonly 'indentation': L.indentation
+    }
     
 }
 

@@ -3,7 +3,7 @@ import * as _pi from 'pareto-core/dist/interface'
 
 import * as t_fountain_pen_semi_lines_to_lines from "./transformers/lines"
 
-import * as d_in from "../../../../interface/generated/pareto/schemas/semi_lines/data"
+import * as d_in from "../../../../interface/generated/liana/schemas/semi_lines/data"
 import * as d_x from "../../../../interface/to_be_generated/block_serialize"
 
 const s_join_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _p.text.deprecated_build(($i) => {
