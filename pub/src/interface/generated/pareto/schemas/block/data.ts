@@ -107,6 +107,8 @@ export namespace Group_Part_ {
         
         export namespace if_not_empty {
             
+            export type indent = boolean
+            
             export type before = Group_Part_
             
             export type separator = Group_Part_
@@ -116,6 +118,7 @@ export namespace Group_Part_ {
         }
         
         export type if_not_empty = {
+            readonly 'indent': if_not_empty.indent
             readonly 'before': if_not_empty.before
             readonly 'separator': if_not_empty.separator
             readonly 'after': if_not_empty.after
