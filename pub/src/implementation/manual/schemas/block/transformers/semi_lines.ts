@@ -49,13 +49,26 @@ export const Group = (
                         Group_Part($['if empty'], { 'current indentation': $p['current indentation'] })
                     } else {
                         Group_Part($['if not empty'].before, { 'current indentation': $p['current indentation'] })
+                        $['if not empty'].indent
                         let is_first = true
                         const sep = $['if not empty'].separator
+                        const indent = $['if not empty'].indent
+                        let counter = -1
+                        const length = $.elements.__get_number_of_elements()
                         $.elements.__for_each(($) => {
+                            counter++
                             if (!is_first) {
-                                Group_Part(sep, { 'current indentation': $p['current indentation'] })
+
                             }
-                            Group_Part($, { 'current indentation': $p['current indentation'] })
+                            Group(
+                                _p.list.literal([
+                                    $,
+                                    (counter < length - 1)
+                                        ? sep
+                                        : ['nothing', null],
+                                ]),
+                                { 'current indentation': $p['current indentation'] + (indent ? 1 : 0) }
+                            )
                         })
                         Group_Part($['if not empty'].after, { 'current indentation': $p['current indentation'] })
                     }

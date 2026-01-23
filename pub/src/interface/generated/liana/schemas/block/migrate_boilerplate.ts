@@ -18,7 +18,7 @@ export namespace Block_Part_ {
 }
 
 export type Block_Part_ = (
-    $$_: Block_Part_.I,
+    context: Block_Part_.I,
 ) => Block_Part_.O
 
 export namespace Block_ {
@@ -34,7 +34,7 @@ export namespace Block_ {
 }
 
 export type Block_ = (
-    $$_: Block_.I,
+    context: Block_.I,
 ) => Block_.O
 
 export namespace Group_Part_ {
@@ -50,7 +50,7 @@ export namespace Group_Part_ {
 }
 
 export type Group_Part_ = (
-    $$_: Group_Part_.I,
+    context: Group_Part_.I,
 ) => Group_Part_.O
 
 export namespace Group_ {
@@ -66,7 +66,7 @@ export namespace Group_ {
 }
 
 export type Group_ = (
-    $$_: Group_.I,
+    context: Group_.I,
 ) => Group_.O
 
 export namespace Node_ {
@@ -82,7 +82,7 @@ export namespace Node_ {
 }
 
 export type Node_ = (
-    $$_: Node_.I,
+    context: Node_.I,
 ) => Node_.O
 
 export namespace Directory_ {
@@ -98,7 +98,7 @@ export namespace Directory_ {
 }
 
 export type Directory_ = (
-    $$_: Directory_.I,
+    context: Directory_.I,
 ) => Directory_.O
 
 export { 

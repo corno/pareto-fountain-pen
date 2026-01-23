@@ -18,7 +18,7 @@ export namespace Lines_ {
 }
 
 export type Lines_ = (
-    $$_: Lines_.I,
+    context: Lines_.I,
 ) => Lines_.O
 
 export namespace Directory_ {
@@ -34,7 +34,7 @@ export namespace Directory_ {
 }
 
 export type Directory_ = (
-    $$_: Directory_.I,
+    context: Directory_.I,
 ) => Directory_.O
 
 export { 
