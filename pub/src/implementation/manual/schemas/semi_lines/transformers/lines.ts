@@ -24,7 +24,7 @@ export const Directory = (
     $p: {
         'indentation': string
     }
-): d_out.Directory => $.__d_map(($) => _p.sg($, ($): d_out.Directory.D => {
+): d_out.Directory => $.__d_map(($) => _p.decide.state($, ($): d_out.Directory.D => {
     switch ($[0]) {
         case 'file': return _p.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
         case 'directory': return _p.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])
