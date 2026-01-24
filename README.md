@@ -183,24 +183,6 @@ export const generateClass = (classData: ClassData): d_out.Block => {
 }
 ```
 
-## Integration with State Groups
-
-Fountain Pen works well with pattern-matched state groups:
-
-```typescript
-pa.sg(node.type, (type) => {
-    switch (type[0]) {
-        case 'function': return pa.ss(type, (func) => 
-            sh.b.snippet(`function ${func.name}()`)
-        )
-        case 'variable': return pa.ss(type, (variable) => 
-            sh.b.snippet(`const ${variable.name} = ${variable.value}`)
-        )
-        default: return pa.au(type[0])
-    }
-})
-```
-
 ## Common Use Cases
 
 ### Code Generation
