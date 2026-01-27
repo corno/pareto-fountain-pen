@@ -8,7 +8,7 @@ export const Lines: t_signatures.Lines = ($,) => $.__l_map(($,) => ({
     'text': _p.deprecated_cc($['text'], ($,) => $),
     'indentation': _p.deprecated_cc($['indentation'], ($,) => $),
 }))
-export const Directory: t_signatures.Directory = ($,) => $.__d_map(($,key,) => _p.decide.state($, ($,): t_out.Directory.D => {
+export const Directory: t_signatures.Directory = ($,) => $.__d_map(($,id,) => _p.decide.state($, ($,): t_out.Directory.D => {
     switch ($[0]) {
         case 'file':
             return _p.ss($, ($,) => ['file', Lines($)])

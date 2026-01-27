@@ -69,4 +69,4 @@ export const Node: t_signatures.Node = ($,) => _p.decide.state($, ($,): t_out.No
             return _p.au($[0])
     }
 })
-export const Directory: t_signatures.Directory = ($,) => $.__d_map(($,key,) => Node($))
+export const Directory: t_signatures.Directory = ($,) => $.__d_map(($,id,) => Node($))
