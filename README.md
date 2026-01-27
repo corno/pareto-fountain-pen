@@ -241,7 +241,7 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/lines"
 
 export const generate_source_code = ($: null, $p: { 'path': string }) => {
     write_to_disk(
-        modules.map(($, key) => {
+        modules.map(($, id) => {
             return sh.d.directory(transformToOutput(
                 getModule(key)
             ))
