@@ -23,13 +23,13 @@ export namespace Block_Part_ {
     
     export namespace rich_list {
         
-        export namespace elements {
+        export namespace items {
             
             export type L = Block_Part_
             
         }
         
-        export type elements = _pi.List<elements.L>
+        export type items = _pi.List<items.L>
         
         export type if_empty = Block_Part_
         
@@ -52,7 +52,7 @@ export namespace Block_Part_ {
     }
     
     export type rich_list = {
-        readonly 'elements': rich_list.elements
+        readonly 'items': rich_list.items
         readonly 'if empty': rich_list.if_empty
         readonly 'if not empty': rich_list.if_not_empty
     }
@@ -95,13 +95,13 @@ export namespace Group_Part_ {
     
     export namespace rich_list {
         
-        export namespace elements {
+        export namespace items {
             
             export type L = Group_Part_
             
         }
         
-        export type elements = _pi.List<elements.L>
+        export type items = _pi.List<items.L>
         
         export type if_empty = Group_Part_
         
@@ -127,7 +127,7 @@ export namespace Group_Part_ {
     }
     
     export type rich_list = {
-        readonly 'elements': rich_list.elements
+        readonly 'items': rich_list.items
         readonly 'if empty': rich_list.if_empty
         readonly 'if not empty': rich_list.if_not_empty
     }

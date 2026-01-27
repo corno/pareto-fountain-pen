@@ -18,7 +18,7 @@ export const Block_Part: t_signatures.Block_Part = ($,) => _p.decide.state($, ($
             return _p.ss($, ($,) => ['nothing', null])
         case 'rich list':
             return _p.ss($, ($,) => ['rich list', ({
-                'elements': _p.deprecated_cc($['elements'], ($,) => $.__l_map(($,) => Block_Part($))),
+                'items': _p.deprecated_cc($['items'], ($,) => $.__l_map(($,) => Block_Part($))),
                 'if empty': _p.deprecated_cc($['if empty'], ($,) => Block_Part($)),
                 'if not empty': _p.deprecated_cc($['if not empty'], ($,) => ({
                     'before': _p.deprecated_cc($['before'], ($,) => Block_Part($)),
@@ -45,7 +45,7 @@ export const Group_Part: t_signatures.Group_Part = ($,) => _p.decide.state($, ($
             return _p.ss($, ($,) => ['nothing', null])
         case 'rich list':
             return _p.ss($, ($,) => ['rich list', ({
-                'elements': _p.deprecated_cc($['elements'], ($,) => $.__l_map(($,) => Group_Part($))),
+                'items': _p.deprecated_cc($['items'], ($,) => $.__l_map(($,) => Group_Part($))),
                 'if empty': _p.deprecated_cc($['if empty'], ($,) => Group_Part($)),
                 'if not empty': _p.deprecated_cc($['if not empty'], ($,) => ({
                     'indent': _p.deprecated_cc($['indent'], ($,) => $),
