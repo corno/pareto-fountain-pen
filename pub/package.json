@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "pareto-core": "^0.1.9",
-    "pareto-core-shorthands": "^0.2.10"
+    "pareto-core-shorthands": "^0.2.11"
   }
 }
