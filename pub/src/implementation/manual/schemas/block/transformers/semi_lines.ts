@@ -27,7 +27,7 @@ export const Group = (
         switch ($[0]) {
             case 'block':
                 _p.ss($, ($) => {
-                    $i['add element']({
+                    $i['add item']({
                         'indentation': $p['current indentation'],
                         'text': $,
                     })
@@ -45,7 +45,7 @@ export const Group = (
                 break
             case 'rich list':
                 _p.ss($, ($) => {
-                    if ($.elements.__get_number_of_elements() === 0) {
+                    if ($.elements.__get_number_of_items() === 0) {
                         Group_Part($['if empty'], { 'current indentation': $p['current indentation'] })
                     } else {
                         Group_Part($['if not empty'].before, { 'current indentation': $p['current indentation'] })
@@ -54,7 +54,7 @@ export const Group = (
                         const sep = $['if not empty'].separator
                         const indent = $['if not empty'].indent
                         let counter = -1
-                        const length = $.elements.__get_number_of_elements()
+                        const length = $.elements.__get_number_of_items()
                         $.elements.__for_each(($) => {
                             counter++
                             if (!is_first) {
@@ -127,7 +127,7 @@ export const Group = (
                 case 'indent':
                     _p.ss($, ($) => {
                         if (current_line !== null) {
-                            $i['add element']({
+                            $i['add item']({
                                 'indentation': $p['current indentation'],
                                 'text': current_line,
                             })
@@ -143,7 +143,7 @@ export const Group = (
                     break
                 case 'rich list':
                     _p.ss($, ($) => {
-                        if ($.elements.__get_number_of_elements() === 0) {
+                        if ($.elements.__get_number_of_items() === 0) {
                             Block_Part($['if empty'])
                         } else {
                             Block_Part($['if not empty'].before)
@@ -179,7 +179,7 @@ export const Group = (
         }
         Block2($)
         if (current_line !== null) {
-            $i['add element']({
+            $i['add item']({
                 'indentation': $p['current indentation'],
                 'text': current_line,
             })

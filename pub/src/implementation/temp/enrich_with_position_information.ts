@@ -7,7 +7,7 @@ export const $$ = <T>($: _pi.List<T>): _pi.List<{
     'is last': boolean
     'index': number
 }> => {
-    const length = $.__get_number_of_elements()
+    const length = $.__get_number_of_items()
     let index = -1
     return $.__l_map(($) => {
         index += 1
