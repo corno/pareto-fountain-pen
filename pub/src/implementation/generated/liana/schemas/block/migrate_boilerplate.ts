@@ -49,7 +49,7 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
             case 'rich list':
                 return _p.ss(
                     $,
-                    ($) => ['rich list', ({
+                    ($) => ['rich list', {
                         'items': _p_cc(
                             $['items'],
                             ($) => $.__l_map(
@@ -87,7 +87,7 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
                                 ),
                             })
                         ),
-                    })]
+                    }]
                 )
             default:
                 return _p.au(
@@ -143,7 +143,7 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
             case 'rich list':
                 return _p.ss(
                     $,
-                    ($) => ['rich list', ({
+                    ($) => ['rich list', {
                         'items': _p_cc(
                             $['items'],
                             ($) => $.__l_map(
@@ -185,7 +185,7 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
                                 ),
                             })
                         ),
-                    })]
+                    }]
                 )
             default:
                 return _p.au(
