@@ -1,6 +1,14 @@
 
 import * as _p from "pareto-core/dist/transformer"
 
+import { 
+    _p_unreachable_code_path, 
+} from "pareto-core/dist/unreachable_code_path"
+
+import { 
+    _p_cc, 
+} from "pareto-core/dist/change_context"
+
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/block/migrate_boilerplate"
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/block/data"
@@ -45,7 +53,7 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
                 return _p.ss(
                     $, 
                     ($) => ['rich list', ({
-                        'items': _p.deprecated_cc(
+                        'items': _p_cc(
                             $['items'], 
                             ($) => $.__l_map(
                                 ($) => Block_Part(
@@ -53,28 +61,28 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
                                 )
                             )
                         ),
-                        'if empty': _p.deprecated_cc(
+                        'if empty': _p_cc(
                             $['if empty'], 
                             ($) => Block_Part(
                                 $
                             )
                         ),
-                        'if not empty': _p.deprecated_cc(
+                        'if not empty': _p_cc(
                             $['if not empty'], 
                             ($) => ({
-                                'before': _p.deprecated_cc(
+                                'before': _p_cc(
                                     $['before'], 
                                     ($) => Block_Part(
                                         $
                                     )
                                 ),
-                                'separator': _p.deprecated_cc(
+                                'separator': _p_cc(
                                     $['separator'], 
                                     ($) => Block_Part(
                                         $
                                     )
                                 ),
-                                'after': _p.deprecated_cc(
+                                'after': _p_cc(
                                     $['after'], 
                                     ($) => Block_Part(
                                         $
@@ -137,7 +145,7 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
                 return _p.ss(
                     $, 
                     ($) => ['rich list', ({
-                        'items': _p.deprecated_cc(
+                        'items': _p_cc(
                             $['items'], 
                             ($) => $.__l_map(
                                 ($) => Group_Part(
@@ -145,32 +153,32 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
                                 )
                             )
                         ),
-                        'if empty': _p.deprecated_cc(
+                        'if empty': _p_cc(
                             $['if empty'], 
                             ($) => Group_Part(
                                 $
                             )
                         ),
-                        'if not empty': _p.deprecated_cc(
+                        'if not empty': _p_cc(
                             $['if not empty'], 
                             ($) => ({
-                                'indent': _p.deprecated_cc(
+                                'indent': _p_cc(
                                     $['indent'], 
                                     ($) => $
                                 ),
-                                'before': _p.deprecated_cc(
+                                'before': _p_cc(
                                     $['before'], 
                                     ($) => Group_Part(
                                         $
                                     )
                                 ),
-                                'separator': _p.deprecated_cc(
+                                'separator': _p_cc(
                                     $['separator'], 
                                     ($) => Group_Part(
                                         $
                                     )
                                 ),
-                                'after': _p.deprecated_cc(
+                                'after': _p_cc(
                                     $['after'], 
                                     ($) => Group_Part(
                                         $

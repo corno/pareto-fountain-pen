@@ -1,16 +1,24 @@
 
 import * as _p from "pareto-core/dist/transformer"
 
+import { 
+    _p_unreachable_code_path, 
+} from "pareto-core/dist/unreachable_code_path"
+
+import { 
+    _p_cc, 
+} from "pareto-core/dist/change_context"
+
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/semi_lines/migrate_boilerplate"
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/semi_lines/data"
 export const Lines: t_signatures.Lines = ($) => $.__l_map(
     ($) => ({
-        'text': _p.deprecated_cc(
+        'text': _p_cc(
             $['text'], 
             ($) => $
         ),
-        'indentation': _p.deprecated_cc(
+        'indentation': _p_cc(
             $['indentation'], 
             ($) => $
         ),
