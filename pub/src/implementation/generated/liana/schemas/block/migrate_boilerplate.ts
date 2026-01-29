@@ -1,43 +1,44 @@
 
 import * as _p from "pareto-core/dist/transformer"
 
-import { 
-    _p_unreachable_code_path, 
+import {
+    _p_unreachable_code_path,
 } from "pareto-core/dist/unreachable_code_path"
 
-import { 
-    _p_cc, 
+import {
+    _p_cc,
 } from "pareto-core/dist/change_context"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/block/migrate_boilerplate"
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/block/data"
+
 export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
-    $, 
+    $,
     ($): t_out.Block_Part => {
         switch ($[0]) {
             case 'snippet':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['snippet', $]
                 )
             case 'indent':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['indent', Group(
                         $
                     )]
                 )
             case 'sub block':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['sub block', Block(
                         $
                     )]
                 )
             case 'optional':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['optional', $.__o_map(
                         ($) => Block_Part(
                             $
@@ -46,15 +47,15 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
                 )
             case 'nothing':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['nothing', null]
                 )
             case 'rich list':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['rich list', ({
                         'items': _p_cc(
-                            $['items'], 
+                            $['items'],
                             ($) => $.__l_map(
                                 ($) => Block_Part(
                                     $
@@ -62,28 +63,28 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
                             )
                         ),
                         'if empty': _p_cc(
-                            $['if empty'], 
+                            $['if empty'],
                             ($) => Block_Part(
                                 $
                             )
                         ),
                         'if not empty': _p_cc(
-                            $['if not empty'], 
+                            $['if not empty'],
                             ($) => ({
                                 'before': _p_cc(
-                                    $['before'], 
+                                    $['before'],
                                     ($) => Block_Part(
                                         $
                                     )
                                 ),
                                 'separator': _p_cc(
-                                    $['separator'], 
+                                    $['separator'],
                                     ($) => Block_Part(
                                         $
                                     )
                                 ),
                                 'after': _p_cc(
-                                    $['after'], 
+                                    $['after'],
                                     ($) => Block_Part(
                                         $
                                     )
@@ -99,37 +100,39 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
         }
     }
 )
+
 export const Block: t_signatures.Block = ($) => $.__l_map(
     ($) => Block_Part(
         $
     )
 )
+
 export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
-    $, 
+    $,
     ($): t_out.Group_Part => {
         switch ($[0]) {
             case 'nested block':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['nested block', Block(
                         $
                     )]
                 )
             case 'block':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['block', $]
                 )
             case 'sub group':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['sub group', Group(
                         $
                     )]
                 )
             case 'optional':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['optional', $.__o_map(
                         ($) => Group_Part(
                             $
@@ -138,15 +141,15 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
                 )
             case 'nothing':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['nothing', null]
                 )
             case 'rich list':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['rich list', ({
                         'items': _p_cc(
-                            $['items'], 
+                            $['items'],
                             ($) => $.__l_map(
                                 ($) => Group_Part(
                                     $
@@ -154,32 +157,32 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
                             )
                         ),
                         'if empty': _p_cc(
-                            $['if empty'], 
+                            $['if empty'],
                             ($) => Group_Part(
                                 $
                             )
                         ),
                         'if not empty': _p_cc(
-                            $['if not empty'], 
+                            $['if not empty'],
                             ($) => ({
                                 'indent': _p_cc(
-                                    $['indent'], 
+                                    $['indent'],
                                     ($) => $
                                 ),
                                 'before': _p_cc(
-                                    $['before'], 
+                                    $['before'],
                                     ($) => Group_Part(
                                         $
                                     )
                                 ),
                                 'separator': _p_cc(
-                                    $['separator'], 
+                                    $['separator'],
                                     ($) => Group_Part(
                                         $
                                     )
                                 ),
                                 'after': _p_cc(
-                                    $['after'], 
+                                    $['after'],
                                     ($) => Group_Part(
                                         $
                                     )
@@ -195,25 +198,27 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
         }
     }
 )
+
 export const Group: t_signatures.Group = ($) => $.__l_map(
     ($) => Group_Part(
         $
     )
 )
+
 export const Node: t_signatures.Node = ($) => _p.decide.state(
-    $, 
+    $,
     ($): t_out.Node => {
         switch ($[0]) {
             case 'file':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['file', Group(
                         $
                     )]
                 )
             case 'directory':
                 return _p.ss(
-                    $, 
+                    $,
                     ($) => ['directory', Directory(
                         $
                     )]
@@ -225,8 +230,9 @@ export const Node: t_signatures.Node = ($) => _p.decide.state(
         }
     }
 )
+
 export const Directory: t_signatures.Directory = ($) => $.__d_map(
-    ($,id) => Node(
+    ($, id) => Node(
         $
     )
 )
