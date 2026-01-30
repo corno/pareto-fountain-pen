@@ -35,7 +35,8 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
             case 'optional':
                 return _p.ss(
                     $,
-                    ($) => ['optional', $.__o_map(
+                    ($) => ['optional', _p.optional.map(
+                        $,
                         ($) => Block_Part(
                             $
                         )
@@ -52,7 +53,8 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
                     ($) => ['rich list', {
                         'items': _p_cc(
                             $['items'],
-                            ($) => $.__l_map(
+                            ($) => _p.list.map(
+                                $,
                                 ($) => Block_Part(
                                     $
                                 )
@@ -97,7 +99,8 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
     }
 )
 
-export const Block: t_signatures.Block = ($) => $.__l_map(
+export const Block: t_signatures.Block = ($) => _p.list.map(
+    $,
     ($) => Block_Part(
         $
     )
@@ -129,7 +132,8 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
             case 'optional':
                 return _p.ss(
                     $,
-                    ($) => ['optional', $.__o_map(
+                    ($) => ['optional', _p.optional.map(
+                        $,
                         ($) => Group_Part(
                             $
                         )
@@ -146,7 +150,8 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
                     ($) => ['rich list', {
                         'items': _p_cc(
                             $['items'],
-                            ($) => $.__l_map(
+                            ($) => _p.list.map(
+                                $,
                                 ($) => Group_Part(
                                     $
                                 )
@@ -195,7 +200,8 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
     }
 )
 
-export const Group: t_signatures.Group = ($) => $.__l_map(
+export const Group: t_signatures.Group = ($) => _p.list.map(
+    $,
     ($) => Group_Part(
         $
     )
@@ -227,7 +233,8 @@ export const Node: t_signatures.Node = ($) => _p.decide.state(
     }
 )
 
-export const Directory: t_signatures.Directory = ($) => $.__d_map(
+export const Directory: t_signatures.Directory = ($) => _p.dictionary.map(
+    $,
     ($, id) => Node(
         $
     )

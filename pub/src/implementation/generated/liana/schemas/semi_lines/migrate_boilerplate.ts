@@ -9,7 +9,8 @@ import * as t_signatures from "../../../../../interface/generated/liana/schemas/
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/semi_lines/data"
 
-export const Lines: t_signatures.Lines = ($) => $.__l_map(
+export const Lines: t_signatures.Lines = ($) => _p.list.map(
+    $,
     ($) => ({
         'text': _p_cc(
             $['text'],
@@ -22,7 +23,8 @@ export const Lines: t_signatures.Lines = ($) => $.__l_map(
     })
 )
 
-export const Directory: t_signatures.Directory = ($) => $.__d_map(
+export const Directory: t_signatures.Directory = ($) => _p.dictionary.map(
+    $,
     ($, id) => _p.decide.state(
         $,
         ($): t_out.Directory.D => {

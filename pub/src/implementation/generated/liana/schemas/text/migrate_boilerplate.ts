@@ -11,7 +11,8 @@ import * as t_out from "../../../../../interface/generated/liana/schemas/text/da
 
 export const Lines: t_signatures.Lines = ($) => $
 
-export const Directory: t_signatures.Directory = ($) => $.__d_map(
+export const Directory: t_signatures.Directory = ($) => _p.dictionary.map(
+    $,
     ($, id) => _p.decide.state(
         $,
         ($): t_out.Directory.D => {
