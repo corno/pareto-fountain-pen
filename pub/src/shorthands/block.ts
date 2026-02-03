@@ -2,6 +2,9 @@ import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 import * as _pi from 'pareto-core/dist/interface'
 
 import * as d_target from "../interface/generated/liana/schemas/block/data"
+import * as d_text from "../interface/to_be_generated/text"
+
+import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 
 export namespace g {
@@ -24,7 +27,9 @@ export namespace b {
 
     export const indent = (blocks: _p.Raw_Or_Normal_List<d_target.Group.L>): d_target.Block_Part => ['indent', _p.list.literal(blocks)]
 
-    export const snippet = (snippet: string): d_target.Block_Part => ['snippet', snippet]
+    export const literal = (snippet: string): d_target.Block_Part => ['snippet', snippet]
+
+    export const text = (snippet: d_text.Text): d_target.Block_Part => ['snippet', _p_text_from_list(snippet, ($) => $)]
 
     export const sub = (block_parts: _p.Raw_Or_Normal_List<d_target.Block.L>): d_target.Block_Part => ['sub block', _p.list.literal(block_parts)]
 
