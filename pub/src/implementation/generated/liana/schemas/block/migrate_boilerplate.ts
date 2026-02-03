@@ -1,9 +1,7 @@
 
-import * as _p from "pareto-core/dist/transformer"
+import * as _p from "pareto-core/dist/expression"
 
-import {
-    _p_cc,
-} from "pareto-core/dist/change_context"
+import _p_change_context from "pareto-core/dist/_p_change_context"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/block/migrate_boilerplate"
 
@@ -91,7 +89,7 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
                 return _p.ss(
                     $,
                     ($) => ['rich list', {
-                        'items': _p_cc(
+                        'items': _p_change_context(
                             $['items'],
                             ($) => _p.list.map(
                                 $,
@@ -100,32 +98,32 @@ export const Group_Part: t_signatures.Group_Part = ($) => _p.decide.state(
                                 )
                             )
                         ),
-                        'if empty': _p_cc(
+                        'if empty': _p_change_context(
                             $['if empty'],
                             ($) => Group_Part(
                                 $
                             )
                         ),
-                        'if not empty': _p_cc(
+                        'if not empty': _p_change_context(
                             $['if not empty'],
                             ($) => ({
-                                'indent': _p_cc(
+                                'indent': _p_change_context(
                                     $['indent'],
                                     ($) => $
                                 ),
-                                'before': _p_cc(
+                                'before': _p_change_context(
                                     $['before'],
                                     ($) => Group_Part(
                                         $
                                     )
                                 ),
-                                'separator': _p_cc(
+                                'separator': _p_change_context(
                                     $['separator'],
                                     ($) => Group_Part(
                                         $
                                     )
                                 ),
-                                'after': _p_cc(
+                                'after': _p_change_context(
                                     $['after'],
                                     ($) => Group_Part(
                                         $
@@ -192,7 +190,7 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
                 return _p.ss(
                     $,
                     ($) => ['rich list', {
-                        'items': _p_cc(
+                        'items': _p_change_context(
                             $['items'],
                             ($) => _p.list.map(
                                 $,
@@ -201,28 +199,28 @@ export const Block_Part: t_signatures.Block_Part = ($) => _p.decide.state(
                                 )
                             )
                         ),
-                        'if empty': _p_cc(
+                        'if empty': _p_change_context(
                             $['if empty'],
                             ($) => Block_Part(
                                 $
                             )
                         ),
-                        'if not empty': _p_cc(
+                        'if not empty': _p_change_context(
                             $['if not empty'],
                             ($) => ({
-                                'before': _p_cc(
+                                'before': _p_change_context(
                                     $['before'],
                                     ($) => Block_Part(
                                         $
                                     )
                                 ),
-                                'separator': _p_cc(
+                                'separator': _p_change_context(
                                     $['separator'],
                                     ($) => Block_Part(
                                         $
                                     )
                                 ),
-                                'after': _p_cc(
+                                'after': _p_change_context(
                                     $['after'],
                                     ($) => Block_Part(
                                         $

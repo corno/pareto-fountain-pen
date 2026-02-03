@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core/dist/interface'
-import * as _pt from 'pareto-core/dist/transformer'
+import * as _pt from 'pareto-core/dist/expression'
 
 export const $$ = <T>($: _pi.List<T>): _pi.List<{
     'value': T

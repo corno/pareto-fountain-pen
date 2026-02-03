@@ -1,12 +1,13 @@
-import * as _p from 'pareto-core/dist/transformer'
-import * as _p_temp_serializer from 'pareto-core/dist/serializer'
+import * as _p from 'pareto-core/dist/expression'
+import * as _pi from 'pareto-core/dist/interface'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 
 import * as d_in from "../../../../../interface/generated/liana/schemas/block/data"
 import * as d_out from "../../../../../interface/generated/liana/schemas/semi_lines/data"
 
 export const Directory = (
     $: d_in.Directory,
-): d_out.Directory => $.__d_map(($) => _p.decide.state($, ($): d_out.Directory.D => {
+): d_out.Directory => _p.dictionary.map($, ($) => _p.decide.state($, ($): d_out.Directory.D => {
     switch ($[0]) {
         case 'file': return _p.ss($, ($) => ['file', Group($)])
         case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
@@ -14,82 +15,80 @@ export const Directory = (
     }
 }))
 
+
+//this implementation is still procedural and should be refactored to a functional style
+//as a starter I've already made it return null values
+type Nested_Nothing = _pi.List<null>
+
 export const Group = (
     $: d_in.Group,
-): d_out.Lines => _p.list.deprecated_build(($i) => {
+): d_out.Lines => _p_list_build_deprecated(($i) => {
+
 
     const Group_Part = (
         $: d_in.Group_Part,
         $p: {
             'current indentation': number
         }
-    ): void => {
+    ): Nested_Nothing => {
         switch ($[0]) {
             case 'block':
-                _p.ss($, ($) => {
+                return _p.ss($, ($) => {
                     $i['add item']({
                         'indentation': $p['current indentation'],
                         'text': $,
                     })
+                    return _p.list.literal([]) //nothing returned
                 })
-                break
             case 'nested block':
-                _p.ss($, ($) => {
-                    Block($, { 'current indentation': $p['current indentation'] })
-                })
-                break
+                return _p.ss($, ($) => Block($, { 'current indentation': $p['current indentation'] }))
             case 'nothing':
-                _p.ss($, ($) => {
-                    // do nothing
-                })
-                break
+                return _p.ss($, ($) => _p.list.literal([]))
             case 'rich list':
-                _p.ss($, ($) => {
+                return _p.ss($, ($) => {
                     if ($.items.__get_number_of_items() === 0) {
-                        Group_Part($['if empty'], { 'current indentation': $p['current indentation'] })
+                        return Group_Part($['if empty'], { 'current indentation': $p['current indentation'] })
                     } else {
-                        Group_Part($['if not empty'].before, { 'current indentation': $p['current indentation'] })
-                        $['if not empty'].indent
                         let is_first = true
                         const sep = $['if not empty'].separator
                         const indent = $['if not empty'].indent
                         let counter = -1
                         const length = $.items.__get_number_of_items()
-                        $.items.__for_each(($) => {
-                            counter++
-                            if (!is_first) {
-
-                            }
-                            Group(
-                                _p.list.literal([
-                                    $,
-                                    (counter < length - 1)
-                                        ? sep
-                                        : ['nothing', null],
-                                ]),
-                                { 'current indentation': $p['current indentation'] + (indent ? 1 : 0) }
-                            )
-                        })
-                        Group_Part($['if not empty'].after, { 'current indentation': $p['current indentation'] })
+                        Group_Part($['if not empty'].before, { 'current indentation': $p['current indentation'] }),
+                            // $['if not empty'].indent,
+                            _p.list.map( //replace by iterate
+                                $.items,
+                                ($) => {
+                                    counter++
+                                    return Group(
+                                        _p.list.literal([
+                                            $,
+                                            (counter < length - 1)
+                                                ? sep
+                                                : ['nothing', null],
+                                        ]),
+                                        { 'current indentation': $p['current indentation'] + (indent ? 1 : 0) }
+                                    )
+                                }
+                            ),
+                            Group_Part($['if not empty'].after, { 'current indentation': $p['current indentation'] })
+                        return _p.list.literal([]) //nothing returned
                     }
                 })
-                break
             case 'sub group':
-                _p.ss($, ($) => {
-                    Group($, { 'current indentation': $p['current indentation'] })
-                })
-                break
+                return _p.ss($, ($) => Group($, { 'current indentation': $p['current indentation'] }))
             case 'optional':
-                _p.ss($, ($) => {
-                    _p.optional.map(
+                return _p.ss($, ($) => _p.decide.optional(
+                    $,
+                    ($) => Group_Part(
                         $,
-                        ($) => {
-                            Group_Part($, { 'current indentation': $p['current indentation'] })
+                        {
+                            'current indentation': $p['current indentation']
                         }
-                    )
-                })
-                break
-            default: _p.au($[0])
+                    ),
+                    () => _p.list.literal([]),
+                ))
+            default: return _p.au($[0])
         }
     }
     const Group = (
@@ -97,37 +96,31 @@ export const Group = (
         $p: {
             'current indentation': number
         }
-    ): void => {
-        $.__for_each(($) => {
-            Group_Part($, { 'current indentation': $p['current indentation'] })
-        })
-    }
+    ): Nested_Nothing => _p.list.flatten($, ($) => Group_Part($, { 'current indentation': $p['current indentation'] }))
+
     const Block = (
         $: d_in.Block,
         $p: {
             'current indentation': number
         }
-    ): void => {
+    ): Nested_Nothing => {
         let current_line: null | string = null
+
         const Block2 = (
             $: d_in.Block
-        ): void => {
-            $.__for_each(($) => {
-                Block_Part($)
-            })
-        }
+        ): Nested_Nothing => _p.list.flatten($, ($) => Block_Part($))
+
         const Block_Part = (
             $: d_in.Block_Part
-        ): void => {
-
+        ): Nested_Nothing => {
             switch ($[0]) {
                 case 'snippet':
-                    _p.ss($, ($) => {
+                    return _p.ss($, ($) => {
                         current_line = current_line === null ? $ : current_line + $
+                        return _p.list.literal([])//nothing returned
                     })
-                    break
                 case 'indent':
-                    _p.ss($, ($) => {
+                    return _p.ss($, ($) => {
                         if (current_line !== null) {
                             $i['add item']({
                                 'indentation': $p['current indentation'],
@@ -136,49 +129,40 @@ export const Group = (
                         }
                         current_line = null
                         Group($, { 'current indentation': $p['current indentation'] + 1 })
+                        return _p.list.literal([])//placeholder
                     })
-                    break
                 case 'nothing':
-                    _p.ss($, ($) => {
-                        // do nothing
-                    })
-                    break
+                    return _p.ss($, ($) => _p.list.literal([]))
                 case 'rich list':
-                    _p.ss($, ($) => {
+                    return _p.ss($, ($) => {
                         if ($.items.__get_number_of_items() === 0) {
-                            Block_Part($['if empty'])
+                            return Block_Part($['if empty'])
                         } else {
-                            Block_Part($['if not empty'].before)
                             let is_first = true
                             const sep = $['if not empty'].separator
-                            $.items.__for_each(($) => {
-                                if (!is_first) {
-                                    Block_Part(sep)
-                                }
-                                Block_Part($)
-                            })
+                            Block_Part($['if not empty'].before)
+                            _p.list.map( //replace by iterate
+                                $.items,
+                                ($) => {
+                                    if (!is_first) {
+                                        Block_Part(sep)
+                                    }
+                                    Block_Part($)
+                                    return null
+                                })
                             Block_Part($['if not empty'].after)
+                            return _p.list.literal([])
                         }
                     })
-                    break
                 case 'sub block':
-                    _p.ss($, ($) => {
-
-                        Block2($)
-                    })
-                    break
+                    return _p.ss($, ($) => Block2($))
                 case 'optional':
-                    _p.ss($, ($) => {
-                        _p.optional.map(
-                            $,
-                            ($) => {
-                                Block_Part($)
-
-                            }
-                        )
-                    })
-                    break
-                default: _p.au($[0])
+                    return _p.ss($, ($) => _p.decide.optional(
+                        $,
+                        ($) => Block_Part($),
+                        () => _p.list.literal([]),
+                    ))
+                default: return _p.au($[0])
             }
 
         }
@@ -189,6 +173,7 @@ export const Group = (
                 'text': current_line,
             })
         }
+        return _p.list.literal([])//nothing returned
     }
 
     Group(
