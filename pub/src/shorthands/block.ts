@@ -31,8 +31,6 @@ export namespace pg {
         },
     }]
 
-    export const single_line = (block: string): d_target.Paragraph => ['single line', block]
-
     export const composed = (Group_Parts: _p.Raw_Or_Normal_List<d_target.Paragraph>): d_target.Paragraph => ['composed', _p.list.literal(Group_Parts)]
 
     export const sentences = (phrases: _p.Raw_Or_Normal_List<d_target.Phrase>): d_target.Paragraph => ['sentences', _p.list.literal(phrases)]

@@ -39,10 +39,6 @@
         
         export type sentences = _pi.List<sentences.L>
         
-        export type single_line = string
-        
-        export type sub_paragraph = Paragraph_
-        
         export namespace optional {
             
             export type O = Paragraph_
@@ -97,8 +93,6 @@
     export type Paragraph_ = 
         | readonly ['composed', Paragraph_.composed]
         | readonly ['sentences', Paragraph_.sentences]
-        | readonly ['single line', Paragraph_.single_line]
-        | readonly ['sub paragraph', Paragraph_.sub_paragraph]
         | readonly ['optional', Paragraph_.optional]
         | readonly ['nothing', Paragraph_.nothing]
         | readonly ['rich list', Paragraph_.rich_list]
@@ -108,8 +102,6 @@
         export type single_line = Single_Line_
         
         export type indent = Paragraph_
-        
-        export type sub_phrase = Phrase_
         
         export namespace composed {
             
@@ -170,7 +162,6 @@
     export type Phrase_ = 
         | readonly ['single line', Phrase_.single_line]
         | readonly ['indent', Phrase_.indent]
-        | readonly ['sub phrase', Phrase_.sub_phrase]
         | readonly ['composed', Phrase_.composed]
         | readonly ['optional', Phrase_.optional]
         | readonly ['nothing', Phrase_.nothing]

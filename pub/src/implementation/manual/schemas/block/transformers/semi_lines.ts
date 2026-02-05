@@ -102,17 +102,6 @@ export const Paragraph = (
                 ))
                 return _p.list.literal([]) //nothing returned   
             })
-            case 'single line': return _p.ss($, ($) => {
-                $i['add item']({
-                    'indentation': $p['current indentation'],
-                    'text': $,
-                })
-                return _p.list.literal([]) //nothing returned
-            })
-            case 'sub paragraph': return _p.ss($, ($) => Paragraph_2(
-                $,
-                $p
-            ))
             default: return _p.au($[0])
         }
     }
@@ -225,7 +214,6 @@ export const Paragraph = (
                     Single_Line($)
                     return _p.list.literal([])
                 })
-                case 'sub phrase': return _p.ss($, ($) => Phrase($))
                 default: return _p.au($[0])
             }
 
