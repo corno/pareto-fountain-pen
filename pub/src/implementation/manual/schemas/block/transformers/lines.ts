@@ -2,8 +2,8 @@
 import * as d_in from "../../../../../interface/generated/liana/schemas/block/data"
 import * as d_out from "../../../../../interface/generated/liana/schemas/lines/data"
 
-import * as t from "../../semi_lines/transformers/lines"
-import * as t_2 from "./semi_lines"
+import * as t_semi_lines_to_lines from "../../semi_lines/transformers/lines"
+import * as t_to_semi_lines from "./semi_lines"
 
 import * as sh from "../../../../../shorthands/block"
 
@@ -12,28 +12,23 @@ export const Directory = (
     $p: {
         'indentation': string,
     }
-): d_out.Directory => t.Directory(
-    t_2.Directory($),
+): d_out.Directory => t_semi_lines_to_lines.Directory(
+    t_to_semi_lines.Directory($),
     $p
 )
 
-export const Group = (
-    $: d_in.Group,
+export const Paragraph = (
+    $: d_in.Paragraph,
     $p: {
         'indentation': string
     }
-): d_out.Lines => t.Lines(t_2.Group($), { 'indentation': $p.indentation })
+): d_out.Lines => t_semi_lines_to_lines.Lines(t_to_semi_lines.Paragraph($), { 'indentation': $p.indentation })
 
-export const Group_Part = (
-    $: d_in.Group_Part,
+
+
+export const Phrase = (
+    $: d_in.Phrase,
     $p: {
         'indentation': string
     }
-): d_out.Lines => t.Lines(t_2.Group(sh.group([$])), { 'indentation': $p.indentation })
-
-export const Block_Part = (
-    $: d_in.Block_Part,
-    $p: {
-        'indentation': string,
-    }
-): d_out.Lines => t.Lines(t_2.Group(sh.group([sh.g.nested_block([$])])), { 'indentation': $p.indentation })
+): d_out.Lines => t_semi_lines_to_lines.Lines(t_to_semi_lines.Phrase($), { 'indentation': $p.indentation })

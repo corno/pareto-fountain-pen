@@ -84,10 +84,10 @@ l.sub([
 ])
 ```
 
-#### ` sh.b.indent(blocks: Block[])`
+#### ` sh.ph.indent(blocks: Block[])`
 Creates indented content blocks:
 ```typescript
-sh.b.indent([
+sh.ph.indent([
     sh.g.nested_block([ sh.b.snippet("// indented comment")]),
     sh.g.nested_block([ sh.b.snippet("console.log('indented');")]) 
 ])
@@ -106,7 +106,7 @@ Represents empty/optional content:
 ```typescript
 optionalValue.transform(
     (value) => sh.b.snippet(value),
-    () => sh.b.nothing()  // renders nothing if value is absent
+    () => sh.ph.nothing()  // renders nothing if value is absent
 )
 ```
 
@@ -117,7 +117,7 @@ optionalValue.transform(
 Use ternary operators for conditional content:
 ```typescript
 sh.g.nested_block([
-    isStrict ? sh.b.snippet("strict ") : sh.b.nothing(),
+    isStrict ? sh.b.snippet("strict ") : sh.ph.nothing(),
     sh.b.snippet("digraph myGraph")
 ])
 ```
@@ -127,11 +127,11 @@ sh.g.nested_block([
 Handle optional values elegantly:
 ```typescript
 name.transform(
-    (value) => sh.b.sub([
+    (value) => sh.ph.composed([
         sh.b.snippet("name: "),
         sh.b.snippet(value)
     ]),
-    () => sh.b.nothing()  // renders nothing if name is undefined
+    () => sh.ph.nothing()  // renders nothing if name is undefined
 )
 ```
 
@@ -156,20 +156,20 @@ export const generateClass = (classData: ClassData): d_out.Block => {
         sh.g.nested_block([
             sh.b.snippet(`class ${classData.name} {`)
         ]),
-        sh.b.indent([
+        sh.ph.indent([
             sh.g.sub(classData.methods.map(method => 
                 sh.g.nested_block([
                     sh.b.snippet(`${method.name}(`),
-                   sh.b.sub(method.parameters.map((param, index) =>
-                       sh.b.sub([
+                   sh.ph.composed(method.parameters.map((param, index) =>
+                       sh.ph.composed([
                             sh.b.snippet(param.name),
                             index < method.parameters.length - 1 
                                 ? sh.b.snippet(", ") 
-                                : sh.b.nothing()
+                                : sh.ph.nothing()
                         ])
                     )),
                     sh.b.snippet(") {"),
-                    sh.b.indent([
+                    sh.ph.indent([
                         sh.g.nested_block([ sh.b.snippet("// method body")])
                     ]),
                     sh.b.snippet("}")
@@ -202,12 +202,12 @@ Build formatted reports with tables, sections, and hierarchical data.
 1. **Use meaningful names**: Choose descriptive variable names for complex structures
 2. **Leverage transform**: Use `transform()` for optional content rather than manual conditionals
 3. **Group related content**: Use `l.sub()` to group logically related line parts
-4. **Consistent indentation**: Let ` sh.b.indent()` handle indentation automatically
+4. **Consistent indentation**: Let ` sh.ph.indent()` handle indentation automatically
 5. **Separate concerns**: Keep block structure separate from content generation logic
 
 ## Type Safety
 
-Fountain Pen is fully typed and integrates seamlessly with TypeScript's type system. The `d_out.Block` and `d_out.Block_Part` types ensure compile-time correctness of your document structure.
+Fountain Pen is fully typed and integrates seamlessly with TypeScript's type system. The `d_out.Block` and `d_out.Phrase` types ensure compile-time correctness of your document structure.
 
 ## Writing Output to Disk
 

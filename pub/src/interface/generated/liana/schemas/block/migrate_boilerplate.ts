@@ -1,111 +1,111 @@
-
-import * as _pi from "pareto-core/dist/interface"
-
-import * as i_out from "./data"
-
-import * as i_in from "./data"
-
-export namespace Directory_ {
     
-    export type I = i_in.Directory
+    import * as _pi from "pareto-core/dist/interface"
     
-    export type O = i_out.Directory
+    import * as i_out from "./data"
     
-    export namespace P {
+    import * as i_in from "./data"
+    
+    export namespace Directory_ {
+        
+        export type I = i_in.Directory
+        
+        export type O = i_out.Directory
+        
+        export namespace P {
+            
+        }
         
     }
     
-}
-
-export type Directory_ = (
-    context: Directory_.I,
-) => Directory_.O
-
-export namespace Node_ {
+    export type Directory_ = (
+        context: Directory_.I,
+    ) => Directory_.O
     
-    export type I = i_in.Node
-    
-    export type O = i_out.Node
-    
-    export namespace P {
+    export namespace Node_ {
+        
+        export type I = i_in.Node
+        
+        export type O = i_out.Node
+        
+        export namespace P {
+            
+        }
         
     }
     
-}
-
-export type Node_ = (
-    context: Node_.I,
-) => Node_.O
-
-export namespace Group_ {
+    export type Node_ = (
+        context: Node_.I,
+    ) => Node_.O
     
-    export type I = i_in.Group
-    
-    export type O = i_out.Group
-    
-    export namespace P {
+    export namespace Paragraph_ {
+        
+        export type I = i_in.Paragraph
+        
+        export type O = i_out.Paragraph
+        
+        export namespace P {
+            
+        }
         
     }
     
-}
-
-export type Group_ = (
-    context: Group_.I,
-) => Group_.O
-
-export namespace Group_Part_ {
+    export type Paragraph_ = (
+        context: Paragraph_.I,
+    ) => Paragraph_.O
     
-    export type I = i_in.Group_Part
-    
-    export type O = i_out.Group_Part
-    
-    export namespace P {
+    export namespace Phrase_ {
+        
+        export type I = i_in.Phrase
+        
+        export type O = i_out.Phrase
+        
+        export namespace P {
+            
+        }
         
     }
     
-}
-
-export type Group_Part_ = (
-    context: Group_Part_.I,
-) => Group_Part_.O
-
-export namespace Block_ {
+    export type Phrase_ = (
+        context: Phrase_.I,
+    ) => Phrase_.O
     
-    export type I = i_in.Block
-    
-    export type O = i_out.Block
-    
-    export namespace P {
+    export namespace Single_Line_ {
+        
+        export type I = i_in.Single_Line
+        
+        export type O = i_out.Single_Line
+        
+        export namespace P {
+            
+        }
         
     }
     
-}
-
-export type Block_ = (
-    context: Block_.I,
-) => Block_.O
-
-export namespace Block_Part_ {
+    export type Single_Line_ = (
+        context: Single_Line_.I,
+    ) => Single_Line_.O
     
-    export type I = i_in.Block_Part
-    
-    export type O = i_out.Block_Part
-    
-    export namespace P {
+    export namespace List_of_Characters_ {
+        
+        export type I = i_in.List_of_Characters
+        
+        export type O = i_out.List_of_Characters
+        
+        export namespace P {
+            
+        }
         
     }
     
-}
-
-export type Block_Part_ = (
-    context: Block_Part_.I,
-) => Block_Part_.O
-
-export { 
-    Directory_ as Directory, 
-    Node_ as Node, 
-    Group_ as Group, 
-    Group_Part_ as Group_Part, 
-    Block_ as Block, 
-    Block_Part_ as Block_Part, 
-}
+    export type List_of_Characters_ = (
+        context: List_of_Characters_.I,
+    ) => List_of_Characters_.O
+    
+    export { 
+        Directory_ as Directory, 
+        Node_ as Node, 
+        Paragraph_ as Paragraph, 
+        Phrase_ as Phrase, 
+        Single_Line_ as Single_Line, 
+        List_of_Characters_ as List_of_Characters, 
+    }

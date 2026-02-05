@@ -6,10 +6,10 @@ import * as t_fountain_pen_semi_lines_to_lines from "./lines"
 
 import * as d_in from "../../../../../interface/generated/liana/schemas/semi_lines/data"
 import * as d_x from "../../../../../interface/to_be_generated/block_serialize"
-import * as d_out from "../../../../../interface/to_be_generated/text"
+import * as d_out from "../../../../../interface/to_be_generated/list_of_characters"
 
 
-export const Lines: _pi.Transformer_With_Parameters<d_in.Lines, d_out.Text, d_x.Parameters> = ($, $p) => _p.list.flatten(
+export const Lines: _pi.Transformer_With_Parameters<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => _p.list.flatten(
     t_fountain_pen_semi_lines_to_lines.Lines(
         $,
         {
@@ -21,7 +21,7 @@ export const Lines: _pi.Transformer_With_Parameters<d_in.Lines, d_out.Text, d_x.
             ($) => $
         )
     ),
-    ($): d_out.Text => _p.list.nested_literal_old([
+    ($): d_out.List_of_Characters => _p.list.nested_literal_old([
         _p_list_from_text<number>(
             $p.indentation,
             ($) => $

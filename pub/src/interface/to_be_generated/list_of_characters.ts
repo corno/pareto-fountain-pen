@@ -1,3 +1,3 @@
 import * as _pi from 'pareto-core/dist/interface'
 
-export type Text = _pi.List<number>
+export type List_of_Characters = _pi.List<number>

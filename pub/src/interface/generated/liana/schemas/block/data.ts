@@ -1,178 +1,249 @@
-
-import * as _pi from "pareto-core/dist/interface"
-
-export namespace Directory_ {
     
-    export type D = Node_
+    import * as _pi from "pareto-core/dist/interface"
     
-}
-
-export type Directory_ = _pi.Dictionary<Directory_.D>
-
-export namespace Node_ {
-    
-    export type file = Group_
-    
-    export type directory = Directory_
-    
-}
-
-export type Node_ = 
-    | readonly ['file', Node_.file]
-    | readonly ['directory', Node_.directory]
-
-export namespace Group_ {
-    
-    export type L = Group_Part_
-    
-}
-
-export type Group_ = _pi.List<Group_.L>
-
-export namespace Group_Part_ {
-    
-    export type nested_block = Block_
-    
-    export type block = string
-    
-    export type sub_group = Group_
-    
-    export namespace optional {
+    export namespace Directory_ {
         
-        export type O = Group_Part_
+        export type D = Node_
         
     }
     
-    export type optional = _pi.Optional_Value<optional.O>
+    export type Directory_ = _pi.Dictionary<Directory_.D>
     
-    export type nothing = null
-    
-    export namespace rich_list {
+    export namespace Node_ {
         
-        export namespace items {
-            
-            export type L = Group_Part_
-            
-        }
+        export type file = Paragraph_
         
-        export type items = _pi.List<items.L>
-        
-        export type if_empty = Group_Part_
-        
-        export namespace if_not_empty {
-            
-            export type indent = boolean
-            
-            export type before = Group_Part_
-            
-            export type separator = Group_Part_
-            
-            export type after = Group_Part_
-            
-        }
-        
-        export type if_not_empty = {
-            readonly 'indent': if_not_empty.indent
-            readonly 'before': if_not_empty.before
-            readonly 'separator': if_not_empty.separator
-            readonly 'after': if_not_empty.after
-        }
+        export type directory = Directory_
         
     }
     
-    export type rich_list = {
-        readonly 'items': rich_list.items
-        readonly 'if empty': rich_list.if_empty
-        readonly 'if not empty': rich_list.if_not_empty
-    }
+    export type Node_ = 
+        | readonly ['file', Node_.file]
+        | readonly ['directory', Node_.directory]
     
-}
-
-export type Group_Part_ = 
-    | readonly ['nested block', Group_Part_.nested_block]
-    | readonly ['block', Group_Part_.block]
-    | readonly ['sub group', Group_Part_.sub_group]
-    | readonly ['optional', Group_Part_.optional]
-    | readonly ['nothing', Group_Part_.nothing]
-    | readonly ['rich list', Group_Part_.rich_list]
-
-export namespace Block_ {
-    
-    export type L = Block_Part_
-    
-}
-
-export type Block_ = _pi.List<Block_.L>
-
-export namespace Block_Part_ {
-    
-    export type snippet = string
-    
-    export type indent = Group_
-    
-    export type sub_block = Block_
-    
-    export namespace optional {
+    export namespace Paragraph_ {
         
-        export type O = Block_Part_
-        
-    }
-    
-    export type optional = _pi.Optional_Value<optional.O>
-    
-    export type nothing = null
-    
-    export namespace rich_list {
-        
-        export namespace items {
+        export namespace composed {
             
-            export type L = Block_Part_
+            export type L = Paragraph_
             
         }
         
-        export type items = _pi.List<items.L>
+        export type composed = _pi.List<composed.L>
         
-        export type if_empty = Block_Part_
-        
-        export namespace if_not_empty {
+        export namespace sentences {
             
-            export type before = Block_Part_
-            
-            export type separator = Block_Part_
-            
-            export type after = Block_Part_
+            export type L = Phrase_
             
         }
         
-        export type if_not_empty = {
-            readonly 'before': if_not_empty.before
-            readonly 'separator': if_not_empty.separator
-            readonly 'after': if_not_empty.after
+        export type sentences = _pi.List<sentences.L>
+        
+        export type single_line = string
+        
+        export type sub_paragraph = Paragraph_
+        
+        export namespace optional {
+            
+            export type O = Paragraph_
+            
+        }
+        
+        export type optional = _pi.Optional_Value<optional.O>
+        
+        export type nothing = null
+        
+        export namespace rich_list {
+            
+            export namespace items {
+                
+                export type L = Paragraph_
+                
+            }
+            
+            export type items = _pi.List<items.L>
+            
+            export type if_empty = Paragraph_
+            
+            export namespace if_not_empty {
+                
+                export type indent = boolean
+                
+                export type before = Paragraph_
+                
+                export type separator = Paragraph_
+                
+                export type after = Paragraph_
+                
+            }
+            
+            export type if_not_empty = {
+                readonly 'indent': if_not_empty.indent
+                readonly 'before': if_not_empty.before
+                readonly 'separator': if_not_empty.separator
+                readonly 'after': if_not_empty.after
+            }
+            
+        }
+        
+        export type rich_list = {
+            readonly 'items': rich_list.items
+            readonly 'if empty': rich_list.if_empty
+            readonly 'if not empty': rich_list.if_not_empty
         }
         
     }
     
-    export type rich_list = {
-        readonly 'items': rich_list.items
-        readonly 'if empty': rich_list.if_empty
-        readonly 'if not empty': rich_list.if_not_empty
+    export type Paragraph_ = 
+        | readonly ['composed', Paragraph_.composed]
+        | readonly ['sentences', Paragraph_.sentences]
+        | readonly ['single line', Paragraph_.single_line]
+        | readonly ['sub paragraph', Paragraph_.sub_paragraph]
+        | readonly ['optional', Paragraph_.optional]
+        | readonly ['nothing', Paragraph_.nothing]
+        | readonly ['rich list', Paragraph_.rich_list]
+    
+    export namespace Phrase_ {
+        
+        export type single_line = Single_Line_
+        
+        export type indent = Paragraph_
+        
+        export type sub_phrase = Phrase_
+        
+        export namespace composed {
+            
+            export type L = Phrase_
+            
+        }
+        
+        export type composed = _pi.List<composed.L>
+        
+        export namespace optional {
+            
+            export type O = Phrase_
+            
+        }
+        
+        export type optional = _pi.Optional_Value<optional.O>
+        
+        export type nothing = null
+        
+        export namespace rich_list {
+            
+            export namespace items {
+                
+                export type L = Phrase_
+                
+            }
+            
+            export type items = _pi.List<items.L>
+            
+            export type if_empty = Phrase_
+            
+            export namespace if_not_empty {
+                
+                export type before = Phrase_
+                
+                export type separator = Phrase_
+                
+                export type after = Phrase_
+                
+            }
+            
+            export type if_not_empty = {
+                readonly 'before': if_not_empty.before
+                readonly 'separator': if_not_empty.separator
+                readonly 'after': if_not_empty.after
+            }
+            
+        }
+        
+        export type rich_list = {
+            readonly 'items': rich_list.items
+            readonly 'if empty': rich_list.if_empty
+            readonly 'if not empty': rich_list.if_not_empty
+        }
+        
     }
     
-}
-
-export type Block_Part_ = 
-    | readonly ['snippet', Block_Part_.snippet]
-    | readonly ['indent', Block_Part_.indent]
-    | readonly ['sub block', Block_Part_.sub_block]
-    | readonly ['optional', Block_Part_.optional]
-    | readonly ['nothing', Block_Part_.nothing]
-    | readonly ['rich list', Block_Part_.rich_list]
-
-export { 
-    Directory_ as Directory, 
-    Node_ as Node, 
-    Group_ as Group, 
-    Group_Part_ as Group_Part, 
-    Block_ as Block, 
-    Block_Part_ as Block_Part, 
-}
+    export type Phrase_ = 
+        | readonly ['single line', Phrase_.single_line]
+        | readonly ['indent', Phrase_.indent]
+        | readonly ['sub phrase', Phrase_.sub_phrase]
+        | readonly ['composed', Phrase_.composed]
+        | readonly ['optional', Phrase_.optional]
+        | readonly ['nothing', Phrase_.nothing]
+        | readonly ['rich list', Phrase_.rich_list]
+    
+    export namespace Single_Line_ {
+        
+        export namespace L {
+            
+            export type snippet = string
+            
+            export type serialize = List_of_Characters_
+            
+            export namespace rich_list {
+                
+                export namespace items {
+                    
+                    export type L = Single_Line_
+                    
+                }
+                
+                export type items = _pi.List<items.L>
+                
+                export type if_empty = Single_Line_
+                
+                export namespace if_not_empty {
+                    
+                    export type before = Single_Line_
+                    
+                    export type separator = Single_Line_
+                    
+                    export type after = Single_Line_
+                    
+                }
+                
+                export type if_not_empty = {
+                    readonly 'before': if_not_empty.before
+                    readonly 'separator': if_not_empty.separator
+                    readonly 'after': if_not_empty.after
+                }
+                
+            }
+            
+            export type rich_list = {
+                readonly 'items': rich_list.items
+                readonly 'if empty': rich_list.if_empty
+                readonly 'if not empty': rich_list.if_not_empty
+            }
+            
+        }
+        
+        export type L = 
+            | readonly ['snippet', L.snippet]
+            | readonly ['serialize', L.serialize]
+            | readonly ['rich list', L.rich_list]
+        
+    }
+    
+    export type Single_Line_ = _pi.List<Single_Line_.L>
+    
+    export namespace List_of_Characters_ {
+        
+        export type L = number
+        
+    }
+    
+    export type List_of_Characters_ = _pi.List<List_of_Characters_.L>
+    
+    export { 
+        Directory_ as Directory, 
+        Node_ as Node, 
+        Paragraph_ as Paragraph, 
+        Phrase_ as Phrase, 
+        Single_Line_ as Single_Line, 
+        List_of_Characters_ as List_of_Characters, 
+    }
