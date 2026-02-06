@@ -50,7 +50,6 @@ export const Paragraph = (
                     if ($.items.__get_number_of_items() === 0) {
                         return Paragraph_2($['if empty'], { 'current indentation': $p['current indentation'] })
                     } else {
-                        let is_first = true
                         const sep = $['if not empty'].separator
                         const indent = $['if not empty'].indent
                         let counter = -1
@@ -152,6 +151,7 @@ export const Paragraph = (
                                     if (!is_first) {
                                         Phrase(sep)
                                     }
+                                    is_first = false
                                     Phrase($)
                                     return null
                                 })
@@ -189,6 +189,7 @@ export const Paragraph = (
                                                     if (!is_first) {
                                                         Single_Line(sep)
                                                     }
+                                                    is_first = false
                                                     Single_Line($)
                                                     return null
                                                 })
