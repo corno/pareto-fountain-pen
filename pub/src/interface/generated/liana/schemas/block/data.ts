@@ -33,7 +33,7 @@
         
         export namespace sentences {
             
-            export type L = Phrase_
+            export type L = Sentence_
             
         }
         
@@ -53,23 +53,23 @@
             
             export namespace items {
                 
-                export type L = Paragraph_
+                export type L = Sentence_
                 
             }
             
             export type items = _pi.List<items.L>
             
-            export type if_empty = Paragraph_
+            export type if_empty = Sentence_
             
             export namespace if_not_empty {
                 
                 export type indent = boolean
                 
-                export type before = Paragraph_
+                export type before = Phrase_
                 
-                export type separator = Paragraph_
+                export type separator = Phrase_
                 
-                export type after = Paragraph_
+                export type after = Phrase_
                 
             }
             
@@ -96,6 +96,8 @@
         | readonly ['optional', Paragraph_.optional]
         | readonly ['nothing', Paragraph_.nothing]
         | readonly ['rich list', Paragraph_.rich_list]
+    
+    export type Sentence_ = Phrase_
     
     export namespace Phrase_ {
         
@@ -234,6 +236,7 @@
         Directory_ as Directory, 
         Node_ as Node, 
         Paragraph_ as Paragraph, 
+        Sentence_ as Sentence, 
         Phrase_ as Phrase, 
         Single_Line_ as Single_Line, 
         List_of_Characters_ as List_of_Characters, 

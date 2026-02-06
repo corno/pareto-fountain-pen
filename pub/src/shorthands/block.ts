@@ -14,12 +14,12 @@ export namespace pg {
     export const optional = (Paragraph: _pi.Optional_Value<d_target.Paragraph>): d_target.Paragraph => ['optional', Paragraph]
 
     export const rich = (
-        items: _p.Raw_Or_Normal_List<d_target.Paragraph>,
-        if_empty: d_target.Paragraph,
+        items: _p.Raw_Or_Normal_List<d_target.Sentence>,
+        if_empty: d_target.Sentence,
         indent: boolean,
-        before: d_target.Paragraph,
-        separator: d_target.Paragraph,
-        after: d_target.Paragraph,
+        before: d_target.Phrase,
+        separator: d_target.Phrase,
+        after: d_target.Phrase,
     ): d_target.Paragraph => ['rich list', {
         'items': _p.list.literal(items),
         'if empty': if_empty,

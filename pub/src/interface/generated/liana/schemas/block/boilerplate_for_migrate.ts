@@ -53,6 +53,22 @@
         context: Paragraph_.I,
     ) => Paragraph_.O
     
+    export namespace Sentence_ {
+        
+        export type I = i_in.Sentence
+        
+        export type O = i_out.Sentence
+        
+        export namespace P {
+            
+        }
+        
+    }
+    
+    export type Sentence_ = (
+        context: Sentence_.I,
+    ) => Sentence_.O
+    
     export namespace Phrase_ {
         
         export type I = i_in.Phrase
@@ -105,6 +121,7 @@
         Directory_ as Directory, 
         Node_ as Node, 
         Paragraph_ as Paragraph, 
+        Sentence_ as Sentence, 
         Phrase_ as Phrase, 
         Single_Line_ as Single_Line, 
         List_of_Characters_ as List_of_Characters, 

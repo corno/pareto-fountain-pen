@@ -48,30 +48,30 @@ export const Paragraph = (
             case 'rich list':
                 return _p.ss($, ($) => {
                     if ($.items.__get_number_of_items() === 0) {
-                        return Paragraph_2($['if empty'], { 'current indentation': $p['current indentation'] })
+                        return Sentence($['if empty'], { 'current indentation': $p['current indentation'] })
                     } else {
                         const sep = $['if not empty'].separator
                         const indent = $['if not empty'].indent
                         let counter = -1
                         const length = $.items.__get_number_of_items()
-                        Paragraph_2($['if not empty'].before, { 'current indentation': $p['current indentation'] }),
-                            // $['if not empty'].indent,
-                            _p.list.map( //replace by iterate
-                                $.items,
-                                ($) => {
-                                    counter++
-                                    return Paragraph_2(
-                                        ['composed', _p.list.literal([
-                                            $,
-                                            (counter < length - 1)
-                                                ? sep
-                                                : ['nothing', null],
-                                        ])],
-                                        { 'current indentation': $p['current indentation'] + (indent ? 1 : 0) }
-                                    )
-                                }
-                            ),
-                            Paragraph_2($['if not empty'].after, { 'current indentation': $p['current indentation'] })
+                        Sentence($['if not empty'].before, { 'current indentation': $p['current indentation'] })
+                        // $['if not empty'].indent,
+                        _p.list.map( //replace by iterate
+                            $.items,
+                            ($) => {
+                                counter++
+                                return Sentence(
+                                    ['composed', _p.list.literal([
+                                        $,
+                                        (counter < length - 1)
+                                            ? sep
+                                            : ['nothing', null],
+                                    ])],
+                                    { 'current indentation': $p['current indentation'] + (indent ? 1 : 0) }
+                                )
+                            }
+                        )
+                        Sentence($['if not empty'].after, { 'current indentation': $p['current indentation'] })
                         return _p.list.literal([]) //nothing returned
                     }
                 })
@@ -89,7 +89,7 @@ export const Paragraph = (
                     () => _p.list.literal([]),
                 ))
             case 'sentences': return _p.ss($, ($) => {
-                $.__l_map(($) => Block($, { 'current indentation': $p['current indentation'] }))
+                $.__l_map(($) => Sentence($, { 'current indentation': $p['current indentation'] }))
                 return _p.list.literal([]) //nothing returned
             })
             case 'composed': return _p.ss($, ($) => {
@@ -111,7 +111,7 @@ export const Paragraph = (
     //     }
     // ): Nested_Nothing => _p.list.flatten($, ($) => Group_Part($, { 'current indentation': $p['current indentation'] }))
 
-    const Block = (
+    const Sentence = (
         $: d_in.Paragraph.sentences.L,
         $p: {
             'current indentation': number

@@ -3,7 +3,7 @@ import * as _pi from 'pareto-core/dist/interface'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 import * as d_in from "../../../../../interface/generated/liana/schemas/semi_lines/data"
-import * as d_out from "../../../../../interface/generated/liana/schemas/text/data"
+import * as d_out from "../../../../../interface/generated/liana/schemas/text_deprecated/data"
 import * as d_block_serialize from "../../../../../interface/to_be_generated/block_serialize"
 
 
