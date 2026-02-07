@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
@@ -21,11 +21,12 @@ export const Lines = (
         ($) => _p_text_from_list(
             _p.list.nested_literal_old<number>(
                 [
-                    _p.list.flatten(
+                    _p.list.from.list(
                         _p.list.repeat(
                             indent,
                             $.indentation
                         ),
+                    ).flatten(
                         ($) => $
                     ),
                     _p_list_from_text<number>($.text, ($) => $)

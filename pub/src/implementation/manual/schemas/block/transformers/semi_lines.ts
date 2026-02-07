@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
@@ -8,7 +8,7 @@ import * as d_out from "../../../../../interface/generated/liana/schemas/semi_li
 
 export const Directory = (
     $: d_in.Directory,
-): d_out.Directory => _p.dictionary.map($, ($) => _p.decide.state($, ($): d_out.Directory.D => {
+): d_out.Directory => _p.dictionary.from.dictionary($).map(($) => _p.decide.state($, ($): d_out.Directory.D => {
     switch ($[0]) {
         case 'file': return _p.ss($, ($) => ['file', Paragraph($)])
         case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
@@ -56,8 +56,9 @@ export const Paragraph = (
                         const length = $.items.__get_number_of_items()
                         Sentence($['if not empty'].before, { 'current indentation': $p['current indentation'] })
                         // $['if not empty'].indent,
-                        _p.list.map( //replace by iterate
+                        _p.list.from.list( //replace by iterate
                             $.items,
+                        ).map(
                             ($) => {
                                 counter++
                                 return Sentence(
@@ -145,8 +146,9 @@ export const Paragraph = (
                             let is_first = true
                             const sep = $['if not empty'].separator
                             Phrase($['if not empty'].before)
-                            _p.list.map( //replace by iterate
+                            _p.list.from.list( //replace by iterate
                                 $.items,
+                            ).map(
                                 ($) => {
                                     if (!is_first) {
                                         Phrase(sep)
@@ -183,8 +185,9 @@ export const Paragraph = (
                                             let is_first = true
                                             const sep = $['if not empty'].separator
                                             Single_Line($['if not empty'].before)
-                                            _p.list.map( //replace by iterate
+                                            _p.list.from.list( //replace by iterate
                                                 $.items,
+                                            ).map(
                                                 ($) => {
                                                     if (!is_first) {
                                                         Single_Line(sep)
