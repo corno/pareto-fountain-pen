@@ -21,11 +21,5 @@ export const Lines: _pi.Transformer_With_Parameters<d_in.Lines, d_out.List_of_Ch
             ($) => $
         )
     ),
-    ($): d_out.List_of_Characters => _p.list.nested_literal_old([
-        _p_list_from_text<number>(
-            $p.indentation,
-            ($) => $
-        ),
-        $
-    ])
+    ($) => $
 )
