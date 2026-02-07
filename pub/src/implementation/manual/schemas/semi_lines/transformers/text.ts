@@ -9,7 +9,7 @@ import * as d_x from "../../../../../interface/to_be_generated/block_serialize"
 import * as d_out from "../../../../../interface/to_be_generated/list_of_characters"
 
 
-export const Lines: _pi.Transformer_With_Parameters<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => _p.list.flatten(
+export const Lines: _pi.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => _p.list.flatten(
     t_fountain_pen_semi_lines_to_lines.Lines(
         $,
         {
