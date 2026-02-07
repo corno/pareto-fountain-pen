@@ -34,9 +34,13 @@ export namespace pg {
     ): d_target.Paragraph => ['composed', _p.list.literal(Group_Parts)]
 
     export const sentences = (
-        phrases: _p.Raw_Or_Normal_List<d_target.Phrase>
-    ): d_target.Paragraph => ['sentences', _p.list.literal(phrases)]
+        sentences: _p.Raw_Or_Normal_List<d_target.Sentence>
+    ): d_target.Paragraph => ['sentences', _p.list.literal(sentences)]
 }
+
+export const sentence = (
+    phrases: _p.Raw_Or_Normal_List<d_target.Phrase>
+): d_target.Sentence => _p.list.literal(phrases)
 
 export namespace ph {
 

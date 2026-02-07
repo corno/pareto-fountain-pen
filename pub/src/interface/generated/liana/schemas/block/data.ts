@@ -97,7 +97,13 @@ export type Paragraph_ =
     | readonly ['nothing', Paragraph_.nothing]
     | readonly ['rich list', Paragraph_.rich_list]
 
-export type Sentence_ = Phrase_
+export namespace Sentence_ {
+    
+    export type L = Phrase_
+    
+}
+
+export type Sentence_ = _pi.List<Sentence_.L>
 
 export namespace Phrase_ {
     

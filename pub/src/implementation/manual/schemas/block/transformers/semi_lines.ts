@@ -54,25 +54,24 @@ export const Paragraph = (
                         const indent = $['if not empty'].indent
                         let counter = -1
                         const length = $.items.__get_number_of_items()
-                        Sentence($['if not empty'].before, { 'current indentation': $p['current indentation'] })
+                        Sentence(_p.list.literal([$['if not empty'].before]), { 'current indentation': $p['current indentation'] })
                         // $['if not empty'].indent,
                         _p.list.from.list( //replace by iterate
                             $.items,
                         ).map(
                             ($) => {
                                 counter++
-                                return Sentence(
-                                    ['composed', _p.list.literal([
-                                        $,
-                                        (counter < length - 1)
-                                            ? sep
-                                            : ['nothing', null],
-                                    ])],
+                                Sentence($, { 'current indentation': $p['current indentation'] })
+                                Sentence(
+                                    (counter < length - 1)
+                                        ? _p.list.literal([sep])
+                                        : _p.list.literal([]),
                                     { 'current indentation': $p['current indentation'] + (indent ? 1 : 0) }
                                 )
+                                return _p.list.literal([]) //nothing returned
                             }
                         )
-                        Sentence($['if not empty'].after, { 'current indentation': $p['current indentation'] })
+                        Sentence(_p.list.literal([$['if not empty'].after]), { 'current indentation': $p['current indentation'] })
                         return _p.list.literal([]) //nothing returned
                     }
                 })
@@ -222,7 +221,7 @@ export const Paragraph = (
             }
 
         }
-        Phrase($)
+        $.__l_map(($) => Phrase($)) 
         if (current_line !== null) {
             $i['add item']({
                 'indentation': $p['current indentation'],
@@ -241,5 +240,5 @@ export const Paragraph = (
 export const Phrase = (
     $: d_in.Phrase,
 ): d_out.Lines => Paragraph(
-    ['sentences', _p.list.literal([$])],
+    ['sentences', _p.list.literal([_p.list.literal([$])])],
 )
