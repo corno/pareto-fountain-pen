@@ -13,7 +13,7 @@ export const Lines: _pi.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Cha
     t_fountain_pen_semi_lines_to_lines.Lines(
         $,
         {
-            'indentation': $p.indentation,
+            'indentation text': $p.indentation,
         }
     ),
 ).flatten(

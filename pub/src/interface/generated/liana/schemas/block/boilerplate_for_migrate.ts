@@ -85,22 +85,6 @@ export type Phrase_ = (
     context: Phrase_.I,
 ) => Phrase_.O
 
-export namespace Single_Line_ {
-    
-    export type I = i_in.Single_Line
-    
-    export type O = i_out.Single_Line
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Single_Line_ = (
-    context: Single_Line_.I,
-) => Single_Line_.O
-
 export namespace List_of_Characters_ {
     
     export type I = i_in.List_of_Characters
@@ -123,6 +107,5 @@ export {
     Paragraph_ as Paragraph, 
     Sentence_ as Sentence, 
     Phrase_ as Phrase, 
-    Single_Line_ as Single_Line, 
     List_of_Characters_ as List_of_Characters, 
 }

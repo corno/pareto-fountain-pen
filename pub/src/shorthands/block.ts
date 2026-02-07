@@ -13,19 +13,19 @@ export namespace pg {
 
     export const rich = (
         items: _p.Raw_Or_Normal_List<d_target.Sentence>,
-        if_empty: d_target.Sentence,
+        if_empty: null | d_target.Sentence,
         indent: boolean,
-        before: d_target.Phrase,
-        separator: d_target.Phrase,
-        after: d_target.Phrase,
+        before: null | d_target.Sentence,
+        separator: null | d_target.Phrase,
+        after: null | d_target.Sentence,
     ): d_target.Paragraph => ['rich list', {
         'items': _p.list.literal(items),
-        'if empty': if_empty,
+        'if empty': _p.optional.literalx(if_empty),
         'if not empty': {
             'indent': indent,
-            'before': before,
-            'separator': separator,
-            'after': after,
+            'before': _p.optional.literalx(before),
+            'separator': _p.optional.literalx(separator),
+            'after': _p.optional.literalx(after),
         },
     }]
 
@@ -75,55 +75,17 @@ export namespace ph {
         phrases: _p.Raw_Or_Normal_List<d_target.Phrase>
     ): d_target.Phrase => ['composed', _p.list.literal(phrases)]
 
-    export const single_line = (
-        parts: _p.Raw_Or_Normal_List<d_target.Single_Line.L>
-    ): d_target.Phrase => ['single line', _p.list.literal(parts)]
-
-
-
-
     export const decimal = (
         value: number
-    ): d_target.Phrase => ['single line', _p.list.literal([['snippet', `${value}`]])]
+    ): d_target.Phrase => ['value', ['text', `${value}`]]
 
     export const literal = (
-        snippet: string
-    ): d_target.Phrase => ['single line', _p.list.literal([['snippet', snippet]])]
+        value: string
+    ): d_target.Phrase => ['value', ['text', value]]
 
     export const serialize = (
-        snippet: d_text.List_of_Characters
-    ): d_target.Phrase => ['single line', _p.list.literal([['serialize', snippet]])]
-}
-
-export namespace sl {
-
-    export const decimal = (
-        value: number
-    ): d_target.Single_Line.L => ['snippet', `${value}`]
-
-    export const literal = (
-        snippet: string
-    ): d_target.Single_Line.L => ['snippet', snippet]
-
-    export const serialize = (
-        snippet: d_text.List_of_Characters
-    ): d_target.Single_Line.L => ['serialize', snippet]
-
-    export const rich = (
-        items: _p.Raw_Or_Normal_List<d_target.Single_Line>,
-        if_empty: d_target.Single_Line,
-        before: d_target.Single_Line,
-        separator: d_target.Single_Line,
-        after: d_target.Single_Line,
-    ): d_target.Single_Line.L => ['rich list', {
-        'items': _p.list.literal(items),
-        'if empty': if_empty,
-        'if not empty': {
-            'before': before,
-            'separator': separator,
-            'after': after,
-        },
-    }]
+        value: d_text.List_of_Characters
+    ): d_target.Phrase => ['value', ['list of characters', value]]
 }
 
 export namespace n {

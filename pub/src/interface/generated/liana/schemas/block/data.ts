@@ -59,23 +59,47 @@ export namespace Paragraph_ {
         
         export type items = _pi.List<items.L>
         
-        export type if_empty = Sentence_
+        export namespace if_empty {
+            
+            export type O = Sentence_
+            
+        }
+        
+        export type if_empty = _pi.Optional_Value<if_empty.O>
         
         export namespace if_not_empty {
             
+            export namespace before {
+                
+                export type O = Sentence_
+                
+            }
+            
+            export type before = _pi.Optional_Value<before.O>
+            
             export type indent = boolean
             
-            export type before = Phrase_
+            export namespace separator {
+                
+                export type O = Phrase_
+                
+            }
             
-            export type separator = Phrase_
+            export type separator = _pi.Optional_Value<separator.O>
             
-            export type after = Phrase_
+            export namespace after {
+                
+                export type O = Sentence_
+                
+            }
+            
+            export type after = _pi.Optional_Value<after.O>
             
         }
         
         export type if_not_empty = {
-            readonly 'indent': if_not_empty.indent
             readonly 'before': if_not_empty.before
+            readonly 'indent': if_not_empty.indent
             readonly 'separator': if_not_empty.separator
             readonly 'after': if_not_empty.after
         }
@@ -107,7 +131,17 @@ export type Sentence_ = _pi.List<Sentence_.L>
 
 export namespace Phrase_ {
     
-    export type single_line = Single_Line_
+    export namespace value {
+        
+        export type text = string
+        
+        export type list_of_characters = List_of_Characters_
+        
+    }
+    
+    export type value = 
+        | readonly ['text', value.text]
+        | readonly ['list of characters', value.list_of_characters]
     
     export type indent = Paragraph_
     
@@ -168,67 +202,12 @@ export namespace Phrase_ {
 }
 
 export type Phrase_ = 
-    | readonly ['single line', Phrase_.single_line]
+    | readonly ['value', Phrase_.value]
     | readonly ['indent', Phrase_.indent]
     | readonly ['composed', Phrase_.composed]
     | readonly ['optional', Phrase_.optional]
     | readonly ['nothing', Phrase_.nothing]
     | readonly ['rich list', Phrase_.rich_list]
-
-export namespace Single_Line_ {
-    
-    export namespace L {
-        
-        export type snippet = string
-        
-        export type serialize = List_of_Characters_
-        
-        export namespace rich_list {
-            
-            export namespace items {
-                
-                export type L = Single_Line_
-                
-            }
-            
-            export type items = _pi.List<items.L>
-            
-            export type if_empty = Single_Line_
-            
-            export namespace if_not_empty {
-                
-                export type before = Single_Line_
-                
-                export type separator = Single_Line_
-                
-                export type after = Single_Line_
-                
-            }
-            
-            export type if_not_empty = {
-                readonly 'before': if_not_empty.before
-                readonly 'separator': if_not_empty.separator
-                readonly 'after': if_not_empty.after
-            }
-            
-        }
-        
-        export type rich_list = {
-            readonly 'items': rich_list.items
-            readonly 'if empty': rich_list.if_empty
-            readonly 'if not empty': rich_list.if_not_empty
-        }
-        
-    }
-    
-    export type L = 
-        | readonly ['snippet', L.snippet]
-        | readonly ['serialize', L.serialize]
-        | readonly ['rich list', L.rich_list]
-    
-}
-
-export type Single_Line_ = _pi.List<Single_Line_.L>
 
 export namespace List_of_Characters_ {
     
@@ -244,6 +223,5 @@ export {
     Paragraph_ as Paragraph, 
     Sentence_ as Sentence, 
     Phrase_ as Phrase, 
-    Single_Line_ as Single_Line, 
     List_of_Characters_ as List_of_Characters, 
 }

@@ -10,11 +10,11 @@ import * as d_out from "../../../../../interface/generated/liana/schemas/lines/d
 export const Lines = (
     $: d_in.Lines,
     $p: {
-        'indentation': string
+        'indentation text': string
     }
 ): d_out.Lines => {
     const indent = _p_list_from_text<number>(
-        $p.indentation,
+        $p['indentation text'],
         ($) => $,
     )
     return $.__l_map(
@@ -41,12 +41,12 @@ export const Lines = (
 export const Directory = (
     $: d_in.Directory,
     $p: {
-        'indentation': string
+        'indentation text': string
     }
 ): d_out.Directory => $.__d_map(($) => _p.decide.state($, ($): d_out.Directory.D => {
     switch ($[0]) {
-        case 'file': return _p.ss($, ($) => ['file', Lines($, { 'indentation': $p.indentation })])
-        case 'directory': return _p.ss($, ($) => ['directory', Directory($, { 'indentation': $p.indentation })])
+        case 'file': return _p.ss($, ($) => ['file', Lines($, { 'indentation text': $p['indentation text'] })])
+        case 'directory': return _p.ss($, ($) => ['directory', Directory($, { 'indentation text': $p['indentation text'] })])
         default: return _p.au($[0])
     }
 }))
