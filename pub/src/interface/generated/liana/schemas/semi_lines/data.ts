@@ -1,44 +1,44 @@
+
+import * as _pi from 'pareto-core/dist/interface'
+
+export namespace Lines_ {
     
-    import * as _pi from 'pareto-core/dist/interface'
-    
-    export namespace Lines_ {
+    export namespace L {
         
-        export namespace L {
-            
-            export type text = string
-            
-            export type indentation = number
-            
-        }
+        export type text = string
         
-        export type L = {
-            readonly 'text': L.text
-            readonly 'indentation': L.indentation
-        }
+        export type indentation = number
         
     }
     
-    export type Lines_ = _pi.List<Lines_.L>
+    export type L = {
+        readonly 'text': L.text
+        readonly 'indentation': L.indentation
+    }
     
-    export namespace Directory_ {
+}
+
+export type Lines_ = _pi.List<Lines_.L>
+
+export namespace Directory_ {
+    
+    export namespace D {
         
-        export namespace D {
-            
-            export type file = Lines_
-            
-            export type directory = Directory_
-            
-        }
+        export type file = Lines_
         
-        export type D = 
-            | readonly ['file', D.file]
-            | readonly ['directory', D.directory]
+        export type directory = Directory_
         
     }
     
-    export type Directory_ = _pi.Dictionary<Directory_.D>
+    export type D = 
+        | readonly ['file', D.file]
+        | readonly ['directory', D.directory]
     
-    export { 
-        Lines_ as Lines, 
-        Directory_ as Directory, 
-    }
+}
+
+export type Directory_ = _pi.Dictionary<Directory_.D>
+
+export { 
+    Lines_ as Lines, 
+    Directory_ as Directory, 
+}
