@@ -4,8 +4,6 @@ import * as _pi from 'pareto-core/dist/interface'
 import * as d_target from "../interface/generated/liana/schemas/block/data"
 import * as d_text from "../interface/to_be_generated/list_of_characters"
 
-import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
-
 
 export namespace pg {
 
