@@ -31,18 +31,27 @@ export namespace pg {
         },
     }]
 
-    export const composed = (Group_Parts: _p.Raw_Or_Normal_List<d_target.Paragraph>): d_target.Paragraph => ['composed', _p.list.literal(Group_Parts)]
+    export const composed = (
+        Group_Parts: _p.Raw_Or_Normal_List<d_target.Paragraph>
+    ): d_target.Paragraph => ['composed', _p.list.literal(Group_Parts)]
 
-    export const sentences = (phrases: _p.Raw_Or_Normal_List<d_target.Phrase>): d_target.Paragraph => ['sentences', _p.list.literal(phrases)]
+    export const sentences = (
+        phrases: _p.Raw_Or_Normal_List<d_target.Phrase>
+    ): d_target.Paragraph => ['sentences', _p.list.literal(phrases)]
 }
 
 export namespace ph {
 
-    export const indent = (paragraph: d_target.Paragraph): d_target.Phrase => ['indent', paragraph]
+    export const indent = (
+        paragraph: d_target.Paragraph
+    ): d_target.Phrase => ['indent', paragraph]
 
-    export const nothing = (): d_target.Phrase => ['nothing', null]
+    export const nothing = (
+    ): d_target.Phrase => ['nothing', null]
 
-    export const optional = (block_part: _pi.Optional_Value<d_target.Phrase>): d_target.Phrase => ['optional', block_part]
+    export const optional = (
+        block_part: _pi.Optional_Value<d_target.Phrase>
+    ): d_target.Phrase => ['optional', block_part]
 
     export const rich = (
         items: _p.Raw_Or_Normal_List<d_target.Phrase>,
@@ -60,27 +69,43 @@ export namespace ph {
         },
     }]
 
-    export const composed = (phrases: _p.Raw_Or_Normal_List<d_target.Phrase>): d_target.Phrase => ['composed', _p.list.literal(phrases)]
+    export const composed = (
+        phrases: _p.Raw_Or_Normal_List<d_target.Phrase>
+    ): d_target.Phrase => ['composed', _p.list.literal(phrases)]
 
-    export const single_line = (parts: _p.Raw_Or_Normal_List<d_target.Single_Line.L>): d_target.Phrase => ['single line', _p.list.literal(parts)]
+    export const single_line = (
+        parts: _p.Raw_Or_Normal_List<d_target.Single_Line.L>
+    ): d_target.Phrase => ['single line', _p.list.literal(parts)]
 
 
 
 
-    export const decimal = (value: number): d_target.Phrase => ['single line', _p.list.literal([['snippet', `${value}`]])]
+    export const decimal = (
+        value: number
+    ): d_target.Phrase => ['single line', _p.list.literal([['snippet', `${value}`]])]
 
-    export const literal = (snippet: string): d_target.Phrase => ['single line', _p.list.literal([['snippet', snippet]])]
+    export const literal = (
+        snippet: string
+    ): d_target.Phrase => ['single line', _p.list.literal([['snippet', snippet]])]
 
-    export const serialize = (snippet: d_text.List_of_Characters): d_target.Phrase => ['single line', _p.list.literal([['serialize', snippet]])]
+    export const serialize = (
+        snippet: d_text.List_of_Characters
+    ): d_target.Phrase => ['single line', _p.list.literal([['serialize', snippet]])]
 }
 
 export namespace sl {
 
-    export const decimal = (value: number): d_target.Single_Line.L => ['snippet', `${value}`]
+    export const decimal = (
+        value: number
+    ): d_target.Single_Line.L => ['snippet', `${value}`]
 
-    export const literal = (snippet: string): d_target.Single_Line.L => ['snippet', snippet]
+    export const literal = (
+        snippet: string
+    ): d_target.Single_Line.L => ['snippet', snippet]
 
-    export const serialize = (snippet: d_text.List_of_Characters): d_target.Single_Line.L => ['serialize', snippet]
+    export const serialize = (
+        snippet: d_text.List_of_Characters
+    ): d_target.Single_Line.L => ['serialize', snippet]
 
     export const rich = (
         items: _p.Raw_Or_Normal_List<d_target.Single_Line>,
