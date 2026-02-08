@@ -20,14 +20,6 @@ export const Directory = (
 }))
 
 
-
-type New_Phrase =
-    | ['indent', d_out.Lines]
-    | ['value', d_in.Phrase.value]
-    | ['rich list', d_in.Phrase.rich_list]
-
-type List_of_new_phrases = _pi.List<New_Phrase>
-
 export const Paragraph = (
     $: d_in.Paragraph,
     $p: {
@@ -110,22 +102,25 @@ export const Sentence = (
     let found_indentation = false
 
     const handle_phrase = ($: d_in.Phrase): void => {
-        Phrase($, $p).__l_map(($) => {
-            _p.decide.state($, ($) => {
-                switch ($[0]) {
-                    case 'value': return _p.ss($, ($) => {
-                        if (current_line === null) {
-                            current_line = ""
+        _p.decide.state($, ($) => {
+            switch ($[0]) {
+                case 'value': return _p.ss($, ($) => {
+                    if (current_line === null) {
+                        current_line = ""
+                    }
+                    current_line += _p.decide.state($, ($) => {
+                        switch ($[0]) {
+                            case 'text': return _p.ss($, ($) => $)
+                            case 'list of characters': return _p.ss($, ($) => _p_text_from_list($, ($) => $))
+                            default: return _p.au($[0])
                         }
-                        current_line += _p.decide.state($, ($) => {
-                            switch ($[0]) {
-                                case 'text': return _p.ss($, ($) => $)
-                                case 'list of characters': return _p.ss($, ($) => _p_text_from_list($, ($) => $))
-                                default: return _p.au($[0])
-                            }
-                        })
                     })
-                    case 'indent': return _p.ss($, ($) => {
+                })
+                case 'indent': return _p.ss($, ($) => {
+                    const paragraph = Paragraph($, {
+                        'indentation level': $p['indentation level'] + 1,
+                    })
+                    if (paragraph.__get_number_of_items() !== 0) {
                         found_indentation = true
                         if (current_line !== null) {
                             $i['add item']({
@@ -134,29 +129,40 @@ export const Sentence = (
                             })
                             current_line = null
                         }
-                        return $i['add list']($)
-                    })
-                    case 'rich list': return _p.ss($, ($) => _p.decide.boolean(
-                        _p.boolean.from.list($.items).is_empty(),
-                        () => handle_phrase($['if empty']),
-                        () => {
-                            const sep = $['if not empty'].separator
-                            const amount = $.items.__get_number_of_items()
-                            let current = -1
-                            handle_phrase($['if not empty'].before)
-                            $.items.__l_map(($) => {
-                                current++
-                                handle_phrase($)
-                                if (current < amount - 1) {
-                                    handle_phrase(sep)
-                                }
-                            })
-                            handle_phrase($['if not empty'].after)
-                        }
-                    ))
-                    default: return _p.au($[0])
-                }
-            })
+                        $i['add list'](paragraph)
+                    }
+                })
+                case 'rich list': return _p.ss($, ($) => _p.decide.boolean(
+                    _p.boolean.from.list($.items).is_empty(),
+                    () => handle_phrase($['if empty']),
+                    () => {
+                        const sep = $['if not empty'].separator
+                        const amount = $.items.__get_number_of_items()
+                        let current = -1
+                        handle_phrase($['if not empty'].before)
+                        $.items.__l_map(($) => {
+                            current++
+                            handle_phrase($)
+                            if (current < amount - 1) {
+                                handle_phrase(sep)
+                            }
+                        })
+                        handle_phrase($['if not empty'].after)
+                    }
+                ))
+                case 'composed': return _p.ss($, ($) => _p.list.from.list(
+                    $,
+                ).map(
+                    ($) => handle_phrase($)
+                ))
+                case 'optional': return _p.ss($, ($) => _p.decide.optional(
+                    $,
+                    ($) => handle_phrase($),
+                    () => { },
+                ))
+                case 'nothing': return _p.ss($, ($) => { })
+                default: return _p.au($[0])
+            }
         })
     }
 
@@ -177,37 +183,5 @@ export const Sentence = (
             'indentation': $p['indentation level'],
             'text': current_line,
         })
-    }
-})
-
-export const Phrase = (
-    $: d_in.Phrase,
-    $p: {
-        'indentation level': number
-    }
-): List_of_new_phrases => _p.decide.state($, ($): List_of_new_phrases => {
-    switch ($[0]) {
-        case 'value': return _p.ss($, ($) => _p.list.literal([
-            ['value', $]
-        ]))
-        case 'indent': return _p.ss($, ($) => _p.list.literal([
-            ['indent', Paragraph($, {
-                'indentation level': $p['indentation level'] + 1,
-            })]
-        ]))
-        case 'composed': return _p.ss($, ($) => _p.list.from.list(
-            $,
-        ).flatten(
-            ($) => Phrase($, { 'indentation level': $p['indentation level'] })))
-        case 'optional': return _p.ss($, ($) => _p.decide.optional(
-            $,
-            ($) => Phrase($, { 'indentation level': $p['indentation level'] }),
-            () => _p.list.literal([]),
-        ))
-        case 'nothing': return _p.ss($, ($) => _p.list.literal([]))
-        case 'rich list': return _p.ss($, ($) => _p.list.literal([
-            ['rich list', $]
-        ]))
-        default: return _p.au($[0])
     }
 })
