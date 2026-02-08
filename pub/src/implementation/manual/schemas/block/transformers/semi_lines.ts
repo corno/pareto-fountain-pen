@@ -157,13 +157,6 @@ const Phrase = (
                         Phrase($['if not empty'].after, $p)
 
                     ])
-                    $.items.__l_map(($) => {
-                        current++
-                        Phrase($, $p)
-                        if (current < amount - 1) {
-                            Phrase(sep, $p)
-                        }
-                    })
                 }
             ))
             case 'composed': return _p.ss($, ($) => _p.list.from.list(
@@ -190,32 +183,36 @@ export const Sentence = (
 ): d_out.Lines => _p_list_build_deprecated(($i) => {
     let current_line: null | string = null
     let found_indentation = false
-    $.__l_map(($) => Phrase(
-        $,
-        {
-            'indentation level': $p['indentation level'],
-        }).__l_map(($) => _p.decide.state($, ($) => {
-            switch ($[0]) {
-                case 'append': return _p.ss($, ($) => {
-                    if (current_line === null) {
-                        current_line = ""
-                    }
-                    current_line += $
-                })
-                case 'add paragraph': return _p.ss($, ($) => {
-                    found_indentation = true
-                    if (current_line !== null) {
-                        $i['add item']({
-                            'indentation': $p['indentation level'],
-                            'text': current_line,
-                        })
-                        current_line = null
-                    }
-                    $i['add list']($)
-                })
-                default: return _p.au($[0])
+    $.__l_map(
+        ($) => Phrase(
+            $,
+            {
+                'indentation level': $p['indentation level'],
             }
-        }))
+        ).__l_map(
+            ($) => _p.decide.state($, ($) => {
+                switch ($[0]) {
+                    case 'append': return _p.ss($, ($) => {
+                        if (current_line === null) {
+                            current_line = ""
+                        }
+                        current_line += $
+                    })
+                    case 'add paragraph': return _p.ss($, ($) => {
+                        found_indentation = true
+                        if (current_line !== null) {
+                            $i['add item']({
+                                'indentation': $p['indentation level'],
+                                'text': current_line,
+                            })
+                            current_line = null
+                        }
+                        $i['add list']($)
+                    })
+                    default: return _p.au($[0])
+                }
+            })
+        )
     )
     //this is a sentence, always add the current line if no indentation was found, even if it's null, to create an empty line
     if (current_line === null) {
