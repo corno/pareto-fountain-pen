@@ -61,7 +61,7 @@ Nodes represent file system structure:
 ### Basic Example
 
 ```typescript
-import * as sh from "pareto-fountain-pen/dist/shorthands/block"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
 // Create a simple paragraph
 const paragraph = sh.pg.sentences([
@@ -91,7 +91,7 @@ function greet() {
 ### TypeScript Code Generation
 
 ```typescript
-import * as sh from "pareto-fountain-pen/dist/shorthands/block"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
 const generateInterface = (name: string, properties: Array<{ name: string, type: string }>) =>
     sh.pg.sentences([
@@ -187,7 +187,7 @@ Pareto Fountain Pen processes content through a transformation pipeline:
 ### Converting to Text
 
 ```typescript
-import * as t_fp_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/block/transformers/list_of_characters"
+import * as t_fp_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/prose/transformers/list_of_characters"
 
 const text = t_fp_to_loc.Paragraph(paragraph, {
     'indentation': '    ',  // 4 spaces
@@ -222,7 +222,7 @@ const text = t_fp_to_loc.Paragraph(paragraph, {
 ### Shorthands (`sh`)
 
 ```typescript
-import * as sh from "pareto-fountain-pen/dist/shorthands/block"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
 // Paragraphs
 sh.pg.nothing()
@@ -255,7 +255,7 @@ sh.directory(nodes)
 ### Transformers
 
 ```typescript
-import * as t_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/block/transformers/list_of_characters"
+import * as t_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/prose/transformers/list_of_characters"
 
 // Paragraph to text
 t_to_loc.Paragraph(paragraph, {
