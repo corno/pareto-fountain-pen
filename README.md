@@ -1,6 +1,10 @@
 # Pareto Fountain Pen
 
-A TypeScript library for generating structured text output with automatic indentation and formatting. Fountain Pen provides a declarative API for building complex text documents with proper nesting, indentation, and line management.
+A TypeScript library for generating formatted text and source code with automatic indentation management. Pareto Fountain Pen provides a composable, functional API for building complex text outputs with proper formatting.
+
+## Overview
+
+Pareto Fountain Pen is designed for code generation and formatted text output in the Pareto ecosystem. It provides a structured approach to building text content through a hierarchical model: **Directory** → **Node** → **Paragraph** → **Sentence** → **Phrase**. The library automatically handles indentation, line breaks, and formatting concerns, allowing you to focus on content structure.
 
 ## Installation
 
@@ -8,308 +12,351 @@ A TypeScript library for generating structured text output with automatic indent
 npm install pareto-fountain-pen
 ```
 
-## Overview
+## Core Concepts
 
-Fountain Pen is designed around two core concepts:
-- **Blocks**: Top-level structural units that represent complete sections
-- **Line Parts**: Components that make up individual lines within blocks
+### Hierarchical Structure
 
-The library automatically handles:
-- Consistent indentation
-- Line breaks and spacing
-- Nested structure formatting
-- Optional content rendering
+Pareto Fountain Pen uses a hierarchical model for text generation:
 
-## Basic Usage
+- **Directory**: A collection of named nodes (files and subdirectories)
+- **Node**: Either a file (containing a paragraph) or a directory (containing more nodes)
+- **Paragraph**: A logical block of content (multiple sentences, lists, or composed paragraphs)
+- **Sentence**: A single line of output (composed of phrases)
+- **Phrase**: A fragment of text within a line (literals, values, or composed phrases)
 
-### Importing
+### Key Components
+
+#### Paragraphs (`pg`)
+
+Paragraphs represent blocks of content and support several patterns:
+
+- **`nothing`**: An empty paragraph
+- **`sentences`**: A list of sentences (lines)
+- **`composed`**: Multiple paragraphs combined
+- **`rich`**: Advanced list handling with separators and conditional content
+- **`optional`**: Conditionally included content
+
+#### Phrases (`ph`)
+
+Phrases are the building blocks of sentences:
+
+- **`literal`**: Static text content
+- **`decimal`**: Numeric values
+- **`serialize`**: Pre-serialized character lists
+- **`indent`**: Nested content with automatic indentation
+- **`composed`**: Multiple phrases combined
+- **`rich`**: List of phrases with separators
+- **`optional`**: Conditionally included phrases
+- **`nothing`**: Empty placeholder
+
+#### Nodes (`n`)
+
+Nodes represent file system structure:
+
+- **`file`**: A file containing a paragraph
+- **`directory`**: A directory containing more nodes
+
+## Usage
+
+### Basic Example
 
 ```typescript
-import * as d_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unresolved"
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
-```
 
-### Creating Simple Output
-
-```typescript
-// Create a basic block with a single line
-const simpleBlock: d_out.Block = block([
-    sh.g.nested_block([
-        sh.b.snippet("Hello, "),
-        sh.b.snippet("world!")
-    ])
-])
-```
-
-## Core Components
-
-### Blocks (`b`)
-
-Blocks represent structural units and provide methods for organizing content:
-
-#### ` sh.g.nested_block(parts: Block_Part[])`
-Creates a 'single' line with nested parts:
-```typescript
-sh.g.nested_block([
-    sh.b.snippet("function "),
-    sh.b.snippet("myFunction() {")
-])
-```
-
-#### ` sh.g.sub(blocks: Block[])`
-Creates a collection of sub-blocks with automatic formatting:
-```typescript
-sh.g.sub(items.map(item => 
-    sh.g.nested_block([ sh.b.snippet(`- ${item}`)])
-))
-```
-
-### Line Parts (`l`)
-
-Line parts are the building blocks of individual lines:
-
-#### ` sh.b.snippet(text: string)`
-Outputs literal text:
-```typescript
-sh.b.snippet("const x = 42;")
-```
-
-#### `l.sub(parts: Block_Part[])`
-Combines multiple line parts:
-```typescript
-l.sub([
-    sh.b.snippet("if ("),
-    sh.b.snippet("condition"),
-    sh.b.snippet(") {")
-])
-```
-
-#### ` sh.ph.indent(blocks: Block[])`
-Creates indented content blocks:
-```typescript
-sh.ph.indent([
-    sh.g.nested_block([ sh.b.snippet("// indented comment")]),
-    sh.g.nested_block([ sh.b.snippet("console.log('indented');")]) 
-])
-```
-
-#### `l.sub(parts: Block_Part[])`
-Creates a decorated collection of line parts:
-```typescript
-l.sub(parameters.map(param => 
-    sh.b.snippet(param.name)
-))
-```
-
-#### `l.nothing()`
-Represents empty/optional content:
-```typescript
-optionalValue.transform(
-    (value) => sh.b.snippet(value),
-    () => sh.ph.nothing()  // renders nothing if value is absent
-)
-```
-
-## Advanced Patterns
-
-### Conditional Rendering
-
-Use ternary operators for conditional content:
-```typescript
-sh.g.nested_block([
-    isStrict ? sh.b.snippet("strict ") : sh.ph.nothing(),
-    sh.b.snippet("digraph myGraph")
-])
-```
-
-### Optional Content with Transform
-
-Handle optional values elegantly:
-```typescript
-name.transform(
-    (value) => sh.ph.composed([
-        sh.b.snippet("name: "),
-        sh.b.snippet(value)
-    ]),
-    () => sh.ph.nothing()  // renders nothing if name is undefined
-)
-```
-
-### Lists and Collections
-
-Process arrays with automatic positioning:
-```typescript
-sh.g.sub(items.map(item => {
-    return sh.g.nested_block([
-        sh.b.snippet(`${item.name}: `),
-        sh.b.snippet(item.value)
-    ])
-}))
-```
-
-### Nested Structures
-
-Create complex nested documents:
-```typescript
-export const generateClass = (classData: ClassData): d_out.Block => {
-    return block([
-        sh.g.nested_block([
-            sh.b.snippet(`class ${classData.name} {`)
-        ]),
-        sh.ph.indent([
-            sh.g.sub(classData.methods.map(method => 
-                sh.g.nested_block([
-                    sh.b.snippet(`${method.name}(`),
-                   sh.ph.composed(method.parameters.map((param, index) =>
-                       sh.ph.composed([
-                            sh.b.snippet(param.name),
-                            index < method.parameters.length - 1 
-                                ? sh.b.snippet(", ") 
-                                : sh.ph.nothing()
-                        ])
-                    )),
-                    sh.b.snippet(") {"),
-                    sh.ph.indent([
-                        sh.g.nested_block([ sh.b.snippet("// method body")])
-                    ]),
-                    sh.b.snippet("}")
+// Create a simple paragraph
+const paragraph = sh.pg.sentences([
+    sh.sentence([
+        sh.ph.literal("function "),
+        sh.ph.literal("greet"),
+        sh.ph.literal("() {")
+        sh.ph.indent(
+            sh.pg.sentences([
+                sh.sentence([
+                    sh.ph.literal("console.log('Hello, World!')")
                 ])
-            ))
+            ])
+        )
+        sh.ph.literal("}")
+    ])
+])
+```
+
+Output:
+```
+function greet() {
+    console.log('Hello, World!')
+}
+```
+
+### TypeScript Code Generation
+
+```typescript
+import * as sh from "pareto-fountain-pen/dist/shorthands/block"
+
+const generateInterface = (name: string, properties: Array<{ name: string, type: string }>) =>
+    sh.pg.sentences([
+        sh.sentence([
+            sh.ph.literal("export interface "),
+            sh.ph.literal(name),
+            sh.ph.literal(" {")
         ]),
-        sh.g.nested_block([
-            sh.b.snippet("}")
+        sh.sentence([
+            sh.ph.indent(
+                sh.pg.sentences(
+                    properties.map(prop => 
+                        sh.sentence([
+                            sh.ph.literal(prop.name),
+                            sh.ph.literal(": "),
+                            sh.ph.literal(prop.type)
+                        ])
+                    )
+                )
+            )
+        ]),
+        sh.sentence([
+            sh.ph.literal("}")
         ])
     ])
-}
 ```
 
-## Common Use Cases
+### Rich Lists
 
-### Code Generation
-Generate source code with proper indentation and structure.
-
-### Documentation Generation  
-Create formatted documentation with nested sections and lists.
-
-### Configuration Files
-Output structured configuration files with consistent formatting.
-
-### Report Generation
-Build formatted reports with tables, sections, and hierarchical data.
-
-## Best Practices
-
-1. **Use meaningful names**: Choose descriptive variable names for complex structures
-2. **Leverage transform**: Use `transform()` for optional content rather than manual conditionals
-3. **Group related content**: Use `l.sub()` to group logically related line parts
-4. **Consistent indentation**: Let ` sh.ph.indent()` handle indentation automatically
-5. **Separate concerns**: Keep block structure separate from content generation logic
-
-## Type Safety
-
-Fountain Pen is fully typed and integrates seamlessly with TypeScript's type system. The `d_out.Block` and `d_out.Phrase` types ensure compile-time correctness of your document structure.
-
-## Writing Output to Disk
-
-After creating your structured document, you can write it directly to disk using the `write_to_disk` function from pareto-fountain-pen.
-
-### Basic File Writing
+Rich lists provide advanced formatting with separators, before/after content, and conditional empty handling:
 
 ```typescript
-import { write_to_disk } from "pareto-fountain-pen/dist/other/write_to_disk"
-import * as sh from "pareto-fountain-pen/dist/shorthands/lines"
-
-// Create your document structure
-const myDocument = sh.d.directory(documentContent)
-
-// Write to disk with path parameter
-write_to_disk(
-    myDocument,
-    {
-        'path': "./output"
-    }
+// Generate a comma-separated list
+sh.ph.rich(
+    items.map(item => sh.ph.literal(item)),
+    sh.ph.nothing(),           // if empty
+    sh.ph.literal("[ "),       // before
+    sh.ph.literal(", "),       // separator
+    sh.ph.literal(" ]")        // after
 )
+// Output: [ item1, item2, item3 ]
 ```
 
-### Real-world Example from Code Generation
+### Error Messages
 
-Here's how it's used in practice for generating multiple files:
+Pareto Fountain Pen is extensively used for formatting error messages:
 
 ```typescript
-import { write_to_disk } from "pareto-fountain-pen/dist/other/write_to_disk"
-import * as sh from "pareto-fountain-pen/dist/shorthands/lines"
-
-export const generate_source_code = ($: null, $p: { 'path': string }) => {
-    write_to_disk(
-        modules.map(($, id) => {
-            return sh.d.directory(transformToOutput(
-                getModule(key)
-            ))
-        }),
-        {
-            'path': $p.path
-        }
-    )
-}
+const formatError = (file: string, line: number, column: number, message: string) =>
+    sh.pg.sentences([
+        sh.sentence([
+            sh.ph.literal(file),
+            sh.ph.literal(":"),
+            sh.ph.decimal(line),
+            sh.ph.literal(":"),
+            sh.ph.decimal(column),
+            sh.ph.literal(": Error: "),
+            sh.ph.literal(message)
+        ])
+    ])
+// Output: src/main.ts:42:15: Error: Type mismatch
 ```
 
-### Directory Structure Generation
+### Directory Structure
 
-The `write_to_disk` function works with directory structures using the shorthands:
+Generate file and directory structures:
 
 ```typescript
-import * as _ea from 'exupery-core-alg'
-
-import * as sh from "pareto-fountain-pen/dist/shorthands/lines"
-
-// Create a directory structure with multiple files
-const projectStructure = sh.d.directory({
-    'files': _ea.dictionary_literal({
-        'readme.md': documentationBlock,
-        'package.json': packageJsonBlock,
-        'src/index.ts': sourceCodeBlock
+const projectStructure = sh.directory({
+    "src": sh.n.directory({
+        "index.ts": sh.n.file(
+            sh.pg.sentences([
+                sh.sentence([sh.ph.literal("export * from './lib'")])
+            ])
+        ),
+        "lib": sh.n.directory({
+            "main.ts": sh.n.file(mainFileContent)
+        })
     }),
-    'directories': _ea.dictionary_literal({
-        'dist': compiledOutput,
-        'types': typeDefinitions
-    })
+    "package.json": sh.n.file(packageJsonContent)
+})
+```
+
+## Transformation Pipeline
+
+Pareto Fountain Pen processes content through a transformation pipeline:
+
+1. **Block/Paragraph**: High-level structure
+2. **Semi Lines**: Intermediate representation with indentation markers
+3. **Lines**: Formatted lines with proper indentation
+4. **List of Characters**: Final character array output
+
+### Converting to Text
+
+```typescript
+import * as t_fp_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/block/transformers/list_of_characters"
+
+const text = t_fp_to_loc.Paragraph(paragraph, {
+    'indentation': '    ',  // 4 spaces
+    'newline': '\n'         // Unix line endings
+})
+```
+
+## Common Use Cases in Pareto Canon
+
+### 1. Code Generators
+- **TypeScript**: Interface, type, and implementation generation
+- **GraphViz**: DOT file generation for diagrams
+- **JSON**: Formatted JSON output
+
+### 2. Error Reporting
+- Compiler error messages
+- Validation errors
+- Parse error formatting
+
+### 3. File Operations
+- Writing generated code to files
+- Console logging with formatting
+- Directory structure creation
+
+### 4. Documentation
+- API documentation generation
+- Schema documentation
+- Code comments
+
+## API Reference
+
+### Shorthands (`sh`)
+
+```typescript
+import * as sh from "pareto-fountain-pen/dist/shorthands/block"
+
+// Paragraphs
+sh.pg.nothing()
+sh.pg.sentences([...])
+sh.pg.composed([...])
+sh.pg.rich(items, if_empty, indent, before, separator, after)
+sh.pg.optional(paragraph)
+
+// Sentences
+sh.sentence([...])
+
+// Phrases
+sh.ph.literal(string)
+sh.ph.decimal(number)
+sh.ph.indent(paragraph)
+sh.ph.composed([...])
+sh.ph.rich(items, if_empty, before, separator, after)
+sh.ph.serialize(list_of_characters)
+sh.ph.optional(phrase)
+sh.ph.nothing()
+
+// Nodes
+sh.n.file(paragraph)
+sh.n.directory(children)
+
+// Directories
+sh.directory(nodes)
+```
+
+### Transformers
+
+```typescript
+import * as t_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/block/transformers/list_of_characters"
+
+// Paragraph to text
+t_to_loc.Paragraph(paragraph, {
+    'indentation': string,
+    'newline': string
 })
 
-write_to_disk(
-    projectStructure,
-    { 'path': "./generated-project" }
+// Phrase to text
+t_to_loc.Phrase(phrase, {
+    'indentation': string,
+    'newline': string
+})
+```
+
+## Integration with Pareto Ecosystem
+
+Pareto Fountain Pen is a core dependency used throughout the Pareto ecosystem:
+
+- **pareto-liana**: Schema compilation and code generation
+- **pareto**: TypeScript light code generation
+- **astn/astn-core**: ASTN serialization and authoring
+- **pareto-graphviz**: Graph visualization file generation
+- **pareto-json**: JSON document formatting
+- **pareto-resources**: File system operations
+- **pareto-development-tools**: Build tooling and error reporting
+
+## Design Principles
+
+1. **Composability**: All components can be nested and combined
+2. **Type Safety**: Full TypeScript typing for correctness
+3. **Separation of Concerns**: Structure separate from formatting
+4. **Functional Style**: Immutable data and pure transformations
+5. **Automatic Formatting**: Indentation and layout handled automatically
+
+## Advanced Features
+
+### Conditional Content
+
+Use `optional` to conditionally include content:
+
+```typescript
+sh.ph.optional(
+    value !== null 
+        ? { 'has value': sh.ph.literal(value) }
+        : { 'has no value': null }
 )
 ```
 
-### Function Signature
+### Nested Indentation
 
-The `write_to_disk` function takes:
-- **First parameter**: The document structure (can be a single document or directory structure)
-- **Second parameter**: Configuration object with `'path'` property specifying the output directory
+Indentation is automatically tracked and applied:
 
 ```typescript
-write_to_disk(
-    content,  // d_out.Block or directory structure
-    { 'path': string }  // output path configuration
-)
+sh.pg.sentences([
+    sh.sentence([
+        sh.ph.literal("outer level"),
+        sh.ph.indent(
+            sh.pg.sentences([
+                sh.sentence([
+                    sh.ph.literal("indented level 1"),
+                    sh.ph.indent(
+                        sh.pg.sentences([
+                            sh.sentence([sh.ph.literal("indented level 2")])
+                        ])
+                    )
+                ])
+            ])
+        )
+    ])
+])
 ```
 
-### Integration with Build Processes
+### List Transformation
 
-Use in build scripts and code generation workflows:
+Convert data structures to formatted output:
 
 ```typescript
-export const generateDocumentation = ($: null, $p: { 'path': string }) => {
-    const documentation = sh.d.directory(createDocumentationStructure())
-    
-    write_to_disk(documentation, { 'path': $p.path })
-    
-    console.log(`Documentation generated at ${$p.path}`)
-}
+const formatList = (items: Array<string>) =>
+    sh.pg.sentences(
+        items.map(item => 
+            sh.sentence([sh.ph.literal(item)])
+        )
+    )
 ```
-
-The `write_to_disk` function handles all file system operations, directory creation, and path resolution automatically.
 
 ## Contributing
 
-This library is part of the Pareto ecosystem. Contributions should follow the established patterns and maintain type safety throughout.
+Pareto Fountain Pen is part of the Pareto eco syste. When contributing:
+
+1. Maintain functional programming principles
+2. Ensure type safety throughout
+3. Follow existing naming conventions
+4. Add tests for new features
+5. Update documentation
+
+## License
+
+Apache-2.0
+
+## Links
+
+- [GitHub Repository](https://github.com/corno/pareto-fountain-pen)
+- [Issues](https://github.com/corno/pareto-fountain-pen/issues)
+- [Pareto Canon](https://github.com/corno/pareto-canon)

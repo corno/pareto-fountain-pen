@@ -5,7 +5,7 @@ import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 import * as t_fountain_pen_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/block/transformers/list_of_characters"
 
-import * as sh from "pub/dist/shorthands/block"
+import * as sh from "pub/dist/shorthands/prose"
 
 _pdev.log_debug_message("TEST NOT IMPLEMENTED YET", () => { })
 

@@ -1,25 +1,7 @@
 
 import * as _pi from 'pareto-core/dist/interface'
 
-export namespace Directory_ {
-    
-    export type D = Node_
-    
-}
-
-export type Directory_ = _pi.Dictionary<Directory_.D>
-
-export namespace Node_ {
-    
-    export type file = Paragraph_
-    
-    export type directory = Directory_
-    
-}
-
-export type Node_ = 
-    | readonly ['file', Node_.file]
-    | readonly ['directory', Node_.directory]
+import * as i__imports_list_of_characters from "../list_of_characters/data"
 
 export namespace Paragraph_ {
     
@@ -135,7 +117,7 @@ export namespace Phrase_ {
         
         export type text = string
         
-        export type list_of_characters = List_of_Characters_
+        export type list_of_characters = i__imports_list_of_characters.List_of_Characters
         
     }
     
@@ -209,19 +191,8 @@ export type Phrase_ =
     | readonly ['nothing', Phrase_.nothing]
     | readonly ['rich list', Phrase_.rich_list]
 
-export namespace List_of_Characters_ {
-    
-    export type L = number
-    
-}
-
-export type List_of_Characters_ = _pi.List<List_of_Characters_.L>
-
 export { 
-    Directory_ as Directory, 
-    Node_ as Node, 
     Paragraph_ as Paragraph, 
     Sentence_ as Sentence, 
     Phrase_ as Phrase, 
-    List_of_Characters_ as List_of_Characters, 
 }

@@ -1,22 +1,12 @@
 import * as _p from 'pareto-core/dist/assign'
 
-import * as d_in from "../../../../../interface/generated/liana/schemas/block/data"
+import * as d_in from "../../../../../interface/generated/liana/schemas/prose/data"
 import * as d_out from "../../../../../interface/generated/liana/schemas/lines/data"
 
 import * as t_semi_lines_to_lines from "../../semi_lines/transformers/lines"
 import * as t_to_semi_lines from "./semi_lines"
 
-import * as sh from "../../../../../shorthands/block"
-
-export const Directory = (
-    $: d_in.Directory,
-    $p: {
-        'indentation text': string,
-    }
-): d_out.Directory => t_semi_lines_to_lines.Directory(
-    t_to_semi_lines.Directory($),
-    $p
-)
+import * as sh from "../../../../../shorthands/prose"
 
 export const Paragraph = (
     $: d_in.Paragraph,

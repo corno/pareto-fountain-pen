@@ -4,21 +4,8 @@ import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 import _p_variables from 'pareto-core/dist/_p_variables'
 
-import * as d_in from "../../../../../interface/generated/liana/schemas/block/data"
+import * as d_in from "../../../../../interface/generated/liana/schemas/prose/data"
 import * as d_out from "../../../../../interface/generated/liana/schemas/semi_lines/data"
-
-export const Directory = (
-    $: d_in.Directory,
-): d_out.Directory => _p.dictionary.from.dictionary($).map(($) => _p.decide.state($, ($): d_out.Directory.D => {
-    switch ($[0]) {
-        case 'file': return _p.ss($, ($) => ['file', Paragraph($, {
-            'indentation level': 0,
-        })])
-        case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
-        default: return _p.au($[0])
-    }
-}))
-
 
 export const Paragraph = (
     $: d_in.Paragraph,

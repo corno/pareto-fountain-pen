@@ -1,7 +1,22 @@
 {
   "name": "pareto-fountain-pen",
-  "version": "0.4.40",
+  "version": "0.4.41",
+  "author": "Corno",
+  "license": "Apache-2.0",
   "description": "A TypeScript library for easily generating source code files with proper indentation in the pareto programming style/language",
+  "keywords": [
+    "pareto",
+    "source code generation",
+    "indentation"
+  ],
+  "homepage": "https://github.com/corno/pareto-fountain-pen#readme",
+  "bugs": {
+    "url": "https://github.com/corno/pareto-fountain-pen/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corno/pareto-fountain-pen.git"
+  },
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
   "module": "./dist/index.js",
@@ -11,21 +26,6 @@
     "LICENSE",
     "documentation"
   ],
-  "keywords": [
-    "pareto",
-    "source code generation",
-    "indentation"
-  ],
-  "author": "Corno",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/corno/pareto-fountain-pen.git"
-  },
-  "bugs": {
-    "url": "https://github.com/corno/pareto-fountain-pen/issues"
-  },
-  "homepage": "https://github.com/corno/pareto-fountain-pen#readme",
   "engines": {
     "node": ">=14.0.0"
   },

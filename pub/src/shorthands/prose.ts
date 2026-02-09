@@ -1,7 +1,7 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as d_target from "../interface/generated/liana/schemas/block/data"
+import * as d_target from "../interface/generated/liana/schemas/prose/data"
 import * as d_text from "../interface/to_be_generated/list_of_characters"
 
 
@@ -87,20 +87,3 @@ export namespace ph {
         value: d_text.List_of_Characters
     ): d_target.Phrase => ['value', ['list of characters', value]]
 }
-
-export namespace n {
-
-    export const file = (
-        paragraph: d_target.Paragraph
-    ): d_target.Node => ['file', paragraph]
-
-    export const directory = (
-        children: _p.Raw_Or_Normal_Dictionary<d_target.Node>,
-    ): d_target.Node => ['directory', _p.dictionary.literal(children)]
-
-}
-
-export const directory = (
-    children: _p.Raw_Or_Normal_Dictionary<d_target.Node>,
-): d_target.Directory => _p.dictionary.literal(children)
-
