@@ -1,14 +1,14 @@
 import * as _pi from 'pareto-core/dist/interface'
 import * as _p from 'pareto-core/dist/assign'
 
-import * as d_in from "../../../../../interface/generated/liana/schemas/prose/data"
-import * as d_x from "../../../../../interface/to_be_generated/block_serialize"
-import * as d_out from "../../../../../interface/to_be_generated/list_of_characters"
+import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
+import * as d_x from "../../../../interface/to_be_generated/block_serialize"
+import * as d_out from "../../../../interface/to_be_generated/list_of_characters"
 
 import * as t_fountain_pen_block_to_semi_lines from "./semi_lines"
-import * as t_semi_lines_to_text from "../../semi_lines/transformers/text"
+import * as t_semi_lines_to_text from "../semi_lines/text"
 
-import * as sh from "../../../../../shorthands/prose"
+import * as sh from "../../../../shorthands/prose"
 
 export const Paragraph: _pi.Transformer_With_Parameter<d_in.Paragraph, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => t_semi_lines_to_text.Lines(
     t_fountain_pen_block_to_semi_lines.Paragraph($, { 'indentation level': 0 }),

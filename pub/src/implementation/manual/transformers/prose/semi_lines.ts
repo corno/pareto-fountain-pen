@@ -4,8 +4,8 @@ import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 import _p_variables from 'pareto-core/dist/_p_variables'
 
-import * as d_in from "../../../../../interface/generated/liana/schemas/prose/data"
-import * as d_out from "../../../../../interface/generated/liana/schemas/semi_lines/data"
+import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
+import * as d_out from "../../../../interface/generated/liana/schemas/semi_lines/data"
 
 export const Paragraph = (
     $: d_in.Paragraph,
