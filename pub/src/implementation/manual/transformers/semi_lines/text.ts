@@ -5,7 +5,7 @@ import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 import * as t_fountain_pen_semi_lines_to_lines from "./lines"
 
 import * as d_in from "../../../../interface/generated/liana/schemas/semi_lines/data"
-import * as d_x from "../../../../interface/to_be_generated/block_serialize"
+import * as d_x from "../../../../interface/to_be_generated/prose_serialize"
 import * as d_out from "../../../../interface/to_be_generated/list_of_characters"
 
 
