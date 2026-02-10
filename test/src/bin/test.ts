@@ -3,7 +3,7 @@
 import * as _pdev from 'pareto-core-dev'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
-import * as t_fountain_pen_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/prose/transformers/list_of_characters"
+import * as t_fountain_pen_to_loc from "pareto-fountain-pen/dist/implementation/manual/transformers/prose/list_of_characters"
 
 import * as sh from "pub/dist/shorthands/prose"
 

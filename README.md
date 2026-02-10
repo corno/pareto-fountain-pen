@@ -187,7 +187,7 @@ Pareto Fountain Pen processes content through a transformation pipeline:
 ### Converting to Text
 
 ```typescript
-import * as t_fp_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/prose/transformers/list_of_characters"
+import * as t_fp_to_loc from "pareto-fountain-pen/dist/implementation/manual/transformers/prose/list_of_characters"
 
 const text = t_fp_to_loc.Paragraph(paragraph, {
     'indentation': '    ',  // 4 spaces
@@ -255,7 +255,7 @@ sh.directory(nodes)
 ### Transformers
 
 ```typescript
-import * as t_to_loc from "pareto-fountain-pen/dist/implementation/manual/schemas/prose/transformers/list_of_characters"
+import * as t_to_loc from "pareto-fountain-pen/dist/implementation/manual/transformers/prose/list_of_characters"
 
 // Paragraph to text
 t_to_loc.Paragraph(paragraph, {
