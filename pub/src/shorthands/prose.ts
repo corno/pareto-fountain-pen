@@ -2,7 +2,7 @@ import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 import * as _pi from 'pareto-core/dist/interface'
 
 import * as d_target from "../interface/generated/liana/schemas/prose/data"
-import * as d_text from "../interface/to_be_generated/list_of_characters"
+import * as d_text from "../interface/generated/liana/schemas/list_of_characters/data"
 
 
 export namespace pg {
