@@ -8,8 +8,6 @@ import * as d_out from "../../../../interface/generated/liana/schemas/text/data"
 
 import * as t_to_list_of_characters from "./list_of_characters"
 
-import * as sh from "../../../../shorthands/prose"
-
 export const Paragraph: _pi.Transformer_With_Parameter<d_in.Paragraph, d_out.Text, d_x.Parameters> = ($, $p) => _p_text_from_list(
     t_to_list_of_characters.Paragraph($, $p),
     ($) => $
