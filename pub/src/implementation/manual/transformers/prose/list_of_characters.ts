@@ -15,6 +15,7 @@ export const Paragraph: _pi.Transformer_With_Parameter<d_in.Paragraph, d_out.Lis
     {
         'indentation': $p.indentation,
         'newline': $p['newline'],
+        'trailing newline': true,
     }
 )
 
@@ -26,6 +27,7 @@ export const Phrase: _pi.Transformer_With_Parameter<d_in.Phrase, d_out.List_of_C
     {
         'indentation': $p.indentation,
         'newline': $p['newline'],
+        'trailing newline': false,
     }
 )
 

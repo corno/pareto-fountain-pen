@@ -1,6 +1,6 @@
 {
   "name": "pareto-fountain-pen",
-  "version": "0.4.47",
+  "version": "0.4.48",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A TypeScript library for easily generating source code files with proper indentation in the pareto programming style/language",

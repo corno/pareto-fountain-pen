@@ -9,16 +9,25 @@ import * as d_x from "../../../../interface/to_be_generated/prose_serialize"
 import * as d_out from "../../../../interface/generated/liana/schemas/list_of_characters/data"
 
 
-export const Lines: _pi.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => _p.list.from.list(
-    t_fountain_pen_semi_lines_to_lines.Lines(
-        $,
-        {
-            'indentation text': $p.indentation,
+export const Lines: _pi.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => {
+    const amount = _p.number.natural.from.list($).amount_of_items()
+    let current = -1
+    return _p.list.from.list(
+        t_fountain_pen_semi_lines_to_lines.Lines(
+            $,
+            {
+                'indentation text': $p.indentation,
+            }
+        ),
+    ).flatten(
+        ($) => {
+            current++
+            return _p_list_from_text<number>(
+                current === amount - 1 && !$p['trailing newline']
+                    ? $
+                    : $ + $p.newline,
+                ($) => $
+            )
         }
-    ),
-).flatten(
-    ($) => _p_list_from_text<number>(
-        $ + $p.newline,
-        ($) => $
     )
-)
+}
