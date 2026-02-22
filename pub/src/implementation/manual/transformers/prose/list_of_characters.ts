@@ -19,8 +19,8 @@ export const Paragraph: _pi.Transformer_With_Parameter<d_in.Paragraph, d_out.Lis
 )
 
 export const Phrase: _pi.Transformer_With_Parameter<d_in.Phrase, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => t_semi_lines_to_text.Lines(
-    t_fountain_pen_block_to_semi_lines.Paragraph(
-        ['sentences', _p.list.literal([sh.sentence([$])])],
+    t_fountain_pen_block_to_semi_lines.Sentence(
+        sh.sentence([$]),
         { 'indentation level': 0 }
     ),
     {
