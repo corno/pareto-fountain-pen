@@ -1,0 +1,395 @@
+(
+    'omit (de)serializer': true
+    'schema tree': | 'set' {
+        `lines`: | 'schema' (
+            'schema imports': {}
+            'resolver imports': {}
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'text types': {
+                    `Output`: (
+                        'type': | 'single line' ~
+                    )
+                }
+                'number types': {}
+            )
+            'modules': {
+                `Lines`: (
+                    'root value': | 'list' (
+                        'value': | 'text' | 'global' `Output`
+                        'results': ~
+                    )
+                )
+                `Directory`: (
+                    'root value': | 'dictionary' (
+                        'value': | 'state' (
+                            'options': {
+                                `file`: (
+                                    'constraints': ~
+                                    'description': ~
+                                    'value': | 'component' (
+                                        'type': | 'internal' `Lines`
+                                        'results': ~
+                                    )
+                                )
+                                `directory`: (
+                                    'constraints': ~
+                                    'description': ~
+                                    'value': | 'component' (
+                                        'type': | 'internal' `Directory`
+                                        'results': ~
+                                    )
+                                )
+                            }
+                            'results': ~
+                        )
+                    )
+                )
+            }
+            'complexity': | 'unconstrained' ~
+        )
+        `list of characters`: | 'schema' (
+            'schema imports': {}
+            'resolver imports': {}
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'text types': {
+                    `Output`: (
+                        'type': | 'single line' ~
+                    )
+                }
+                'number types': {}
+            )
+            'modules': {
+                `List of Characters`: (
+                    'root value': | 'list' (
+                        'value': | 'number' | 'local' (
+                            'precision': | 'exact' (
+                                'decimal separator offset': ~
+                                'type': | 'natural' ~
+                            )
+                        )
+                        'results': ~
+                    )
+                )
+            }
+            'complexity': | 'unconstrained' ~
+        )
+        `prose`: | 'schema' (
+            'schema imports': {
+                `list of characters`: (
+                    'schema set child': `list of characters`
+                    'schema': ~
+                )
+            }
+            'resolver imports': {}
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'text types': {
+                    `Output`: (
+                        'type': | 'single line' ~
+                    )
+                }
+                'number types': {}
+            )
+            'modules': {
+                `Paragraph`: (
+                    'root value': | 'state' (
+                        'options': {
+                            `composed`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'list' (
+                                    'value': | 'component' (
+                                        'type': | 'internal' `Paragraph`
+                                        'results': ~
+                                    )
+                                    'results': ~
+                                )
+                            )
+                            `sentences`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'list' (
+                                    'value': | 'component' (
+                                        'type': | 'internal' `Sentence`
+                                        'results': ~
+                                    )
+                                    'results': ~
+                                )
+                            )
+                            `optional`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'optional' | 'component' (
+                                    'type': | 'internal' `Paragraph`
+                                    'results': ~
+                                )
+                            )
+                            `nothing`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'nothing' ~
+                            )
+                            `rich list`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'group' {
+                                    `items`: (
+                                        'description': ~
+                                        'value': | 'list' (
+                                            'value': | 'component' (
+                                                'type': | 'internal' `Sentence`
+                                                'results': ~
+                                            )
+                                            'results': ~
+                                        )
+                                    )
+                                    `if empty`: (
+                                        'description': ~
+                                        'value': | 'optional' | 'component' (
+                                            'type': | 'internal' `Sentence`
+                                            'results': ~
+                                        )
+                                    )
+                                    `if not empty`: (
+                                        'description': ~
+                                        'value': | 'group' {
+                                            `before`: (
+                                                'description': ~
+                                                'value': | 'optional' | 'component' (
+                                                    'type': | 'internal' `Sentence`
+                                                    'results': ~
+                                                )
+                                            )
+                                            `indent`: (
+                                                'description': ~
+                                                'value': | 'boolean' ~
+                                            )
+                                            `separator`: (
+                                                'description': ~
+                                                'value': | 'optional' | 'component' (
+                                                    'type': | 'internal' `Phrase`
+                                                    'results': ~
+                                                )
+                                            )
+                                            `after`: (
+                                                'description': ~
+                                                'value': | 'optional' | 'component' (
+                                                    'type': | 'internal' `Sentence`
+                                                    'results': ~
+                                                )
+                                            )
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                        'results': ~
+                    )
+                )
+                `Sentence`: (
+                    'root value': | 'list' (
+                        'value': | 'component' (
+                            'type': | 'internal' `Phrase`
+                            'results': ~
+                        )
+                        'results': ~
+                    )
+                )
+                `Phrase`: (
+                    'root value': | 'state' (
+                        'options': {
+                            `value`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'state' (
+                                    'options': {
+                                        `text`: (
+                                            'constraints': ~
+                                            'description': ~
+                                            'value': | 'text' | 'global' `Output`
+                                        )
+                                        `list of characters`: (
+                                            'constraints': ~
+                                            'description': ~
+                                            'value': | 'component' (
+                                                'type': | 'external' (
+                                                    'import': `list of characters`
+                                                    'module': `List of Characters`
+                                                )
+                                                'results': ~
+                                            )
+                                        )
+                                    }
+                                    'results': ~
+                                )
+                            )
+                            `indent`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'component' (
+                                    'type': | 'internal' `Paragraph`
+                                    'results': ~
+                                )
+                            )
+                            `composed`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'list' (
+                                    'value': | 'component' (
+                                        'type': | 'internal' `Phrase`
+                                        'results': ~
+                                    )
+                                    'results': ~
+                                )
+                            )
+                            `optional`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'optional' | 'component' (
+                                    'type': | 'internal' `Phrase`
+                                    'results': ~
+                                )
+                            )
+                            `nothing`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'nothing' ~
+                            )
+                            `rich list`: (
+                                'constraints': ~
+                                'description': ~
+                                'value': | 'group' {
+                                    `items`: (
+                                        'description': ~
+                                        'value': | 'list' (
+                                            'value': | 'component' (
+                                                'type': | 'internal' `Phrase`
+                                                'results': ~
+                                            )
+                                            'results': ~
+                                        )
+                                    )
+                                    `if empty`: (
+                                        'description': ~
+                                        'value': | 'component' (
+                                            'type': | 'internal' `Phrase`
+                                            'results': ~
+                                        )
+                                    )
+                                    `if not empty`: (
+                                        'description': ~
+                                        'value': | 'group' {
+                                            `before`: (
+                                                'description': ~
+                                                'value': | 'component' (
+                                                    'type': | 'internal' `Phrase`
+                                                    'results': ~
+                                                )
+                                            )
+                                            `separator`: (
+                                                'description': ~
+                                                'value': | 'component' (
+                                                    'type': | 'internal' `Phrase`
+                                                    'results': ~
+                                                )
+                                            )
+                                            `after`: (
+                                                'description': ~
+                                                'value': | 'component' (
+                                                    'type': | 'internal' `Phrase`
+                                                    'results': ~
+                                                )
+                                            )
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                        'results': ~
+                    )
+                )
+            }
+            'complexity': | 'unconstrained' ~
+        )
+        `semi lines`: | 'schema' (
+            'schema imports': {}
+            'resolver imports': {}
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'text types': {
+                    `Output`: (
+                        'type': | 'single line' ~
+                    )
+                }
+                'number types': {}
+            )
+            'modules': {
+                `Lines`: (
+                    'root value': | 'list' (
+                        'value': | 'group' {
+                            `text`: (
+                                'description': ~
+                                'value': | 'text' | 'global' `Output`
+                            )
+                            `indentation`: (
+                                'description': ~
+                                'value': | 'number' | 'local' (
+                                    'precision': | 'exact' (
+                                        'decimal separator offset': ~
+                                        'type': | 'natural' ~
+                                    )
+                                )
+                            )
+                        }
+                        'results': ~
+                    )
+                )
+                `Directory`: (
+                    'root value': | 'dictionary' (
+                        'value': | 'state' (
+                            'options': {
+                                `file`: (
+                                    'constraints': ~
+                                    'description': ~
+                                    'value': | 'component' (
+                                        'type': | 'internal' `Lines`
+                                        'results': ~
+                                    )
+                                )
+                                `directory`: (
+                                    'constraints': ~
+                                    'description': ~
+                                    'value': | 'component' (
+                                        'type': | 'internal' `Directory`
+                                        'results': ~
+                                    )
+                                )
+                            }
+                            'results': ~
+                        )
+                    )
+                )
+            }
+            'complexity': | 'unconstrained' ~
+        )
+        `text`: | 'schema' (
+            'schema imports': {}
+            'resolver imports': {}
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'text types': {}
+                'number types': {}
+            )
+            'modules': {
+                `Text`: (
+                    'root value': | 'text' | 'local' (
+                        'type': | 'single line' ~
+                    )
+                )
+            }
+            'complexity': | 'unconstrained' ~
+        )
+    }
+)
