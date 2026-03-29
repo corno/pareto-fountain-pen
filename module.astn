@@ -11,7 +11,7 @@
                         `type`: | `single line` ~
                     )
                 }
-                `number types`: {}
+                `simple types`: {}
             )
             `modules`: {
                 'Lines': (
@@ -33,17 +33,19 @@
                         `type`: | `single line` ~
                     )
                 }
-                `number types`: {}
+                `simple types`: {
+                    'Natural': (
+                        `precision`: | `exact` (
+                            `decimal separator offset`: _
+                            `type`: | `natural` ~
+                        )
+                    )
+                }
             )
             `modules`: {
                 'List of Characters': (
                     `root value`: | `list` (
-                        `value`: | `number` | `local` (
-                            `precision`: | `exact` (
-                                `decimal separator offset`: _
-                                `type`: | `natural` ~
-                            )
-                        )
+                        `value`: | `number` | `global` 'Natural'
                         `results`: _
                     )
                 )
@@ -65,7 +67,7 @@
                         `type`: | `single line` ~
                     )
                 }
-                `number types`: {}
+                `simple types`: {}
             )
             `modules`: {
                 'Paragraph': (
@@ -298,7 +300,14 @@
                         `type`: | `single line` ~
                     )
                 }
-                `number types`: {}
+                `simple types`: {
+                    'Natural': (
+                        `precision`: | `exact` (
+                            `decimal separator offset`: _
+                            `type`: | `natural` ~
+                        )
+                    )
+                }
             )
             `modules`: {
                 'Lines': (
@@ -310,12 +319,7 @@
                             )
                             'indentation': (
                                 `description`: _
-                                `value`: | `number` | `local` (
-                                    `precision`: | `exact` (
-                                        `decimal separator offset`: _
-                                        `type`: | `natural` ~
-                                    )
-                                )
+                                `value`: | `number` | `global` 'Natural'
                             )
                         }
                         `results`: _
@@ -330,7 +334,7 @@
             `globals`: (
                 `complexity`: | `unconstrained` ~
                 `text types`: {}
-                `number types`: {}
+                `simple types`: {}
             )
             `modules`: {
                 'Text': (
