@@ -3,9 +3,9 @@
 import _p_log_debug_message from 'pareto-core-dev/dist/log_debug_message'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
-import * as t_fountain_pen_to_loc from "pub/dist/implementation/manual/transformers/prose/list_of_characters"
+import * as t_fountain_pen_to_loc from "lib/dist/implementation/manual/transformers/prose/list_of_characters"
 
-import * as sh from "pub/dist/shorthands/prose"
+import * as sh from "lib/dist/shorthands/prose"
 
 _p_log_debug_message("TEST NOT IMPLEMENTED YET", () => { })
 
