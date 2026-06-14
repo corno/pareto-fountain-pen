@@ -1,5 +1,5 @@
 import * as pt from 'pareto-core-shorthands/dist/unconstrained'
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 import * as d_target from "../interface/generated/liana/schemas/prose/data"
 import * as d_text from "../interface/generated/liana/schemas/list_of_characters/data"
@@ -9,7 +9,7 @@ export namespace pg {
 
     export const nothing = (): d_target.Paragraph => ['nothing', null]
 
-    export const optional = (Paragraph: pi.Optional_Value<d_target.Paragraph>): d_target.Paragraph => ['optional', Paragraph]
+    export const optional = (Paragraph: p_di.Optional_Value<d_target.Paragraph>): d_target.Paragraph => ['optional', Paragraph]
 
     export const rich = (
         items: pt.Raw_Or_Normal_List<d_target.Sentence>,
@@ -52,7 +52,7 @@ export namespace ph {
     ): d_target.Phrase => ['nothing', null]
 
     export const optional = (
-        block_part: pi.Optional_Value<d_target.Phrase>
+        block_part: p_di.Optional_Value<d_target.Phrase>
     ): d_target.Phrase => ['optional', block_part]
 
     export const rich = (

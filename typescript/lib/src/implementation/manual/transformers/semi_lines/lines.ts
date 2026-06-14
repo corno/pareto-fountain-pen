@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core/dist/assign'
-import * as pi from 'pareto-core/dist/interface'
-import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
-import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import * as p_di from 'pareto-core/dist/data/interface'
+import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
+import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/semi_lines/data"
 import * as d_out from "../../../../interface/generated/liana/schemas/lines/data"

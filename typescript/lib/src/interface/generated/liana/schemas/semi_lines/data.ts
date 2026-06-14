@@ -1,5 +1,6 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 export namespace Lines_ {
     
@@ -18,7 +19,7 @@ export namespace Lines_ {
     
 }
 
-export type Lines_ = _pi.List<Lines_.L>
+export type Lines_ = p_di.List<Lines_.L>
 
 export { 
     Lines_ as Lines, 

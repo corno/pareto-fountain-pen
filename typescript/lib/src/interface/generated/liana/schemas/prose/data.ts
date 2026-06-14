@@ -1,5 +1,6 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 import * as i_imports_list_of_characters from "../list_of_characters/data"
 
@@ -11,7 +12,7 @@ export namespace Paragraph_ {
         
     }
     
-    export type composed = _pi.List<composed.L>
+    export type composed = p_di.List<composed.L>
     
     export namespace sentences {
         
@@ -19,7 +20,7 @@ export namespace Paragraph_ {
         
     }
     
-    export type sentences = _pi.List<sentences.L>
+    export type sentences = p_di.List<sentences.L>
     
     export namespace optional {
         
@@ -27,7 +28,7 @@ export namespace Paragraph_ {
         
     }
     
-    export type optional = _pi.Optional_Value<optional.O>
+    export type optional = p_di.Optional_Value<optional.O>
     
     export type nothing = null
     
@@ -39,7 +40,7 @@ export namespace Paragraph_ {
             
         }
         
-        export type items = _pi.List<items.L>
+        export type items = p_di.List<items.L>
         
         export namespace if_empty {
             
@@ -47,7 +48,7 @@ export namespace Paragraph_ {
             
         }
         
-        export type if_empty = _pi.Optional_Value<if_empty.O>
+        export type if_empty = p_di.Optional_Value<if_empty.O>
         
         export namespace if_not_empty {
             
@@ -57,7 +58,7 @@ export namespace Paragraph_ {
                 
             }
             
-            export type before = _pi.Optional_Value<before.O>
+            export type before = p_di.Optional_Value<before.O>
             
             export type indent = boolean
             
@@ -67,7 +68,7 @@ export namespace Paragraph_ {
                 
             }
             
-            export type separator = _pi.Optional_Value<separator.O>
+            export type separator = p_di.Optional_Value<separator.O>
             
             export namespace after {
                 
@@ -75,7 +76,7 @@ export namespace Paragraph_ {
                 
             }
             
-            export type after = _pi.Optional_Value<after.O>
+            export type after = p_di.Optional_Value<after.O>
             
         }
         
@@ -109,7 +110,7 @@ export namespace Sentence_ {
     
 }
 
-export type Sentence_ = _pi.List<Sentence_.L>
+export type Sentence_ = p_di.List<Sentence_.L>
 
 export namespace Phrase_ {
     
@@ -133,7 +134,7 @@ export namespace Phrase_ {
         
     }
     
-    export type composed = _pi.List<composed.L>
+    export type composed = p_di.List<composed.L>
     
     export namespace optional {
         
@@ -141,7 +142,7 @@ export namespace Phrase_ {
         
     }
     
-    export type optional = _pi.Optional_Value<optional.O>
+    export type optional = p_di.Optional_Value<optional.O>
     
     export type nothing = null
     
@@ -153,7 +154,7 @@ export namespace Phrase_ {
             
         }
         
-        export type items = _pi.List<items.L>
+        export type items = p_di.List<items.L>
         
         export type if_empty = Phrase_
         
