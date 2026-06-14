@@ -177,13 +177,14 @@ export const Sentence = (
                 'indentation level': $p['indentation level'],
             }
         ).__l_map(
-            ($) => _p.decide.state($, ($) => {
+            ($) => _p.decide.state($, ($): null => {
                 switch ($[0]) {
                     case 'append': return _p.ss($, ($) => {
                         if (current_line === null) {
                             current_line = ""
                         }
                         current_line += $
+                        return null
                     })
                     case 'add paragraph': return _p.ss($, ($) => {
                         found_indentation = true
@@ -195,6 +196,7 @@ export const Sentence = (
                             current_line = null
                         }
                         $i['add list']($)
+                        return null
                     })
                     default: return _p.au($[0])
                 }
