@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/assign'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
 import * as d_out from "../../../../interface/generated/liana/schemas/lines/data"
@@ -24,7 +24,7 @@ export const Phrase = (
     }
 ): d_out.Lines => t_semi_lines_to_lines.Lines(
     t_to_semi_lines.Paragraph(
-        ['sentences', _p.list.literal([sh.sentence([$])])],
+        ['sentences', pt.list.literal([sh.sentence([$])])],
         { 'indentation level': 0 }
     ),
     { 'indentation text': $p.indentation }

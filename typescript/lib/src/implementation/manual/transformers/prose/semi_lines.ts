@@ -1,8 +1,8 @@
-import * as _p from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
-import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
-import _p_variables from 'pareto-core/dist/_p_variables'
+import * as pt from 'pareto-core/dist/assign'
+import * as pi from 'pareto-core/dist/interface'
+import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+import p_variables from 'pareto-core/dist/_p_variables'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
 import * as d_out from "../../../../interface/generated/liana/schemas/semi_lines/data"
@@ -12,48 +12,48 @@ export const Paragraph = (
     $p: {
         'indentation level': number,
     }
-): d_out.Lines => _p.decide.state($, ($) => {
+): d_out.Lines => pt.decide.state($, ($) => {
     switch ($[0]) {
-        case 'composed': return _p.ss($, ($) => _p.list.from.list(
+        case 'composed': return pt.ss($, ($) => pt.list.from.list(
             $,
         ).flatten(
             ($) => Paragraph($, $p)
         ))
-        case 'sentences': return _p.ss($, ($) => _p.list.from.list(
+        case 'sentences': return pt.ss($, ($) => pt.list.from.list(
             $,
         ).flatten(
             ($) => Sentence($, $p)
         ))
-        case 'optional': return _p.ss($, ($) => $.__decide(
+        case 'optional': return pt.ss($, ($) => $.__decide(
             ($) => Paragraph($, $p),
-            () => _p.list.literal([]),
+            () => pt.list.literal([]),
         ))
-        case 'nothing': return _p.ss($, ($) => _p.list.literal([]))
-        case 'rich list': return _p.ss($, ($) => _p.decide.boolean(
-            _p.boolean.from.list($.items).is_empty(),
+        case 'nothing': return pt.ss($, ($) => pt.list.literal([]))
+        case 'rich list': return pt.ss($, ($) => pt.decide.boolean(
+            pt.boolean.from.list($.items).is_empty(),
             () => $['if empty'].__decide(
                 ($) => Sentence($, $p),
-                () => _p.list.literal([]),
+                () => pt.list.literal([]),
             ),
-            () => _p.list.nested_literal_old([
+            () => pt.list.nested_literal_old([
                 $['if not empty'].before.__decide(
                     ($) => Sentence($, $p),
-                    () => _p.list.literal([]),
+                    () => pt.list.literal([]),
                 ),
-                _p_variables(() => {
+                p_variables(() => {
                     const if_not_empty = $['if not empty']
                     const amount = $.items.__get_number_of_items()
                     let current = -1
-                    return _p.list.from.list(
+                    return pt.list.from.list(
                         $.items
                     ).flatten(
-                        ($) => _p_variables(() => {
+                        ($) => p_variables(() => {
                             const sentence = $
                             current++
                             return Sentence(
                                 if_not_empty.separator.__decide(
                                     ($) => current < amount - 1
-                                        ? _p.list.nested_literal_old([
+                                        ? pt.list.nested_literal_old([
                                             sentence,
                                             [
                                                 $
@@ -71,15 +71,15 @@ export const Paragraph = (
                 }),
                 $['if not empty'].after.__decide(
                     ($) => Sentence($, $p),
-                    () => _p.list.literal([]),
+                    () => pt.list.literal([]),
                 ),
             ])
         ))
-        default: return _p.au($[0])
+        default: return pt.au($[0])
     }
 })
 
-type Summary = _pi.List<Action>
+type Summary = pi.List<Action>
 
 
 type Action =
@@ -93,48 +93,48 @@ const Phrase = (
 
     },
 ): Summary => {
-    return _p.decide.state($, ($): Summary => {
+    return pt.decide.state($, ($): Summary => {
         switch ($[0]) {
-            case 'value': return _p.ss($, ($) => {
-                return _p.list.literal<Action>([
-                    ['append', _p.decide.state($, ($): string => {
+            case 'value': return pt.ss($, ($) => {
+                return pt.list.literal<Action>([
+                    ['append', pt.decide.state($, ($): string => {
                         switch ($[0]) {
-                            case 'text': return _p.ss($, ($) => $)
-                            case 'list of characters': return _p.ss($, ($) => _p_text_from_list($, ($) => $))
-                            default: return _p.au($[0])
+                            case 'text': return pt.ss($, ($) => $)
+                            case 'list of characters': return pt.ss($, ($) => p_text_from_list($, ($) => $))
+                            default: return pt.au($[0])
                         }
                     })],
 
                 ])
             })
-            case 'indent': return _p.ss($, ($) => {
+            case 'indent': return pt.ss($, ($) => {
                 const paragraph = Paragraph($, {
                     'indentation level': $p['indentation level'] + 1,
                 })
                 if (paragraph.__get_number_of_items() !== 0) {
-                    return _p.list.literal<Action>([
+                    return pt.list.literal<Action>([
                         ['add paragraph', paragraph]
                     ])
                 } else {
-                    return _p.list.literal<Action>([])
+                    return pt.list.literal<Action>([])
                 }
             })
-            case 'rich list': return _p.ss($, ($) => _p.decide.boolean(
-                _p.boolean.from.list($.items).is_empty(),
+            case 'rich list': return pt.ss($, ($) => pt.decide.boolean(
+                pt.boolean.from.list($.items).is_empty(),
                 () => Phrase($['if empty'], $p),
                 () => {
                     const sep = $['if not empty'].separator
                     const amount = $.items.__get_number_of_items()
                     let current = -1
-                    return _p.list.nested_literal_old([
+                    return pt.list.nested_literal_old([
                         Phrase($['if not empty'].before, $p),
-                        _p.list.from.list(
+                        pt.list.from.list(
                             $.items
                         ).flatten(
                             ($): Summary => {
                                 current++
                                 return current < amount - 1
-                                    ? _p.list.nested_literal_old([
+                                    ? pt.list.nested_literal_old([
                                         Phrase($, $p),
                                         Phrase(sep, $p)
                                     ])
@@ -146,18 +146,18 @@ const Phrase = (
                     ])
                 }
             ))
-            case 'composed': return _p.ss($, ($) => _p.list.from.list(
+            case 'composed': return pt.ss($, ($) => pt.list.from.list(
                 $,
             ).flatten(
                 ($) => Phrase($, $p)
             ))
-            case 'optional': return _p.ss($, ($) => _p.decide.optional(
+            case 'optional': return pt.ss($, ($) => pt.decide.optional(
                 $,
                 ($) => Phrase($, $p),
-                () => _p.list.literal<Action>([]),
+                () => pt.list.literal<Action>([]),
             ))
-            case 'nothing': return _p.ss($, ($) => _p.list.literal<Action>([]))
-            default: return _p.au($[0])
+            case 'nothing': return pt.ss($, ($) => pt.list.literal<Action>([]))
+            default: return pt.au($[0])
         }
     })
 }
@@ -167,7 +167,7 @@ export const Sentence = (
     $p: {
         'indentation level': number
     }
-): d_out.Lines => _p_list_build_deprecated(($i) => {
+): d_out.Lines => p_list_build_deprecated(($i) => {
     let current_line: null | string = null
     let found_indentation = false
     $.__l_map(
@@ -177,16 +177,16 @@ export const Sentence = (
                 'indentation level': $p['indentation level'],
             }
         ).__l_map(
-            ($) => _p.decide.state($, ($): null => {
+            ($) => pt.decide.state($, ($): null => {
                 switch ($[0]) {
-                    case 'append': return _p.ss($, ($) => {
+                    case 'append': return pt.ss($, ($) => {
                         if (current_line === null) {
                             current_line = ""
                         }
                         current_line += $
                         return null
                     })
-                    case 'add paragraph': return _p.ss($, ($) => {
+                    case 'add paragraph': return pt.ss($, ($) => {
                         found_indentation = true
                         if (current_line !== null) {
                             $i['add item']({
@@ -198,7 +198,7 @@ export const Sentence = (
                         $i['add list']($)
                         return null
                     })
-                    default: return _p.au($[0])
+                    default: return pt.au($[0])
                 }
             })
         )
