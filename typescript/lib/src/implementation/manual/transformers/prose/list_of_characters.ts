@@ -1,7 +1,7 @@
 import * as p_i from 'pareto-core/dist/interface/transformer'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
-import * as d_x from "../../../../interface/to_be_generated/prose_serialize"
+import * as d_x from "../../../../interface/data/prose_serialize"
 import * as d_out from "../../../../interface/generated/liana/schemas/list_of_characters/data"
 
 import * as t_fountain_pen_block_to_semi_lines from "./semi_lines"
