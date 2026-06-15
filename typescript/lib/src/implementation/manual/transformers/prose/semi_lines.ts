@@ -26,19 +26,19 @@ export const Paragraph = (
         ))
         case 'optional': return pt.ss($, ($) => $.__decide(
             ($) => Paragraph($, $p),
-            () => pt.list.literal([]),
+            () => pt.literal.list([]),
         ))
-        case 'nothing': return pt.ss($, ($) => pt.list.literal([]))
+        case 'nothing': return pt.ss($, ($) => pt.literal.list([]))
         case 'rich list': return pt.ss($, ($) => pt.decide.boolean(
             pt.boolean.from.list($.items).is_empty(),
             () => $['if empty'].__decide(
                 ($) => Sentence($, $p),
-                () => pt.list.literal([]),
+                () => pt.literal.list([]),
             ),
-            () => pt.list.nested_literal_old([
+            () => pt.literal.nested_list([
                 $['if not empty'].before.__decide(
                     ($) => Sentence($, $p),
-                    () => pt.list.literal([]),
+                    () => pt.literal.list([]),
                 ),
                 p_variables(() => {
                     const if_not_empty = $['if not empty']
@@ -53,7 +53,7 @@ export const Paragraph = (
                             return Sentence(
                                 if_not_empty.separator.__decide(
                                     ($) => current < amount - 1
-                                        ? pt.list.nested_literal_old([
+                                        ? pt.literal.nested_list([
                                             sentence,
                                             [
                                                 $
@@ -71,7 +71,7 @@ export const Paragraph = (
                 }),
                 $['if not empty'].after.__decide(
                     ($) => Sentence($, $p),
-                    () => pt.list.literal([]),
+                    () => pt.literal.list([]),
                 ),
             ])
         ))
@@ -96,7 +96,7 @@ const Phrase = (
     return pt.decide.state($, ($): Summary => {
         switch ($[0]) {
             case 'value': return pt.ss($, ($) => {
-                return pt.list.literal<Action>([
+                return pt.literal.list<Action>([
                     ['append', pt.decide.state($, ($): string => {
                         switch ($[0]) {
                             case 'text': return pt.ss($, ($) => $)
@@ -112,11 +112,11 @@ const Phrase = (
                     'indentation level': $p['indentation level'] + 1,
                 })
                 if (paragraph.__get_number_of_items() !== 0) {
-                    return pt.list.literal<Action>([
+                    return pt.literal.list<Action>([
                         ['add paragraph', paragraph]
                     ])
                 } else {
-                    return pt.list.literal<Action>([])
+                    return pt.literal.list<Action>([])
                 }
             })
             case 'rich list': return pt.ss($, ($) => pt.decide.boolean(
@@ -126,7 +126,7 @@ const Phrase = (
                     const sep = $['if not empty'].separator
                     const amount = $.items.__get_number_of_items()
                     let current = -1
-                    return pt.list.nested_literal_old([
+                    return pt.literal.nested_list([
                         Phrase($['if not empty'].before, $p),
                         pt.list.from.list(
                             $.items
@@ -134,7 +134,7 @@ const Phrase = (
                             ($): Summary => {
                                 current++
                                 return current < amount - 1
-                                    ? pt.list.nested_literal_old([
+                                    ? pt.literal.nested_list([
                                         Phrase($, $p),
                                         Phrase(sep, $p)
                                     ])
@@ -154,9 +154,9 @@ const Phrase = (
             case 'optional': return pt.ss($, ($) => pt.decide.optional(
                 $,
                 ($) => Phrase($, $p),
-                () => pt.list.literal<Action>([]),
+                () => pt.literal.list<Action>([]),
             ))
-            case 'nothing': return pt.ss($, ($) => pt.list.literal<Action>([]))
+            case 'nothing': return pt.ss($, ($) => pt.literal.list<Action>([]))
             default: return pt.au($[0])
         }
     })

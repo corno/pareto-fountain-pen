@@ -24,7 +24,7 @@ export const Phrase = (
     }
 ): d_out.Lines => t_semi_lines_to_lines.Lines(
     t_to_semi_lines.Paragraph(
-        ['sentences', pt.list.literal([sh.sentence([$])])],
+        ['sentences', pt.literal.list([sh.sentence([$])])],
         { 'indentation level': 0 }
     ),
     { 'indentation text': $p.indentation }

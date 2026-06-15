@@ -19,28 +19,28 @@ export namespace pg {
         separator: null | d_target.Phrase,
         after: null | d_target.Sentence,
     ): d_target.Paragraph => ['rich list', {
-        'items': pt.list.literal(items),
-        'if empty': pt.optional.literalx(if_empty),
+        'items': pt.list(items),
+        'if empty': pt.optional.null_or_value(if_empty),
         'if not empty': {
             'indent': indent,
-            'before': pt.optional.literalx(before),
-            'separator': pt.optional.literalx(separator),
-            'after': pt.optional.literalx(after),
+            'before': pt.optional.null_or_value(before),
+            'separator': pt.optional.null_or_value(separator),
+            'after': pt.optional.null_or_value(after),
         },
     }]
 
     export const composed = (
         Group_Parts: pt.Raw_Or_Normal_List<d_target.Paragraph>
-    ): d_target.Paragraph => ['composed', pt.list.literal(Group_Parts)]
+    ): d_target.Paragraph => ['composed', pt.list(Group_Parts)]
 
     export const sentences = (
         sentences: pt.Raw_Or_Normal_List<d_target.Sentence>
-    ): d_target.Paragraph => ['sentences', pt.list.literal(sentences)]
+    ): d_target.Paragraph => ['sentences', pt.list(sentences)]
 }
 
 export const sentence = (
     phrases: pt.Raw_Or_Normal_List<d_target.Phrase>
-): d_target.Sentence => pt.list.literal(phrases)
+): d_target.Sentence => pt.list(phrases)
 
 export namespace ph {
 
@@ -62,7 +62,7 @@ export namespace ph {
         separator: d_target.Phrase,
         after: d_target.Phrase,
     ): d_target.Phrase => ['rich list', {
-        'items': pt.list.literal(items),
+        'items': pt.list(items),
         'if empty': if_empty,
         'if not empty': {
             'before': before,
@@ -73,7 +73,7 @@ export namespace ph {
 
     export const composed = (
         phrases: pt.Raw_Or_Normal_List<d_target.Phrase>
-    ): d_target.Phrase => ['composed', pt.list.literal(phrases)]
+    ): d_target.Phrase => ['composed', pt.list(phrases)]
 
     export const decimal = (
         value: number
