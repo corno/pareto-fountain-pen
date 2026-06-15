@@ -1,5 +1,5 @@
 import * as p_ti from 'pareto-core/dist/transformer/interface'
-import * as pt from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/transformer/implementation'
 import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"

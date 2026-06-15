@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/transformer/implementation'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
 import * as d_out from "../../../../interface/generated/liana/schemas/lines/data"
