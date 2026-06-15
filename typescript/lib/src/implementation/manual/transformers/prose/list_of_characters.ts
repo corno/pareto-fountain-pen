@@ -1,4 +1,4 @@
-import * as p_i from 'pareto-core/dist/transformer/interface'
+import * as p_i from 'pareto-core/dist/interface/transformer'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
 import * as d_x from "../../../../interface/to_be_generated/prose_serialize"

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import p_log_debug_message from 'pareto-core-dev/dist/log_debug_message'
-import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
+import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
 
 import * as t_fountain_pen_to_loc from "lib/dist/implementation/manual/transformers/prose/list_of_characters"
 

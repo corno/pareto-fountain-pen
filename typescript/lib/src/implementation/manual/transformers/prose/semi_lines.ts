@@ -1,8 +1,8 @@
-import * as pt from 'pareto-core/dist/transformer/implementation'
-import * as p_di from 'pareto-core/dist/data/interface'
-import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
-import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
-import p_variables from 'pareto-core/dist/specials/variables'
+import * as pt from 'pareto-core/dist/implementation/transformer'
+import * as p_di from 'pareto-core/dist/interface/data'
+import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
+import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
+import p_variables from 'pareto-core/dist/implementation/specials/variables'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
 import * as d_out from "../../../../interface/generated/liana/schemas/semi_lines/data"

@@ -1,6 +1,6 @@
-import * as p_i from 'pareto-core/dist/transformer/interface'
-import * as pt from 'pareto-core/dist/transformer/implementation'
-import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
+import * as p_i from 'pareto-core/dist/interface/transformer'
+import * as pt from 'pareto-core/dist/implementation/transformer'
+import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
 import * as d_x from "../../../../interface/to_be_generated/prose_serialize"
