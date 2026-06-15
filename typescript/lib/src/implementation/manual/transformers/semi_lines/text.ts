@@ -1,4 +1,4 @@
-import * as p_ti from 'pareto-core/dist/transformer/interface'
+import * as p_i from 'pareto-core/dist/transformer/interface'
 import * as pt from 'pareto-core/dist/transformer/implementation'
 import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
 
@@ -9,7 +9,7 @@ import * as d_x from "../../../../interface/to_be_generated/semi_lines_serialize
 import * as d_out from "../../../../interface/generated/liana/schemas/list_of_characters/data"
 
 
-export const Lines: p_ti.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => {
+export const Lines: p_i.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => {
     const amount = pt.number.from.list($).amount_of_items()
     let current = -1
     return pt.list.from.list(
