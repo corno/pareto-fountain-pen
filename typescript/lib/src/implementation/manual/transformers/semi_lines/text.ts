@@ -1,5 +1,5 @@
 import * as p_i from 'pareto-core/dist/interface/transformer'
-import * as pt from 'pareto-core/dist/implementation/transformer'
+import * as p_ from 'pareto-core/dist/implementation/transformer'
 import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 
 import * as t_fountain_pen_semi_lines_to_lines from "./lines"
@@ -10,9 +10,9 @@ import * as d_out from "../../../../interface/generated/liana/schemas/list_of_ch
 
 
 export const Lines: p_i.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => {
-    const amount = pt.number.from.list($).amount_of_items()
+    const amount = p_.number.from.list($).amount_of_items()
     let current = -1
-    return pt.list.from.list(
+    return p_.list.from.list(
         t_fountain_pen_semi_lines_to_lines.Lines(
             $,
             {

@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core-shorthands/dist/unconstrained'
+import * as p_ from 'pareto-core-shorthands/dist/unconstrained'
 import * as p_di from 'pareto-core/dist/interface/data'
 
 import * as d_target from "../interface/generated/liana/schemas/prose/data"
@@ -12,35 +12,35 @@ export namespace pg {
     export const optional = (Paragraph: p_di.Optional_Value<d_target.Paragraph>): d_target.Paragraph => ['optional', Paragraph]
 
     export const rich = (
-        items: pt.Raw_Or_Normal_List<d_target.Sentence>,
+        items: p_.Raw_Or_Normal_List<d_target.Sentence>,
         if_empty: null | d_target.Sentence,
         indent: boolean,
         before: null | d_target.Sentence,
         separator: null | d_target.Phrase,
         after: null | d_target.Sentence,
     ): d_target.Paragraph => ['rich list', {
-        'items': pt.list(items),
-        'if empty': pt.optional.null_or_value(if_empty),
+        'items': p_.list(items),
+        'if empty': p_.optional.null_or_value(if_empty),
         'if not empty': {
             'indent': indent,
-            'before': pt.optional.null_or_value(before),
-            'separator': pt.optional.null_or_value(separator),
-            'after': pt.optional.null_or_value(after),
+            'before': p_.optional.null_or_value(before),
+            'separator': p_.optional.null_or_value(separator),
+            'after': p_.optional.null_or_value(after),
         },
     }]
 
     export const composed = (
-        Group_Parts: pt.Raw_Or_Normal_List<d_target.Paragraph>
-    ): d_target.Paragraph => ['composed', pt.list(Group_Parts)]
+        Group_Parts: p_.Raw_Or_Normal_List<d_target.Paragraph>
+    ): d_target.Paragraph => ['composed', p_.list(Group_Parts)]
 
     export const sentences = (
-        sentences: pt.Raw_Or_Normal_List<d_target.Sentence>
-    ): d_target.Paragraph => ['sentences', pt.list(sentences)]
+        sentences: p_.Raw_Or_Normal_List<d_target.Sentence>
+    ): d_target.Paragraph => ['sentences', p_.list(sentences)]
 }
 
 export const sentence = (
-    phrases: pt.Raw_Or_Normal_List<d_target.Phrase>
-): d_target.Sentence => pt.list(phrases)
+    phrases: p_.Raw_Or_Normal_List<d_target.Phrase>
+): d_target.Sentence => p_.list(phrases)
 
 export namespace ph {
 
@@ -56,13 +56,13 @@ export namespace ph {
     ): d_target.Phrase => ['optional', block_part]
 
     export const rich = (
-        items: pt.Raw_Or_Normal_List<d_target.Phrase>,
+        items: p_.Raw_Or_Normal_List<d_target.Phrase>,
         if_empty: d_target.Phrase,
         before: d_target.Phrase,
         separator: d_target.Phrase,
         after: d_target.Phrase,
     ): d_target.Phrase => ['rich list', {
-        'items': pt.list(items),
+        'items': p_.list(items),
         'if empty': if_empty,
         'if not empty': {
             'before': before,
@@ -72,8 +72,8 @@ export namespace ph {
     }]
 
     export const composed = (
-        phrases: pt.Raw_Or_Normal_List<d_target.Phrase>
-    ): d_target.Phrase => ['composed', pt.list(phrases)]
+        phrases: p_.Raw_Or_Normal_List<d_target.Phrase>
+    ): d_target.Phrase => ['composed', p_.list(phrases)]
 
     export const decimal = (
         value: number
