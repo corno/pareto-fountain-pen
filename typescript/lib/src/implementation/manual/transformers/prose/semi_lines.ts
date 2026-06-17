@@ -1,18 +1,35 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
+import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as p_di from 'pareto-core/dist/interface/data'
 import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
 import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
 import p_variables from 'pareto-core/dist/implementation/specials/variables'
 
+//data types
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
 import * as d_out from "../../../../interface/generated/liana/schemas/semi_lines/data"
 
-export const Paragraph = (
-    $: d_in.Paragraph,
-    $p: {
-        'indentation level': number,
-    }
-): d_out.Lines => p_.decide.state($, ($) => {
+namespace interface_ {
+
+    export type Paragraph = p_i.Transformer_With_Parameter<
+        d_in.Paragraph,
+        d_out.Lines,
+        {
+            'indentation level': number
+        }
+    >
+
+    export type Sentence = p_i.Transformer_With_Parameter<
+        d_in.Sentence,
+        d_out.Lines,
+        {
+            'indentation level': number
+        }
+    >
+
+}
+
+export const Paragraph: interface_.Paragraph = ($, $p) => p_.decide.state($, ($) => {
     switch ($[0]) {
         case 'composed': return p_.ss($, ($) => p_.list.from.list(
             $,
@@ -162,12 +179,7 @@ const Phrase = (
     })
 }
 
-export const Sentence = (
-    $: d_in.Sentence,
-    $p: {
-        'indentation level': number
-    }
-): d_out.Lines => p_list_build_deprecated(($i) => {
+export const Sentence: interface_.Sentence = ($, $p) => p_list_build_deprecated(($i) => {
     let current_line: null | string = null
     let found_indentation = false
     $.__l_map(
