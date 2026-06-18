@@ -17,11 +17,11 @@ export const Lines: p_i.Transformer_With_Parameter<
             $p['indentation text'],
             ($) => $,
         )
-        return $.__l_map(
+        return $.__l_map_deprecated(
             ($) => p_text_from_list(
                 p_.literal.nested_list<number>(
                     [
-                        p_.list.from.list(
+                        p_.from.list(
                             p_.literal.repeat(
                                 indent,
                                 $.indentation
