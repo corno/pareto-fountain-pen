@@ -117,7 +117,10 @@ const Phrase = (
                     ['append', p_.decide.state($, ($): string => {
                         switch ($[0]) {
                             case 'text': return p_.ss($, ($) => $)
-                            case 'list of characters': return p_.ss($, ($) => p_text_from_list($, ($) => $))
+                            case 'list of characters': return p_.ss($, ($) => p_text_from_list(
+                                $, 
+                                ($) => $
+                            ))
                             default: return p_.au($[0])
                         }
                     })],
