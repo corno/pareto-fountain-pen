@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as p_di from 'pareto-core/dist/interface/data'
-import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
-import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
-import p_variables from 'pareto-core/dist/implementation/specials/variables'
+import p_list_build_deprecated from 'pareto-core/dist/implementation/refiner/specials/list_build_deprecated'
+import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
+import p_variables from 'pareto-core/dist/implementation/transformer/specials/variables'
 
 //data types
 import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
