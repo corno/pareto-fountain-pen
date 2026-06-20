@@ -13,7 +13,7 @@ export const Lines: p_i.Transformer_With_Parameter<
         'indentation text': string
     }
 > = ($, $p) => {
-        const indent = p_list_from_text<number>(
+        const indent_characters = p_list_from_text<number>(
             $p['indentation text'],
             ($) => $,
         )
@@ -22,9 +22,8 @@ export const Lines: p_i.Transformer_With_Parameter<
                 p_.literal.nested_list<number>(
                     [
                         p_.from.list(
-                            p_.literal.repeat(
-                                indent,
-                                $.indentation
+                            p_.from.number($.indentation).repeat(
+                                indent_characters,
                             ),
                         ).flatten(
                             ($) => $
