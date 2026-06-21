@@ -53,7 +53,7 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                 ($) => Sentence($, $p),
                 () => p_.literal.list([]),
             ),
-            () => p_.literal.nested_list([
+            () => p_.literal.segmented_list([
                 p_.from.optional($['if not empty'].before).decide(
                     ($) => Sentence($, $p),
                     () => p_.literal.list([]),
@@ -71,7 +71,7 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                             return Sentence(
                                 p_.from.optional(if_not_empty.separator).decide(
                                     ($) => current < amount - 1
-                                        ? p_.literal.nested_list([
+                                        ? p_.literal.segmented_list([
                                             sentence,
                                             p_.literal.list([
                                                 $
@@ -148,7 +148,7 @@ const Phrase = (
                     const sep = $['if not empty'].separator
                     const amount = p_.from.list($.items).amount_of_items()
                     let current = -1
-                    return p_.literal.nested_list([
+                    return p_.literal.segmented_list([
                         Phrase($['if not empty'].before, $p),
                         p_.from.list(
                             $.items
@@ -156,7 +156,7 @@ const Phrase = (
                             ($): Summary => {
                                 current++
                                 return current < amount - 1
-                                    ? p_.literal.nested_list([
+                                    ? p_.literal.segmented_list([
                                         Phrase($, $p),
                                         Phrase(sep, $p)
                                     ])
