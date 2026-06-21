@@ -73,9 +73,9 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                                     ($) => current < amount - 1
                                         ? p_.literal.nested_list([
                                             sentence,
-                                            [
+                                            p_.literal.list([
                                                 $
-                                            ]
+                                            ])
                                         ])
                                         : sentence,
                                     () => $
