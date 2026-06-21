@@ -17,7 +17,7 @@ export const Lines: p_i.Transformer_With_Parameter<
             $p['indentation text'],
             ($) => $,
         )
-        return $.__l_map_deprecated(
+        return p_.from.list($).map(
             ($) => p_text_from_list(
                 p_.literal.nested_list<number>(
                     [

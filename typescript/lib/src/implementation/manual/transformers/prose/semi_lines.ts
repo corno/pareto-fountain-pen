@@ -41,7 +41,7 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
         ).flatten(
             ($) => Sentence($, $p)
         ))
-        case 'optional': return p_.ss($, ($) => $.__decide(
+        case 'optional': return p_.ss($, ($) => p_.from.optional($).decide(
             ($) => Paragraph($, $p),
             () => p_.literal.list([]),
         ))
@@ -49,12 +49,12 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
         case 'rich list': return p_.ss($, ($) => p_.from.boolean(
             p_.from.list($.items).is_empty()
         ).decide(
-            () => $['if empty'].__decide(
+            () => p_.from.optional($['if empty']).decide(
                 ($) => Sentence($, $p),
                 () => p_.literal.list([]),
             ),
             () => p_.literal.nested_list([
-                $['if not empty'].before.__decide(
+                p_.from.optional($['if not empty'].before).decide(
                     ($) => Sentence($, $p),
                     () => p_.literal.list([]),
                 ),
@@ -69,7 +69,7 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                             const sentence = $
                             current++
                             return Sentence(
-                                if_not_empty.separator.__decide(
+                                p_.from.optional(if_not_empty.separator).decide(
                                     ($) => current < amount - 1
                                         ? p_.literal.nested_list([
                                             sentence,
@@ -87,7 +87,7 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                         })
                     )
                 }),
-                $['if not empty'].after.__decide(
+                p_.from.optional($['if not empty'].after).decide(
                     ($) => Sentence($, $p),
                     () => p_.literal.list([]),
                 ),
@@ -188,13 +188,15 @@ const Phrase = (
 export const Sentence: interface_.Sentence = ($, $p) => p_list_build_deprecated(($i) => {
     let current_line: null | string = null
     let found_indentation = false
-    $.__l_map_deprecated(
-        ($) => Phrase(
-            $,
-            {
-                'indentation level': $p['indentation level'],
-            }
-        ).__l_map_deprecated(
+    p_.from.list($).map(
+        ($) => p_.from.list(
+            Phrase(
+                $,
+                {
+                    'indentation level': $p['indentation level'],
+                }
+            )
+        ).map(
             ($) => p_.from.state($).decide(($): null => {
                 switch ($[0]) {
                     case 'append': return p_.ss($, ($) => {
