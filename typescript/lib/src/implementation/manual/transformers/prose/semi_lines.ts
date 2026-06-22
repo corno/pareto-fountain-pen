@@ -46,53 +46,54 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
             () => p_.literal.list([]),
         ))
         case 'nothing': return p_.ss($, ($) => p_.literal.list([]))
-        case 'rich list': return p_.ss($, ($) => p_.from.boolean(
-            p_.from.list($.items).is_empty()
-        ).decide(
-            () => p_.from.optional($['if empty']).decide(
-                ($) => Sentence($, $p),
-                () => p_.literal.list([]),
-            ),
-            () => p_.literal.segmented_list([
-                p_.from.optional($['if not empty'].before).decide(
-                    ($) => Sentence($, $p),
-                    () => p_.literal.list([]),
-                ),
-                p_variables(() => {
-                    const if_not_empty = $['if not empty']
-                    const amount = p_.from.list($.items).amount_of_items()
-                    let current = -1
-                    return p_.from.list(
-                        $.items
-                    ).flatten(
-                        ($) => p_variables(() => {
-                            const sentence = $
-                            current++
-                            return Sentence(
-                                p_.from.optional(if_not_empty.separator).decide(
-                                    ($) => current < amount - 1
-                                        ? p_.literal.segmented_list([
-                                            sentence,
-                                            p_.literal.list([
-                                                $
+        case 'rich list': return p_.ss($, ($) => {
+            const $v_rich_list = $
+            return p_.from.list($.items).on_has_items(
+                ($) => p_.literal.segmented_list([
+                    p_.from.optional($v_rich_list['if not empty'].before).decide(
+                        ($) => Sentence($, $p),
+                        () => p_.literal.list([]),
+                    ),
+                    p_variables(() => {
+                        const if_not_empty = $v_rich_list['if not empty']
+                        const amount = p_.from.list($).amount_of_items()
+                        let current = -1
+                        return p_.from.list(
+                            $
+                        ).flatten(
+                            ($) => p_variables(() => {
+                                const sentence = $
+                                current++
+                                return Sentence(
+                                    p_.from.optional(if_not_empty.separator).decide(
+                                        ($) => current < amount - 1
+                                            ? p_.literal.segmented_list([
+                                                sentence,
+                                                p_.literal.list([
+                                                    $
+                                                ])
                                             ])
-                                        ])
-                                        : sentence,
-                                    () => $
-                                ),
-                                {
-                                    'indentation level': $p['indentation level'] + (if_not_empty.indent ? 1 : 0),
-                                }
-                            )
-                        })
-                    )
-                }),
-                p_.from.optional($['if not empty'].after).decide(
+                                            : sentence,
+                                        () => $
+                                    ),
+                                    {
+                                        'indentation level': $p['indentation level'] + (if_not_empty.indent ? 1 : 0),
+                                    }
+                                )
+                            })
+                        )
+                    }),
+                    p_.from.optional($v_rich_list['if not empty'].after).decide(
+                        ($) => Sentence($, $p),
+                        () => p_.literal.list([]),
+                    ),
+                ]),
+                () => p_.from.optional($['if empty']).decide(
                     ($) => Sentence($, $p),
                     () => p_.literal.list([]),
                 ),
-            ])
-        ))
+            )
+        })
         default: return p_.au($[0])
     }
 })
@@ -140,18 +141,17 @@ const Phrase = (
                     return p_.literal.list<Action>([])
                 }
             })
-            case 'rich list': return p_.ss($, ($) => p_.from.boolean(
-                p_.from.list($.items).is_empty(),
-            ).decide(
-                () => Phrase($['if empty'], $p),
-                () => {
-                    const sep = $['if not empty'].separator
-                    const amount = p_.from.list($.items).amount_of_items()
+            case 'rich list': return p_.ss($, ($) => {
+                const $v_rich_list = $
+                return p_.from.list($.items).on_has_items(
+                ($) => {
+                    const sep = $v_rich_list['if not empty'].separator
+                    const amount = p_.from.list($).amount_of_items()
                     let current = -1
                     return p_.literal.segmented_list([
-                        Phrase($['if not empty'].before, $p),
+                        Phrase($v_rich_list['if not empty'].before, $p),
                         p_.from.list(
-                            $.items
+                            $
                         ).flatten(
                             ($): Summary => {
                                 current++
@@ -163,11 +163,13 @@ const Phrase = (
                                     : Phrase($, $p)
                             }
                         ),
-                        Phrase($['if not empty'].after, $p)
+                        Phrase($v_rich_list['if not empty'].after, $p)
 
                     ])
-                }
-            ))
+                },
+                () => Phrase($['if empty'], $p)
+            )
+            })
             case 'composed': return p_.ss($, ($) => p_.from.list(
                 $,
             ).flatten(
