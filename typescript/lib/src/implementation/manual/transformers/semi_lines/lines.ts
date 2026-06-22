@@ -21,8 +21,7 @@ export const Lines: p_i.Transformer_With_Parameter<
             ($) => p_text_from_list(
                 p_.literal.segmented_list(
                     [
-                        p_.from.list(
-                            p_.from.number($.indentation).repeat(
+                        p_.from.list(p_.from.number($.indentation).repeat(
                                 indent_characters,
                             ),
                         ).flatten(

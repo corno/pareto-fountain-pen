@@ -12,8 +12,7 @@ import * as d_out from "../../../../interface/generated/liana/schemas/list_of_ch
 export const Lines: p_i.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => {
     const amount = p_.from.list($).amount_of_items()
     let current = -1
-    return p_.from.list(
-        t_fountain_pen_semi_lines_to_lines.Lines(
+    return p_.from.list(t_fountain_pen_semi_lines_to_lines.Lines(
             $,
             {
                 'indentation text': $p.indentation,
