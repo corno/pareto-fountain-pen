@@ -61,7 +61,7 @@ Nodes represent file system structure:
 ### Basic Example
 
 ```typescript
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 // Create a simple paragraph
 const paragraph = sh.pg.sentences([
@@ -91,7 +91,7 @@ function greet() {
 ### TypeScript Code Generation
 
 ```typescript
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 const generateInterface = (name: string, properties: Array<{ name: string, type: string }>) =>
     sh.pg.sentences([
@@ -222,7 +222,7 @@ const text = t_fp_to_loc.Paragraph(paragraph, {
 ### Shorthands (`sh`)
 
 ```typescript
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 // Paragraphs
 sh.pg.nothing()
