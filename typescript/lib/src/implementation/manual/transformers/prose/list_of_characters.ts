@@ -9,7 +9,11 @@ import * as t_semi_lines_to_text from "../semi_lines/text"
 
 import * as sh from "../../../../shorthands/prose"
 
-export const Paragraph: p_i.Transformer_With_Parameter<d_in.Paragraph, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => t_semi_lines_to_text.Lines(
+export const Paragraph: p_i.Transformer_With_Parameter<
+    d_in.Paragraph,
+    d_out.List_of_Characters,
+    d_x.Parameters
+> = ($, $p) => t_semi_lines_to_text.Lines(
     t_fountain_pen_block_to_semi_lines.Paragraph($, { 'indentation level': 0 }),
     {
         'indentation': $p.indentation,
@@ -18,7 +22,11 @@ export const Paragraph: p_i.Transformer_With_Parameter<d_in.Paragraph, d_out.Lis
     }
 )
 
-export const Phrase: p_i.Transformer_With_Parameter<d_in.Phrase, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => t_semi_lines_to_text.Lines(
+export const Phrase: p_i.Transformer_With_Parameter<
+    d_in.Phrase,
+    d_out.List_of_Characters,
+    d_x.Parameters
+> = ($, $p) => t_semi_lines_to_text.Lines(
     t_fountain_pen_block_to_semi_lines.Sentence(
         sh.sentence([$]),
         { 'indentation level': 0 }

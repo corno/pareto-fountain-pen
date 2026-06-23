@@ -9,7 +9,11 @@ import * as d_x from "../../../../interface/data/semi_lines_serialize"
 import * as d_out from "../../../../interface/generated/liana/schemas/list_of_characters/data"
 
 
-export const Lines: p_i.Transformer_With_Parameter<d_in.Lines, d_out.List_of_Characters, d_x.Parameters> = ($, $p) => {
+export const Lines: p_i.Transformer_With_Parameter<
+    d_in.Lines,
+    d_out.List_of_Characters,
+    d_x.Parameters
+> = ($, $p) => {
     const amount = p_.from.list($).amount_of_items()
     let current = -1
     return p_.from.list(t_fountain_pen_semi_lines_to_lines.Lines(
