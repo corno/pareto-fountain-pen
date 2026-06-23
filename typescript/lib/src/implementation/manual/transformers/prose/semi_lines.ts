@@ -32,12 +32,10 @@ namespace interface_ {
 export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'composed': return p_.ss($, ($) => p_.from.list($,
-            ).flatten(
+            case 'composed': return p_.ss($, ($) => p_.from.list($).flatten(
                 ($) => Paragraph($, $p)
             ))
-            case 'sentences': return p_.ss($, ($) => p_.from.list($,
-            ).flatten(
+            case 'sentences': return p_.ss($, ($) => p_.from.list($).flatten(
                 ($) => Sentence($, $p)
             ))
             case 'optional': return p_.ss($, ($) => p_.from.optional($).decide(
@@ -58,8 +56,7 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                                 const if_not_empty = $v_rich_list['if not empty']
                                 const amount = p_.from.list($).amount_of_items()
                                 let current = -1
-                                return p_.from.list($
-                                ).flatten(
+                                return p_.from.list($).flatten(
                                     ($) => p_variables(
                                         () => {
                                             const sentence = $
@@ -152,8 +149,7 @@ const Phrase = (
                             let current = -1
                             return p_.literal.segmented_list([
                                 Phrase($v_rich_list['if not empty'].before, $p),
-                                p_.from.list($
-                                ).flatten(
+                                p_.from.list($).flatten(
                                     ($): Summary => {
                                         current++
                                         return current < amount - 1
@@ -171,12 +167,10 @@ const Phrase = (
                         () => Phrase($['if empty'], $p)
                     )
                 })
-                case 'composed': return p_.ss($, ($) => p_.from.list($,
-                ).flatten(
+                case 'composed': return p_.ss($, ($) => p_.from.list($).flatten(
                     ($) => Phrase($, $p)
                 ))
-                case 'optional': return p_.ss($, ($) => p_.from.optional($,
-                ).decide(
+                case 'optional': return p_.ss($, ($) => p_.from.optional($).decide(
                     ($) => Phrase($, $p),
                     () => p_.literal.list<Action>([]),
                 ))
