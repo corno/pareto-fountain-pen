@@ -5,7 +5,7 @@ import p_text_from_list from 'pareto-core/dist/implementation/transformer/specia
 
 import * as t_fountain_pen_to_loc from "lib/dist/implementation/manual/transformers/prose/list_of_characters"
 
-import * as sh from "lib/dist/shorthands/prose"
+import * as sh from "lib/dist/shorthands/prose/deprecated"
 
 p_log_debug_message("TEST NOT IMPLEMENTED YET", () => { })
 

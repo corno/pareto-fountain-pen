@@ -30,7 +30,7 @@ import * as t_semi_lines_to_lines from "../semi_lines/lines"
 import * as t_to_semi_lines from "./semi_lines"
 
 //shorthands
-import * as sh from "../../../../shorthands/prose"
+import * as sh from "../../../../shorthands/prose/deprecated"
 
 export const Paragraph: interface_.Paragraph = ($, $p) => t_semi_lines_to_lines.Lines(t_to_semi_lines.Paragraph($, { 'indentation level': 0 }), { 'indentation text': $p.indentation })
 
@@ -38,7 +38,9 @@ export const Paragraph: interface_.Paragraph = ($, $p) => t_semi_lines_to_lines.
 
 export const Phrase: interface_.Phrase = ($, $p) => t_semi_lines_to_lines.Lines(
     t_to_semi_lines.Paragraph(
-        ['sentences', p_.literal.list([sh.sentence([$])])],
+        ['sentences', p_.literal.list([sh.sentence(
+            p_.literal.list([])
+        )])],
         { 'indentation level': 0 }
     ),
     { 'indentation text': $p.indentation }
