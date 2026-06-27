@@ -93,7 +93,8 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
             })
             default: return p_.au($[0])
         }
-    })
+    }
+)
 
 type Summary = p_di.List<Action>
 
