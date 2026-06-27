@@ -233,4 +233,5 @@ export const Sentence: interface_.Sentence = ($, $p) => p_list_build_deprecated(
                 'text': current_line,
             })
         }
-    })
+    }
+)
