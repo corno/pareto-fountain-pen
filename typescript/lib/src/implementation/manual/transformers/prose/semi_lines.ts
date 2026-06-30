@@ -32,18 +32,18 @@ namespace interface_ {
 export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'composed': return p_.ss($, ($) => p_.from.list($).flatten(
+            case 'composed': return p_.option($, ($) => p_.from.list($).flatten(
                 ($) => Paragraph($, $p)
             ))
-            case 'sentences': return p_.ss($, ($) => p_.from.list($).flatten(
+            case 'sentences': return p_.option($, ($) => p_.from.list($).flatten(
                 ($) => Sentence($, $p)
             ))
-            case 'optional': return p_.ss($, ($) => p_.from.optional($).decide(
+            case 'optional': return p_.option($, ($) => p_.from.optional($).decide(
                 ($) => Paragraph($, $p),
                 () => p_.literal.list([]),
             ))
-            case 'nothing': return p_.ss($, ($) => p_.literal.list([]))
-            case 'rich list': return p_.ss($, ($) => {
+            case 'nothing': return p_.option($, ($) => p_.literal.list([]))
+            case 'rich list': return p_.option($, ($) => {
                 const $v_rich_list = $
                 return p_.from.list($.items).on_has_items(
                     ($) => p_.literal.segmented_list([
@@ -53,8 +53,8 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                         ),
                         p_variables(
                             () => {
-                                const if_not_empty = $v_rich_list['if not empty']
-                                const amount = p_.from.list($).amount_of_items()
+                                const $v_if_not_empty = $v_rich_list['if not empty']
+                                const $v_amount = p_.from.list($).amount_of_items()
                                 let current = -1
                                 return p_.from.list($).flatten(
                                     ($) => p_variables(
@@ -62,8 +62,8 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                                             const sentence = $
                                             current++
                                             return Sentence(
-                                                p_.from.optional(if_not_empty.separator).decide(
-                                                    ($) => current < amount - 1
+                                                p_.from.optional($v_if_not_empty.separator).decide(
+                                                    ($) => current < $v_amount - 1
                                                         ? p_.literal.segmented_list([
                                                             sentence,
                                                             p_.literal.list([
@@ -74,7 +74,7 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                                                     () => $
                                                 ),
                                                 {
-                                                    'indentation level': $p['indentation level'] + (if_not_empty.indent ? 1 : 0),
+                                                    'indentation level': $p['indentation level'] + ($v_if_not_empty.indent ? 1 : 0),
                                                 }
                                             )
                                         })
@@ -113,13 +113,13 @@ const Phrase = (
     return p_.from.state($).decide(
         ($): Summary => {
             switch ($[0]) {
-                case 'value': return p_.ss($, ($) => {
+                case 'value': return p_.option($, ($) => {
                     return p_.literal.list<Action>([
                         ['append', p_.from.state($).decide(
                             ($): string => {
                                 switch ($[0]) {
-                                    case 'text': return p_.ss($, ($) => $)
-                                    case 'list of characters': return p_.ss($, ($) => p_text_from_list(
+                                    case 'text': return p_.option($, ($) => $)
+                                    case 'list of characters': return p_.option($, ($) => p_text_from_list(
                                         $,
                                         ($) => $
                                     ))
@@ -129,7 +129,7 @@ const Phrase = (
 
                     ])
                 })
-                case 'indent': return p_.ss($, ($) => {
+                case 'indent': return p_.option($, ($) => {
                     const paragraph = Paragraph($, {
                         'indentation level': $p['indentation level'] + 1,
                     })
@@ -141,7 +141,7 @@ const Phrase = (
                         return p_.literal.list<Action>([])
                     }
                 })
-                case 'rich list': return p_.ss($, ($) => {
+                case 'rich list': return p_.option($, ($) => {
                     const $v_rich_list = $
                     return p_.from.list($.items).on_has_items(
                         ($) => {
@@ -168,14 +168,14 @@ const Phrase = (
                         () => Phrase($['if empty'], $p)
                     )
                 })
-                case 'composed': return p_.ss($, ($) => p_.from.list($).flatten(
+                case 'composed': return p_.option($, ($) => p_.from.list($).flatten(
                     ($) => Phrase($, $p)
                 ))
-                case 'optional': return p_.ss($, ($) => p_.from.optional($).decide(
+                case 'optional': return p_.option($, ($) => p_.from.optional($).decide(
                     ($) => Phrase($, $p),
                     () => p_.literal.list<Action>([]),
                 ))
-                case 'nothing': return p_.ss($, ($) => p_.literal.list<Action>([]))
+                case 'nothing': return p_.option($, ($) => p_.literal.list<Action>([]))
                 default: return p_.au($[0])
             }
         })
@@ -196,14 +196,14 @@ export const Sentence: interface_.Sentence = ($, $p) => p_list_build_deprecated(
                 ($) => p_.from.state($).decide(
                     ($): null => {
                         switch ($[0]) {
-                            case 'append': return p_.ss($, ($) => {
+                            case 'append': return p_.option($, ($) => {
                                 if (current_line === null) {
                                     current_line = ""
                                 }
                                 current_line += $
                                 return null
                             })
-                            case 'add paragraph': return p_.ss($, ($) => {
+                            case 'add paragraph': return p_.option($, ($) => {
                                 found_indentation = true
                                 if (current_line !== null) {
                                     $i['add item']({
