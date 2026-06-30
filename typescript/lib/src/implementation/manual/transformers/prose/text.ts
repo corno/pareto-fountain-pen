@@ -24,3 +24,12 @@ export const Phrase: p_i.Transformer_With_Parameter<
     t_to_list_of_characters.Phrase($, $p),
     ($) => $
 )
+
+export const Phrases: p_i.Transformer_With_Parameter<
+    d_in.Phrase.composed,
+    d_out.Text,
+    d_x.Parameters
+> = ($, $p) => p_text_from_list(
+    t_to_list_of_characters.Phrase(['composed', $], $p),
+    ($) => $
+)
