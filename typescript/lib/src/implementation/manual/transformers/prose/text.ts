@@ -1,9 +1,9 @@
-import * as p_i from 'pareto-core/dist/interface/transformer'
-import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
+import * as p_i from 'pareto-core/interface/transformer'
+import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
-import * as d_function from "../../../../interface/data/prose_serialize"
-import * as d_out from "../../../../interface/generated/liana/schemas/text/data"
+import * as d_in from "../../../../interface/generated/liana/schemas/prose/data.js"
+import * as d_function from "../../../../interface/data/prose_serialize.js"
+import * as d_out from "../../../../interface/generated/liana/schemas/text/data.js"
 
 export namespace interface_ {
     export type Paragraph = p_i.Transformer_With_Parameter<
@@ -24,7 +24,7 @@ export namespace interface_ {
 }
 
 //dependencies
-import * as t_to_list_of_characters from "./list_of_characters"
+import * as t_to_list_of_characters from "./list_of_characters.js"
 
 export const Paragraph: interface_.Paragraph = ($, $p) => p_text_from_list(
     t_to_list_of_characters.Paragraph($, $p),

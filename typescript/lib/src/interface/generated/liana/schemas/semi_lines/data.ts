@@ -1,6 +1,6 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
+import * as p_di from 'pareto-core/interface/data'
 
 export namespace Lines_ {
     
@@ -21,6 +21,6 @@ export namespace Lines_ {
 
 export type Lines_ = p_di.List<Lines_.L>
 
-export { 
+export type { 
     Lines_ as Lines, 
 }

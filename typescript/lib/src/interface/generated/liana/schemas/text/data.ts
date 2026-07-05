@@ -1,8 +1,8 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
 
 export type Text_ = string
 
-export { 
+export type { 
     Text_ as Text, 
 }

@@ -1,9 +1,9 @@
-import * as p_ from 'pareto-core/dist/implementation/transformer'
-import * as p_i from 'pareto-core/dist/interface/transformer'
+import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_i from 'pareto-core/interface/transformer'
 
 //data types
-import * as d_in from "../../../../interface/generated/liana/schemas/prose/data"
-import * as d_out from "../../../../interface/generated/liana/schemas/lines/data"
+import * as d_in from "../../../../interface/generated/liana/schemas/prose/data.js"
+import * as d_out from "../../../../interface/generated/liana/schemas/lines/data.js"
 
 namespace interface_ {
 
@@ -26,11 +26,11 @@ namespace interface_ {
 }
 
 //dependencies
-import * as t_semi_lines_to_lines from "../semi_lines/lines"
-import * as t_to_semi_lines from "./semi_lines"
+import * as t_semi_lines_to_lines from "../semi_lines/lines.js"
+import * as t_to_semi_lines from "./semi_lines.js"
 
 //shorthands
-import * as sh from "../../../../shorthands/prose/deprecated"
+import * as sh from "../../../../shorthands/prose/deprecated.js"
 
 export const Paragraph: interface_.Paragraph = ($, $p) => t_semi_lines_to_lines.Lines(t_to_semi_lines.Paragraph($, { 'indentation level': 0 }), { 'indentation text': $p.indentation })
 
