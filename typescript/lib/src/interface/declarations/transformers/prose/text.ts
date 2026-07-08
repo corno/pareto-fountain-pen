@@ -5,7 +5,7 @@ import type * as d_in from "../../../generated/liana/schemas/prose/data.js"
 import type * as d_function from "../../../data/prose_serialize.js"
 import type * as d_out from "../../../generated/liana/schemas/text/data.js"
 
-export namespace interface_ {
+
     export type Paragraph = p_i.Transformer_With_Parameter<
         d_in.Paragraph,
         d_out.Text,
@@ -21,4 +21,4 @@ export namespace interface_ {
         d_out.Text,
         d_function.Parameters
     >
-}
+
