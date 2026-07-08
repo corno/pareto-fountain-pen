@@ -91,7 +91,7 @@ export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decid
                     ),
                 )
             })
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     }
 )
@@ -123,7 +123,7 @@ const Phrase = (
                                         $,
                                         ($) => $
                                     ))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             })],
 
@@ -176,7 +176,7 @@ const Phrase = (
                     () => p_.literal.list<Action>([]),
                 ))
                 case 'nothing': return p_.option($, ($) => p_.literal.list<Action>([]))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         })
 }
@@ -215,7 +215,7 @@ export const Sentence: interface_.Sentence = ($, $p) => p_list_build_deprecated(
                                 $i['add list']($)
                                 return null
                             })
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     })
             )
