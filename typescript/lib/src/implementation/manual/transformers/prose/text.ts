@@ -22,6 +22,7 @@ export namespace interface_ {
         d_function.Parameters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/prose/text.js"
 
 //dependencies
 import * as t_to_list_of_characters from "./list_of_characters.js"

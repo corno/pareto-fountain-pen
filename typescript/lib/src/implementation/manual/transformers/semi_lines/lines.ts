@@ -18,6 +18,7 @@ export namespace interface_ {
         d_function.Parameters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/semi_lines/lines.js"
 
 export const Lines: interface_.Lines = ($, $p) => {
     const indent_characters = p_list_from_text(

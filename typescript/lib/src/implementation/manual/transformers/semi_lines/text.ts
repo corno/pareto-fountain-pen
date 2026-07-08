@@ -15,6 +15,7 @@ export namespace interface_ {
         d_function.Parameters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/semi_lines/text.js"
 
 export const Lines: interface_.Lines = ($, $p) => {
     const amount = p_.from.list($).amount_of_items()

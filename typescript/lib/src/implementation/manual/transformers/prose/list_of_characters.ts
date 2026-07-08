@@ -18,6 +18,7 @@ export namespace interface_ {
         d_function.Parameters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/prose/list_of_characters.js"
 
 //dependencies
 import * as t_fountain_pen_block_to_semi_lines from "./semi_lines.js"
