@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import type * as interface_ from "../../../../interface/declarations/transformers/prose/list_of_characters.js"
+import type * as interface_ from "../../../../declarations/transformers/prose/list_of_characters.js"
 
 //dependencies
 import * as t_fountain_pen_block_to_semi_lines from "./semi_lines.js"

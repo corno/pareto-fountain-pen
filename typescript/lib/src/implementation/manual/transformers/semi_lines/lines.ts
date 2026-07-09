@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-import type * as interface_ from "../../../../interface/declarations/transformers/semi_lines/lines.js"
+import type * as interface_ from "../../../../declarations/transformers/semi_lines/lines.js"
 
 export const Lines: interface_.Lines = ($, $p) => {
     const indent_characters = p_list_from_text(

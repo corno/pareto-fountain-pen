@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-import type * as interface_ from "../../../../interface/declarations/transformers/semi_lines/text.js"
+import type * as interface_ from "../../../../declarations/transformers/semi_lines/text.js"
 
 //dependencies
 import * as t_fountain_pen_semi_lines_to_lines from "./lines.js"

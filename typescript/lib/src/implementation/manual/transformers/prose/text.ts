@@ -1,6 +1,6 @@
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import type * as interface_ from "../../../../interface/declarations/transformers/prose/text.js"
+import type * as interface_ from "../../../../declarations/transformers/prose/text.js"
 
 //dependencies
 import * as t_to_list_of_characters from "./list_of_characters.js"
