@@ -3,7 +3,7 @@
 import p_log_debug_message from 'pareto-core-dev/log_debug_message'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import * as t_fountain_pen_to_loc from "lib/implementation/manual/transformers/prose/list_of_characters"
+import * as t_fountain_pen_to_loc from "lib/implementation/transformers/prose/list_of_characters"
 
 import * as sh from "lib/shorthands/prose/deprecated"
 
