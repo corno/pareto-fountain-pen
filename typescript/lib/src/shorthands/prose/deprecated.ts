@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_deprecated'
 import * as p_di from 'pareto-core/interface/data'
 
-import type * as d_target from "../../interface/generated/liana/schemas/prose/data.js"
-import type * as d_text from "../../interface/generated/liana/schemas/list_of_characters/data.js"
+import type * as d_target from "../../interface/data/prose.js"
+import type * as d_text from "../../interface/data/list_of_characters.js"
 
 
 export namespace pg {

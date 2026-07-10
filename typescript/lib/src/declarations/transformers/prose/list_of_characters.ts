@@ -2,9 +2,9 @@
 import type * as p_ from 'pareto-core/interface/transformer'
 
 //data types
-import type * as d_in from "../../../interface/generated/liana/schemas/prose/data.js"
+import type * as d_in from "../../../interface/data/prose.js"
 import type * as d_function from "../../../interface/data/prose_serialize.js"
-import type * as d_out from "../../../interface/generated/liana/schemas/list_of_characters/data.js"
+import type * as d_out from "../../../interface/data/list_of_characters.js"
 
 
 export type Paragraph = p_.Transformer_With_Parameter<
