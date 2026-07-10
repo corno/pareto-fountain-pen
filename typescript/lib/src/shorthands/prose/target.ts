@@ -7,9 +7,9 @@ import type * as d_text from "../../interface/data/list_of_characters.js"
 
 export namespace pg {
 
-    export const nothing = (): d_target.Paragraph => ['nothing', null]
+    export const deprecated_nothing = (): d_target.Paragraph => ['nothing', null]
 
-    export const optional = (Paragraph: p_di.Optional_Value<d_target.Paragraph>): d_target.Paragraph => ['optional', Paragraph]
+    export const deprecated_optional = (Paragraph: p_di.Optional_Value<d_target.Paragraph>): d_target.Paragraph => ['optional', Paragraph]
 
     export const rich = (
         items: p_.Normal_List<d_target.Sentence>,
@@ -29,7 +29,7 @@ export namespace pg {
         },
     }]
 
-    export const composed = (
+    export const deprecated_composed = (
         Group_Parts: p_.Normal_List<d_target.Paragraph>
     ): d_target.Paragraph => ['composed', p_.list(Group_Parts)]
 
