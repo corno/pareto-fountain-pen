@@ -6,8 +6,8 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import p_variables from 'pareto-core/implementation/transformer/specials/variables'
 
 //data types
-import type * as d_in from "../../../interface/data/prose.js"
-import type * as d_out from "../../../interface/data/semi_lines.js"
+import type * as d_in from "../../../interface/schemas/prose.js"
+import type * as d_out from "../../../interface/schemas/semi_lines.js"
 
 namespace interface_ {
 

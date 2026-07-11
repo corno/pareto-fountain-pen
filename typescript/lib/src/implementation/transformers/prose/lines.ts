@@ -2,8 +2,8 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
 
 //data types
-import type * as d_in from "../../../interface/data/prose.js"
-import type * as d_out from "../../../interface/data/lines.js"
+import type * as d_in from "../../../interface/schemas/prose.js"
+import type * as d_out from "../../../interface/schemas/lines.js"
 
 namespace interface_ {
 

@@ -1,8 +1,8 @@
 import type * as p_ from 'pareto-core/interface/transformer'
 
-import type * as d_in from "../../../interface/data/prose.js"
-import type * as d_function from "../../../interface/data/prose_serialize.js"
-import type * as d_out from "../../../interface/data/text.js"
+import type * as d_in from "../../../interface/schemas/prose.js"
+import type * as d_function from "../../../interface/schemas/prose_serialize.js"
+import type * as d_out from "../../../interface/schemas/text.js"
 
 
 export type Paragraph = p_.Transformer_With_Parameter<
