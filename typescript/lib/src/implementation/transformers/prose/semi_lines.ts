@@ -6,22 +6,22 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import p_variables from 'pareto-core/implementation/transformer/specials/variables'
 
 //data types
-import type * as d_in from "../../../interface/schemas/prose.js"
-import type * as d_out from "../../../interface/schemas/semi_lines.js"
+import type * as s_in from "../../../interface/schemas/prose.js"
+import type * as s_out from "../../../interface/schemas/semi_lines.js"
 
 namespace interface_ {
 
     export type Paragraph = p_i.Transformer_With_Parameter<
-        d_in.Paragraph,
-        d_out.Lines,
+        s_in.Paragraph,
+        s_out.Lines,
         {
             'indentation level': number
         }
     >
 
     export type Sentence = p_i.Transformer_With_Parameter<
-        d_in.Sentence,
-        d_out.Lines,
+        s_in.Sentence,
+        s_out.Lines,
         {
             'indentation level': number
         }
@@ -101,10 +101,10 @@ type Summary = p_di.List<Action>
 
 type Action =
     | ['append', string]
-    | ['add paragraph', d_out.Lines]
+    | ['add paragraph', s_out.Lines]
 
 const Phrase = (
-    $: d_in.Phrase,
+    $: s_in.Phrase,
     $p: {
         'indentation level': number,
 

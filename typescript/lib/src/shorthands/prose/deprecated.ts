@@ -1,20 +1,20 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_deprecated'
 import * as p_di from 'pareto-core/interface/data'
 
-import type * as d_target from "../../interface/schemas/prose.js"
-import type * as d_text from "../../interface/schemas/list_of_characters.js"
+import type * as s_target from "../../interface/schemas/prose.js"
+import type * as s_text from "../../interface/schemas/list_of_characters.js"
 
 
 export namespace pg {
 
     export const rich = (
-        items: p_.Raw_Or_Normal_List<d_target.Sentence>,
-        if_empty: null | d_target.Sentence,
+        items: p_.Raw_Or_Normal_List<s_target.Sentence>,
+        if_empty: null | s_target.Sentence,
         indent: boolean,
-        before: null | d_target.Sentence,
-        separator: null | d_target.Phrase,
-        after: null | d_target.Sentence,
-    ): d_target.Paragraph => ['rich list', {
+        before: null | s_target.Sentence,
+        separator: null | s_target.Phrase,
+        after: null | s_target.Sentence,
+    ): s_target.Paragraph => ['rich list', {
         'items': p_.list(items),
         'if empty': p_.optional.null_or_value(if_empty),
         'if not empty': {
@@ -26,38 +26,38 @@ export namespace pg {
     }]
 
     export const deprecated_composed = (
-        Group_Parts: p_.Raw_Or_Normal_List<d_target.Paragraph>
-    ): d_target.Paragraph => ['composed', p_.list(Group_Parts)]
+        Group_Parts: p_.Raw_Or_Normal_List<s_target.Paragraph>
+    ): s_target.Paragraph => ['composed', p_.list(Group_Parts)]
 
     export const sentences = (
-        sentences: p_.Raw_Or_Normal_List<d_target.Sentence>
-    ): d_target.Paragraph => ['sentences', p_.list(sentences)]
+        sentences: p_.Raw_Or_Normal_List<s_target.Sentence>
+    ): s_target.Paragraph => ['sentences', p_.list(sentences)]
 }
 
 export const sentence = (
-    phrases: p_.Raw_Or_Normal_List<d_target.Phrase>
-): d_target.Sentence => p_.list(phrases)
+    phrases: p_.Raw_Or_Normal_List<s_target.Phrase>
+): s_target.Sentence => p_.list(phrases)
 
 export namespace ph {
 
     export const indent = (
-        paragraph: d_target.Paragraph
-    ): d_target.Phrase => ['indent', paragraph]
+        paragraph: s_target.Paragraph
+    ): s_target.Phrase => ['indent', paragraph]
 
     export const nothing = (
-    ): d_target.Phrase => ['nothing', null]
+    ): s_target.Phrase => ['nothing', null]
 
     export const optional = (
-        block_part: p_di.Optional_Value<d_target.Phrase>
-    ): d_target.Phrase => ['optional', block_part]
+        block_part: p_di.Optional_Value<s_target.Phrase>
+    ): s_target.Phrase => ['optional', block_part]
 
     export const rich = (
-        items: p_.Raw_Or_Normal_List<d_target.Phrase>,
-        if_empty: d_target.Phrase,
-        before: d_target.Phrase,
-        separator: d_target.Phrase,
-        after: d_target.Phrase,
-    ): d_target.Phrase => ['rich list', {
+        items: p_.Raw_Or_Normal_List<s_target.Phrase>,
+        if_empty: s_target.Phrase,
+        before: s_target.Phrase,
+        separator: s_target.Phrase,
+        after: s_target.Phrase,
+    ): s_target.Phrase => ['rich list', {
         'items': p_.list(items),
         'if empty': if_empty,
         'if not empty': {
@@ -68,18 +68,18 @@ export namespace ph {
     }]
 
     export const composed = (
-        phrases: p_.Raw_Or_Normal_List<d_target.Phrase>
-    ): d_target.Phrase => ['composed', p_.list(phrases)]
+        phrases: p_.Raw_Or_Normal_List<s_target.Phrase>
+    ): s_target.Phrase => ['composed', p_.list(phrases)]
 
     export const decimal = (
         value: number
-    ): d_target.Phrase => ['value', ['text', `${value}`]]
+    ): s_target.Phrase => ['value', ['text', `${value}`]]
 
     export const literal = (
         value: string
-    ): d_target.Phrase => ['value', ['text', value]]
+    ): s_target.Phrase => ['value', ['text', value]]
 
     export const serialize = (
-        value: d_text.List_of_Characters
-    ): d_target.Phrase => ['value', ['list of characters', value]]
+        value: s_text.List_of_Characters
+    ): s_target.Phrase => ['value', ['list of characters', value]]
 }
