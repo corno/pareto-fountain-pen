@@ -7,9 +7,9 @@ import p_variables from 'pareto-core/implementation/transformer/specials/variabl
 
 //schemas
 import type * as s_in from "../../../interface/schemas/prose.js"
-import type * as s_out from "../../../interface/schemas/semi_lines.js"
 
-namespace interface_ {
+import type * as s_out from "../../../interface/schemas/semi_lines.js"
+namespace declarations {
 
     export type Paragraph = p_i.Transformer_With_Parameter<
         s_in.Paragraph,
@@ -29,7 +29,7 @@ namespace interface_ {
 
 }
 
-export const Paragraph: interface_.Paragraph = ($, $p) => p_.from.state($).decide(
+export const Paragraph: declarations.Paragraph = ($, $p) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'composed': return p_.option($, ($) => p_.from.list($).flatten(
@@ -181,7 +181,7 @@ const Phrase = (
         })
 }
 
-export const Sentence: interface_.Sentence = ($, $p) => p_list_build_deprecated(
+export const Sentence: declarations.Sentence = ($, $p) => p_list_build_deprecated(
     ($i) => {
         let current_line: null | string = null
         let found_indentation = false
