@@ -162,16 +162,13 @@ const Phrase = (
                                 p_.from.list($).flatten(
                                     ($): Summary => {
                                         current++
-                                        const lines = Sentence($, { 'indentation level': $p['indentation level'] + 1 })
-                                        const paragraph_action: Summary = p_.from.list(lines).amount_of_items() !== 0
+                                        const sentence_input = current < amount - 1
+                                            ? p_.literal.segmented_list([$, p_.literal.list([sep])])
+                                            : $
+                                        const lines = Sentence(sentence_input, { 'indentation level': $p['indentation level'] + 1 })
+                                        return p_.from.list(lines).amount_of_items() !== 0
                                             ? p_.literal.list<Action>([['add paragraph', lines]])
                                             : p_.literal.list<Action>([])
-                                        return current < amount - 1
-                                            ? p_.literal.segmented_list([
-                                                paragraph_action,
-                                                Phrase(sep, $p)
-                                            ])
-                                            : paragraph_action
                                     }
                                 ),
                                 Phrase(
