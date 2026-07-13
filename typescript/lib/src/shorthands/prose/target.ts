@@ -1,5 +1,6 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
-import * as p_di from 'pareto-core/interface/data'
+import * as p_temp from 'pareto-core/implementation/transformer'
+import * as p_di from 'pareto-core/interface/schema'
 
 import type * as s_target from "../../interface/schemas/prose.js"
 import type * as s_text from "../../interface/schemas/list_of_characters.js"
@@ -7,7 +8,7 @@ import type * as s_text from "../../interface/schemas/list_of_characters.js"
 
 export namespace pg {
 
-    export const rich = (
+    export const deprecated_rich = (
         items: p_.Normal_List<s_target.Sentence>,
         if_empty: null | s_target.Sentence,
         indent: boolean,
@@ -59,6 +60,23 @@ export namespace ph {
         after: s_target.Phrase,
     ): s_target.Phrase => ['rich list', {
         'items': p_.list(items),
+        'if empty': if_empty,
+        'if not empty': {
+            'before': before,
+            'separator': separator,
+            'after': after,
+        },
+    }]
+    export const rich_sentences = (
+        items: p_.Normal_List<s_target.Sentence>,
+        if_empty: s_target.Phrase,
+        before: s_target.Phrase,
+        separator: s_target.Phrase,
+        after: s_target.Phrase,
+    ): s_target.Phrase => ['rich list', {
+        'items': p_temp.from.list(p_.list(items)).map(($) => ph.indent(pg.sentences(p_temp.literal.list([
+            $
+        ])))),
         'if empty': if_empty,
         'if not empty': {
             'before': before,
