@@ -3,7 +3,7 @@
 import p_log_debug_message from 'pareto-core-dev/log_debug_message'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import * as t_fountain_pen_to_loc from "lib/implementation/transformers/prose/list_of_characters"
+import * as lib from "lib/api"
 
 import * as sh from "lib/shorthands/prose/deprecated"
 
@@ -24,7 +24,7 @@ const phrase = sh.ph.indent(
 
 p_log_debug_message(
     p_text_from_list(
-        t_fountain_pen_to_loc.Phrase(
+        lib.api.transformers.prose['list of characters'].Phrase(
             phrase,
             {
                 'newline': "\n",

@@ -95,7 +95,4 @@ export namespace ph {
         value: string
     ): s_target.Phrase => ['value', ['text', value]]
 
-    export const serialize = (
-        value: s_text.List_of_Characters
-    ): s_target.Phrase => ['value', ['list of characters', value]]
 }

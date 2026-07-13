@@ -8,7 +8,7 @@ import p_variables from 'pareto-core/implementation/transformer/specials/variabl
 //schemas
 import type * as s_in from "../../../interface/schemas/prose.js"
 
-import type * as s_out from "../../../interface/schemas/_semi_lines.js"
+import type * as s_out from "../../../private_schemas/semi_lines.js"
 namespace declarations {
 
     export type Paragraph = p_i.Transformer_With_Parameter<
@@ -119,10 +119,6 @@ const Phrase = (
                             ($): string => {
                                 switch ($[0]) {
                                     case 'text': return p_.option($, ($) => $)
-                                    case 'list of characters': return p_.option($, ($) => p_text_from_list(
-                                        $,
-                                        ($) => $
-                                    ))
                                     default: return p_.exhaustive($[0])
                                 }
                             })],

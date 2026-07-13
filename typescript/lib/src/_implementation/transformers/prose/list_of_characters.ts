@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 //schemas
 import type * as s_out from "../../../interface/schemas/list_of_characters.js"
 import type * as s_in from "../../../interface/schemas/prose.js"
-import type * as s_parameters from "../../../interface/schemas/prose_serialize.js"
+import type * as s_parameters from "../../../interface/schemas/serialize_prose.js"
 
 namespace declarations {
     export type Paragraph = p_.Transformer_With_Parameter<
@@ -19,7 +19,7 @@ namespace declarations {
 }
 
 //dependencies
-import * as t_fountain_pen_block_to_semi_lines from "./_semi_lines.js"
+import * as t_fountain_pen_block_to_semi_lines from "./semi_lines.js"
 import * as t_semi_lines_to_list_of_characters from "../semi_lines/_list_of_characters.js"
 
 //shorthands
