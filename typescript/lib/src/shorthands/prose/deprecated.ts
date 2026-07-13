@@ -3,7 +3,7 @@ import * as p_di from 'pareto-core/interface/schema'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 import * as p_s from 'pareto-core/implementation/serializer'
 
-import type * as s_target from "../../interface/schemas/prose.js"
+import type * as s_target from "pareto-core/temp/fountain_pen/prose"
 
 
 export namespace pg {
@@ -94,8 +94,5 @@ export namespace ph {
     export const literal = (
         value: string
     ): s_target.Phrase => ['value', ['text', value]]
-    
-        export const serialize = (
-            value: p_s.List_Of_Characters
-        ): s_target.Phrase => ['value', ['text', p_s.text_from_list_of_characters(value)]]
+
 }
