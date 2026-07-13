@@ -96,4 +96,10 @@ export namespace ph {
         value: string
     ): s_target.Phrase => ['value', ['text', value]]
 
+    export const list_of_characters = (
+        value: p_di.List<number>
+    ): s_target.Phrase => ['value', ['text', p_text_from_list(
+        p_.list(value),
+        ($) => $,
+    )]]
 }
