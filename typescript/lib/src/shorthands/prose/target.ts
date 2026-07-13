@@ -52,13 +52,13 @@ export namespace ph {
         block_part: p_di.Optional_Value<s_target.Phrase>
     ): s_target.Phrase => ['optional', block_part]
 
-    export const rich = (
+    export const rich_phrase = (
         items: p_.Normal_List<s_target.Phrase>,
         if_empty: s_target.Phrase,
         before: s_target.Phrase,
         separator: s_target.Phrase,
         after: s_target.Phrase,
-    ): s_target.Phrase => ['rich list', {
+    ): s_target.Phrase => ['rich phrase', {
         'items': p_.list(items),
         'if empty': if_empty,
         'if not empty': {
@@ -67,16 +67,14 @@ export namespace ph {
             'after': after,
         },
     }]
-    export const rich_sentences = (
+    export const rich_paragraph = (
         items: p_.Normal_List<s_target.Sentence>,
         if_empty: s_target.Phrase,
         before: s_target.Phrase,
         separator: s_target.Phrase,
         after: s_target.Phrase,
-    ): s_target.Phrase => ['rich list', {
-        'items': p_temp.from.list(p_.list(items)).map(($) => ph.indent(pg.sentences(p_temp.literal.list([
-            $
-        ])))),
+    ): s_target.Phrase => ['rich paragraph', {
+        'items': p_.list(items),
         'if empty': if_empty,
         'if not empty': {
             'before': before,

@@ -146,7 +146,36 @@ export namespace Phrase_ {
     
     export type nothing = null
     
-    export namespace rich_list {
+    export namespace rich_paragraph {
+        
+        export namespace items {
+            
+            export type L = Sentence_
+            
+        }
+        
+        export type items = p_di.List<items.L>
+        
+        export type if_empty = Phrase_
+        
+        export namespace if_not_empty {
+            
+            export type before = Phrase_
+            
+            export type separator = Phrase_
+            
+            export type after = Phrase_
+            
+        }
+        
+        export type if_not_empty = {
+            readonly 'before': if_not_empty.before
+            readonly 'separator': if_not_empty.separator
+            readonly 'after': if_not_empty.after
+        }
+        
+    }
+    export namespace rich_phrase {
         
         export namespace items {
             
@@ -176,10 +205,16 @@ export namespace Phrase_ {
         
     }
     
-    export type rich_list = {
-        readonly 'items': rich_list.items
-        readonly 'if empty': rich_list.if_empty
-        readonly 'if not empty': rich_list.if_not_empty
+    export type rich_paragraph = {
+        readonly 'items': rich_paragraph.items
+        readonly 'if empty': rich_paragraph.if_empty
+        readonly 'if not empty': rich_paragraph.if_not_empty
+    }
+    
+    export type rich_phrase = {
+        readonly 'items': rich_phrase.items
+        readonly 'if empty': rich_phrase.if_empty
+        readonly 'if not empty': rich_phrase.if_not_empty
     }
     
 }
@@ -190,7 +225,8 @@ export type Phrase_ =
     | readonly ['composed', Phrase_.composed]
     | readonly ['optional', Phrase_.optional]
     | readonly ['nothing', Phrase_.nothing]
-    | readonly ['rich list', Phrase_.rich_list]
+    | readonly ['rich paragraph', Phrase_.rich_paragraph]
+    | readonly ['rich phrase', Phrase_.rich_phrase]
 
 export type { 
     Paragraph_ as Paragraph, 

@@ -130,9 +130,12 @@ const Phrase = (
                     ])
                 })
                 case 'indent': return p_.option($, ($) => {
-                    const paragraph = Paragraph($, {
-                        'indentation level': $p['indentation level'] + 1,
-                    })
+                    const paragraph = Paragraph(
+                        $,
+                        {
+                            'indentation level': $p['indentation level'] + 1,
+                        }
+                    )
                     if (p_.from.list(paragraph).amount_of_items() !== 0) {
                         return p_.literal.list<Action>([
                             ['add paragraph', paragraph]
@@ -141,7 +144,47 @@ const Phrase = (
                         return p_.literal.list<Action>([])
                     }
                 })
-                case 'rich list': return p_.option($, ($) => {
+                case 'rich paragraph': return p_.option($, ($) => {
+                    const $v_rich_list = $
+                    return p_.from.list($.items).on_has_items(
+                        ($) => {
+                            const sep = $v_rich_list['if not empty'].separator
+                            const amount = p_.from.list($).amount_of_items()
+                            if (amount === 0) {
+                                return p_.literal.list<Action>([])
+                            }
+                            let current = -1
+                            return p_.literal.segmented_list([
+                                Phrase(
+                                    $v_rich_list['if not empty'].before,
+                                    $p
+                                ),
+                                p_.from.list($).flatten(
+                                    ($): Summary => {
+                                        current++
+                                        const lines = Sentence($, { 'indentation level': $p['indentation level'] + 1 })
+                                        const paragraph_action: Summary = p_.from.list(lines).amount_of_items() !== 0
+                                            ? p_.literal.list<Action>([['add paragraph', lines]])
+                                            : p_.literal.list<Action>([])
+                                        return current < amount - 1
+                                            ? p_.literal.segmented_list([
+                                                paragraph_action,
+                                                Phrase(sep, $p)
+                                            ])
+                                            : paragraph_action
+                                    }
+                                ),
+                                Phrase(
+                                    $v_rich_list['if not empty'].after,
+                                    $p
+                                )
+
+                            ])
+                        },
+                        () => Phrase($['if empty'], $p)
+                    )
+                })
+                case 'rich phrase': return p_.option($, ($) => {
                     const $v_rich_list = $
                     return p_.from.list($.items).on_has_items(
                         ($) => {
