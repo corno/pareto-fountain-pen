@@ -3,7 +3,7 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 
 import type * as s_in from "../../../interface/schemas/prose.js"
 import type * as s_parameters from "../../../interface/schemas/prose_serialize.js"
-import type * as s_out from "../../../interface/schemas/text.js"
+import type * as s_out from "../../../interface/schemas/_text.js"
 namespace declarations {
     export type Paragraph = p_.Transformer_With_Parameter<
         s_in.Paragraph,

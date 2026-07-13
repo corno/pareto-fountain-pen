@@ -1,7 +1,10 @@
 import * as p_ from 'pareto-core/implementation/transformer'
+
+//schemas
 import type * as s_out from "../../../interface/schemas/list_of_characters.js"
 import type * as s_in from "../../../interface/schemas/prose.js"
 import type * as s_parameters from "../../../interface/schemas/prose_serialize.js"
+
 namespace declarations {
     export type Paragraph = p_.Transformer_With_Parameter<
         s_in.Paragraph,
@@ -16,13 +19,13 @@ namespace declarations {
 }
 
 //dependencies
-import * as t_fountain_pen_block_to_semi_lines from "./semi_lines.js"
-import * as t_semi_lines_to_text from "../semi_lines/text.js"
+import * as t_fountain_pen_block_to_semi_lines from "./_semi_lines.js"
+import * as t_semi_lines_to_list_of_characters from "../semi_lines/_list_of_characters.js"
 
 //shorthands
 import * as sh from "../../../shorthands/prose/deprecated.js"
 
-export const Paragraph: declarations.Paragraph = ($, $p) => t_semi_lines_to_text.Lines(
+export const Paragraph: declarations.Paragraph = ($, $p) => t_semi_lines_to_list_of_characters.Lines(
     t_fountain_pen_block_to_semi_lines.Paragraph($, { 'indentation level': 0 }),
     {
         'indentation': $p.indentation,
@@ -31,7 +34,7 @@ export const Paragraph: declarations.Paragraph = ($, $p) => t_semi_lines_to_text
     }
 )
 
-export const Phrase: declarations.Phrase = ($, $p) => t_semi_lines_to_text.Lines(
+export const Phrase: declarations.Phrase = ($, $p) => t_semi_lines_to_list_of_characters.Lines(
     t_fountain_pen_block_to_semi_lines.Sentence(
         sh.sentence(p_.literal.list([
             $
