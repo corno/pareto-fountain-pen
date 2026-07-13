@@ -1,29 +1,26 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/implementation/serializer'
 
 //schemas
-import type * as s_out from "../../../interface/schemas/list_of_characters.js"
-import type * as s_in from "../../../interface/schemas/prose.js"
-import type * as s_parameters from "../../../interface/schemas/serialize_prose.js"
+import type * as s_in from "../../interface/schemas/prose.js"
+import type * as s_parameters from "../../interface/schemas/serialize_prose.js"
 
 namespace declarations {
-    export type Paragraph = p_.Transformer_With_Parameter<
+    export type Paragraph = p_.Serializer_With_Parameter<
         s_in.Paragraph,
-        s_out.List_of_Characters,
         s_parameters.Parameters
     >
-    export type Phrase = p_.Transformer_With_Parameter<
+    export type Phrase = p_.Serializer_With_Parameter<
         s_in.Phrase,
-        s_out.List_of_Characters,
         s_parameters.Parameters
     >
 }
 
 //dependencies
-import * as t_fountain_pen_block_to_semi_lines from "./semi_lines.js"
-import * as t_semi_lines_to_list_of_characters from "../semi_lines/_list_of_characters.js"
+import * as t_fountain_pen_block_to_semi_lines from "../transformers/prose/semi_lines.js"
+import * as t_semi_lines_to_list_of_characters from "./semi_lines.js"
 
 //shorthands
-import * as sh from "../../../shorthands/prose/deprecated.js"
+import * as sh from "../../shorthands/prose/deprecated.js"
 
 export const Paragraph: declarations.Paragraph = ($, $p) => t_semi_lines_to_list_of_characters.Lines(
     t_fountain_pen_block_to_semi_lines.Paragraph($, { 'indentation level': 0 }),

@@ -22,16 +22,16 @@ const phrase = sh.ph.indent(
     ])
 )
 
-p_log_debug_message(
-    p_text_from_list(
-        lib.api.transformers.prose['list of characters'].Phrase(
-            phrase,
-            {
-                'newline': "\n",
-                'indentation': "  ",
-            }
-        ),
-        ($) => $
-    ),
-    () => { }
-)
+// p_log_debug_message(
+//     p_text_from_list(
+//         lib.api.transformers.prose['list of characters'].Phrase(
+//             phrase,
+//             {
+//                 'newline': "\n",
+//                 'indentation': "  ",
+//             }
+//         ),
+//         ($) => $
+//     ),
+//     () => { }
+// )

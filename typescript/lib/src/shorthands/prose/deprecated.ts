@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_deprecated'
 import * as p_di from 'pareto-core/interface/schema'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
+import * as p_s from 'pareto-core/implementation/serializer'
 
 import type * as s_target from "../../interface/schemas/prose.js"
-import type * as s_text from "../../interface/schemas/list_of_characters.js"
 
 
 export namespace pg {
@@ -96,6 +96,6 @@ export namespace ph {
     ): s_target.Phrase => ['value', ['text', value]]
     
         export const serialize = (
-            value: s_text.List_of_Characters
-        ): s_target.Phrase => ['value', ['text', p_text_from_list(value, ($) => $)]]
+            value: p_s.List_Of_Characters
+        ): s_target.Phrase => ['value', ['text', p_s.text_from_list_of_characters(value)]]
 }
