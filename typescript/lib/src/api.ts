@@ -7,6 +7,7 @@ export const api: interface_.API = {
     'serializers': {
         'prose': {
             'Phrase': ser.Phrase,
+            'Paragraph': ser.Paragraph
         },
     },
 }

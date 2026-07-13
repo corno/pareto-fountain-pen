@@ -6,8 +6,11 @@ import * as s_prose from "./schemas/prose.js"
 export type API = {
     'serializers': {
         'prose': {
-            'Phrase': p_s.Serializer<
+            'Phrase': p_s.Phrase_Serializer<
                 s_prose.Phrase
+            >
+            'Paragraph': p_s.Paragraph_Serializer<
+                s_prose.Paragraph
             >
         },
     },
