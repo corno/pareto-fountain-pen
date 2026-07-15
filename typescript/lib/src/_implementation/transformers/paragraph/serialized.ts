@@ -2,7 +2,7 @@ import type * as p_i from 'pareto-core/interface/transformer'
 
 //schemas
 import type * as s_in from "../../../interface/schemas/paragraph.js"
-import type * as s_out from "../../../interface/schemas/lines.js"
+import type * as s_out from "../../../interface/schemas/serialized.js"
 import type * as s_parameters from "../../../interface/schemas/paragraph_serialization.js"
 
 namespace declarations {
