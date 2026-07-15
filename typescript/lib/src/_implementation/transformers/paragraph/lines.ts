@@ -25,10 +25,28 @@ namespace declarations {
 import * as t_semi_lines_to_lines from "pareto-core/temp/fountain_pen/transformers/semi_lines/_lines"
 import * as t_to_semi_lines from "pareto-core/temp/fountain_pen/transformers/paragraph/semi_lines"
 
+import * as sh from "../../../shorthands/paragraph/deprecated.js"
 
 export const Paragraph: declarations.Paragraph = ($, $p) => t_semi_lines_to_lines.Lines(
     t_to_semi_lines.Paragraph(
         $,
+        {
+            'indentation level': 0
+        }
+    ),
+    {
+        'indentation text': $p.indentation
+    }
+)
+
+
+export const Phrase: declarations.Phrase = ($, $p) => t_semi_lines_to_lines.Lines(
+    t_to_semi_lines.Paragraph(
+        sh.pg.sentences([
+            sh.sentence([
+                $
+            ])
+        ]),
         {
             'indentation level': 0
         }
