@@ -12,12 +12,12 @@ p_log_debug_message("TEST NOT IMPLEMENTED YET", () => { })
 const phrase = sh.ph.indent(
     sh.pg.sentences([
         sh.sentence([
-            sh.ph.literal("hello"),
-            sh.ph.literal("world"),
+            sh.ph.text("hello"),
+            sh.ph.text("world"),
         ]),
         sh.sentence([
-            sh.ph.literal("goodbye"),
-            sh.ph.literal("world"),
+            sh.ph.text("goodbye"),
+            sh.ph.text("world"),
         ]),
     ])
 )

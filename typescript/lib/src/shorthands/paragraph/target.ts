@@ -88,7 +88,7 @@ export namespace ph {
         phrases: p_.Normal_List<s_target.Phrase>
     ): s_target.Phrase => ['composed', p_.list(phrases)]
 
-    export const literal = (
+    export const text = (
         value: string
     ): s_target.Phrase => ['value', ['text', value]]
 
