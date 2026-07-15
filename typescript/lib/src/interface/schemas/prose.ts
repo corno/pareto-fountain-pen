@@ -1,1 +1,0 @@
-export * from "pareto-core/temp/fountain_pen/prose"

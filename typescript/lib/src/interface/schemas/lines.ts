@@ -1,0 +1,1 @@
+export * from "pareto-core/temp/fountain_pen/private_schemas/lines"

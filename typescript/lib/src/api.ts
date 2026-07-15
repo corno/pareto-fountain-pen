@@ -1,13 +1,17 @@
 import * as interface_ from "./interface/api.js"
 
-import * as ser from "./_implementation/serializers/prose.js"
+import * as ser_rich_phrase from "./_implementation/serializers/rich_phrase.js"
+import * as t_paragraph_to_lines from "./_implementation/transformers/paragraph/lines.js"
 
 export const api: interface_.API = {
-
     'serializers': {
-        'prose': {
-            'Phrase': ser.Phrase,
-            'Paragraph': ser.Paragraph
+        'rich_phrase': ser_rich_phrase.Phrase,
+    },
+    'transformers': {
+        'paragraph': {
+            'lines': {
+                'Paragraph': t_paragraph_to_lines.Paragraph,
+            }
         },
     },
 }

@@ -1,15 +1,15 @@
-import * as p_ from 'pareto-core-shorthands/unconstrained_target'
+import * as p_ from 'pareto-core-shorthands/unconstrained_deprecated'
 import * as p_di from 'pareto-core/interface/schema'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 import * as p_s from 'pareto-core/implementation/serializer'
 
-//schemas
-import type * as s_target from "pareto-core/temp/fountain_pen/prose"
+import type * as s_target from "pareto-core/temp/fountain_pen/rich_phrase"
+
 
 
 export namespace ph {
     export const composed = (
-        phrases: p_.Normal_List<s_target.Phrase>
+        phrases: p_.Raw_Or_Normal_List<s_target.Phrase>
     ): s_target.Phrase => ['composed', p_.list(phrases)]
 
     export const literal = (
@@ -25,7 +25,7 @@ export namespace ph {
 
 
     export const rich_phrase = (
-        items: p_.Normal_List<s_target.Phrase>,
+        items: p_.Raw_Or_Normal_List<s_target.Phrase>,
         if_empty: null | s_target.Phrase,
         before: null | s_target.Phrase,
         separator: s_target.Phrase,
