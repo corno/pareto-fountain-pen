@@ -5,7 +5,7 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 
 import * as lib from "lib/api"
 
-import * as sh from "lib/shorthands/prose/deprecated"
+import * as sh from "lib/shorthands/prose_extended/deprecated"
 
 p_log_debug_message("TEST NOT IMPLEMENTED YET", () => { })
 
