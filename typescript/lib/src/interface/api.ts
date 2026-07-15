@@ -4,6 +4,7 @@ import * as p_s from 'pareto-core/implementation/serializer'
 import * as s_paragraph from "./schemas/paragraph.js"
 import * as s_lines from "./schemas/lines.js"
 import * as s_rich_phrase from "./schemas/rich_phrase.js"
+import * as s_paragraph_serialization from "./schemas/paragraph_serialization.js"
 
 export type API = {
     'serializers': {
@@ -17,9 +18,7 @@ export type API = {
                 'Paragraph': p_t.Transformer_With_Parameter<
                     s_paragraph.Paragraph,
                     s_lines.Lines,
-                    {
-                        'indentation': string
-                    }
+                    s_paragraph_serialization.Parameters
                 >
             }
         },

@@ -1,26 +1,22 @@
-import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
 
 //schemas
 import type * as s_in from "../../../interface/schemas/paragraph.js"
 import type * as s_out from "../../../interface/schemas/lines.js"
+import type * as s_parameters from "../../../interface/schemas/paragraph_serialization.js"
 
 namespace declarations {
 
     export type Paragraph = p_i.Transformer_With_Parameter<
         s_in.Paragraph,
         s_out.Lines,
-        {
-            'indentation': string
-        }
+        s_parameters.Parameters
     >
 
     export type Phrase = p_i.Transformer_With_Parameter<
         s_in.Phrase,
         s_out.Lines,
-        {
-            'indentation': string
-        }
+        s_parameters.Parameters
     >
 
 }

@@ -66,17 +66,17 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 // Create a simple paragraph
 const paragraph = sh.pg.sentences([
     sh.sentence([
-        sh.ph.literal("function "),
-        sh.ph.literal("greet"),
-        sh.ph.literal("() {")
+        sh.ph.text("function "),
+        sh.ph.text("greet"),
+        sh.ph.text("() {")
         sh.ph.indent(
             sh.pg.sentences([
                 sh.sentence([
-                    sh.ph.literal("console.log('Hello, World!')")
+                    sh.ph.text("console.log('Hello, World!')")
                 ])
             ])
         )
-        sh.ph.literal("}")
+        sh.ph.text("}")
     ])
 ])
 ```
@@ -96,25 +96,25 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 const generateInterface = (name: string, properties: Array<{ name: string, type: string }>) =>
     sh.pg.sentences([
         sh.sentence([
-            sh.ph.literal("export interface "),
-            sh.ph.literal(name),
-            sh.ph.literal(" {")
+            sh.ph.text("export interface "),
+            sh.ph.text(name),
+            sh.ph.text(" {")
         ]),
         sh.sentence([
             sh.ph.indent(
                 sh.pg.sentences(
                     properties.map(prop => 
                         sh.sentence([
-                            sh.ph.literal(prop.name),
-                            sh.ph.literal(": "),
-                            sh.ph.literal(prop.type)
+                            sh.ph.text(prop.name),
+                            sh.ph.text(": "),
+                            sh.ph.text(prop.type)
                         ])
                     )
                 )
             )
         ]),
         sh.sentence([
-            sh.ph.literal("}")
+            sh.ph.text("}")
         ])
     ])
 ```
@@ -126,11 +126,11 @@ Rich lists provide advanced formatting with separators, before/after content, an
 ```typescript
 // Generate a comma-separated list
 sh.ph.rich(
-    items.map(item => sh.ph.literal(item)),
+    items.map(item => sh.ph.text(item)),
     sh.ph.nothing(),           // if empty
-    sh.ph.literal("[ "),       // before
-    sh.ph.literal(", "),       // separator
-    sh.ph.literal(" ]")        // after
+    sh.ph.text("[ "),       // before
+    sh.ph.text(", "),       // separator
+    sh.ph.text(" ]")        // after
 )
 // Output: [ item1, item2, item3 ]
 ```
@@ -143,13 +143,13 @@ Pareto Fountain Pen is extensively used for formatting error messages:
 const formatError = (file: string, line: number, column: number, message: string) =>
     sh.pg.sentences([
         sh.sentence([
-            sh.ph.literal(file),
-            sh.ph.literal(":"),
+            sh.ph.text(file),
+            sh.ph.text(":"),
             sh.ph.decimal(line),
-            sh.ph.literal(":"),
+            sh.ph.text(":"),
             sh.ph.decimal(column),
-            sh.ph.literal(": Error: "),
-            sh.ph.literal(message)
+            sh.ph.text(": Error: "),
+            sh.ph.text(message)
         ])
     ])
 // Output: src/main.ts:42:15: Error: Type mismatch
@@ -164,7 +164,7 @@ const projectStructure = sh.directory({
     "src": sh.n.directory({
         "index.ts": sh.n.file(
             sh.pg.sentences([
-                sh.sentence([sh.ph.literal("export * from './lib'")])
+                sh.sentence([sh.ph.text("export * from './lib'")])
             ])
         ),
         "lib": sh.n.directory({
@@ -235,7 +235,7 @@ sh.pg.optional(paragraph)
 sh.sentence([...])
 
 // Phrases
-sh.ph.literal(string)
+sh.ph.text(string)
 sh.ph.decimal(number)
 sh.ph.indent(paragraph)
 sh.ph.composed([...])
@@ -299,7 +299,7 @@ Use `optional` to conditionally include content:
 ```typescript
 sh.ph.optional(
     value !== null 
-        ? { 'has value': sh.ph.literal(value) }
+        ? { 'has value': sh.ph.text(value) }
         : { 'has no value': null }
 )
 ```
@@ -311,14 +311,14 @@ Indentation is automatically tracked and applied:
 ```typescript
 sh.pg.sentences([
     sh.sentence([
-        sh.ph.literal("outer level"),
+        sh.ph.text("outer level"),
         sh.ph.indent(
             sh.pg.sentences([
                 sh.sentence([
-                    sh.ph.literal("indented level 1"),
+                    sh.ph.text("indented level 1"),
                     sh.ph.indent(
                         sh.pg.sentences([
-                            sh.sentence([sh.ph.literal("indented level 2")])
+                            sh.sentence([sh.ph.text("indented level 2")])
                         ])
                     )
                 ])
@@ -336,7 +336,7 @@ Convert data structures to formatted output:
 const formatList = (items: Array<string>) =>
     sh.pg.sentences(
         items.map(item => 
-            sh.sentence([sh.ph.literal(item)])
+            sh.sentence([sh.ph.text(item)])
         )
     )
 ```
