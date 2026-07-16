@@ -4,7 +4,7 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import * as p_s from 'pareto-core/implementation/serializer'
 
 //schemas
-import type * as s_target from "pareto-core/temp/fountain_pen/rich_phrase"
+import type * as s_target from "../../interface/schemas/rich_phrase.js"
 
 
 export namespace ph {

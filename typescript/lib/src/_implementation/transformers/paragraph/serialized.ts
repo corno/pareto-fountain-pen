@@ -22,8 +22,8 @@ namespace declarations {
 }
 
 //dependencies
-import * as t_semi_lines_to_lines from "pareto-core/temp/fountain_pen/transformers/semi_lines/_lines"
-import * as t_to_semi_lines from "pareto-core/temp/fountain_pen/transformers/paragraph/semi_lines"
+import * as t_semi_lines_to_lines from "../semi_lines/serialized.js"
+import * as t_to_semi_lines from "./semi_lines.js"
 
 import * as sh from "../../../shorthands/paragraph/deprecated.js"
 
