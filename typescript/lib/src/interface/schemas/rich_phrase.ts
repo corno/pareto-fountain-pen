@@ -2,6 +2,8 @@
 import * as p_ from 'pareto-core/interface/schema'
 
 
+export type Phrases = p_.List<Phrase_>
+
 namespace Phrase_ {
     
     export namespace value {
