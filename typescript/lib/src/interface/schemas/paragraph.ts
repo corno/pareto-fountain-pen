@@ -1,6 +1,9 @@
 
 import * as p_ from 'pareto-core/interface/schema'
 
+
+export type Phrases = p_.List<Phrase_>
+
 namespace Paragraph_ {
     
     export namespace composed {

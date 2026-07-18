@@ -1,11 +1,14 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 import * as p_di from 'pareto-core/interface/schema'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
-import * as p_s from 'pareto-core/implementation/serializer'
 
 //schemas
 import type * as s_target from "../../interface/schemas/paragraph.js"
 
+
+export const phrases = (
+    phrases: p_.Normal_List<s_target.Phrase>
+): s_target.Phrases => p_.list(phrases)
 
 export namespace pg {
 
