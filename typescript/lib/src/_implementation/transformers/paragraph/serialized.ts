@@ -13,6 +13,12 @@ namespace declarations {
         s_parameters.Parameters
     >
 
+    export type Phrases = p_i.Transformer_With_Parameter<
+        s_in.Phrases,
+        s_out.Lines,
+        s_parameters.Parameters
+    >
+
     export type Phrase = p_i.Transformer_With_Parameter<
         s_in.Phrase,
         s_out.Lines,
@@ -46,6 +52,22 @@ export const Phrase: declarations.Phrase = ($, $p) => t_semi_lines_to_lines.Line
             sh.sentence([
                 $
             ])
+        ]),
+        {
+            'indentation level': 0
+        }
+    ),
+    {
+        'indentation text': $p.indentation
+    }
+)
+
+
+
+export const Phrases: declarations.Phrases = ($, $p) => t_semi_lines_to_lines.Lines(
+    t_to_semi_lines.Paragraph(
+        sh.pg.sentences([
+            sh.sentence($)
         ]),
         {
             'indentation level': 0
