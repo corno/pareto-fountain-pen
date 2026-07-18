@@ -151,9 +151,6 @@ const Phrase = (
                         ($) => {
                             const sep = $v_rich_list['if not empty'].separator
                             const amount = p_.from.list($).amount_of_items()
-                            if (amount === 0) {
-                                return p_.literal.list<Action>([])
-                            }
                             let current = -1
                             return p_.literal.segmented_list([
                                 Phrase(
