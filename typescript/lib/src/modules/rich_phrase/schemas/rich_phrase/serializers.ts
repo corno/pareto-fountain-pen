@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/serializer'
 
 //schemas
-import type * as s_in from "../../schemas/rich_phrase.js"
+import type * as s_in from "./schema.js"
 
 //dependencies
 
