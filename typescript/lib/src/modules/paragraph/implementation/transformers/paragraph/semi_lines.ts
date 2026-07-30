@@ -2,13 +2,12 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
 import type * as p_di from 'pareto-core/interface/schema'
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 import p_variables from 'pareto-core/implementation/transformer/specials/variables'
 
 //schemas
-import type * as s_in from "../../../interface/schemas/paragraph.js"
+import type * as s_in from "../../../schemas/paragraph.js"
 
-import type * as s_out from "../../../private_schemas/semi_lines.js"
+import type * as s_out from "../../../schemas/semi_lines.js"
 namespace declarations {
 
     export type Paragraph = p_i.Transformer_With_Parameter<

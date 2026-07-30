@@ -1,19 +1,17 @@
-import * as p_ from 'pareto-core-shorthands/unconstrained_target'
+import * as p_ from 'pareto-core-shorthands/unconstrained_deprecated'
 import * as p_di from 'pareto-core/interface/schema'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-//schemas
-import type * as s_target from "../../interface/schemas/paragraph.js"
-
+import type * as s_target from "../../paragraph/schemas/paragraph.js"
 
 export const phrases = (
-    phrases: p_.Normal_List<s_target.Phrase>
+    phrases: p_.Raw_Or_Normal_List<s_target.Phrase>
 ): s_target.Phrases => p_.list(phrases)
 
 export namespace pg {
 
     export const deprecated_rich = (
-        items: p_.Normal_List<s_target.Sentence>,
+        items: p_.Raw_Or_Normal_List<s_target.Sentence>,
         if_empty: null | s_target.Sentence,
         indent: boolean,
         before: null | s_target.Sentence,
@@ -31,16 +29,16 @@ export namespace pg {
     }]
 
     export const deprecated_composed = (
-        Group_Parts: p_.Normal_List<s_target.Paragraph>
+        Group_Parts: p_.Raw_Or_Normal_List<s_target.Paragraph>
     ): s_target.Paragraph => ['composed', p_.list(Group_Parts)]
 
     export const sentences = (
-        sentences: p_.Normal_List<s_target.Sentence>
+        sentences: p_.Raw_Or_Normal_List<s_target.Sentence>
     ): s_target.Paragraph => ['sentences', p_.list(sentences)]
 }
 
 export const sentence = (
-    phrases: p_.Normal_List<s_target.Phrase>
+    phrases: p_.Raw_Or_Normal_List<s_target.Phrase>
 ): s_target.Sentence => p_.list(phrases)
 
 export namespace ph {
@@ -57,7 +55,7 @@ export namespace ph {
     ): s_target.Phrase => ['optional', block_part]
 
     export const rich_phrase = (
-        items: p_.Normal_List<s_target.Phrase>,
+        items: p_.Raw_Or_Normal_List<s_target.Phrase>,
         if_empty: s_target.Phrase,
         before: s_target.Phrase,
         separator: s_target.Phrase,
@@ -72,7 +70,7 @@ export namespace ph {
         },
     }]
     export const rich_paragraph = (
-        items: p_.Normal_List<s_target.Sentence>,
+        items: p_.Raw_Or_Normal_List<s_target.Sentence>,
         if_empty: s_target.Phrase,
         before: s_target.Phrase,
         separator: s_target.Phrase,
@@ -88,7 +86,7 @@ export namespace ph {
     }]
 
     export const composed = (
-        phrases: p_.Normal_List<s_target.Phrase>
+        phrases: p_.Raw_Or_Normal_List<s_target.Phrase>
     ): s_target.Phrase => ['composed', p_.list(phrases)]
 
     export const text = (

@@ -1,9 +1,8 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_deprecated'
 import * as p_di from 'pareto-core/interface/schema'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
-import * as p_s from 'pareto-core/implementation/serializer'
 
-import type * as s_target from "../../interface/schemas/rich_phrase.js"
+import type * as s_target from "../schemas/rich_phrase.js"
 
 
 

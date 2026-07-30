@@ -2,13 +2,11 @@
 
 import p_log_debug_message from 'pareto-core-dev/log_debug_message'
 import * as p_ from 'pareto-core/implementation/transformer'
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import * as lib from "lib/api"
 
-import * as sh from "lib/shorthands/paragraph/deprecated"
+import * as sh from "lib/modules/paragraph/shorthands/deprecated"
 
-import * as t_paragraph_to_serialized from "lib/_implementation/transformers/paragraph/serialized"
+import * as t_paragraph_to_serialized from "lib/modules/paragraph/implementation/transformers/paragraph/serialized"
 import log_debug_message from 'pareto-core-dev/log_debug_message'
 
 p_log_debug_message("TEST NOT IMPLEMENTED YET", () => { })
