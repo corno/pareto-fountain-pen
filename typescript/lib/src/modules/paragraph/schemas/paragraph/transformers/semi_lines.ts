@@ -8,6 +8,7 @@ import p_variables from 'pareto-core/implementation/transformer/specials/variabl
 import type * as s_in from "../schema.js"
 
 import type * as s_out from "../../semi_lines/schema.js"
+
 namespace declarations {
 
     export type Paragraph = p_i.Transformer_With_Parameter<
