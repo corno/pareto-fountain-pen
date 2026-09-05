@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import p_log_debug_message from 'pareto-core-dev/log_debug_message'
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/transformer'
 
 
 import * as sh from "lib/modules/paragraph/schemas/paragraph/shorthands/deprecated"

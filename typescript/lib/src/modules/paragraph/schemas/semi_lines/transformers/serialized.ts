@@ -1,6 +1,6 @@
-import * as p_ from 'pareto-core/implementation/transformer'
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+import * as p_ from 'pareto-core/transformer'
+import p_text_from_list from 'pareto-core/transformer/specials/text_from_list'
+import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 
 import type * as s_in from "../schema.js"
 import type * as s_out from "../../serialized/schema.js"

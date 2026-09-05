@@ -1,5 +1,5 @@
 
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 
 export type Phrases = p_.List<Phrase_>

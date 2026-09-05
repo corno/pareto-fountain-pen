@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_deprecated'
-import * as p_di from 'pareto-core/interface/schema'
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
+import * as p_di from 'pareto-core/schema'
+import p_text_from_list from 'pareto-core/transformer/specials/text_from_list'
 
 import type * as s_target from "../schema.js"
 
