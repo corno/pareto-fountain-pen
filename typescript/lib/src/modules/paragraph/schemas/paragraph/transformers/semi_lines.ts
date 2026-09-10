@@ -27,6 +27,14 @@ namespace declarations {
         }
     >
 
+    export type Phrase = p_i.Transformer_With_Parameter<
+        s_in.Phrase,
+        s_out.Phrase,
+        {
+            'indentation level': number
+        }
+    >
+
 }
 
 export const Paragraph: declarations.Paragraph = ($, $p) => p_.from.state($).decide(
@@ -96,31 +104,18 @@ export const Paragraph: declarations.Paragraph = ($, $p) => p_.from.state($).dec
     }
 )
 
-type Summary = p_di.List<Action>
-
-
-type Action =
-    | ['append', string]
-    | ['add paragraph', s_out.Lines]
-
-const Phrase = (
-    $: s_in.Phrase,
-    $p: {
-        'indentation level': number,
-
-    },
-): Summary => {
+const Phrase: declarations.Phrase = ($, $p) => {
     if (typeof $ === 'string') {
-        return p_.literal.list<Action>([
-            ['append', $]
+        return p_.literal.list<s_out.Phrase_Part>([
+            ['snippet', $]
         ])
     }
     return p_.from.state($).decide(
-        ($): Summary => {
+        ($): s_out.Phrase => {
             switch ($[0]) {
                 case 'value': return p_.option($, ($) => {
-                    return p_.literal.list<Action>([
-                        ['append', p_.from.state($).decide(
+                    return p_.literal.list<s_out.Phrase_Part>([
+                        ['snippet', p_.from.state($).decide(
                             ($): string => {
                                 switch ($[0]) {
                                     case 'text': return p_.option($, ($) => $)
@@ -138,11 +133,11 @@ const Phrase = (
                         }
                     )
                     if (p_.from.list(paragraph).amount_of_items() !== 0) {
-                        return p_.literal.list<Action>([
-                            ['add paragraph', paragraph]
+                        return p_.literal.list<s_out.Phrase_Part>([
+                            ['paragraph', paragraph]
                         ])
                     } else {
-                        return p_.literal.list<Action>([])
+                        return p_.literal.list<s_out.Phrase_Part>([])
                     }
                 })
                 case 'rich paragraph': return p_.option($, ($) => {
@@ -158,15 +153,15 @@ const Phrase = (
                                     $p
                                 ),
                                 p_.from.list($).flatten(
-                                    ($): Summary => {
+                                    ($): s_out.Phrase => {
                                         current++
                                         const sentence_input = current < amount - 1
                                             ? p_.literal.segmented_list([$, p_.literal.list([sep])])
                                             : $
                                         const lines = Sentence(sentence_input, { 'indentation level': $p['indentation level'] + 1 })
                                         return p_.from.list(lines).amount_of_items() !== 0
-                                            ? p_.literal.list<Action>([['add paragraph', lines]])
-                                            : p_.literal.list<Action>([])
+                                            ? p_.literal.list<s_out.Phrase_Part>([['paragraph', lines]])
+                                            : p_.literal.list<s_out.Phrase_Part>([])
                                     }
                                 ),
                                 Phrase(
@@ -189,7 +184,7 @@ const Phrase = (
                             return p_.literal.segmented_list([
                                 Phrase($v_rich_list['if not empty'].before, $p),
                                 p_.from.list($).flatten(
-                                    ($): Summary => {
+                                    ($): s_out.Phrase => {
                                         current++
                                         return current < amount - 1
                                             ? p_.literal.segmented_list([
@@ -211,9 +206,9 @@ const Phrase = (
                 ))
                 case 'optional': return p_.option($, ($) => p_.from.optional($).decide(
                     ($) => Phrase($, $p),
-                    () => p_.literal.list<Action>([]),
+                    () => p_.literal.list<s_out.Phrase_Part>([]),
                 ))
-                case 'nothing': return p_.option($, ($) => p_.literal.list<Action>([]))
+                case 'nothing': return p_.option($, ($) => p_.literal.list<s_out.Phrase_Part>([]))
                 default: return p_.exhaustive($[0])
             }
         })
@@ -234,14 +229,14 @@ export const Sentence: declarations.Sentence = ($, $p) => p_list_build_deprecate
                 ($) => p_.from.state($).decide(
                     ($): null => {
                         switch ($[0]) {
-                            case 'append': return p_.option($, ($) => {
+                            case 'snippet': return p_.option($, ($) => {
                                 if (current_line === null) {
                                     current_line = ""
                                 }
                                 current_line += $
                                 return null
                             })
-                            case 'add paragraph': return p_.option($, ($) => {
+                            case 'paragraph': return p_.option($, ($) => {
                                 found_indentation = true
                                 if (current_line !== null) {
                                     $i['add item']({

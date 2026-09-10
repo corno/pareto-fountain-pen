@@ -20,6 +20,15 @@ export namespace Lines_ {
 
 export type Lines_ = p_di.List<Lines_.L>
 
+
+
+export type Phrase = p_di.List<Phrase_Part>
+
+    
+export type Phrase_Part =
+    | ['snippet', string]
+    | ['paragraph', Lines_]
+
 export type { 
     Lines_ as Lines, 
 }
