@@ -1,34 +1,35 @@
-
 import * as p_ from 'pareto-core/schema'
 
-
-export type Phrases = p_.List<Phrase_>
+// types
 
 namespace Paragraph_ {
     
     export namespace composed {
         
         export type L = Paragraph_
-        
     }
     
-    export type composed = p_.List<composed.L>
+    export type composed = p_.List<
+        composed.L
+    >
     
     export namespace sentences {
         
         export type L = Sentence_
-        
     }
     
-    export type sentences = p_.List<sentences.L>
+    export type sentences = p_.List<
+        sentences.L
+    >
     
     export namespace optional {
         
         export type O = Paragraph_
-        
     }
     
-    export type optional = p_.Optional_Value<optional.O>
+    export type optional = p_.Optional_Value<
+        optional.O
+    >
     
     export type nothing = null
     
@@ -37,47 +38,51 @@ namespace Paragraph_ {
         export namespace items {
             
             export type L = Sentence_
-            
         }
         
-        export type items = p_.List<items.L>
+        export type items = p_.List<
+            items.L
+        >
         
         export namespace if_empty {
             
             export type O = Sentence_
-            
         }
         
-        export type if_empty = p_.Optional_Value<if_empty.O>
+        export type if_empty = p_.Optional_Value<
+            if_empty.O
+        >
         
         export namespace if_not_empty {
             
             export namespace before {
                 
                 export type O = Sentence_
-                
             }
             
-            export type before = p_.Optional_Value<before.O>
+            export type before = p_.Optional_Value<
+                before.O
+            >
             
             export type indent = boolean
             
             export namespace separator {
                 
                 export type O = Phrase_
-                
             }
             
-            export type separator = p_.Optional_Value<separator.O>
+            export type separator = p_.Optional_Value<
+                separator.O
+            >
             
             export namespace after {
                 
                 export type O = Sentence_
-                
             }
             
-            export type after = p_.Optional_Value<after.O>
-            
+            export type after = p_.Optional_Value<
+                after.O
+            >
         }
         
         export type if_not_empty = {
@@ -86,7 +91,6 @@ namespace Paragraph_ {
             readonly 'separator': if_not_empty.separator
             readonly 'after': if_not_empty.after
         }
-        
     }
     
     export type rich_list = {
@@ -94,7 +98,6 @@ namespace Paragraph_ {
         readonly 'if empty': rich_list.if_empty
         readonly 'if not empty': rich_list.if_not_empty
     }
-    
 }
 
 type Paragraph_ = 
@@ -104,20 +107,31 @@ type Paragraph_ =
     | readonly ['nothing', Paragraph_.nothing]
     | readonly ['rich list', Paragraph_.rich_list]
 
+type Root_ = Paragraph_
+
+namespace Phrases_ {
+    
+    export type L = Phrase_
+}
+
+type Phrases_ = p_.List<
+    Phrases_.L
+>
+
 namespace Sentence_ {
     
     export type L = Phrase_
-    
 }
 
-type Sentence_ = p_.List<Sentence_.L>
+type Sentence_ = p_.List<
+    Sentence_.L
+>
 
 namespace Phrase_ {
     
     export namespace value {
         
         export type text = string
-        
     }
     
     export type value = 
@@ -128,18 +142,20 @@ namespace Phrase_ {
     export namespace composed {
         
         export type L = Phrase_
-        
     }
     
-    export type composed = p_.List<composed.L>
+    export type composed = p_.List<
+        composed.L
+    >
     
     export namespace optional {
         
         export type O = Phrase_
-        
     }
     
-    export type optional = p_.Optional_Value<optional.O>
+    export type optional = p_.Optional_Value<
+        optional.O
+    >
     
     export type nothing = null
     
@@ -148,10 +164,11 @@ namespace Phrase_ {
         export namespace items {
             
             export type L = Sentence_
-            
         }
         
-        export type items = p_.List<items.L>
+        export type items = p_.List<
+            items.L
+        >
         
         export type if_empty = Phrase_
         
@@ -162,7 +179,6 @@ namespace Phrase_ {
             export type separator = Phrase_
             
             export type after = Phrase_
-            
         }
         
         export type if_not_empty = {
@@ -170,36 +186,6 @@ namespace Phrase_ {
             readonly 'separator': if_not_empty.separator
             readonly 'after': if_not_empty.after
         }
-        
-    }
-    export namespace rich_phrase {
-        
-        export namespace items {
-            
-            export type L = Phrase_
-            
-        }
-        
-        export type items = p_.List<items.L>
-        
-        export type if_empty = Phrase_
-        
-        export namespace if_not_empty {
-            
-            export type before = Phrase_
-            
-            export type separator = Phrase_
-            
-            export type after = Phrase_
-            
-        }
-        
-        export type if_not_empty = {
-            readonly 'before': if_not_empty.before
-            readonly 'separator': if_not_empty.separator
-            readonly 'after': if_not_empty.after
-        }
-        
     }
     
     export type rich_paragraph = {
@@ -208,12 +194,40 @@ namespace Phrase_ {
         readonly 'if not empty': rich_paragraph.if_not_empty
     }
     
+    export namespace rich_phrase {
+        
+        export namespace items {
+            
+            export type L = Phrase_
+        }
+        
+        export type items = p_.List<
+            items.L
+        >
+        
+        export type if_empty = Phrase_
+        
+        export namespace if_not_empty {
+            
+            export type before = Phrase_
+            
+            export type separator = Phrase_
+            
+            export type after = Phrase_
+        }
+        
+        export type if_not_empty = {
+            readonly 'before': if_not_empty.before
+            readonly 'separator': if_not_empty.separator
+            readonly 'after': if_not_empty.after
+        }
+    }
+    
     export type rich_phrase = {
         readonly 'items': rich_phrase.items
         readonly 'if empty': rich_phrase.if_empty
         readonly 'if not empty': rich_phrase.if_not_empty
     }
-    
 }
 
 type Phrase_ = 
@@ -225,8 +239,11 @@ type Phrase_ =
     | readonly ['rich paragraph', Phrase_.rich_paragraph]
     | readonly ['rich phrase', Phrase_.rich_phrase]
 
-export type { 
-    Paragraph_ as Paragraph, 
-    Sentence_ as Sentence, 
-    Phrase_ as Phrase, 
+// exported root types
+export { 
+    type Paragraph_ as Paragraph, 
+    type Root_ as Root, 
+    type Phrases_ as Phrases, 
+    type Sentence_ as Sentence, 
+    type Phrase_ as Phrase, 
 }
